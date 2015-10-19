@@ -7,7 +7,7 @@ echo "Atualizando. . .";
 
 # Gerar index.html para o diretorio de disciplinas
 cd Disciplinas/GraphicsComputer
-asciidoc -b html5 -a icons -a toc2 -a theme=flask index.txt
+asciidoc -b html5 -a icons -a toc2 -a theme=flask graphicsComputer.txt
 
 # Gerar slides no diretório de disciplinas
 asciidoc rayTracing.txt
