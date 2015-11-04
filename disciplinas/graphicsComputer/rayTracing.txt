@@ -1,45 +1,202 @@
-Slidy Example Slideshow
-=======================
-:author:    Joe Bloggs
-:copyright: Foobar Inc.
+Ray Tracing
+===========
+:author:    Petrúcio Ricardo
+:copyright: Petrúcio Ricardo
 :backend:   slidy
 :max-width: 45em
 :data-uri:
 :icons:
 
+Introdução
+----------
 
-This preamble will appear on a separate slide.
+image:imagens/imagem1.png[height=300, width=450]
+image:imagens/imagem2.jpg[height=300, width=450]
+
+O ray tracing é uma técnica de síntese de imagens fotorealísticas.
+
+História
+--------
+- Em 1968, Arthur Appel apresenta seus estudos que tem como objetivo determinar sombras, ou seja, verificar se um ponto visível está ou não no interior de uma sombra.
+- Goldstein e Nagel entre 1968 à 1971 desenvolveram pesquisas na área de trajetórias balísticas e de partículas nucleares mais tarde incorporado ao algoritmo por Appel.
+- De 1979 à 1980, Kay e Whitted modificaram o cálculo de iluminação especular e da refração da luz, respectivamente, com intuito de obter um modelo mais próximo do real.
+- O algoritmo ray tracing nasceu com o objetivo de determinar a visibilidade dos objetos de uma cena, operando a nível de precisão da imagem.
+
+Fundamentos do ray tracing
+--------------------------
+
+=== Abordagem real
+- Raios saem da fonte luminosa e incide sobre os objetos da cena, porém uma pequena porção destes raios acabam capturados pelos nossos olhos.
+
+image::imagens/imagem3.jpg[height=250, width=300, align="center"]
+
+Fundamentos do ray tracing
+--------------------------
+
+=== Abordagem computacional
+- Raios saem dos olhos e incide sobre os objetos da cena. Se este intercepta um objeto buscamos a contribuição de sua cor, caso contrário retornamos a cor de background da cena.
+
+image::imagens/imagem4.jpg[height=250, width=300, align="center"]
+
+Ray tracing (Pseudo-código)
+---------------------------
+-----------------------------------------------------------------------------
+def raytracing( ): ''' Gerar uma imagem '''
+'''    para cada pixel x, y do viewport
+        cor(pixel) = trace( raio_atraves_posicao_(x,y) )
+
+def trace( raio ):
+    pontoObjeto = intersection( raio )
+    if [ pontoObjeto ]:
+       shade( pontoObjeto, raio );
+    else:
+       retorne cor de fundo
+
+def intersection( raio ):
+    para cada objeto na cena
+    	  calcular intersecao( raio, objeto )
+    retorne o ponto de intersecao calculado 
+''' pode retornar informações sobre a normal da superficie, 
+propriedades do material, etc. '''
+
+def shade( point, raio ):
+    calcula o vetor normal da superficie e usa a formula de
+Phong da iluminação ( ou similar ) para calcular as contribuições
+de cada fonte de luz.
+-----------------------------------------------------------------------------
+
+Interseção
+----------
+- De acordo com Whitted corresponde de 90 à 95% do tempo total de processamento do algoritmo.
+
+=== Equação paramétrica do raio
+
+Um raio com a origem em latexmath:[$\vec{R_{0}}$] e o vetor diretor dada por latexmath:[$\vec{R_{d}}$] e adotando t como parâmetro da descrição paramétrica da reta. Podemos representar a reta através da equação:
+ 
+latexmath::[$\vec{R(t)} = \vec{R_{0}} + \vec{R_{d}}t$]
+
+Como latexmath:[$\vec{R_{d}} = [x(1)-x(0), y(1)-y(0), z(1)-z(0)\] = [d_{x}, d_{y}, d_{z}\]$], latexmath:[$\vec{R(t)} = [x(t), y(t), z(t)\]$] e latexmath:[$\vec{R_{0}} = [x(0), y(0), z(0)\]$] substituímos na equação acima para obtermos um sistema de equações as quais representam o raio.
+
+latexmath::[$x(t) = x(0) + d_{x}t$]
+latexmath::[$y(t) = y(0) + d_{y}t$]
+latexmath::[$z(t) = z(0) + d_{z}t$]
+
+Interseção
+----------
+
+=== Equação paramétrica da esfera
+
+Seja latexmath:[$S_{c}$] o centro da esfera de coordenadas latexmath:[$[x_{c}, y_{c}, z_{c}]$] e latexmath:[$S_{s}$] um ponto qualquer da superfície esférica cujas coordenadas são latexmath:[$[x, y, z]$]. A superfície da esfera é o lugar geométrico dos pontos que satisfaz a seguinte equação, onde r é o raio da esfera:
+
+latexmath:[$\midS_{s} - S_{c}\mid - r = 0$]
+
+Desenvolvendo a equação acima encontramos a seguinte equação:
+
+latexmath:[$(x - x_{c})^2 + (y - y_{c})^2 + (z - z_{c})^2 - r = 0$]
+
+latexmath:[$x^2 - 2x_{c}x + x_{c}^2 + y^2 - 2y_{c}y + y_{c}^2 + z^2 - 2z_{c}z + z_{c}^2 = r$]
+
+Interseção entre o raio e a esfera
+----------------------------------
+
+Após a união das equações paramétricas obteremos a seguinte equação:
+
+latexmath:[$x_{0}^2 + 2x_{0}x_{d}t + x_{d}^2t^2 - 2x_{c}(x_{0} + x_{d}t) + x_{c}^2 + y_{0}^2 + 2y_{0}y_{d}t + y_{d}^2t^{2} - 2y_{c}(y_{0} + y_{d}t) + y_{c}^2 + z_{0}^2 + 2z_{0}z_{d}t + z_{d}^2t^2 - 2z_{c}(z_{0} + z_{d}t) + z_{c}^2 = r$]
+
+Reagrupando os termos, obtemos:
+
+latexmath:[$t^2(x_{d}^2 + y_{d}^2 + z_{d}^2) + 2t[x_{d}(x_{0} - x_{c}) + y_{d}(y_{0} - y_{c}) + z_{d}(z_{0} - z_{c})\] + (x_{0} - x_{c})^2 + (y_{0} - y_{c})^2 + (z_{0} - z_{c})^2 = r$]
+
+Obtemos assim uma equação de segundo grau em relação a t:
+
+latexmath:[$At^2 - 2Bt + C = 0$]
+
+onde os termos A, B e C são:
+
+latexmath:[$A=x_{d}^2 + y_{d}^2 + z_{d}^2$]
+
+latexmath:[$B=x_{d}(x_{c} - x_{0}) + y_{d}(y_{c} - y_{0}) + z_{d}(z_{c} - z_{0})$]
+
+latexmath:[$C=(x_{c} - x_{0})^2 + (y_{c} - y_{0})^2 + (z_{c} - z_{0})^2 - r$]
+
+Se o vetor latexmath:[$\vec{R_{d}}$] for um vetor unitário, ou seja, (latexmath:[$\mid{R_{d}\mid = 1$]) então latexmath:[$A=1$]. Desta forma, podemos simplificar para equações de segundo grau:
+
+latexmath:[$\Delta = B^2 - 4C$]
+
+latexmath:[$t = \frac{-B \pm \sqrt{\Delta}}{2}$]
+
+- latexmath:[$\Delta < 0$], então as raízes são imaginárias conjugadas e o raio não intercepta a esfera.
+- latexmath:[$\Delta = 0$], então existem duas raízes e o raio será tangente à esfera e portanto não intercepta.
+- latexmath:[$\Delta > 0$], então o raio intercepta a esfera e pegaremos o menor valor, pois este é o ponto de interseção mais próximo.
+
+O ponto de interseção entre o raio e a esfera é determinado pela equação:
+
+latexmath:[$\vec{R_{i}} = [x_{0} + x_{d}t, y_{0} + y_{d}t, z_{0} + z_{d}t\]$]
+
+Dado latexmath:[$\vec{R_{i}} = [x_{i}, y_{i}, z_{i}\]$] o vetor da posição de interseção entre raio e a esfera, podemos obter a normal a superfície com a seguinte equação:
+
+latexmath:[$\vec{n_{i}} = \Big[\frac{x_{i} - x_{c}}{\mid [x_{i} - x_{c}, y_{i} - y_{c}, z_{i} - z_{c}\] \mid}, \frac{y_{i} - y_{c}}{\mid [x_{i} - x_{c}, y_{i} - y_{c}, z_{i} - z_{c}\] \mid}, \frac{z_{i} - z_{c}}{\mid [x_{i} - x_{c}, y_{i} - y_{c}, z_{i} - z_{c}\] \mid} \Big\]$]
 
 
-AsciiDoc Elements
------------------
-Sagittis in vestibulum. Habitasse ante nulla enim bibendum nulla. Odio
-sed pede litora.
+Interseção
+----------
 
-[float]
-=== Titles inside delimited blocks must be floated
-Porta nisl metus. Justo porttitor vel. Cras consequat tincidunt id sed
-conubia. Feugiat felis justo. Nunc amet nulla. Eu ac orci mollis.
+=== Equação geral do plano
 
-Incremental Elements
---------------------
-The remaining elements on this page are incremental, press the space
-bar to reveal them.
+Se latexmath:[$\vec{x}$] é algum ponto do plano, então o vetor latexmath:[$\vec{x} - \vec{x_{0}}$] é ortogonal ao vetor normal (latexmath:[$\vec{n} = (A, B, C)$]):
 
-[role="incremental"]
-- Rhoncus pede justo.
-- Velit pede dolor.
-- Iaculis commodo et.
-- Volutpat tristique nec.
+latexmath:[$\vec{n} . (\vec{x} - \vec{x_{0}}) = 0$]
 
-[role="incremental"]
---
-Sagittis in vestibulum. Habitasse ante nulla enim bibendum nulla. Odio
-sed pede litora.
---
+latexmath:[$(A, B, C) . (\vec{x} - \vec{x_{0}}) = 0$]
 
-[role="incremental"]
-. Rhoncus pede justo.
-. Velit pede dolor.
-. Iaculis commodo et.
-. Volutpat tristique nec.
+Sejam latexmath:[$\vec{x} = (x, y, z)$] e latexmath:[$\vec{x_{0}} = (x_{0}, y_{0}, z_{0})$] substituimos na equação acima para obtermos:
+
+latexmath:[$(A, B, C) . ( x - x_{0}, y - y_{0}, z - z_{0} ) = 0$]
+
+latexmath:[$A(x - x_{0}) + B(y - y_{0}) + C(z - z_{0}) = 0$]
+
+Reorganizando a expressão acima podemos reescrever da seguinte forma:
+
+latexmath:[$Ax + By + Cz + D = 0$]
+
+Interseção entre o raio e o plano
+---------------------------------
+
+Após a união das equações do raio e do plano obtemos:
+
+latexmath:[$A(x_{0} + x_{d}t) + B(y_{0} + x_{d}t) + C(z_{0} + z_{d}t) + D = 0$]
+
+Se isolarmos o t obteremos o ponto de interseção entre o raio e o plano:
+
+latexmath:[$t = -\frac{Ax_{0}+By_{0}+Cz_{0}+D}{Ax_{d}+By_{d}+Cz_{d}}$]
+
+que em notação vetorial pode ser expressa como:
+
+latexmath:[$t = -\frac{\vec{n}.\vec{R_{0}} + D}{\vec{n}.\vec{R_{d}}}$]
+
+Para análise da interseção basta verificarmos o valor do denominador da expressão acima.
+
+- latexmath:[$\vec{n}.\vec{R_{d}} = 0$], a reta é paralela ao plano e consequentemente não existirá interseção
+- latexmath:[$\vec{n}.\vec{R_{d}} < 0$], há interseção com o plano, mas só estamos interessados em retas no eixo positivo
+- latexmath:[$\vec{n}.\vec{R_{d}} > 0$], há interseção com o plano e é apresentado no eixo positivo
+
+O ponto de interseção entre o raio e o plano é determinado pela equação:
+
+latexmath:[$\vec{R_{i}} = [x_{0} + x_{d}t, y_{0} + y_{d}t, z_{0} + z_{d}t\]$]
+
+Iluminação
+----------
+- latexmath:[$\vec{V} = \vec{R_{i}}$] ( Raio de interseção com o objeto )
+- latexmath:[$\vec{N}$] ( Normal da superfície do objeto )
+- latexmath:[$\vec{L}$] ( Fonte de luz )
+- latexmath:[$\vec{R}$] ( Vetor de reflexão )
+
+image::imagens/imagem5.jpg[height=350, width=400, align="center"]
+
+Seja latexmath:[$\vec{l} = [l_{x}, l_{y}, l_{z}\]$] a posição da fonte de luz, latexmath:[$\vec{N} = [n_{x}, n_{y}, n_{z}\]$] é o vetor normal e latexmath:[$\vec{R_{i}} = [x_{i}, y_{i}, z_{i}\]$] o vetor da posição de interseção, temos:
+
+- latexmath:[$\vec{L} = \Big[\frac{l_{x} - x_{i}}{[\midl_{x} - x_{i}, l_{y} - y_{i}, l_{z} - z_{i}\mid\]}, \frac{l_{y} - y{i}}{[\midl_{x} - x_{i}, l_{y} - y_{i}, l_{z} - z_{i}\mid\]}, \frac{l_{z} - z{i}}{[\midl_{x} - x_{i}, l_{y} - y_{i}, l_{z} - z_{i}\mid\]}\Big\]$]
+
+- latexmath:[$\vec{R} = \Big[\frac{2n_{x}(N.L)-l_{x}}{[\mid 2n_{x}(N.L)-l_{x}, 2n_{y}(N.L)-l_{y}, 2n_{z}(N.L)-l_{z}\mid\]}, \frac{2n_{y}(N.L)-l_{y}}{[\mid 2n_{x}(N.L)-l_{x}, 2n_{y}(N.L)-l_{y}, 2n_{z}(N.L)-l_{z}\mid\]}, \frac{2n_{z}(N.L)-l_{z}}{[\mid 2n_{x}(N.L)-l_{x}, 2n_{y}(N.L)-l_{y}, 2n_{z}(N.L)-l_{z}\mid\]}\Big\]$]
+
+

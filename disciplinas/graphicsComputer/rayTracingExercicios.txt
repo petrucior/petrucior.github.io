@@ -1,0 +1,44 @@
+Lista de Exercícios
+-------------------
+
+=== Revisão de Álgebra Linear
+
+- Encontre a norma dos vetores abaixo:
+
+a. latexmath:[$\vec{a} = [1, 3, 5\]$];
+b. latexmath:[$\vec{b} = [4, 0, -4\]$];
+c. latexmath:[$\vec{c} = [1, 0, 1\]$];
+d. latexmath:[$\vec{d} = [\sqrt{x}, \exp{k}, y\]$]
+e. latexmath:[$\vec{e} = [\mid[ 1, 3, 5 \]\mid, \sqrt{-30}, 5\]$];
+
+- Resolva as operações utilizando os vetores da questão anterior:
+
+a. latexmath:[$\vec{a} + \vec{b}$];
+b. latexmath:[$\vec{c} - \vec{e}$];
+c. latexmath:[$\vec{d} + \vec{a}$];
+d. latexmath:[$\vec{e} - \vec{d}$];
+e. latexmath:[$\frac{\vec{b}}{3}$];
+f. latexmath:[$\frac{1}{5}\vec{e}$];
+
+- Normalize os vetores da primeira questão:
+
+a. latexmath:[$\mid\vec{a}\mid$];
+b. latexmath:[$\mid\vec{b}\mid$];
+c. latexmath:[$\mid\vec{c}\mid$];
+d. latexmath:[$\mid\vec{e}\mid$];
+
+- Encontre o produto escalar entre os vetores da primeira questão:
+
+a. latexmath:[$\vec{a} . \vec{b}$];
+b. latexmath:[$\vec{b} . \vec{e}$];
+c. latexmath:[$\vec{e} . \vec{b}$];
+d. latexmath:[$\vec{c} . \vec{d}$];
+
+=== Ray Tracing (Esfera)
+
+- Considerando uma esfera de raio unitário que esteja na posição latexmath:[$\vec{S_{c}} = [1, 0, 0\]$] encontre a equação paramétrica da esfera para um ponto qualquer latexmath:[$\vec{S_{s}} = [x, y, z\]$]. Caso seja atirado um raio da posição latexmath:[$\vec{R_{0}} = [0, 0.3, 0\]$] e um vetor diretor latexmath:[$\vec{R_{d}} = [1, 0, 0\]$] verifique se há interseção e se existir encontre onde ocorreu a interseção e a normal.
+
+
+=== Ray Tracing (Plano)
+
+- Considerando um plano com um vetor normal latexmath:[$\vec{n} = [0, 1, 0\]$] e latexmath:[$\vec{x_{0}} = [0.3, 0.1, 0\]$] encontre a equação geral do plano. Caso seja atirado um raio da posição latexmath:[$\vec{R_{0}} = [0.5, 0.0, 0\]$\] e um vetor diretor latexmath:[$\vec{R_{d}} = [1, 0, 0\]$] verifique se há interseção e se existir encontre onde ocorreu a interseção.

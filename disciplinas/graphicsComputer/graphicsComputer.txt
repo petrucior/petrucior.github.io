@@ -9,4 +9,4 @@ Programa
 Conteúdos que serão ministrados durante o curso.
 
 * link:rayTracing.html[Algoritmo Ray Tracing]
-
+* link:rayTracingExercicios.html[Exercícios]
