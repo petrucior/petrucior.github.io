@@ -1,0 +1,451 @@
+Tutorial do POV-Ray
+-------------------
+
+POV-Ray (Persistence of Vision Raytracer) é uma ferramenta open-source para produzir imagens fotorealísticas utilizando a técnica ray tracing. Através de uma linguagem similar ao C podemos descrever os objetos e a iluminação de uma cena. Este tutorial tem como objetivo proporcionar uma introdução à escrita de arquivos que descrevem a cena que desejamos renderizar com o povray, porém não substitui o tutorial fornecido pela http://www.povray.org/documentation/3.7.0/t2_0.html[página oficial].
+
+Sistema de coordenadas
+----------------------
+
+O POV-Ray utiliza o sistema de coordenadas da "mão esquerda".
+
+.Sistema de coordenadas
+image::imagens/imagem6.png[height=250, width=300, align="center"]
+
+
+Compilação
+----------
+
+O processo de síntese de imagens fotorealísticas pode ser obtido através da compilação de um arquivo com extensão ".pov" com o seguinte comando:
+
+[source,c]
+----
+povray <nome_arquivo>.pov 
+----
+
+Através deste comando é gerado uma imagem no formato PNG que contém a cena descrita pelo arquivo com extensão ".pov".
+
+Renderização de objetos
+-----------------------
+
+Esta seção tem como objetivo fornecer os fundamentos para construção de uma cena com o POV-Ray. Este objetivo será alcançado através da análise do programa link:codes/basic_forms.pov[basic_forms.pov] que renderiza formas simples.
+
+.Formas básicas renderizadas através do exemplo
+image::codes/basic_forms.png[height=250, width=300, align="center"]
+
+=== Código
+[source,c]
+----
+include::codes/basic_forms.pov[]
+----
+
+=== Descrição do programa
+Foram incluídas nas primeiras linhas do arquivo todas as bibliotecas de cores, formas e texturas necessárias para a construção da cena.
+[source, c]
+----
+#include "colors.inc"
+#include "shapes.inc"
+#include "textures.inc"
+#include "stones.inc"
+#include "glass.inc"
+#include "metals.inc"
+#include "woods.inc"
+----
+
+Logo após foram definidas as posições da câmera e local visualizado através de uma estrutura primitiva do POV-Ray para configuração de câmera.
+[source, c]
+----
+camera{
+        location <0, 2, -5>     // Posicao da camera
+        look_at <0, 1, 2>       // Posicao visualizada
+}
+----
+
+A cena só poderá ser visualizada se houver uma fonte de luz e por isso o próximo passo é a definição da fonte de luz. No POV-Ray há uma estrutura para configuração da fonte de luz que exige como parâmetros a posição e a cor da luz.
+[source, c]
+----
+light_source{
+        <0, 1, -2>      // Posicao da fonte de luz
+        color White	// Definida no arquivo colors.inc
+}
+----
+
+Necessitamos estabelecer uma cor de blackground que será utilizada quando o raio não interceptar o objeto. De acordo com o ray tracing retornamos o valor de background da cena.
+[source, c]
+----
+background{
+        color Black             // Definindo cor de fundo preta
+}
+----
+
+Adicionamos uma superfície plana no eixo xz, ou seja, que tem como normal o vetor <0, 1, 0> e a distância a qual neste exemplo foi setada com -1 que apresenta o plano até o infinito. Este plano foi pintado com um xadrez vermelho e azul e definido efeitos com a função finish.
+[source, c]
+----
+plane{
+	<0, 1, 0>, -1           // Vetor normal do plano e tendendo ao infinito
+        pigment {               // Estabelecer a cor do objeto
+                // Criacao de um xadrez com cores vermelho e azul
+		checker color Red, color Blue
+        }
+
+	// Propriedades	de efeitos para aparência da superfície
+	finish {
+               diffuse 0.4
+               ambient 0.2
+               reflection 0.25
+        }
+}
+----
+
+Para adicionarmos uma esfera foi necessário apenas definir sua posição e raio além da sua textura.
+[source, c]
+----
+sphere{
+        <-1.5, 0, 3>, 1         // Vetor de posicao da esfera e raio da esfera
+	texture{                // Define a aparencia da esfera
+                pigment{        // Estabelecer a cor do objeto
+				   White_Marble   // predefinida em textures.inc
+                        scale 0.5      // fator de escala da textura
+		}
+        }
+}
+----
+
+Para colocarmos uma caixa foi necessário definir a posição de canto mais próximo do lado esquerdo e do lado mais distante do lado direito.
+
+.Estabelecendo cantos inferior esquerdo e superior direito
+image::imagens/imagem7.png[height=250, width=300, align="center"]
+
+[source, c]
+----
+box{
+        <0, 0, 0>,  // Canto mais proximo do lado esquerdo
+        <2, 0.5, 2>   // Canto mais distante do lado direito
+        texture {
+                T_Stone25     // Predefinido em stones.inc
+                scale 2       // Escala pela mesma quantidade em todas as direcoes
+        }
+        rotate y*20     // Rotaciona "<0,20,0>"
+}
+----
+
+Adicionamos um cone definindo a posição e o raio do pico e da base, um cilindro pela definição das posições onde serão posicionadas os lados e o raio destes lados. Note que há um open no meio do código do cilindro que informa se desejamos retirar as tampas do cilindro e outra coisa que devemos notar foi a definição da cor que utilizamos o formato RGBA. O penúltimo objeto que adicionamos neste exemplo foi o torus e para isso necessitamos apenas definir o valor de raio maior e menor.
+[source, c]
+----
+// Cone
+cone{
+        <0.5, 3, 2.5>, 0.3    // Centro e raio de um lado ( pico )
+        <0.5, 0, 2.5>, 1.0    // Centro e raio do outro lado ( base )
+        texture {
+                pigment{
+			        color Red       // Cor predefinida em colors.inc
+				        }
+        }
+}
+
+cylinder{
+        <-2, 0, 0>,     // Centro de um dos lados
+	<-3, 0, 2.5>,   // Centro do outro lado
+        0.5            // Raio
+        open           // Remover as tampas do cilindro
+        texture {
+                pigment{
+                        // Cor definida atraves do formato rgb + transparencia
+                        color rgbt<0.7, 0.2, 0.6, 0.2>
+        		}
+        }
+}
+
+torus{
+        0.3, 0.2        // Raio maior e menor, respectivamente
+        texture {
+                Sapphire_Agate
+        }
+        rotate <0, 0, 0>        // Rotacionando o torus
+        translate <0, 0, -1>    // Translacao do objeto
+}
+----
+Por fim inserimos um cálice através da função de superfície de revolução provido pelo pacote do POV-Ray. Neste exemplo descrevemos todos os pontos importantes para a modelagem do cálice.
+
+.Pontos da modelagem do cálice
+image::imagens/imagem8.png[height=250, width=300, align="center"]
+
+Após a definição dos pontos podemos inserir estes na função SOR (Surface of Revolution) onde o primeiro argumento é a quantidade de pontos e em seguida os pontos. Se utilizarmos a declaração da superficie de revolução necessitamos chamar a superfície abaixo.
+
+[source, c]
+----
+#declare calice = sor{
+         8,     // Quantidade de pontos
+         <0.0,  -0.5>,
+         <3.0,   0.0>,
+         <1.0,   0.2>,
+         <0.5,   0.4>,
+         <0.5,   4.0>,
+         <1.0,   5.0>,
+         <3.0,  10.0>,
+         <4.0,  11.0>
+         open   // Abrir lados
+         texture{  // Definicao da textura
+                pigment{
+                        Col_Glass_Dark_Green
+                }
+         }
+         translate <6.5, 0, -7> // Translacao do objeto
+         scale 0.15             // Modificando a escala do objeto
+}
+
+// Chamando o objeto criado pela superficie de revolucao
+calice
+----
+
+=== Exercício
+- Construir uma cena fazendo uso do POV-Ray com o objetivo de renderizar a cena representada pela imagem abaixo.
+
+.Imagem real
+image::imagens/imagem9.jpg[height=250, width=300, align="center"]
+
+
+Animação
+--------
+
+Para a construção da animação é necessário a criação de um arquivo com extensão ".ini" que contém as informações da quantidade de frames que haverá no vídeo, qual o arquivo ".pov" que estamos utilizando para criar as cenas além do tempo de duração. Com o objetivo de demonstrar a criação de uma animação com o POV-Ray construimos uma nova cena.
+O comando para a renderização das cenas foram obtidas através do seguinte comando:
+[source, c]
+----
+povray <nome_arquivo>.pov <nome_arquivo>.ini
+----
+Após a criação das imagens é preciso somente aplicar os seguintes comandos no diretório onde se encontra os arquivos das imagens geradadas:
+[source, c]
+----
+cat *.png > video.avi
+mplayer video.avi
+----
+
+.Vídeo da animação
+video::codes/video.mp4[]
+
+=== Construção da cena
+
+Realizando algumas alterações na cena criada por Friedrich A. Lohmueller, na qual podemos visualizar uma canoa sob a água e um céu com núvens, somos capazes de criar uma animação.
+
+.Canoa
+image::codes/canoa.png[heigh=250, width=300, align="center"]
+
+=== Código da cena
+[source, c]
+----
+include::codes/canoa.pov[] 
+----
+
+=== Descrição do programa
+
+Antes de serem incluídos os pacotes com definições para a renderização da cena é setado o gamma, valor que tem intuito de deixar mais claro ou mais escuro a imagem, e os parâmetros de constante de ambiente e difusão utilizados na equação de Phong.
+[source, c]
+----
+#global_settings{ assumed_gamma 1.0 }
+#default{ finish{ ambient 0.1 diffuse 0.7 }}
+----
+
+São incluídos os pacotes com definições de cores, formas e texturas.
+[source, c]
+----
+#include "colors.inc"
+#include "shapes.inc"
+#include "textures.inc"
+----
+
+Logo após foram definidas as posições da câmera e local visualizado através de uma estrutura primitiva do POV-Ray para configuração de câmera.
+[source, c]
+----
+camera{
+	location <0, 1.5, -8>	// Posicao da camera
+	look_at <0.4, 0.2, 0>	// Posicao de visualizacao
+}
+----
+
+Definição da fonte de luz com a posição e sua cor.
+[source, c]
+----
+light_source{<1500,2500,-2500> color rgb<1,0.9,0.8>}
+----
+
+A construção de um céu azul com núvens é realizada através de uma esfera com gradiente. O gradiente proporcionará uma cor mais escura quanto mais distante da reta do horizonte.
+[source, c]
+----
+sky_sphere{
+	// Cor azul com gradiente
+	pigment{
+		gradient y	// Gradiente em torno do eixo y
+		// Mapa de cores
+		color_map{
+			[0.000 0.002 color rgb <1.0, 0.2, 0.0> color rgb <1.0, 0.2, 0.0>]
+			[0.002 0.200 color rgb <0.8, 0.1, 0.0> color rgb <0.2, 0.2, 0.3>]
+		}
+		scale 2		// Escala de distribuição do mapa e gradiente pela esfera
+		translate -1	// Translacao -1 em todas as direcoes
+	}
+	// Nuvens
+	pigment {
+		bozo		// Função randomica de ruido que tradicionalmente modela as nuvens
+		// Variaveis para denotar uma grandeza aleatória
+		turbulence 0.65
+		octaves 6
+		omega 0.7
+		lambda 2
+		// Mapa de cores
+		color_map {
+			  [0.0 0.1 color rgb <0.85, 0.85, 0.85> color rgb <0.75, 0.75, 0.75>]
+			  [0.1 0.5 color rgb <0.75, 0.75, 0.75> color rgbt <1, 1, 1, 1>]
+			  [0.5 1.0 color rgbt <1, 1, 1, 1> color rgbt <1, 1, 1, 1>]
+		}
+		// Escala de distribuição do mapa pela esfera
+		scale <0.2, 0.5, 0.2>
+	}
+	rotate -135*x
+}
+----
+
+A inclusão de um plano onde será adicionada a água e a canoa. No terceiro argumento do plano indica que o plano é construído dentro da esfera que contém o céu.
+[source, c]
+----
+plane{
+	<0,1,0>, 1 // Plano xz (normal para a coordenada y)
+        hollow      // Plano dentro da esfera
+        texture{
+                pigment{
+                        bozo
+                        turbulence 0.92
+                        color_map{ [0.00 rgb <0.20, 0.20, 1.0>*0.9]
+                                   [0.50 rgb <0.20, 0.20, 1.0>*0.9]
+                                   [0.70 rgb <1,1,1>]
+                                   [0.85 rgb <0.25,0.25,0.25>]
+                                   [1.0 rgb <0.5,0.5,0.5>]
+                        }
+                        scale<1,1,1.5>*2.5  translate< -1.25,0,0>
+                }
+                finish {ambient 1 diffuse 0}
+        }
+        scale 10000
+}
+----
+
+Definição da posição da canoa e a estrutura do lado de fora da canoa. Perceba que não foi colocada nenhuma textura na estrutura da canoa e isto é devido aos passos de construção de toda a canoa.
+[source, c]
+----
+// Posicao da canoa
+#declare posicao_canoa = transform{ rotate<0,30,0> translate<0,0,1> }
+
+// Canoa
+#declare lado_fora_canoa = sphere{ <0,0,0>,1 scale <3,1.5,1> rotate<0,0,0> translate<0,0.5,0> }
+----
+
+A construção da estrutura da canoa pode ser compreendida como a interseção entre uma esfera e sua inversa, ou seja, a parte de fora igual a parte interna e também com outra esfera com a forma de uma elipse sem textura.
+
+.Construção da estrutura da canoa
+image::imagens/imagem10.jpg[heigh=250, width=300, align="center"]
+
+[source, c]
+----
+// Construcao da estrutura da canoa
+intersection{
+	object{ lado_fora_canoa }	// Esfera para a canoa
+	object{ lado_fora_canoa scale <0.98,0.95,0.94>  inverse} // Esfera para a canoa inversa
+	sphere {<0,0,0>,1 scale <2.5,1,20> rotate<0,0,0> translate<0,1.3,0>  inverse} // Elipse
+	       texture {
+			pigment {
+		       	       color White//White*1.1
+			}
+			finish {
+			       phong 1
+			}
+		}
+	}
+}
+----
+
+A interseção entre a estrutura da canoa e os pedaços de madeiras.
+[source, c]
+----
+// Interseção entre a estrutura e os pedaços de madeira
+intersection{
+	object{ lado_fora_canoa
+		texture {
+			pigment {
+				color White*1.1
+			}
+			finish {
+			       phong 1
+			}
+		}
+	}
+	// Adicionando madeiras dentro da canoa
+	union{
+		box {<-0.20,0,-1>,<0.20,0.05,1> rotate<0,0,0> translate< 0.0,0.21,0>}
+		box {<-0.20,0,-1>,<0.20,0.05,1> rotate<0,0,-10> translate<-2.0,0.40,0>}
+		box {<-0.20,0,-1>,<0.20,0.05,1> rotate<0,0,10> translate< 2.0,0.40,0>}
+		texture{
+			pigment{
+				color MediumWood
+			}
+			finish{
+				phong 1
+			}
+		}
+	}
+}
+----
+
+Após a confecção das duas partes anteriores é realizada uma união destas duas estruturas e então é realizada a construção da canoa.
+
+.Construção da canoa completa
+image::imagens/imagem11.jpg[heigh=250, width=300, align="center"]
+
+Depois é realizada a transformação para colocar a canoa na posição correta.
+[source, c]
+----
+object{ canoa transform posicao_canoa}
+----
+
+A fim de terminar com a construção da cena basta inserir a água acima do plano e para isso utilizamos a função de diferença entre o plano, a canoa e a textura da água.
+[source, c]
+----
+difference{
+        plane{<0,1,0>, 0 }
+        object{lado_fora_canoa transform posicao_canoa }
+        texture{
+                Polished_Chrome
+                normal{ crackle 1 scale 5 turbulence 1 translate<0,0,5>}
+                finish{ diffuse 0.5 reflection 0.30}
+        }
+}
+----
+
+=== Código do controle
+[source, c]
+----
+include::codes/canoa.ini[]
+----
+
+=== Descrição do programa
+
+Necessitamos modificar o arquivo com extensão ".pov" para depender do clock e assim passar o arquivo ".pov", que renderiza a cena, para a variável "Input_File_Name".
+[source, c]
+----
+Input_File_Name="canoa.pov"	; Nome do arquivo que contem a cena
+----
+
+Definimos qual é o frame inicial e final além do clock inicial e final.
+[source, c]
+----
+Initial_Frame=1		; Inicia com o frame numero 1
+Final_Frame=30		; Finaliza com o frame numero 30
+Initial_Clock=0		; Inicia com o clock 0
+Final_Clock=1		; Finaliza com o clock 1
+----
+
+Ativação da animação ciclíca para permitar a subdivisão do clock e não permitir o pausar após a finalização da renderização.
+[source, c]
+----
+Cyclic_Animation=On		; Ativa a animacao ciclica (causa a divisao do clock)
+Pause_when_Done=Off		; Sem pausar quando finalizar o programa
+----
+

@@ -92,20 +92,20 @@ latexmath:[$\midS_{s} - S_{c}\mid - r = 0$]
 
 Desenvolvendo a equação acima encontramos a seguinte equação:
 
-latexmath:[$(x - x_{c})^2 + (y - y_{c})^2 + (z - z_{c})^2 - r = 0$]
+latexmath:[$(x - x_{c})^2 + (y - y_{c})^2 + (z - z_{c})^2 - r^2 = 0$]
 
-latexmath:[$x^2 - 2x_{c}x + x_{c}^2 + y^2 - 2y_{c}y + y_{c}^2 + z^2 - 2z_{c}z + z_{c}^2 = r$]
+latexmath:[$x^2 - 2x_{c}x + x_{c}^2 + y^2 - 2y_{c}y + y_{c}^2 + z^2 - 2z_{c}z + z_{c}^2 = r^2$]
 
 Interseção entre o raio e a esfera
 ----------------------------------
 
 Após a união das equações paramétricas obteremos a seguinte equação:
 
-latexmath:[$x_{0}^2 + 2x_{0}x_{d}t + x_{d}^2t^2 - 2x_{c}(x_{0} + x_{d}t) + x_{c}^2 + y_{0}^2 + 2y_{0}y_{d}t + y_{d}^2t^{2} - 2y_{c}(y_{0} + y_{d}t) + y_{c}^2 + z_{0}^2 + 2z_{0}z_{d}t + z_{d}^2t^2 - 2z_{c}(z_{0} + z_{d}t) + z_{c}^2 = r$]
+latexmath:[$x_{0}^2 + 2x_{0}x_{d}t + x_{d}^2t^2 - 2x_{c}(x_{0} + x_{d}t) + x_{c}^2 + y_{0}^2 + 2y_{0}y_{d}t + y_{d}^2t^{2} - 2y_{c}(y_{0} + y_{d}t) + y_{c}^2 + z_{0}^2 + 2z_{0}z_{d}t + z_{d}^2t^2 - 2z_{c}(z_{0} + z_{d}t) + z_{c}^2 = r^2$]
 
 Reagrupando os termos, obtemos:
 
-latexmath:[$t^2(x_{d}^2 + y_{d}^2 + z_{d}^2) + 2t[x_{d}(x_{0} - x_{c}) + y_{d}(y_{0} - y_{c}) + z_{d}(z_{0} - z_{c})\] + (x_{0} - x_{c})^2 + (y_{0} - y_{c})^2 + (z_{0} - z_{c})^2 = r$]
+latexmath:[$t^2(x_{d}^2 + y_{d}^2 + z_{d}^2) + 2t[x_{d}(x_{0} - x_{c}) + y_{d}(y_{0} - y_{c}) + z_{d}(z_{0} - z_{c})\] + (x_{0} - x_{c})^2 + (y_{0} - y_{c})^2 + (z_{0} - z_{c})^2 = r^2$]
 
 Obtemos assim uma equação de segundo grau em relação a t:
 
@@ -117,7 +117,7 @@ latexmath:[$A=x_{d}^2 + y_{d}^2 + z_{d}^2$]
 
 latexmath:[$B=x_{d}(x_{c} - x_{0}) + y_{d}(y_{c} - y_{0}) + z_{d}(z_{c} - z_{0})$]
 
-latexmath:[$C=(x_{c} - x_{0})^2 + (y_{c} - y_{0})^2 + (z_{c} - z_{0})^2 - r$]
+latexmath:[$C=(x_{c} - x_{0})^2 + (y_{c} - y_{0})^2 + (z_{c} - z_{0})^2 - r^2$]
 
 Se o vetor latexmath:[$\vec{R_{d}}$] for um vetor unitário, ou seja, (latexmath:[$\mid{R_{d}\mid = 1$]) então latexmath:[$A=1$]. Desta forma, podemos simplificar para equações de segundo grau:
 
