@@ -221,19 +221,11 @@ mplayer video.avi
 ----
 
 ++++
-<video poster="codes/canoa.png" id="video" style="cursor: pointer;" >
-  <source src="codes/video.mp4" />
-  <source src="codes/video.webm" type="video/webm" />
-  <source src="codes/video.ogv" type="video/ogg" />
-  Video not playing? <a href="codes/video.mp4">Download file</a> instead.
+<video width="400" controls>
+  <source src="codes/video.mp4" type="video/mp4">
+  <source src="codes/video.ogv" type="video/ogv">
+  Your browser does not support HTML5 video.
 </video>
-
-<script type="text/javascript">
-  var video = document.getElementById('video');
-  video.addEventListener('click',function(){
-    video.play();
-  },false);
-</script>
 ++++
 
 === Construção da cena
