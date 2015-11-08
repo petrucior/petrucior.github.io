@@ -220,8 +220,21 @@ cat *.png > video.avi
 mplayer video.avi
 ----
 
-.Vídeo da animação
-video::codes/video.mp4[]
+++++
+<video poster="codes/canoa.png" id="video" style="cursor: pointer;" >
+  <source src="codes/video.mp4" />
+  <source src="codes/video.webm" type="video/webm" />
+  <source src="codes/video.ogv" type="video/ogg" />
+  Video not playing? <a href="codes/video.mp4">Download file</a> instead.
+</video>
+
+<script type="text/javascript">
+  var video = document.getElementById('video');
+  video.addEventListener('click',function(){
+    video.play();
+  },false);
+</script>
+++++
 
 === Construção da cena
 
