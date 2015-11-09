@@ -9,6 +9,7 @@ echo "Atualizando. . .";
 cd disciplinas/graphicsComputer
 asciidoc -b html5 -a icons -a toc2 -a theme=flask graphicsComputer.txt
 asciidoc -b html5 -a latexmath -a icons -a toc2 -a theme=flask rayTracingExercicios.txt
+asciidoc -b html5 -a latexmath -a icons -a toc2 -a theme=flask povray.txt
 
 # Gerar slides no diretório de disciplinas
 asciidoc -a latexmath rayTracing.txt
