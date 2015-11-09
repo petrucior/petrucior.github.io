@@ -226,6 +226,7 @@ mplayer video.avi
   Your browser does not support HTML5 video.
 </video>
 ++++
+video::codes/video.mp4[]
 
 === Construção da cena
 
