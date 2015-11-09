@@ -198,7 +198,7 @@ calice
 ----
 
 === Exercício
-- Construir uma cena fazendo uso do POV-Ray com o objetivo de renderizar a cena representada pela imagem abaixo.
+- Construir uma cena fazendo uso do POV-Ray com o objetivo de renderizar a cena representada pela imagem abaixo. Faça uso de SOR e cilindro para construir os vasos.
 
 .Imagem real
 image::imagens/imagem9.jpg[height=250, width=300, align="center"]
@@ -450,3 +450,7 @@ Cyclic_Animation=On		; Ativa a animacao ciclica (causa a divisao do clock)
 Pause_when_Done=Off		; Sem pausar quando finalizar o programa
 ----
 
+=== Exercício 
+- Construir um vídeo com o POV-Ray que permita realizar uma trajetória circular na canoa apresentada acima.
+
+- Inserir uma outra canoa em outra posição da cena e realizar a trajetória circular inversa.
