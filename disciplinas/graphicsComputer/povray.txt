@@ -221,12 +221,8 @@ mplayer video.avi
 ----
 
 ++++
-<video width="400" controls>
-  <source src="codes/video.mp4" type="video/mp4">
-  Your browser does not support HTML5 video.
-</video>
+<object width="400" height="50" data="bookmark.swf"></object>
 ++++
-video::codes/video.mp4[]
 
 === Construção da cena
 
