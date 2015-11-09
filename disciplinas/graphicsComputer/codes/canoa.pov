@@ -90,7 +90,7 @@ plane{
 
 
 // Posicao da canoa
-#declare posicao_canoa = transform{rotate<0,30,0> /*rotate<0, 360*clock, 0>*/ translate<0,0,1>}
+#declare posicao_canoa = transform{/*rotate<0,30,0>*/ rotate<0, 360*clock, 0> translate<0,0,1>}
 
 // Canoa
 #declare lado_fora_canoa = sphere{ <0,0,0>,1 scale <3,1.5,1> rotate<0,0,0> translate<0,0.5,0> }
