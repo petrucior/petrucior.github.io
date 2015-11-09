@@ -207,7 +207,7 @@ image::imagens/imagem9.jpg[height=250, width=300, align="center"]
 Animação
 --------
 
-Para a construção da animação é necessário a criação de um arquivo com extensão ".ini" que contém as informações da quantidade de frames que haverá no vídeo, qual o arquivo ".pov" que estamos utilizando para criar as cenas além do tempo de duração. Com o objetivo de demonstrar a criação de uma animação com o POV-Ray construimos uma nova cena.
+Para a construção da animação é necessário a criação de um arquivo com extensão ".ini" (link:codes/canoa.ini[canoa.ini])que contém as informações da quantidade de frames que haverá no vídeo, qual o arquivo ".pov" que estamos utilizando para criar as cenas além do tempo de duração. Com o objetivo de demonstrar a criação de uma animação com o POV-Ray construimos uma nova cena.
 O comando para a renderização das cenas foram obtidas através do seguinte comando:
 [source, c]
 ----
@@ -226,7 +226,7 @@ mplayer video.avi
 
 === Construção da cena
 
-Realizando algumas alterações na cena criada por Friedrich A. Lohmueller, na qual podemos visualizar uma canoa sob a água e um céu com núvens, somos capazes de criar uma animação.
+Realizando algumas alterações na cena criada por Friedrich A. Lohmueller, na qual podemos visualizar uma link:codes/canoa.pov[canoa] sob a água e um céu com núvens, somos capazes de criar uma animação.
 
 .Canoa
 image::codes/canoa.png[heigh=250, width=300, align="center"]
