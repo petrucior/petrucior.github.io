@@ -221,7 +221,7 @@ mplayer video.avi
 ----
 
 ++++
-<object width="400" data="bookmark.swf"></object>
+<object width="400" data="codes/video.swf"></object>
 ++++
 
 === Construção da cena
