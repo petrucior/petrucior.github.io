@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<header>
+  <title>Web Fovea</title>
+</header>
+<body>
+<CENTER>
+
+<h1>Foveated image</h1>
+
+<p>
+  <button type="submit" id="red" onclick="fovea.red()">Enviar</button>
+  <button type="submit" id="cinza" onclick="fovea.grayscale()">Grayscale</button>
+  <button type="submit" id="teste" onclick="fovea.teste()">Convolution</button>
+</p>
+
+<p id="demo"></p>
+
+<!--img id="imagem" src="eu.png" width="300" height="300"-->
+<img id="imagem" src="lena.jpg" width="300" height="300">
+&nbsp; &nbsp;
+<canvas id="tela" width="300" height="300">Your browser does not support the HTML5 canvas tag.</canvas>
+
+
+<!-- http://docs.opencv.org/3.0-beta/_images/lena.png -->
+<!--form method="get">
+  image url: <input type="text" id="endereco" style="width:420px" maxlength="500" />
+  <input type="submit" id="botao" value="Enviar" onclick="fovea.getImage()" />
+</form>
+
+<p></p>
+
+<img id="imagem" src="http://docs.opencv.org/3.0-beta/_images/lena.png" width="300" height="300">
+
+&nbsp; &nbsp;
+
+<canvas id="tela" width="300" height="300">Your browser does not support the HTML5 canvas tag.</canvas>
+<div id="color" style="width:200px;height:50px;float:left"></div>
+
+<p>
+  <button type="submit" id="cinza">Grayscale</button>
+</p>
+
+<script src="getImage.js"></script-->
+<script src="imageProcessing.js"></script>
+
+</CENTER>
+</body>

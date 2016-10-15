@@ -13,3 +13,7 @@ asciidoc -b html5 -a latexmath -a icons -a toc2 -a theme=flask povray.txt
 
 # Gerar slides no diretório de disciplinas
 asciidoc -a latexmath rayTracing.txt
+
+cd ../robotic
+asciidoc -b html5 -a latexmath -a icons -a toc2 -a theme=flask vrep.txt
+
