@@ -2092,7 +2092,11 @@ else
 <div class="sectionbody">
 <div class="paragraph"><p>O processo de síntese de imagens fotorealísticas pode ser obtido através da compilação de um arquivo com extensão ".pov" com o seguinte comando:</p></div>
 <div class="listingblock">
-<div class="content"></div></div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>povray <span style="color: #990000">&lt;</span>nome_arquivo<span style="color: #990000">&gt;.</span>pov</tt></pre></div></div>
 <div class="paragraph"><p>Através deste comando é gerado uma imagem no formato PNG que contém a cena descrita pelo arquivo com extensão ".pov".</p></div>
 </div>
 </div>
@@ -2109,28 +2113,234 @@ else
 <div class="sect2">
 <h3 id="_código">Código</h3>
 <div class="listingblock">
-<div class="content"></div></div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">/**</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"> * \file basic_forms.pov</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"> *</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"> * \brief Arquivo para renderizacao de formas simples com o POV-Ray.</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"> *</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"> * \author</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"> * Petrucio Ricardo Tavares de Medeiros \n</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"> * Universidade Federal do Rio Grande do Norte \n</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"> * Departamento de Computacao e Automacao Industrial \n</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"> * petrucior at gmail (dot) com</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"> *</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"> * \version 1.0</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"> * \date November 2015</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"> */</span></span>
+
+<span style="font-style: italic"><span style="color: #9A1900">// Incluindo arquivos de definicao de cores, formas e texturas diversas</span></span>
+<span style="font-weight: bold"><span style="color: #000080">#include</span></span> <span style="color: #FF0000">"colors.inc"</span>
+<span style="font-weight: bold"><span style="color: #000080">#include</span></span> <span style="color: #FF0000">"shapes.inc"</span>
+<span style="font-weight: bold"><span style="color: #000080">#include</span></span> <span style="color: #FF0000">"textures.inc"</span>
+<span style="font-weight: bold"><span style="color: #000080">#include</span></span> <span style="color: #FF0000">"stones.inc"</span>
+<span style="font-weight: bold"><span style="color: #000080">#include</span></span> <span style="color: #FF0000">"glass.inc"</span>
+<span style="font-weight: bold"><span style="color: #000080">#include</span></span> <span style="color: #FF0000">"metals.inc"</span>
+<span style="font-weight: bold"><span style="color: #000080">#include</span></span> <span style="color: #FF0000">"woods.inc"</span>
+
+
+<span style="font-style: italic"><span style="color: #9A1900">// Camera</span></span>
+camera<span style="color: #FF0000">{</span>
+        location <span style="color: #990000">&lt;</span><span style="color: #993399">0</span><span style="color: #990000">,</span> <span style="color: #993399">2</span><span style="color: #990000">,</span> <span style="color: #990000">-</span><span style="color: #993399">5</span><span style="color: #990000">&gt;</span>     <span style="font-style: italic"><span style="color: #9A1900">// Posicao da camera</span></span>
+        look_at <span style="color: #990000">&lt;</span><span style="color: #993399">0</span><span style="color: #990000">,</span> <span style="color: #993399">1</span><span style="color: #990000">,</span> <span style="color: #993399">2</span><span style="color: #990000">&gt;</span>       <span style="font-style: italic"><span style="color: #9A1900">// Posicao visualizada</span></span>
+<span style="color: #FF0000">}</span>
+
+<span style="font-style: italic"><span style="color: #9A1900">// Fonte de luz</span></span>
+light_source<span style="color: #FF0000">{</span>
+        <span style="color: #990000">&lt;</span><span style="color: #993399">0</span><span style="color: #990000">,</span> <span style="color: #993399">1</span><span style="color: #990000">,</span> <span style="color: #990000">-</span><span style="color: #993399">2</span><span style="color: #990000">&gt;</span>      <span style="font-style: italic"><span style="color: #9A1900">// Posicao da fonte de luz</span></span>
+        color White
+<span style="color: #FF0000">}</span>
+
+<span style="font-style: italic"><span style="color: #9A1900">// -----------------------------------------------------</span></span>
+<span style="font-style: italic"><span style="color: #9A1900">//                      CENA</span></span>
+<span style="font-style: italic"><span style="color: #9A1900">// -----------------------------------------------------</span></span>
+
+<span style="font-style: italic"><span style="color: #9A1900">// Fundo</span></span>
+background<span style="color: #FF0000">{</span>
+        <span style="color: #008080">color</span> Black             <span style="font-style: italic"><span style="color: #9A1900">// Definindo cor de fundo preta</span></span>
+<span style="color: #FF0000">}</span>
+
+<span style="font-style: italic"><span style="color: #9A1900">// Plano</span></span>
+plane<span style="color: #FF0000">{</span>
+        <span style="color: #990000">&lt;</span><span style="color: #993399">0</span><span style="color: #990000">,</span> <span style="color: #993399">1</span><span style="color: #990000">,</span> <span style="color: #993399">0</span><span style="color: #990000">&gt;,</span> <span style="color: #990000">-</span><span style="color: #993399">1</span>           <span style="font-style: italic"><span style="color: #9A1900">// Vetor normal do plano e tendendo ao infinito</span></span>
+        pigment <span style="color: #FF0000">{</span>               <span style="font-style: italic"><span style="color: #9A1900">// Estabelecer a cor do objeto</span></span>
+                <span style="font-style: italic"><span style="color: #9A1900">// Criacao de um xadrez com cores vermelho e azul</span></span>
+                checker <span style="color: #008080">color</span> Red<span style="color: #990000">,</span> color Blue
+        <span style="color: #FF0000">}</span>
+
+        <span style="font-style: italic"><span style="color: #9A1900">// Propriedades de efeitos para aparência da superfície</span></span>
+        finish <span style="color: #FF0000">{</span>
+               diffuse <span style="color: #993399">0.4</span>
+               ambient <span style="color: #993399">0.2</span>
+               reflection <span style="color: #993399">0.25</span>
+        <span style="color: #FF0000">}</span>
+<span style="color: #FF0000">}</span>
+
+<span style="font-style: italic"><span style="color: #9A1900">// Esfera</span></span>
+sphere<span style="color: #FF0000">{</span>
+        <span style="color: #990000">&lt;-</span><span style="color: #993399">1.5</span><span style="color: #990000">,</span> <span style="color: #993399">0</span><span style="color: #990000">,</span> <span style="color: #993399">3</span><span style="color: #990000">&gt;,</span> <span style="color: #993399">1</span>         <span style="font-style: italic"><span style="color: #9A1900">// Vetor de posicao da esfera e raio da esfera</span></span>
+        texture<span style="color: #FF0000">{</span>                <span style="font-style: italic"><span style="color: #9A1900">// Define a aparencia da esfera</span></span>
+                pigment<span style="color: #FF0000">{</span>        <span style="font-style: italic"><span style="color: #9A1900">// Estabelecer a cor do objeto</span></span>
+                        White_Marble   <span style="font-style: italic"><span style="color: #9A1900">// predefinida em textures.inc</span></span>
+                        scale <span style="color: #993399">0.5</span>      <span style="font-style: italic"><span style="color: #9A1900">// fator de escala da textura</span></span>
+                <span style="color: #FF0000">}</span>
+        <span style="color: #FF0000">}</span>
+<span style="color: #FF0000">}</span>
+
+<span style="font-style: italic"><span style="color: #9A1900">// Caixa</span></span>
+box<span style="color: #FF0000">{</span>
+        <span style="color: #990000">&lt;</span><span style="color: #993399">0</span><span style="color: #990000">,</span> <span style="color: #993399">0</span><span style="color: #990000">,</span> <span style="color: #993399">0</span><span style="color: #990000">&gt;,</span>  <span style="font-style: italic"><span style="color: #9A1900">// Canto mais proximo do lado esquerdo</span></span>
+        <span style="color: #990000">&lt;</span><span style="color: #993399">2</span><span style="color: #990000">,</span> <span style="color: #993399">0.5</span><span style="color: #990000">,</span> <span style="color: #993399">2</span><span style="color: #990000">&gt;</span>   <span style="font-style: italic"><span style="color: #9A1900">// Canto mais distante do lado direito</span></span>
+        texture <span style="color: #FF0000">{</span>
+                T_Stone25     <span style="font-style: italic"><span style="color: #9A1900">// Predefinido em stones.inc</span></span>
+                scale <span style="color: #993399">2</span>       <span style="font-style: italic"><span style="color: #9A1900">// Escala pela mesma quantidade em todas as direcoes</span></span>
+        <span style="color: #FF0000">}</span>
+        <span style="color: #008080">rotate</span> y<span style="color: #990000">*</span><span style="color: #993399">20</span>     <span style="font-style: italic"><span style="color: #9A1900">// Rotaciona "&lt;0,20,0&gt;"</span></span>
+<span style="color: #FF0000">}</span>
+
+<span style="font-style: italic"><span style="color: #9A1900">// Cone</span></span>
+cone<span style="color: #FF0000">{</span>
+        <span style="color: #990000">&lt;</span><span style="color: #993399">0.5</span><span style="color: #990000">,</span> <span style="color: #993399">3</span><span style="color: #990000">,</span> <span style="color: #993399">2.5</span><span style="color: #990000">&gt;,</span> <span style="color: #993399">0.3</span>    <span style="font-style: italic"><span style="color: #9A1900">// Centro e raio de um lado ( pico )</span></span>
+        <span style="color: #990000">&lt;</span><span style="color: #993399">0.5</span><span style="color: #990000">,</span> <span style="color: #993399">0</span><span style="color: #990000">,</span> <span style="color: #993399">2.5</span><span style="color: #990000">&gt;,</span> <span style="color: #993399">1.0</span>    <span style="font-style: italic"><span style="color: #9A1900">// Centro e raio do outro lado ( base )</span></span>
+        texture <span style="color: #FF0000">{</span>
+                pigment<span style="color: #FF0000">{</span>
+                        <span style="color: #008080">color</span> Red       <span style="font-style: italic"><span style="color: #9A1900">// Cor predefinida em colors.inc</span></span>
+                <span style="color: #FF0000">}</span>
+        <span style="color: #FF0000">}</span>
+<span style="color: #FF0000">}</span>
+
+<span style="font-style: italic"><span style="color: #9A1900">// Cilindro</span></span>
+cylinder<span style="color: #FF0000">{</span>
+        <span style="color: #990000">&lt;-</span><span style="color: #993399">2</span><span style="color: #990000">,</span> <span style="color: #993399">0</span><span style="color: #990000">,</span> <span style="color: #993399">0</span><span style="color: #990000">&gt;,</span>     <span style="font-style: italic"><span style="color: #9A1900">// Centro de um dos lados</span></span>
+        <span style="color: #990000">&lt;-</span><span style="color: #993399">3</span><span style="color: #990000">,</span> <span style="color: #993399">0</span><span style="color: #990000">,</span> <span style="color: #993399">2.5</span><span style="color: #990000">&gt;,</span>     <span style="font-style: italic"><span style="color: #9A1900">// Centro do outro lado</span></span>
+        <span style="color: #993399">0.5</span>            <span style="font-style: italic"><span style="color: #9A1900">// Raio</span></span>
+        open           <span style="font-style: italic"><span style="color: #9A1900">// Remover as tampas do cilindro</span></span>
+        texture <span style="color: #FF0000">{</span>
+                pigment<span style="color: #FF0000">{</span>
+                        <span style="font-style: italic"><span style="color: #9A1900">// Cor definida atraves do formato rgb + transparencia</span></span>
+                        <span style="color: #008080">color</span> rgbt<span style="color: #990000">&lt;</span><span style="color: #993399">0.7</span><span style="color: #990000">,</span> <span style="color: #993399">0.2</span><span style="color: #990000">,</span> <span style="color: #993399">0.6</span><span style="color: #990000">,</span> <span style="color: #993399">0.2</span><span style="color: #990000">&gt;</span>
+                <span style="color: #FF0000">}</span>
+        <span style="color: #FF0000">}</span>
+<span style="color: #FF0000">}</span>
+
+<span style="font-style: italic"><span style="color: #9A1900">// Torus</span></span>
+torus<span style="color: #FF0000">{</span>
+        <span style="color: #993399">0.3</span><span style="color: #990000">,</span> <span style="color: #993399">0.2</span>        <span style="font-style: italic"><span style="color: #9A1900">// Raio maior e menor, respectivamente</span></span>
+        texture <span style="color: #FF0000">{</span>
+                Sapphire_Agate
+        <span style="color: #FF0000">}</span>
+        rotate <span style="color: #990000">&lt;</span><span style="color: #993399">0</span><span style="color: #990000">,</span> <span style="color: #993399">0</span><span style="color: #990000">,</span> <span style="color: #993399">0</span><span style="color: #990000">&gt;</span>        <span style="font-style: italic"><span style="color: #9A1900">// Rotacionando o torus</span></span>
+        translate <span style="color: #990000">&lt;</span><span style="color: #993399">0</span><span style="color: #990000">,</span> <span style="color: #993399">0</span><span style="color: #990000">,</span> <span style="color: #990000">-</span><span style="color: #993399">1</span><span style="color: #990000">&gt;</span>    <span style="font-style: italic"><span style="color: #9A1900">// Translacao do objeto</span></span>
+<span style="color: #FF0000">}</span>
+
+<span style="font-style: italic"><span style="color: #9A1900">// Construindo um calice atraves de SOR (Surface of Revolution)</span></span>
+<span style="font-weight: bold"><span style="color: #000080">#declare</span></span> calice <span style="color: #990000">=</span> sor<span style="color: #FF0000">{</span>
+         <span style="color: #993399">8</span><span style="color: #990000">,</span>     <span style="font-style: italic"><span style="color: #9A1900">// Quantidade de pontos</span></span>
+         <span style="color: #990000">&lt;</span><span style="color: #993399">0.0</span><span style="color: #990000">,</span>  <span style="color: #990000">-</span><span style="color: #993399">0.5</span><span style="color: #990000">&gt;,</span>
+         <span style="color: #990000">&lt;</span><span style="color: #993399">3.0</span><span style="color: #990000">,</span>   <span style="color: #993399">0.0</span><span style="color: #990000">&gt;,</span>
+         <span style="color: #990000">&lt;</span><span style="color: #993399">1.0</span><span style="color: #990000">,</span>   <span style="color: #993399">0.2</span><span style="color: #990000">&gt;,</span>
+         <span style="color: #990000">&lt;</span><span style="color: #993399">0.5</span><span style="color: #990000">,</span>   <span style="color: #993399">0.4</span><span style="color: #990000">&gt;,</span>
+         <span style="color: #990000">&lt;</span><span style="color: #993399">0.5</span><span style="color: #990000">,</span>   <span style="color: #993399">4.0</span><span style="color: #990000">&gt;,</span>
+         <span style="color: #990000">&lt;</span><span style="color: #993399">1.0</span><span style="color: #990000">,</span>   <span style="color: #993399">5.0</span><span style="color: #990000">&gt;,</span>
+         <span style="color: #990000">&lt;</span><span style="color: #993399">3.0</span><span style="color: #990000">,</span>  <span style="color: #993399">10.0</span><span style="color: #990000">&gt;,</span>
+         <span style="color: #990000">&lt;</span><span style="color: #993399">4.0</span><span style="color: #990000">,</span>  <span style="color: #993399">11.0</span><span style="color: #990000">&gt;</span>
+         open   <span style="font-style: italic"><span style="color: #9A1900">// Abrir lados</span></span>
+         texture<span style="color: #FF0000">{</span>  <span style="font-style: italic"><span style="color: #9A1900">// Definicao da textura</span></span>
+                pigment<span style="color: #FF0000">{</span>
+                        Col_Glass_Dark_Green
+                <span style="color: #FF0000">}</span>
+         <span style="color: #FF0000">}</span>
+         translate <span style="color: #990000">&lt;</span><span style="color: #993399">6.5</span><span style="color: #990000">,</span> <span style="color: #993399">0</span><span style="color: #990000">,</span> <span style="color: #990000">-</span><span style="color: #993399">7</span><span style="color: #990000">&gt;</span> <span style="font-style: italic"><span style="color: #9A1900">// Translacao do objeto</span></span>
+         scale <span style="color: #993399">0.15</span>             <span style="font-style: italic"><span style="color: #9A1900">// Modificando a escala do objeto</span></span>
+<span style="color: #FF0000">}</span>
+
+<span style="font-style: italic"><span style="color: #9A1900">// Chamando o objeto criado pela superficie de revolucao</span></span>
+calice
+
+<span style="font-style: italic"><span style="color: #9A1900">// -----------------------------------------------------</span></span></tt></pre></div></div>
 </div>
 <div class="sect2">
 <h3 id="_descrição_do_programa">Descrição do programa</h3>
 <div class="paragraph"><p>Foram incluídas nas primeiras linhas do arquivo todas as bibliotecas de cores, formas e texturas necessárias para a construção da cena.</p></div>
 <div class="listingblock">
-<div class="content"></div></div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-weight: bold"><span style="color: #000080">#include</span></span> <span style="color: #FF0000">"colors.inc"</span>
+<span style="font-weight: bold"><span style="color: #000080">#include</span></span> <span style="color: #FF0000">"shapes.inc"</span>
+<span style="font-weight: bold"><span style="color: #000080">#include</span></span> <span style="color: #FF0000">"textures.inc"</span>
+<span style="font-weight: bold"><span style="color: #000080">#include</span></span> <span style="color: #FF0000">"stones.inc"</span>
+<span style="font-weight: bold"><span style="color: #000080">#include</span></span> <span style="color: #FF0000">"glass.inc"</span>
+<span style="font-weight: bold"><span style="color: #000080">#include</span></span> <span style="color: #FF0000">"metals.inc"</span>
+<span style="font-weight: bold"><span style="color: #000080">#include</span></span> <span style="color: #FF0000">"woods.inc"</span></tt></pre></div></div>
 <div class="paragraph"><p>Logo após foram definidas as posições da câmera e local visualizado através de uma estrutura primitiva do POV-Ray para configuração de câmera.</p></div>
 <div class="listingblock">
-<div class="content"></div></div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>camera<span style="color: #FF0000">{</span>
+        location <span style="color: #990000">&lt;</span><span style="color: #993399">0</span><span style="color: #990000">,</span> <span style="color: #993399">2</span><span style="color: #990000">,</span> <span style="color: #990000">-</span><span style="color: #993399">5</span><span style="color: #990000">&gt;</span>     <span style="font-style: italic"><span style="color: #9A1900">// Posicao da camera</span></span>
+        look_at <span style="color: #990000">&lt;</span><span style="color: #993399">0</span><span style="color: #990000">,</span> <span style="color: #993399">1</span><span style="color: #990000">,</span> <span style="color: #993399">2</span><span style="color: #990000">&gt;</span>       <span style="font-style: italic"><span style="color: #9A1900">// Posicao visualizada</span></span>
+<span style="color: #FF0000">}</span></tt></pre></div></div>
 <div class="paragraph"><p>A cena só poderá ser visualizada se houver uma fonte de luz e por isso o próximo passo é a definição da fonte de luz. No POV-Ray há uma estrutura para configuração da fonte de luz que exige como parâmetros a posição e a cor da luz.</p></div>
 <div class="listingblock">
-<div class="content"></div></div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>light_source<span style="color: #FF0000">{</span>
+        <span style="color: #990000">&lt;</span><span style="color: #993399">0</span><span style="color: #990000">,</span> <span style="color: #993399">1</span><span style="color: #990000">,</span> <span style="color: #990000">-</span><span style="color: #993399">2</span><span style="color: #990000">&gt;</span>      <span style="font-style: italic"><span style="color: #9A1900">// Posicao da fonte de luz</span></span>
+        <span style="color: #008080">color</span> White     <span style="font-style: italic"><span style="color: #9A1900">// Definida no arquivo colors.inc</span></span>
+<span style="color: #FF0000">}</span></tt></pre></div></div>
 <div class="paragraph"><p>Necessitamos estabelecer uma cor de blackground que será utilizada quando o raio não interceptar o objeto. De acordo com o ray tracing retornamos o valor de background da cena.</p></div>
 <div class="listingblock">
-<div class="content"></div></div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>background<span style="color: #FF0000">{</span>
+        <span style="color: #008080">color</span> Black             <span style="font-style: italic"><span style="color: #9A1900">// Definindo cor de fundo preta</span></span>
+<span style="color: #FF0000">}</span></tt></pre></div></div>
 <div class="paragraph"><p>Adicionamos uma superfície plana no eixo xz, ou seja, que tem como normal o vetor &lt;0, 1, 0&gt; e a distância a qual neste exemplo foi setada com -1 que apresenta o plano até o infinito. Este plano foi pintado com um xadrez vermelho e azul e definido efeitos com a função finish.</p></div>
 <div class="listingblock">
-<div class="content"></div></div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>plane<span style="color: #FF0000">{</span>
+        <span style="color: #990000">&lt;</span><span style="color: #993399">0</span><span style="color: #990000">,</span> <span style="color: #993399">1</span><span style="color: #990000">,</span> <span style="color: #993399">0</span><span style="color: #990000">&gt;,</span> <span style="color: #990000">-</span><span style="color: #993399">1</span>           <span style="font-style: italic"><span style="color: #9A1900">// Vetor normal do plano e tendendo ao infinito</span></span>
+        pigment <span style="color: #FF0000">{</span>               <span style="font-style: italic"><span style="color: #9A1900">// Estabelecer a cor do objeto</span></span>
+                <span style="font-style: italic"><span style="color: #9A1900">// Criacao de um xadrez com cores vermelho e azul</span></span>
+                checker <span style="color: #008080">color</span> Red<span style="color: #990000">,</span> color Blue
+        <span style="color: #FF0000">}</span>
+
+        <span style="font-style: italic"><span style="color: #9A1900">// Propriedades de efeitos para aparência da superfície</span></span>
+        finish <span style="color: #FF0000">{</span>
+               diffuse <span style="color: #993399">0.4</span>
+               ambient <span style="color: #993399">0.2</span>
+               reflection <span style="color: #993399">0.25</span>
+        <span style="color: #FF0000">}</span>
+<span style="color: #FF0000">}</span></tt></pre></div></div>
 <div class="paragraph"><p>Para adicionarmos uma esfera foi necessário apenas definir sua posição e raio além da sua textura.</p></div>
 <div class="listingblock">
-<div class="content"></div></div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>sphere<span style="color: #FF0000">{</span>
+        <span style="color: #990000">&lt;-</span><span style="color: #993399">1.5</span><span style="color: #990000">,</span> <span style="color: #993399">0</span><span style="color: #990000">,</span> <span style="color: #993399">3</span><span style="color: #990000">&gt;,</span> <span style="color: #993399">1</span>         <span style="font-style: italic"><span style="color: #9A1900">// Vetor de posicao da esfera e raio da esfera</span></span>
+        texture<span style="color: #FF0000">{</span>                <span style="font-style: italic"><span style="color: #9A1900">// Define a aparencia da esfera</span></span>
+                pigment<span style="color: #FF0000">{</span>        <span style="font-style: italic"><span style="color: #9A1900">// Estabelecer a cor do objeto</span></span>
+                                   White_Marble   <span style="font-style: italic"><span style="color: #9A1900">// predefinida em textures.inc</span></span>
+                        scale <span style="color: #993399">0.5</span>      <span style="font-style: italic"><span style="color: #9A1900">// fator de escala da textura</span></span>
+                <span style="color: #FF0000">}</span>
+        <span style="color: #FF0000">}</span>
+<span style="color: #FF0000">}</span></tt></pre></div></div>
 <div class="paragraph"><p>Para colocarmos uma caixa foi necessário definir a posição de canto mais próximo do lado esquerdo e do lado mais distante do lado direito.</p></div>
 <div class="imageblock" style="text-align:center;">
 <div class="content">
@@ -2139,10 +2349,57 @@ else
 <div class="title">Figure 3. Estabelecendo cantos inferior esquerdo e superior direito</div>
 </div>
 <div class="listingblock">
-<div class="content"></div></div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>box<span style="color: #FF0000">{</span>
+        <span style="color: #990000">&lt;</span><span style="color: #993399">0</span><span style="color: #990000">,</span> <span style="color: #993399">0</span><span style="color: #990000">,</span> <span style="color: #993399">0</span><span style="color: #990000">&gt;,</span>  <span style="font-style: italic"><span style="color: #9A1900">// Canto mais proximo do lado esquerdo</span></span>
+        <span style="color: #990000">&lt;</span><span style="color: #993399">2</span><span style="color: #990000">,</span> <span style="color: #993399">0.5</span><span style="color: #990000">,</span> <span style="color: #993399">2</span><span style="color: #990000">&gt;</span>   <span style="font-style: italic"><span style="color: #9A1900">// Canto mais distante do lado direito</span></span>
+        texture <span style="color: #FF0000">{</span>
+                T_Stone25     <span style="font-style: italic"><span style="color: #9A1900">// Predefinido em stones.inc</span></span>
+                scale <span style="color: #993399">2</span>       <span style="font-style: italic"><span style="color: #9A1900">// Escala pela mesma quantidade em todas as direcoes</span></span>
+        <span style="color: #FF0000">}</span>
+        <span style="color: #008080">rotate</span> y<span style="color: #990000">*</span><span style="color: #993399">20</span>     <span style="font-style: italic"><span style="color: #9A1900">// Rotaciona "&lt;0,20,0&gt;"</span></span>
+<span style="color: #FF0000">}</span></tt></pre></div></div>
 <div class="paragraph"><p>Adicionamos um cone definindo a posição e o raio do pico e da base, um cilindro pela definição das posições onde serão posicionadas os lados e o raio destes lados. Note que há um open no meio do código do cilindro que informa se desejamos retirar as tampas do cilindro e outra coisa que devemos notar foi a definição da cor que utilizamos o formato RGBA. O penúltimo objeto que adicionamos neste exemplo foi o torus e para isso necessitamos apenas definir o valor de raio maior e menor.</p></div>
 <div class="listingblock">
-<div class="content"></div></div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">// Cone</span></span>
+cone<span style="color: #FF0000">{</span>
+        <span style="color: #990000">&lt;</span><span style="color: #993399">0.5</span><span style="color: #990000">,</span> <span style="color: #993399">3</span><span style="color: #990000">,</span> <span style="color: #993399">2.5</span><span style="color: #990000">&gt;,</span> <span style="color: #993399">0.3</span>    <span style="font-style: italic"><span style="color: #9A1900">// Centro e raio de um lado ( pico )</span></span>
+        <span style="color: #990000">&lt;</span><span style="color: #993399">0.5</span><span style="color: #990000">,</span> <span style="color: #993399">0</span><span style="color: #990000">,</span> <span style="color: #993399">2.5</span><span style="color: #990000">&gt;,</span> <span style="color: #993399">1.0</span>    <span style="font-style: italic"><span style="color: #9A1900">// Centro e raio do outro lado ( base )</span></span>
+        texture <span style="color: #FF0000">{</span>
+                pigment<span style="color: #FF0000">{</span>
+                                <span style="color: #008080">color</span> Red       <span style="font-style: italic"><span style="color: #9A1900">// Cor predefinida em colors.inc</span></span>
+                                        <span style="color: #FF0000">}</span>
+        <span style="color: #FF0000">}</span>
+<span style="color: #FF0000">}</span>
+
+cylinder<span style="color: #FF0000">{</span>
+        <span style="color: #990000">&lt;-</span><span style="color: #993399">2</span><span style="color: #990000">,</span> <span style="color: #993399">0</span><span style="color: #990000">,</span> <span style="color: #993399">0</span><span style="color: #990000">&gt;,</span>     <span style="font-style: italic"><span style="color: #9A1900">// Centro de um dos lados</span></span>
+        <span style="color: #990000">&lt;-</span><span style="color: #993399">3</span><span style="color: #990000">,</span> <span style="color: #993399">0</span><span style="color: #990000">,</span> <span style="color: #993399">2.5</span><span style="color: #990000">&gt;,</span>   <span style="font-style: italic"><span style="color: #9A1900">// Centro do outro lado</span></span>
+        <span style="color: #993399">0.5</span>            <span style="font-style: italic"><span style="color: #9A1900">// Raio</span></span>
+        open           <span style="font-style: italic"><span style="color: #9A1900">// Remover as tampas do cilindro</span></span>
+        texture <span style="color: #FF0000">{</span>
+                pigment<span style="color: #FF0000">{</span>
+                        <span style="font-style: italic"><span style="color: #9A1900">// Cor definida atraves do formato rgb + transparencia</span></span>
+                        <span style="color: #008080">color</span> rgbt<span style="color: #990000">&lt;</span><span style="color: #993399">0.7</span><span style="color: #990000">,</span> <span style="color: #993399">0.2</span><span style="color: #990000">,</span> <span style="color: #993399">0.6</span><span style="color: #990000">,</span> <span style="color: #993399">0.2</span><span style="color: #990000">&gt;</span>
+                        <span style="color: #FF0000">}</span>
+        <span style="color: #FF0000">}</span>
+<span style="color: #FF0000">}</span>
+
+torus<span style="color: #FF0000">{</span>
+        <span style="color: #993399">0.3</span><span style="color: #990000">,</span> <span style="color: #993399">0.2</span>        <span style="font-style: italic"><span style="color: #9A1900">// Raio maior e menor, respectivamente</span></span>
+        texture <span style="color: #FF0000">{</span>
+                Sapphire_Agate
+        <span style="color: #FF0000">}</span>
+        rotate <span style="color: #990000">&lt;</span><span style="color: #993399">0</span><span style="color: #990000">,</span> <span style="color: #993399">0</span><span style="color: #990000">,</span> <span style="color: #993399">0</span><span style="color: #990000">&gt;</span>        <span style="font-style: italic"><span style="color: #9A1900">// Rotacionando o torus</span></span>
+        translate <span style="color: #990000">&lt;</span><span style="color: #993399">0</span><span style="color: #990000">,</span> <span style="color: #993399">0</span><span style="color: #990000">,</span> <span style="color: #990000">-</span><span style="color: #993399">1</span><span style="color: #990000">&gt;</span>    <span style="font-style: italic"><span style="color: #9A1900">// Translacao do objeto</span></span>
+<span style="color: #FF0000">}</span></tt></pre></div></div>
 <div class="paragraph"><p>Por fim inserimos um cálice através da função de superfície de revolução provido pelo pacote do POV-Ray. Neste exemplo descrevemos todos os pontos importantes para a modelagem do cálice.</p></div>
 <div class="imageblock" style="text-align:center;">
 <div class="content">
@@ -2152,7 +2409,32 @@ else
 </div>
 <div class="paragraph"><p>Após a definição dos pontos podemos inserir estes na função SOR (Surface of Revolution) onde o primeiro argumento é a quantidade de pontos e em seguida os pontos. Se utilizarmos a declaração da superficie de revolução necessitamos chamar a superfície abaixo.</p></div>
 <div class="listingblock">
-<div class="content"></div></div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-weight: bold"><span style="color: #000080">#declare</span></span> calice <span style="color: #990000">=</span> sor<span style="color: #FF0000">{</span>
+         <span style="color: #993399">8</span><span style="color: #990000">,</span>     <span style="font-style: italic"><span style="color: #9A1900">// Quantidade de pontos</span></span>
+         <span style="color: #990000">&lt;</span><span style="color: #993399">0.0</span><span style="color: #990000">,</span>  <span style="color: #990000">-</span><span style="color: #993399">0.5</span><span style="color: #990000">&gt;,</span>
+         <span style="color: #990000">&lt;</span><span style="color: #993399">3.0</span><span style="color: #990000">,</span>   <span style="color: #993399">0.0</span><span style="color: #990000">&gt;,</span>
+         <span style="color: #990000">&lt;</span><span style="color: #993399">1.0</span><span style="color: #990000">,</span>   <span style="color: #993399">0.2</span><span style="color: #990000">&gt;,</span>
+         <span style="color: #990000">&lt;</span><span style="color: #993399">0.5</span><span style="color: #990000">,</span>   <span style="color: #993399">0.4</span><span style="color: #990000">&gt;,</span>
+         <span style="color: #990000">&lt;</span><span style="color: #993399">0.5</span><span style="color: #990000">,</span>   <span style="color: #993399">4.0</span><span style="color: #990000">&gt;,</span>
+         <span style="color: #990000">&lt;</span><span style="color: #993399">1.0</span><span style="color: #990000">,</span>   <span style="color: #993399">5.0</span><span style="color: #990000">&gt;,</span>
+         <span style="color: #990000">&lt;</span><span style="color: #993399">3.0</span><span style="color: #990000">,</span>  <span style="color: #993399">10.0</span><span style="color: #990000">&gt;,</span>
+         <span style="color: #990000">&lt;</span><span style="color: #993399">4.0</span><span style="color: #990000">,</span>  <span style="color: #993399">11.0</span><span style="color: #990000">&gt;</span>
+         open   <span style="font-style: italic"><span style="color: #9A1900">// Abrir lados</span></span>
+         texture<span style="color: #FF0000">{</span>  <span style="font-style: italic"><span style="color: #9A1900">// Definicao da textura</span></span>
+                pigment<span style="color: #FF0000">{</span>
+                        Col_Glass_Dark_Green
+                <span style="color: #FF0000">}</span>
+         <span style="color: #FF0000">}</span>
+         translate <span style="color: #990000">&lt;</span><span style="color: #993399">6.5</span><span style="color: #990000">,</span> <span style="color: #993399">0</span><span style="color: #990000">,</span> <span style="color: #990000">-</span><span style="color: #993399">7</span><span style="color: #990000">&gt;</span> <span style="font-style: italic"><span style="color: #9A1900">// Translacao do objeto</span></span>
+         scale <span style="color: #993399">0.15</span>             <span style="font-style: italic"><span style="color: #9A1900">// Modificando a escala do objeto</span></span>
+<span style="color: #FF0000">}</span>
+
+<span style="font-style: italic"><span style="color: #9A1900">// Chamando o objeto criado pela superficie de revolucao</span></span>
+calice</tt></pre></div></div>
 </div>
 <div class="sect2">
 <h3 id="_exercício">Exercício</h3>
@@ -2178,10 +2460,19 @@ Construir uma cena fazendo uso do POV-Ray com o objetivo de renderizar a cena re
 <div class="paragraph"><p>Para a construção da animação é necessário a criação de um arquivo com extensão ".ini" (<a href="codes/canoa.ini">canoa.ini</a>)que contém as informações da quantidade de frames que haverá no vídeo, qual o arquivo ".pov" que estamos utilizando para criar as cenas além do tempo de duração. Com o objetivo de demonstrar a criação de uma animação com o POV-Ray construimos uma nova cena.
 O comando para a renderização das cenas foram obtidas através do seguinte comando:</p></div>
 <div class="listingblock">
-<div class="content"></div></div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>povray <span style="color: #990000">&lt;</span>nome_arquivo<span style="color: #990000">&gt;.</span>pov <span style="color: #990000">&lt;</span>nome_arquivo<span style="color: #990000">&gt;.</span>ini</tt></pre></div></div>
 <div class="paragraph"><p>Após a criação das imagens é preciso somente aplicar os seguintes comandos no diretório onde se encontra os arquivos das imagens geradadas:</p></div>
 <div class="listingblock">
-<div class="content"></div></div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>cat <span style="color: #990000">*.</span>png <span style="color: #990000">&gt;</span> video<span style="color: #990000">.</span>avi
+<span style="color: #008080">mplayer</span> video<span style="color: #990000">.</span>avi</tt></pre></div></div>
 <iframe width="420" height="315" src="https://www.youtube.com/embed/JWDKQR8JaGk" frameborder="0" allowfullscreen></iframe>
 <div class="sect2">
 <h3 id="_construção_da_cena">Construção da cena</h3>
@@ -2196,31 +2487,275 @@ O comando para a renderização das cenas foram obtidas através do seguinte com
 <div class="sect2">
 <h3 id="_código_da_cena">Código da cena</h3>
 <div class="listingblock">
-<div class="content"></div></div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">/**</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"> * \file canoa.pov</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"> *</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"> * \brief Arquivo para renderizacao de uma canoa.</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"> *</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"> * \author</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"> * Friedrich A. Lohmueller</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"> * </span></span><span style="text-decoration: underline"><span style="color: #0000FF">http://www.f-lohmueller.de/pov_tut/x_sam/tec_550e.htm</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"> *</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"> * \modified by</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"> * Petrucio Ricardo Tavares de Medeiros \n</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"> * Universidade Federal do Rio Grande do Norte \n</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"> * Departamento de Computacao e Automacao Industrial \n</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"> * petrucior at gmail (dot) com</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"> *</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"> * \version 1.0</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"> * \date November 2015</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"> */</span></span>
+
+<span style="font-weight: bold"><span style="color: #000080">#global_settings</span></span><span style="color: #FF0000">{</span> assumed_gamma <span style="color: #993399">1.0</span> <span style="color: #FF0000">}</span>
+<span style="font-weight: bold"><span style="color: #000080">#default</span></span><span style="color: #FF0000">{</span> finish<span style="color: #FF0000">{</span> ambient <span style="color: #993399">0.1</span> diffuse <span style="color: #993399">0.7</span> <span style="color: #FF0000">}}</span>
+
+<span style="font-style: italic"><span style="color: #9A1900">// Arquivos de descricao de cores, formas e texturas</span></span>
+<span style="font-weight: bold"><span style="color: #000080">#include</span></span> <span style="color: #FF0000">"colors.inc"</span>
+<span style="font-weight: bold"><span style="color: #000080">#include</span></span> <span style="color: #FF0000">"shapes.inc"</span>
+<span style="font-weight: bold"><span style="color: #000080">#include</span></span> <span style="color: #FF0000">"textures.inc"</span>
+
+<span style="font-style: italic"><span style="color: #9A1900">// Camera</span></span>
+camera<span style="color: #FF0000">{</span>
+        location <span style="color: #990000">&lt;</span><span style="color: #993399">0</span><span style="color: #990000">,</span> <span style="color: #993399">1.5</span><span style="color: #990000">,</span> <span style="color: #990000">-</span><span style="color: #993399">8</span><span style="color: #990000">&gt;</span>   <span style="font-style: italic"><span style="color: #9A1900">// Posicao da camera</span></span>
+        look_at <span style="color: #990000">&lt;</span><span style="color: #993399">0.4</span><span style="color: #990000">,</span> <span style="color: #993399">0.2</span><span style="color: #990000">,</span> <span style="color: #993399">0</span><span style="color: #990000">&gt;</span>   <span style="font-style: italic"><span style="color: #9A1900">// Posicao de visualizacao</span></span>
+<span style="color: #FF0000">}</span>
+
+<span style="font-style: italic"><span style="color: #9A1900">// Fonte de luz</span></span>
+light_source<span style="color: #FF0000">{</span><span style="color: #990000">&lt;</span><span style="color: #993399">1500</span><span style="color: #990000">,</span><span style="color: #993399">2500</span><span style="color: #990000">,-</span><span style="color: #993399">2500</span><span style="color: #990000">&gt;</span> <span style="color: #008080">color</span> rgb<span style="color: #990000">&lt;</span><span style="color: #993399">1</span><span style="color: #990000">,</span><span style="color: #993399">0.9</span><span style="color: #990000">,</span><span style="color: #993399">0.8</span><span style="color: #990000">&gt;</span><span style="color: #FF0000">}</span>
+
+<span style="font-style: italic"><span style="color: #9A1900">// Ceu</span></span>
+sky_sphere<span style="color: #FF0000">{</span>
+        <span style="font-style: italic"><span style="color: #9A1900">/// Cor azul com gradiente</span></span>
+        pigment<span style="color: #FF0000">{</span>
+                <span style="color: #008080">gradient</span> y      <span style="font-style: italic"><span style="color: #9A1900">// Gradiente em torno do eixo y</span></span>
+                <span style="font-style: italic"><span style="color: #9A1900">// Mapa de cores</span></span>
+                color_map<span style="color: #FF0000">{</span>
+                        <span style="color: #990000">[</span><span style="color: #993399">0.000</span> <span style="color: #993399">0.002</span> <span style="color: #008080">color</span> rgb <span style="color: #990000">&lt;</span><span style="color: #993399">1.0</span><span style="color: #990000">,</span> <span style="color: #993399">0.2</span><span style="color: #990000">,</span> <span style="color: #993399">0.0</span><span style="color: #990000">&gt;</span> <span style="color: #008080">color</span> rgb <span style="color: #990000">&lt;</span><span style="color: #993399">1.0</span><span style="color: #990000">,</span> <span style="color: #993399">0.2</span><span style="color: #990000">,</span> <span style="color: #993399">0.0</span><span style="color: #990000">&gt;]</span>
+                        <span style="color: #990000">[</span><span style="color: #993399">0.002</span> <span style="color: #993399">0.200</span> <span style="color: #008080">color</span> rgb <span style="color: #990000">&lt;</span><span style="color: #993399">0.8</span><span style="color: #990000">,</span> <span style="color: #993399">0.1</span><span style="color: #990000">,</span> <span style="color: #993399">0.0</span><span style="color: #990000">&gt;</span> <span style="color: #008080">color</span> rgb <span style="color: #990000">&lt;</span><span style="color: #993399">0.2</span><span style="color: #990000">,</span> <span style="color: #993399">0.2</span><span style="color: #990000">,</span> <span style="color: #993399">0.3</span><span style="color: #990000">&gt;]</span>
+                <span style="color: #FF0000">}</span>
+        scale <span style="color: #993399">2</span>                 <span style="font-style: italic"><span style="color: #9A1900">// Escala de distribuicao do mapa e gradiente pela esfera</span></span>
+        translate <span style="color: #990000">-</span><span style="color: #993399">1</span>            <span style="font-style: italic"><span style="color: #9A1900">// Translacao -1 em todas as direcoes</span></span>
+        <span style="color: #FF0000">}</span>
+        <span style="font-style: italic"><span style="color: #9A1900">// Nuvens</span></span>
+        pigment <span style="color: #FF0000">{</span>
+                bozo            <span style="font-style: italic"><span style="color: #9A1900">// Função randomica de ruido que tradicionalmente modela as nuvens</span></span>
+                <span style="font-style: italic"><span style="color: #9A1900">// Variaveis para denotar uma grandeza aleatória</span></span>
+                turbulence <span style="color: #993399">0.65</span>
+                octaves <span style="color: #993399">6</span>
+                omega <span style="color: #993399">0.7</span>
+                lambda <span style="color: #993399">2</span>
+                <span style="font-style: italic"><span style="color: #9A1900">// Mapa de cores</span></span>
+                color_map <span style="color: #FF0000">{</span>
+                          <span style="color: #990000">[</span><span style="color: #993399">0.0</span> <span style="color: #993399">0.1</span> <span style="color: #008080">color</span> rgb <span style="color: #990000">&lt;</span><span style="color: #993399">0.85</span><span style="color: #990000">,</span> <span style="color: #993399">0.85</span><span style="color: #990000">,</span> <span style="color: #993399">0.85</span><span style="color: #990000">&gt;</span> <span style="color: #008080">color</span> rgb <span style="color: #990000">&lt;</span><span style="color: #993399">0.75</span><span style="color: #990000">,</span> <span style="color: #993399">0.75</span><span style="color: #990000">,</span> <span style="color: #993399">0.75</span><span style="color: #990000">&gt;]</span>
+                          <span style="color: #990000">[</span><span style="color: #993399">0.1</span> <span style="color: #993399">0.5</span> <span style="color: #008080">color</span> rgb <span style="color: #990000">&lt;</span><span style="color: #993399">0.75</span><span style="color: #990000">,</span> <span style="color: #993399">0.75</span><span style="color: #990000">,</span> <span style="color: #993399">0.75</span><span style="color: #990000">&gt;</span> <span style="color: #008080">color</span> rgbt <span style="color: #990000">&lt;</span><span style="color: #993399">1</span><span style="color: #990000">,</span> <span style="color: #993399">1</span><span style="color: #990000">,</span> <span style="color: #993399">1</span><span style="color: #990000">,</span> <span style="color: #993399">1</span><span style="color: #990000">&gt;]</span>
+                          <span style="color: #990000">[</span><span style="color: #993399">0.5</span> <span style="color: #993399">1.0</span> <span style="color: #008080">color</span> rgbt <span style="color: #990000">&lt;</span><span style="color: #993399">1</span><span style="color: #990000">,</span> <span style="color: #993399">1</span><span style="color: #990000">,</span> <span style="color: #993399">1</span><span style="color: #990000">,</span> <span style="color: #993399">1</span><span style="color: #990000">&gt;</span> <span style="color: #008080">color</span> rgbt <span style="color: #990000">&lt;</span><span style="color: #993399">1</span><span style="color: #990000">,</span> <span style="color: #993399">1</span><span style="color: #990000">,</span> <span style="color: #993399">1</span><span style="color: #990000">,</span> <span style="color: #993399">1</span><span style="color: #990000">&gt;]</span>
+                <span style="color: #FF0000">}</span>
+                <span style="font-style: italic"><span style="color: #9A1900">// Escala de distribuicao do mapa pela esfera</span></span>
+                scale <span style="color: #990000">&lt;</span><span style="color: #993399">0.2</span><span style="color: #990000">,</span> <span style="color: #993399">0.5</span><span style="color: #990000">,</span> <span style="color: #993399">0.2</span><span style="color: #990000">&gt;</span>
+        <span style="color: #FF0000">}</span>
+        rotate <span style="color: #990000">-</span><span style="color: #993399">135</span><span style="color: #990000">*</span>x
+<span style="color: #FF0000">}</span>
+
+<span style="font-style: italic"><span style="color: #9A1900">// Plano onde sera inserida a canoa e a agua</span></span>
+plane<span style="color: #FF0000">{</span>
+        <span style="color: #990000">&lt;</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">1</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">&gt;,</span> <span style="color: #993399">1</span> <span style="font-style: italic"><span style="color: #9A1900">// Plano xz (normal para a coordenada y)</span></span>
+        hollow      <span style="font-style: italic"><span style="color: #9A1900">// Plano dentro da esfera</span></span>
+        texture<span style="color: #FF0000">{</span>
+                pigment<span style="color: #FF0000">{</span>
+                        bozo
+                        turbulence <span style="color: #993399">0.92</span>
+                        color_map<span style="color: #FF0000">{</span> <span style="color: #990000">[</span><span style="color: #993399">0.00</span> rgb <span style="color: #990000">&lt;</span><span style="color: #993399">0.20</span><span style="color: #990000">,</span> <span style="color: #993399">0.20</span><span style="color: #990000">,</span> <span style="color: #993399">1.0</span><span style="color: #990000">&gt;*</span><span style="color: #993399">0.9</span><span style="color: #990000">]</span>
+                                   <span style="color: #990000">[</span><span style="color: #993399">0.50</span> rgb <span style="color: #990000">&lt;</span><span style="color: #993399">0.20</span><span style="color: #990000">,</span> <span style="color: #993399">0.20</span><span style="color: #990000">,</span> <span style="color: #993399">1.0</span><span style="color: #990000">&gt;*</span><span style="color: #993399">0.9</span><span style="color: #990000">]</span>
+                                   <span style="color: #990000">[</span><span style="color: #993399">0.70</span> rgb <span style="color: #990000">&lt;</span><span style="color: #993399">1</span><span style="color: #990000">,</span><span style="color: #993399">1</span><span style="color: #990000">,</span><span style="color: #993399">1</span><span style="color: #990000">&gt;]</span>
+                                   <span style="color: #990000">[</span><span style="color: #993399">0.85</span> rgb <span style="color: #990000">&lt;</span><span style="color: #993399">0.25</span><span style="color: #990000">,</span><span style="color: #993399">0.25</span><span style="color: #990000">,</span><span style="color: #993399">0.25</span><span style="color: #990000">&gt;]</span>
+                                   <span style="color: #990000">[</span><span style="color: #993399">1.0</span> rgb <span style="color: #990000">&lt;</span><span style="color: #993399">0.5</span><span style="color: #990000">,</span><span style="color: #993399">0.5</span><span style="color: #990000">,</span><span style="color: #993399">0.5</span><span style="color: #990000">&gt;]</span>
+                        <span style="color: #FF0000">}</span>
+                        scale<span style="color: #990000">&lt;</span><span style="color: #993399">1</span><span style="color: #990000">,</span><span style="color: #993399">1</span><span style="color: #990000">,</span><span style="color: #993399">1.5</span><span style="color: #990000">&gt;*</span><span style="color: #993399">2.5</span>  translate<span style="color: #990000">&lt;</span> <span style="color: #990000">-</span><span style="color: #993399">1.25</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">&gt;</span>
+                <span style="color: #FF0000">}</span>
+                finish <span style="color: #FF0000">{</span>ambient <span style="color: #993399">1</span> diffuse <span style="color: #993399">0</span><span style="color: #FF0000">}</span>
+        <span style="color: #FF0000">}</span>
+        scale <span style="color: #993399">10000</span>
+<span style="color: #FF0000">}</span>
+
+
+<span style="font-style: italic"><span style="color: #9A1900">// Posicao da canoa</span></span>
+<span style="font-weight: bold"><span style="color: #000080">#declare</span></span> posicao_canoa <span style="color: #990000">=</span> transform<span style="color: #FF0000">{</span><span style="font-style: italic"><span style="color: #9A1900">/*rotate&lt;0,30,0&gt;*/</span></span> <span style="color: #008080">rotate&lt;0, 360*clock, 0&gt;</span> translate<span style="color: #990000">&lt;</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">1</span><span style="color: #990000">&gt;</span><span style="color: #FF0000">}</span>
+
+<span style="font-style: italic"><span style="color: #9A1900">// Canoa</span></span>
+<span style="font-weight: bold"><span style="color: #000080">#declare</span></span> lado_fora_canoa <span style="color: #990000">=</span> sphere<span style="color: #FF0000">{</span> <span style="color: #990000">&lt;</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">&gt;,</span><span style="color: #993399">1</span> scale <span style="color: #990000">&lt;</span><span style="color: #993399">3</span><span style="color: #990000">,</span><span style="color: #993399">1.5</span><span style="color: #990000">,</span><span style="color: #993399">1</span><span style="color: #990000">&gt;</span> <span style="color: #008080">rotate&lt;0,0,0&gt;</span> translate<span style="color: #990000">&lt;</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0.5</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">&gt;</span> <span style="color: #FF0000">}</span>
+
+<span style="font-weight: bold"><span style="color: #000080">#declare</span></span> canoa <span style="color: #990000">=</span>
+         <span style="font-weight: bold"><span style="color: #0000FF">union</span></span><span style="color: #FF0000">{</span>
+                <span style="font-style: italic"><span style="color: #9A1900">// Construcao da estrutura da canoa</span></span>
+                intersection<span style="color: #FF0000">{</span>
+                        object<span style="color: #FF0000">{</span> lado_fora_canoa <span style="color: #FF0000">}</span>
+                        object<span style="color: #FF0000">{</span> <span style="color: #008080">lado_fora_canoa</span> scale <span style="color: #990000">&lt;</span><span style="color: #993399">0.98</span><span style="color: #990000">,</span><span style="color: #993399">0.95</span><span style="color: #990000">,</span><span style="color: #993399">0.94</span><span style="color: #990000">&gt;</span>  inverse<span style="color: #FF0000">}</span>
+                        sphere <span style="color: #FF0000">{</span><span style="color: #990000">&lt;</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">&gt;,</span><span style="color: #993399">1</span> scale <span style="color: #990000">&lt;</span><span style="color: #993399">2.5</span><span style="color: #990000">,</span><span style="color: #993399">1</span><span style="color: #990000">,</span><span style="color: #993399">20</span><span style="color: #990000">&gt;</span> <span style="color: #008080">rotate&lt;0,0,0&gt; translate&lt;0,1.3,0&gt;</span>  inverse<span style="color: #FF0000">}</span>
+                        texture<span style="color: #FF0000">{</span>
+                                 pigment<span style="color: #FF0000">{</span>
+                                          <span style="color: #008080">color</span> White<span style="font-style: italic"><span style="color: #9A1900">//White*1.1</span></span>
+                                 <span style="color: #FF0000">}</span>
+                                 finish<span style="color: #FF0000">{</span>
+                                         phong <span style="color: #993399">1</span>
+                                 <span style="color: #FF0000">}</span>
+                        <span style="color: #FF0000">}</span>
+                <span style="color: #FF0000">}</span>
+
+                <span style="font-style: italic"><span style="color: #9A1900">// Interseção entre a estrutura e os pedaços de madeira</span></span>
+                intersection<span style="color: #FF0000">{</span>
+                        object<span style="color: #FF0000">{</span> lado_fora_canoa
+                                texture<span style="color: #FF0000">{</span>
+                                          pigment<span style="color: #FF0000">{</span>
+                                                 <span style="color: #008080">color</span> White<span style="color: #990000">*</span><span style="color: #993399">1.1</span>
+                                          <span style="color: #FF0000">}</span>
+                                          finish<span style="color: #FF0000">{</span>
+                                                phong <span style="color: #993399">1</span>
+                                          <span style="color: #FF0000">}</span>
+                                <span style="color: #FF0000">}</span>
+                        <span style="color: #FF0000">}</span>
+                        <span style="font-style: italic"><span style="color: #9A1900">// Adicionando madeiras dentro da canoa</span></span>
+                        <span style="font-weight: bold"><span style="color: #0000FF">union</span></span><span style="color: #FF0000">{</span>
+                                box <span style="color: #FF0000">{</span><span style="color: #990000">&lt;-</span><span style="color: #993399">0.20</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,-</span><span style="color: #993399">1</span><span style="color: #990000">&gt;,&lt;</span><span style="color: #993399">0.20</span><span style="color: #990000">,</span><span style="color: #993399">0.05</span><span style="color: #990000">,</span><span style="color: #993399">1</span><span style="color: #990000">&gt;</span> <span style="color: #008080">rotate&lt;0,0,0&gt;</span> translate<span style="color: #990000">&lt;</span> <span style="color: #993399">0.0</span><span style="color: #990000">,</span><span style="color: #993399">0.21</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">&gt;</span><span style="color: #FF0000">}</span>
+                                box <span style="color: #FF0000">{</span><span style="color: #990000">&lt;-</span><span style="color: #993399">0.20</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,-</span><span style="color: #993399">1</span><span style="color: #990000">&gt;,&lt;</span><span style="color: #993399">0.20</span><span style="color: #990000">,</span><span style="color: #993399">0.05</span><span style="color: #990000">,</span><span style="color: #993399">1</span><span style="color: #990000">&gt;</span> <span style="color: #008080">rotate&lt;0,0,-10&gt;</span> translate<span style="color: #990000">&lt;-</span><span style="color: #993399">2.0</span><span style="color: #990000">,</span><span style="color: #993399">0.40</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">&gt;</span><span style="color: #FF0000">}</span>
+                                box <span style="color: #FF0000">{</span><span style="color: #990000">&lt;-</span><span style="color: #993399">0.20</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,-</span><span style="color: #993399">1</span><span style="color: #990000">&gt;,&lt;</span><span style="color: #993399">0.20</span><span style="color: #990000">,</span><span style="color: #993399">0.05</span><span style="color: #990000">,</span><span style="color: #993399">1</span><span style="color: #990000">&gt;</span> <span style="color: #008080">rotate&lt;0,0,10&gt;</span> translate<span style="color: #990000">&lt;</span> <span style="color: #993399">2.0</span><span style="color: #990000">,</span><span style="color: #993399">0.40</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">&gt;</span><span style="color: #FF0000">}</span>
+                                texture<span style="color: #FF0000">{</span>
+                                        pigment<span style="color: #FF0000">{</span>
+                                                color MediumWood
+                                        <span style="color: #FF0000">}</span>
+                                        finish<span style="color: #FF0000">{</span>
+                                                phong <span style="color: #993399">1</span>
+                                        <span style="color: #FF0000">}</span>
+                                <span style="color: #FF0000">}</span>
+                        <span style="color: #FF0000">}</span>
+                <span style="color: #FF0000">}</span>
+<span style="color: #FF0000">}</span>
+
+object<span style="color: #FF0000">{</span> canoa <span style="color: #008080">transform</span> posicao_canoa<span style="color: #FF0000">}</span>
+
+<span style="font-style: italic"><span style="color: #9A1900">// Agua</span></span>
+difference<span style="color: #FF0000">{</span>
+        plane<span style="color: #FF0000">{</span><span style="color: #990000">&lt;</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">1</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">&gt;,</span> <span style="color: #993399">0</span> <span style="color: #FF0000">}</span>
+        object<span style="color: #FF0000">{</span>lado_fora_canoa <span style="color: #008080">transform</span> posicao_canoa <span style="color: #FF0000">}</span>
+        texture<span style="color: #FF0000">{</span>
+                Polished_Chrome
+                normal<span style="color: #FF0000">{</span> crackle <span style="color: #993399">1</span> scale <span style="color: #993399">5</span> turbulence <span style="color: #993399">1</span> translate<span style="color: #990000">&lt;</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">5</span><span style="color: #990000">&gt;</span><span style="color: #FF0000">}</span>
+                finish<span style="color: #FF0000">{</span> diffuse <span style="color: #993399">0.5</span> reflection <span style="color: #993399">0.30</span><span style="color: #FF0000">}</span>
+        <span style="color: #FF0000">}</span>
+<span style="color: #FF0000">}</span></tt></pre></div></div>
 </div>
 <div class="sect2">
 <h3 id="_descrição_do_programa_2">Descrição do programa</h3>
 <div class="paragraph"><p>Antes de serem incluídos os pacotes com definições para a renderização da cena é setado o gamma, valor que tem intuito de deixar mais claro ou mais escuro a imagem, e os parâmetros de constante de ambiente e difusão utilizados na equação de Phong.</p></div>
 <div class="listingblock">
-<div class="content"></div></div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-weight: bold"><span style="color: #000080">#global_settings</span></span><span style="color: #FF0000">{</span> assumed_gamma <span style="color: #993399">1.0</span> <span style="color: #FF0000">}</span>
+<span style="font-weight: bold"><span style="color: #000080">#default</span></span><span style="color: #FF0000">{</span> finish<span style="color: #FF0000">{</span> ambient <span style="color: #993399">0.1</span> diffuse <span style="color: #993399">0.7</span> <span style="color: #FF0000">}}</span></tt></pre></div></div>
 <div class="paragraph"><p>São incluídos os pacotes com definições de cores, formas e texturas.</p></div>
 <div class="listingblock">
-<div class="content"></div></div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-weight: bold"><span style="color: #000080">#include</span></span> <span style="color: #FF0000">"colors.inc"</span>
+<span style="font-weight: bold"><span style="color: #000080">#include</span></span> <span style="color: #FF0000">"shapes.inc"</span>
+<span style="font-weight: bold"><span style="color: #000080">#include</span></span> <span style="color: #FF0000">"textures.inc"</span></tt></pre></div></div>
 <div class="paragraph"><p>Logo após foram definidas as posições da câmera e local visualizado através de uma estrutura primitiva do POV-Ray para configuração de câmera.</p></div>
 <div class="listingblock">
-<div class="content"></div></div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>camera<span style="color: #FF0000">{</span>
+        location <span style="color: #990000">&lt;</span><span style="color: #993399">0</span><span style="color: #990000">,</span> <span style="color: #993399">1.5</span><span style="color: #990000">,</span> <span style="color: #990000">-</span><span style="color: #993399">8</span><span style="color: #990000">&gt;</span>   <span style="font-style: italic"><span style="color: #9A1900">// Posicao da camera</span></span>
+        look_at <span style="color: #990000">&lt;</span><span style="color: #993399">0.4</span><span style="color: #990000">,</span> <span style="color: #993399">0.2</span><span style="color: #990000">,</span> <span style="color: #993399">0</span><span style="color: #990000">&gt;</span>   <span style="font-style: italic"><span style="color: #9A1900">// Posicao de visualizacao</span></span>
+<span style="color: #FF0000">}</span></tt></pre></div></div>
 <div class="paragraph"><p>Definição da fonte de luz com a posição e sua cor.</p></div>
 <div class="listingblock">
-<div class="content"></div></div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>light_source<span style="color: #FF0000">{</span><span style="color: #990000">&lt;</span><span style="color: #993399">1500</span><span style="color: #990000">,</span><span style="color: #993399">2500</span><span style="color: #990000">,-</span><span style="color: #993399">2500</span><span style="color: #990000">&gt;</span> <span style="color: #008080">color</span> rgb<span style="color: #990000">&lt;</span><span style="color: #993399">1</span><span style="color: #990000">,</span><span style="color: #993399">0.9</span><span style="color: #990000">,</span><span style="color: #993399">0.8</span><span style="color: #990000">&gt;</span><span style="color: #FF0000">}</span></tt></pre></div></div>
 <div class="paragraph"><p>A construção de um céu azul com núvens é realizada através de uma esfera com gradiente. O gradiente proporcionará uma cor mais escura quanto mais distante da reta do horizonte.</p></div>
 <div class="listingblock">
-<div class="content"></div></div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>sky_sphere<span style="color: #FF0000">{</span>
+        <span style="font-style: italic"><span style="color: #9A1900">// Cor azul com gradiente</span></span>
+        pigment<span style="color: #FF0000">{</span>
+                <span style="color: #008080">gradient</span> y      <span style="font-style: italic"><span style="color: #9A1900">// Gradiente em torno do eixo y</span></span>
+                <span style="font-style: italic"><span style="color: #9A1900">// Mapa de cores</span></span>
+                color_map<span style="color: #FF0000">{</span>
+                        <span style="color: #990000">[</span><span style="color: #993399">0.000</span> <span style="color: #993399">0.002</span> <span style="color: #008080">color</span> rgb <span style="color: #990000">&lt;</span><span style="color: #993399">1.0</span><span style="color: #990000">,</span> <span style="color: #993399">0.2</span><span style="color: #990000">,</span> <span style="color: #993399">0.0</span><span style="color: #990000">&gt;</span> <span style="color: #008080">color</span> rgb <span style="color: #990000">&lt;</span><span style="color: #993399">1.0</span><span style="color: #990000">,</span> <span style="color: #993399">0.2</span><span style="color: #990000">,</span> <span style="color: #993399">0.0</span><span style="color: #990000">&gt;]</span>
+                        <span style="color: #990000">[</span><span style="color: #993399">0.002</span> <span style="color: #993399">0.200</span> <span style="color: #008080">color</span> rgb <span style="color: #990000">&lt;</span><span style="color: #993399">0.8</span><span style="color: #990000">,</span> <span style="color: #993399">0.1</span><span style="color: #990000">,</span> <span style="color: #993399">0.0</span><span style="color: #990000">&gt;</span> <span style="color: #008080">color</span> rgb <span style="color: #990000">&lt;</span><span style="color: #993399">0.2</span><span style="color: #990000">,</span> <span style="color: #993399">0.2</span><span style="color: #990000">,</span> <span style="color: #993399">0.3</span><span style="color: #990000">&gt;]</span>
+                <span style="color: #FF0000">}</span>
+                scale <span style="color: #993399">2</span>         <span style="font-style: italic"><span style="color: #9A1900">// Escala de distribuição do mapa e gradiente pela esfera</span></span>
+                translate <span style="color: #990000">-</span><span style="color: #993399">1</span>    <span style="font-style: italic"><span style="color: #9A1900">// Translacao -1 em todas as direcoes</span></span>
+        <span style="color: #FF0000">}</span>
+        <span style="font-style: italic"><span style="color: #9A1900">// Nuvens</span></span>
+        pigment <span style="color: #FF0000">{</span>
+                bozo            <span style="font-style: italic"><span style="color: #9A1900">// Função randomica de ruido que tradicionalmente modela as nuvens</span></span>
+                <span style="font-style: italic"><span style="color: #9A1900">// Variaveis para denotar uma grandeza aleatória</span></span>
+                turbulence <span style="color: #993399">0.65</span>
+                octaves <span style="color: #993399">6</span>
+                omega <span style="color: #993399">0.7</span>
+                lambda <span style="color: #993399">2</span>
+                <span style="font-style: italic"><span style="color: #9A1900">// Mapa de cores</span></span>
+                color_map <span style="color: #FF0000">{</span>
+                          <span style="color: #990000">[</span><span style="color: #993399">0.0</span> <span style="color: #993399">0.1</span> <span style="color: #008080">color</span> rgb <span style="color: #990000">&lt;</span><span style="color: #993399">0.85</span><span style="color: #990000">,</span> <span style="color: #993399">0.85</span><span style="color: #990000">,</span> <span style="color: #993399">0.85</span><span style="color: #990000">&gt;</span> <span style="color: #008080">color</span> rgb <span style="color: #990000">&lt;</span><span style="color: #993399">0.75</span><span style="color: #990000">,</span> <span style="color: #993399">0.75</span><span style="color: #990000">,</span> <span style="color: #993399">0.75</span><span style="color: #990000">&gt;]</span>
+                          <span style="color: #990000">[</span><span style="color: #993399">0.1</span> <span style="color: #993399">0.5</span> <span style="color: #008080">color</span> rgb <span style="color: #990000">&lt;</span><span style="color: #993399">0.75</span><span style="color: #990000">,</span> <span style="color: #993399">0.75</span><span style="color: #990000">,</span> <span style="color: #993399">0.75</span><span style="color: #990000">&gt;</span> <span style="color: #008080">color</span> rgbt <span style="color: #990000">&lt;</span><span style="color: #993399">1</span><span style="color: #990000">,</span> <span style="color: #993399">1</span><span style="color: #990000">,</span> <span style="color: #993399">1</span><span style="color: #990000">,</span> <span style="color: #993399">1</span><span style="color: #990000">&gt;]</span>
+                          <span style="color: #990000">[</span><span style="color: #993399">0.5</span> <span style="color: #993399">1.0</span> <span style="color: #008080">color</span> rgbt <span style="color: #990000">&lt;</span><span style="color: #993399">1</span><span style="color: #990000">,</span> <span style="color: #993399">1</span><span style="color: #990000">,</span> <span style="color: #993399">1</span><span style="color: #990000">,</span> <span style="color: #993399">1</span><span style="color: #990000">&gt;</span> <span style="color: #008080">color</span> rgbt <span style="color: #990000">&lt;</span><span style="color: #993399">1</span><span style="color: #990000">,</span> <span style="color: #993399">1</span><span style="color: #990000">,</span> <span style="color: #993399">1</span><span style="color: #990000">,</span> <span style="color: #993399">1</span><span style="color: #990000">&gt;]</span>
+                <span style="color: #FF0000">}</span>
+                <span style="font-style: italic"><span style="color: #9A1900">// Escala de distribuição do mapa pela esfera</span></span>
+                scale <span style="color: #990000">&lt;</span><span style="color: #993399">0.2</span><span style="color: #990000">,</span> <span style="color: #993399">0.5</span><span style="color: #990000">,</span> <span style="color: #993399">0.2</span><span style="color: #990000">&gt;</span>
+        <span style="color: #FF0000">}</span>
+        rotate <span style="color: #990000">-</span><span style="color: #993399">135</span><span style="color: #990000">*</span>x
+<span style="color: #FF0000">}</span></tt></pre></div></div>
 <div class="paragraph"><p>A inclusão de um plano onde será adicionada a água e a canoa. No terceiro argumento do plano indica que o plano é construído dentro da esfera que contém o céu.</p></div>
 <div class="listingblock">
-<div class="content"></div></div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>plane<span style="color: #FF0000">{</span>
+        <span style="color: #990000">&lt;</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">1</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">&gt;,</span> <span style="color: #993399">1</span> <span style="font-style: italic"><span style="color: #9A1900">// Plano xz (normal para a coordenada y)</span></span>
+        hollow      <span style="font-style: italic"><span style="color: #9A1900">// Plano dentro da esfera</span></span>
+        texture<span style="color: #FF0000">{</span>
+                pigment<span style="color: #FF0000">{</span>
+                        bozo
+                        turbulence <span style="color: #993399">0.92</span>
+                        color_map<span style="color: #FF0000">{</span> <span style="color: #990000">[</span><span style="color: #993399">0.00</span> rgb <span style="color: #990000">&lt;</span><span style="color: #993399">0.20</span><span style="color: #990000">,</span> <span style="color: #993399">0.20</span><span style="color: #990000">,</span> <span style="color: #993399">1.0</span><span style="color: #990000">&gt;*</span><span style="color: #993399">0.9</span><span style="color: #990000">]</span>
+                                   <span style="color: #990000">[</span><span style="color: #993399">0.50</span> rgb <span style="color: #990000">&lt;</span><span style="color: #993399">0.20</span><span style="color: #990000">,</span> <span style="color: #993399">0.20</span><span style="color: #990000">,</span> <span style="color: #993399">1.0</span><span style="color: #990000">&gt;*</span><span style="color: #993399">0.9</span><span style="color: #990000">]</span>
+                                   <span style="color: #990000">[</span><span style="color: #993399">0.70</span> rgb <span style="color: #990000">&lt;</span><span style="color: #993399">1</span><span style="color: #990000">,</span><span style="color: #993399">1</span><span style="color: #990000">,</span><span style="color: #993399">1</span><span style="color: #990000">&gt;]</span>
+                                   <span style="color: #990000">[</span><span style="color: #993399">0.85</span> rgb <span style="color: #990000">&lt;</span><span style="color: #993399">0.25</span><span style="color: #990000">,</span><span style="color: #993399">0.25</span><span style="color: #990000">,</span><span style="color: #993399">0.25</span><span style="color: #990000">&gt;]</span>
+                                   <span style="color: #990000">[</span><span style="color: #993399">1.0</span> rgb <span style="color: #990000">&lt;</span><span style="color: #993399">0.5</span><span style="color: #990000">,</span><span style="color: #993399">0.5</span><span style="color: #990000">,</span><span style="color: #993399">0.5</span><span style="color: #990000">&gt;]</span>
+                        <span style="color: #FF0000">}</span>
+                        scale<span style="color: #990000">&lt;</span><span style="color: #993399">1</span><span style="color: #990000">,</span><span style="color: #993399">1</span><span style="color: #990000">,</span><span style="color: #993399">1.5</span><span style="color: #990000">&gt;*</span><span style="color: #993399">2.5</span>  translate<span style="color: #990000">&lt;</span> <span style="color: #990000">-</span><span style="color: #993399">1.25</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">&gt;</span>
+                <span style="color: #FF0000">}</span>
+                finish <span style="color: #FF0000">{</span>ambient <span style="color: #993399">1</span> diffuse <span style="color: #993399">0</span><span style="color: #FF0000">}</span>
+        <span style="color: #FF0000">}</span>
+        scale <span style="color: #993399">10000</span>
+<span style="color: #FF0000">}</span></tt></pre></div></div>
 <div class="paragraph"><p>Definição da posição da canoa e a estrutura do lado de fora da canoa. Perceba que não foi colocada nenhuma textura na estrutura da canoa e isto é devido aos passos de construção de toda a canoa.</p></div>
 <div class="listingblock">
-<div class="content"></div></div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">// Posicao da canoa</span></span>
+<span style="font-weight: bold"><span style="color: #000080">#declare</span></span> posicao_canoa <span style="color: #990000">=</span> transform<span style="color: #FF0000">{</span> <span style="color: #008080">rotate&lt;0,30,0&gt;</span> translate<span style="color: #990000">&lt;</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">1</span><span style="color: #990000">&gt;</span> <span style="color: #FF0000">}</span>
+
+<span style="font-style: italic"><span style="color: #9A1900">// Canoa</span></span>
+<span style="font-weight: bold"><span style="color: #000080">#declare</span></span> lado_fora_canoa <span style="color: #990000">=</span> sphere<span style="color: #FF0000">{</span> <span style="color: #990000">&lt;</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">&gt;,</span><span style="color: #993399">1</span> scale <span style="color: #990000">&lt;</span><span style="color: #993399">3</span><span style="color: #990000">,</span><span style="color: #993399">1.5</span><span style="color: #990000">,</span><span style="color: #993399">1</span><span style="color: #990000">&gt;</span> <span style="color: #008080">rotate&lt;0,0,0&gt;</span> translate<span style="color: #990000">&lt;</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0.5</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">&gt;</span> <span style="color: #FF0000">}</span></tt></pre></div></div>
 <div class="paragraph"><p>A construção da estrutura da canoa pode ser compreendida como a interseção entre uma esfera e sua inversa, ou seja, a parte de fora igual a parte interna e também com outra esfera com a forma de uma elipse sem textura.</p></div>
 <div class="imageblock" style="text-align:center;">
 <div class="content">
@@ -2229,10 +2764,58 @@ O comando para a renderização das cenas foram obtidas através do seguinte com
 <div class="title">Figure 7. Construção da estrutura da canoa</div>
 </div>
 <div class="listingblock">
-<div class="content"></div></div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">// Construcao da estrutura da canoa</span></span>
+intersection<span style="color: #FF0000">{</span>
+        object<span style="color: #FF0000">{</span> lado_fora_canoa <span style="color: #FF0000">}</span>       <span style="font-style: italic"><span style="color: #9A1900">// Esfera para a canoa</span></span>
+        object<span style="color: #FF0000">{</span> <span style="color: #008080">lado_fora_canoa</span> scale <span style="color: #990000">&lt;</span><span style="color: #993399">0.98</span><span style="color: #990000">,</span><span style="color: #993399">0.95</span><span style="color: #990000">,</span><span style="color: #993399">0.94</span><span style="color: #990000">&gt;</span>  inverse<span style="color: #FF0000">}</span> <span style="font-style: italic"><span style="color: #9A1900">// Esfera para a canoa inversa</span></span>
+        sphere <span style="color: #FF0000">{</span><span style="color: #990000">&lt;</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">&gt;,</span><span style="color: #993399">1</span> scale <span style="color: #990000">&lt;</span><span style="color: #993399">2.5</span><span style="color: #990000">,</span><span style="color: #993399">1</span><span style="color: #990000">,</span><span style="color: #993399">20</span><span style="color: #990000">&gt;</span> <span style="color: #008080">rotate&lt;0,0,0&gt; translate&lt;0,1.3,0&gt;</span>  inverse<span style="color: #FF0000">}</span> <span style="font-style: italic"><span style="color: #9A1900">// Elipse</span></span>
+               texture <span style="color: #FF0000">{</span>
+                        pigment <span style="color: #FF0000">{</span>
+                               <span style="color: #008080">color</span> White<span style="font-style: italic"><span style="color: #9A1900">//White*1.1</span></span>
+                        <span style="color: #FF0000">}</span>
+                        finish <span style="color: #FF0000">{</span>
+                               phong <span style="color: #993399">1</span>
+                        <span style="color: #FF0000">}</span>
+                <span style="color: #FF0000">}</span>
+        <span style="color: #FF0000">}</span>
+<span style="color: #FF0000">}</span></tt></pre></div></div>
 <div class="paragraph"><p>A interseção entre a estrutura da canoa e os pedaços de madeiras.</p></div>
 <div class="listingblock">
-<div class="content"></div></div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">// Interseção entre a estrutura e os pedaços de madeira</span></span>
+intersection<span style="color: #FF0000">{</span>
+        object<span style="color: #FF0000">{</span> lado_fora_canoa
+                texture <span style="color: #FF0000">{</span>
+                        pigment <span style="color: #FF0000">{</span>
+                                <span style="color: #008080">color</span> White<span style="color: #990000">*</span><span style="color: #993399">1.1</span>
+                        <span style="color: #FF0000">}</span>
+                        finish <span style="color: #FF0000">{</span>
+                               phong <span style="color: #993399">1</span>
+                        <span style="color: #FF0000">}</span>
+                <span style="color: #FF0000">}</span>
+        <span style="color: #FF0000">}</span>
+        <span style="font-style: italic"><span style="color: #9A1900">// Adicionando madeiras dentro da canoa</span></span>
+        <span style="font-weight: bold"><span style="color: #0000FF">union</span></span><span style="color: #FF0000">{</span>
+                box <span style="color: #FF0000">{</span><span style="color: #990000">&lt;-</span><span style="color: #993399">0.20</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,-</span><span style="color: #993399">1</span><span style="color: #990000">&gt;,&lt;</span><span style="color: #993399">0.20</span><span style="color: #990000">,</span><span style="color: #993399">0.05</span><span style="color: #990000">,</span><span style="color: #993399">1</span><span style="color: #990000">&gt;</span> <span style="color: #008080">rotate&lt;0,0,0&gt;</span> translate<span style="color: #990000">&lt;</span> <span style="color: #993399">0.0</span><span style="color: #990000">,</span><span style="color: #993399">0.21</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">&gt;</span><span style="color: #FF0000">}</span>
+                box <span style="color: #FF0000">{</span><span style="color: #990000">&lt;-</span><span style="color: #993399">0.20</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,-</span><span style="color: #993399">1</span><span style="color: #990000">&gt;,&lt;</span><span style="color: #993399">0.20</span><span style="color: #990000">,</span><span style="color: #993399">0.05</span><span style="color: #990000">,</span><span style="color: #993399">1</span><span style="color: #990000">&gt;</span> <span style="color: #008080">rotate&lt;0,0,-10&gt;</span> translate<span style="color: #990000">&lt;-</span><span style="color: #993399">2.0</span><span style="color: #990000">,</span><span style="color: #993399">0.40</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">&gt;</span><span style="color: #FF0000">}</span>
+                box <span style="color: #FF0000">{</span><span style="color: #990000">&lt;-</span><span style="color: #993399">0.20</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,-</span><span style="color: #993399">1</span><span style="color: #990000">&gt;,&lt;</span><span style="color: #993399">0.20</span><span style="color: #990000">,</span><span style="color: #993399">0.05</span><span style="color: #990000">,</span><span style="color: #993399">1</span><span style="color: #990000">&gt;</span> <span style="color: #008080">rotate&lt;0,0,10&gt;</span> translate<span style="color: #990000">&lt;</span> <span style="color: #993399">2.0</span><span style="color: #990000">,</span><span style="color: #993399">0.40</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">&gt;</span><span style="color: #FF0000">}</span>
+                texture<span style="color: #FF0000">{</span>
+                        pigment<span style="color: #FF0000">{</span>
+                                color MediumWood
+                        <span style="color: #FF0000">}</span>
+                        finish<span style="color: #FF0000">{</span>
+                                phong <span style="color: #993399">1</span>
+                        <span style="color: #FF0000">}</span>
+                <span style="color: #FF0000">}</span>
+        <span style="color: #FF0000">}</span>
+<span style="color: #FF0000">}</span></tt></pre></div></div>
 <div class="paragraph"><p>Após a confecção das duas partes anteriores é realizada uma união destas duas estruturas e então é realizada a construção da canoa.</p></div>
 <div class="imageblock" style="text-align:center;">
 <div class="content">
@@ -2242,27 +2825,88 @@ O comando para a renderização das cenas foram obtidas através do seguinte com
 </div>
 <div class="paragraph"><p>Depois é realizada a transformação para colocar a canoa na posição correta.</p></div>
 <div class="listingblock">
-<div class="content"></div></div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>object<span style="color: #FF0000">{</span> canoa <span style="color: #008080">transform</span> posicao_canoa<span style="color: #FF0000">}</span></tt></pre></div></div>
 <div class="paragraph"><p>A fim de terminar com a construção da cena basta inserir a água acima do plano e para isso utilizamos a função de diferença entre o plano, a canoa e a textura da água.</p></div>
 <div class="listingblock">
-<div class="content"></div></div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>difference<span style="color: #FF0000">{</span>
+        plane<span style="color: #FF0000">{</span><span style="color: #990000">&lt;</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">1</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">&gt;,</span> <span style="color: #993399">0</span> <span style="color: #FF0000">}</span>
+        object<span style="color: #FF0000">{</span>lado_fora_canoa <span style="color: #008080">transform</span> posicao_canoa <span style="color: #FF0000">}</span>
+        texture<span style="color: #FF0000">{</span>
+                Polished_Chrome
+                normal<span style="color: #FF0000">{</span> crackle <span style="color: #993399">1</span> scale <span style="color: #993399">5</span> turbulence <span style="color: #993399">1</span> translate<span style="color: #990000">&lt;</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">5</span><span style="color: #990000">&gt;</span><span style="color: #FF0000">}</span>
+                finish<span style="color: #FF0000">{</span> diffuse <span style="color: #993399">0.5</span> reflection <span style="color: #993399">0.30</span><span style="color: #FF0000">}</span>
+        <span style="color: #FF0000">}</span>
+<span style="color: #FF0000">}</span></tt></pre></div></div>
 </div>
 <div class="sect2">
 <h3 id="_código_do_controle">Código do controle</h3>
 <div class="listingblock">
-<div class="content"></div></div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="color: #990000">;**</span>
+ <span style="color: #990000">;*</span> <span style="color: #990000">\</span><span style="color: #008080">file</span> canoa<span style="color: #990000">.</span>ini
+ <span style="color: #990000">;*</span>
+ <span style="color: #990000">;*</span> <span style="color: #990000">\</span>brief Controle da animação <span style="color: #008080">de</span> canoa<span style="color: #990000">.</span>pov
+ <span style="color: #990000">;*</span>
+ <span style="color: #990000">;*</span> <span style="color: #990000">\</span>author
+ <span style="color: #990000">;*</span> Petrucio Ricardo Tavares <span style="color: #008080">de</span> Medeiros <span style="color: #990000">\</span>n
+ <span style="color: #990000">;*</span> Universidade Federal <span style="font-weight: bold"><span style="color: #0000FF">do</span></span> Rio Grande <span style="color: #008080">do</span> Norte <span style="color: #990000">\</span>n
+ <span style="color: #990000">;*</span> Departamento de Computacao e <span style="color: #008080">Automacao</span> Industrial <span style="color: #990000">\</span>n
+ <span style="color: #990000">;*</span> petrucior <span style="color: #008080">at</span> <span style="font-weight: bold"><span style="color: #000000">gmail</span></span> <span style="color: #990000">(</span>dot<span style="color: #990000">)</span> com
+ <span style="color: #990000">;*</span>
+ <span style="color: #990000">;*</span> http<span style="color: #990000">:</span><span style="font-style: italic"><span style="color: #9A1900">//www.f-lohmueller.de/pov_tut/animate/pov_anie.htm</span></span>
+ <span style="color: #990000">;*</span>
+ <span style="color: #990000">;*</span> <span style="color: #990000">\</span>version <span style="color: #993399">1.0</span>
+ <span style="color: #990000">;*</span> <span style="color: #990000">\</span>date November <span style="color: #993399">2015</span>
+ <span style="color: #990000">;*</span>
+
+Input_File_Name<span style="color: #990000">=</span><span style="color: #FF0000">"canoa.pov"</span>     <span style="color: #990000">;</span> Nome <span style="font-weight: bold"><span style="color: #0000FF">do</span></span> arquivo que contem a cena
+
+Initial_Frame<span style="color: #990000">=</span><span style="color: #993399">1</span>                 <span style="color: #990000">;</span> Inicia com o frame numero <span style="color: #993399">1</span>
+Final_Frame<span style="color: #990000">=</span><span style="color: #993399">30</span>                  <span style="color: #990000">;</span> Finaliza com o frame numero <span style="color: #993399">30</span>
+Initial_Clock<span style="color: #990000">=</span><span style="color: #993399">0</span>                 <span style="color: #990000">;</span> Inicia com o clock <span style="color: #993399">0</span>
+Final_Clock<span style="color: #990000">=</span><span style="color: #993399">1</span>                   <span style="color: #990000">;</span> Finaliza com o clock <span style="color: #993399">1</span>
+
+Cyclic_Animation<span style="color: #990000">=</span>On             <span style="color: #990000">;</span> Ativa a <span style="color: #008080">animacao</span> <span style="font-weight: bold"><span style="color: #000000">ciclica</span></span> <span style="color: #990000">(</span>causa a divisao <span style="color: #008080">do</span> clock<span style="color: #990000">)</span>
+Pause_when_Done<span style="color: #990000">=</span>Off             <span style="color: #990000">;</span> Sem pausar quando finalizar o programa</tt></pre></div></div>
 </div>
 <div class="sect2">
 <h3 id="_descrição_do_programa_3">Descrição do programa</h3>
 <div class="paragraph"><p>Necessitamos modificar o arquivo com extensão ".pov" para depender do clock e assim passar o arquivo ".pov", que renderiza a cena, para a variável "Input_File_Name".</p></div>
 <div class="listingblock">
-<div class="content"></div></div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>Input_File_Name<span style="color: #990000">=</span><span style="color: #FF0000">"canoa.pov"</span>     <span style="color: #990000">;</span> Nome <span style="font-weight: bold"><span style="color: #0000FF">do</span></span> arquivo que contem a cena</tt></pre></div></div>
 <div class="paragraph"><p>Definimos qual é o frame inicial e final além do clock inicial e final.</p></div>
 <div class="listingblock">
-<div class="content"></div></div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>Initial_Frame<span style="color: #990000">=</span><span style="color: #993399">1</span>         <span style="color: #990000">;</span> Inicia com o frame numero <span style="color: #993399">1</span>
+Final_Frame<span style="color: #990000">=</span><span style="color: #993399">30</span>          <span style="color: #990000">;</span> Finaliza com o frame numero <span style="color: #993399">30</span>
+Initial_Clock<span style="color: #990000">=</span><span style="color: #993399">0</span>         <span style="color: #990000">;</span> Inicia com o clock <span style="color: #993399">0</span>
+Final_Clock<span style="color: #990000">=</span><span style="color: #993399">1</span>           <span style="color: #990000">;</span> Finaliza com o clock <span style="color: #993399">1</span></tt></pre></div></div>
 <div class="paragraph"><p>Ativação da animação ciclíca para permitar a subdivisão do clock e não permitir o pausar após a finalização da renderização.</p></div>
 <div class="listingblock">
-<div class="content"></div></div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>Cyclic_Animation<span style="color: #990000">=</span>On             <span style="color: #990000">;</span> Ativa a <span style="color: #008080">animacao</span> <span style="font-weight: bold"><span style="color: #000000">ciclica</span></span> <span style="color: #990000">(</span>causa a divisao <span style="color: #008080">do</span> clock<span style="color: #990000">)</span>
+Pause_when_Done<span style="color: #990000">=</span>Off             <span style="color: #990000">;</span> Sem pausar quando finalizar o programa</tt></pre></div></div>
 </div>
 <div class="sect2">
 <h3 id="_exercício_2">Exercício</h3>
