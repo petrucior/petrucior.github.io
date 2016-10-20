@@ -66,3 +66,81 @@ image::imagens/download.png[height=150, width=450, align="center"]
 
 Interface principal do V-rep
 ----------------------------
+
+image::imagens/maininterface.png[height=250, width=300, align="center"]
+
+Gráficos
+--------
+[options="compact"]
+ - Adicionado através da interface ou de um script
+   * Inserir
+   * Configurar
+   * Setar a visualização
+   * Visualizando
+
+image::imagens/adicaografico1.png[height=350, width=500, align="center"]
+
+image::imagens/adicaografico2.png[height=250, width=150, align="center"]
+image::imagens/adicaografico3.png[height=100, width=150, align="center"]
+
+image::imagens/adicaografico4.png[height=250, width=500, align="center"]
+
+image::imagens/adicaografico5.png[height=350, width=500, align="center"]
+
+
+Mecanismos de controle
+----------------------
+[options="compact"]
+ - Scripts Embutidos
+ - Plugins
+ - Add-ons
+ - ROS node
+ - API remota
+
+=== Scripts Embutidos
+[options="compact"]
+ - Linguagem em Lua
+ - Possibilidade de criar scripts individuais (modelos construídos)
+
+image::imagens/inserindoScriptEmbutido1.png[height=250, width=550, align="center"]
+
+ - Modificar scripts de modelos já predefinidos
+
+image::imagens/inserindoScriptEmbutido2.png[height=250, width=550, align="center"]
+
+A partir dos scripts embutidos podemos ler, setar e aplicar restrições as informações, 
+tais como: força, velocidade, posição, colisão, tempo, cinemática, proximidade de um 
+sensor e etc. 
+
+Exemplo: SimReadProximitySensor e SimSetJointTargetVelocity
+
+=== Plugins e Add-ons
+
+Duas abordagens bastante semelhantes e que possibilitam a interação de dispositivos externos
+[options="compact"]
+ - Joysticks e Wii 
+++++
+<p align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/GSa8MsBZGIo" frameborder="0" allowfullscreen></iframe>
+</p>
+++++
+
+ - Microcontrolador e Sensores
+++++
+<p align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ZJQV2FlGFBo" frameborder="0" allowfullscreen></iframe>
+</p>
+++++
+
+=== Ros node
+
+Existem dois plugins disponíveis para possibilitar a comunicação com o Ros
+[options="compact"]
+ - http://www.coppeliarobotics.com/helpFiles/en/rosInterf.htm[RosInterface] 
+ - http://www.coppeliarobotics.com/helpFiles/en/rosInterfaceOverview.htm[RosPlugin]
+
+=== Api remota
+
+teste
+
+
