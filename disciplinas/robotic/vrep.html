@@ -2140,7 +2140,7 @@ Mecanismos de controle
 <div class="paragraph"><p>São os blocos básicos disponibilizados pelo V-rep para a construção de um projeto.</p></div>
 <div class="imageblock" style="text-align:center;">
 <div class="content">
-<img src="imagens/objetosdecena.png" alt="imagens/objetosdecena.png" width="350" height="350">
+<img src="imagens/objetosdecena.png" alt="imagens/objetosdecena.png" width="450" height="350">
 </div>
 </div>
 </div>
@@ -2217,7 +2217,7 @@ API remota
 </ul></div>
 <div class="imageblock" style="text-align:center;">
 <div class="content">
-<img src="imagens/meccontrole.png" alt="imagens/meccontrole.png" width="300" height="250">
+<img src="imagens/meccontrole.png" alt="imagens/meccontrole.png" width="400" height="350">
 </div>
 </div>
 </div>
@@ -2239,9 +2239,507 @@ API remota
 <div class="sectionbody">
 <div class="imageblock" style="text-align:center;">
 <div class="content">
-<img src="imagens/maininterface.png" alt="imagens/maininterface.png" width="300" height="250">
+<img src="imagens/maininterface.png" alt="imagens/maininterface.png" width="700" height="550">
 </div>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_formas_de_modelar_um_robô_no_v_rep">﻿Formas de modelar um robô no v-rep</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Basicamente existem duas formas de modelar os robôs:</p></div>
+<div class="ulist compact"><ul>
+<li>
+<p>
+Modelagem utilizando elemento básicos;
+</p>
+</li>
+<li>
+<p>
+Modelagem utilizando CAD.
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>A imagem destaca os elementos básicos como plano, circulo, esféra, cubo e cilinndro.</p></div>
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="imagens/ModelagemBasica.png" alt="imagens/ModelagemBasica.png" width="300" height="250">
+</div>
+</div>
+<div class="paragraph"><p>Já em CAD, o usuário é responsáveis por projetar cada peça.</p></div>
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="imagens/modelagem.png" alt="imagens/modelagem.png" width="300" height="250">
+</div>
+</div>
+<div class="paragraph"><p>Além dos elementos estruturais, já citados, pode-se ainda destacar elementos alguns outros utilizados, como Juntas, Sensores, Dummy, câmera, gráficos, luz e espelho, .</p></div>
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="imagens/ModelagemBasicaJuntas.png" alt="imagens/ModelagemBasicaJuntas.png" width="300" height="250">
+</div>
+</div>
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="imagens/ModelagemBasicaSensores.png" alt="imagens/ModelagemBasicaSensores.png" width="300" height="250">
+</div>
+</div>
+<div class="paragraph"><p>Como pode-se observar, existem três tipo de juntas, a rotacional, prismática e esférica. Cada uma com suas particularidades.</p></div>
+<div class="ulist compact"><ul>
+<li>
+<p>
+Rotacional: Rotaciona apenas em eixo;
+</p>
+</li>
+<li>
+<p>
+Primática: Realiza uma translação em um eixo;
+</p>
+</li>
+<li>
+<p>
+Esférica: Rotacional nos três eixos.
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>Outro ponto é a possibilidade de utilizar vários tipos de sensores:</p></div>
+<div class="ulist compact"><ul>
+<li>
+<p>
+Força;
+</p>
+</li>
+<li>
+<p>
+Proximidade;
+</p>
+</li>
+<li>
+<p>
+Visão;
+</p>
+</li>
+<li>
+<p>
+Laser;
+</p>
+</li>
+<li>
+<p>
+etc.
+</p>
+</li>
+</ul></div>
+<div class="sect2">
+<h3 id="_parâmetros_dos_possíveis_objetos_de_cena">Parâmetros dos possíveis objetos de cena</h3>
+<div class="ulist compact"><ul>
+<li>
+<p>
+Câmera;
+</p>
+</li>
+</ul></div>
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="imagens/cameraProperties1.jpg" alt="imagens/cameraProperties1.jpg" width="300" height="250">
+</div>
+</div>
+<div class="ulist"><ul>
+<li>
+<p>
+Dummy;
+</p>
+</li>
+</ul></div>
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="imagens/dummyDialog1.jpg" alt="imagens/dummyDialog1.jpg" width="300" height="250">
+</div>
+</div>
+<div class="ulist"><ul>
+<li>
+<p>
+Sensor de força;
+</p>
+</li>
+</ul></div>
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="imagens/forceSensorDialog1.jpg" alt="imagens/forceSensorDialog1.jpg" width="300" height="250">
+</div>
+</div>
+<div class="ulist"><ul>
+<li>
+<p>
+Gráficos;
+</p>
+</li>
+</ul></div>
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="imagens/graphDialog1.jpg" alt="imagens/graphDialog1.jpg" width="300" height="250">
+</div>
+</div>
+<div class="ulist"><ul>
+<li>
+<p>
+Juntas;
+</p>
+</li>
+</ul></div>
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="imagens/jointDialog1.jpg" alt="imagens/jointDialog1.jpg" width="300" height="250">
+</div>
+</div>
+<div class="ulist"><ul>
+<li>
+<p>
+Luz;
+</p>
+</li>
+</ul></div>
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="imagens/lightProperties1.jpg" alt="imagens/lightProperties1.jpg" width="300" height="250">
+</div>
+</div>
+<div class="ulist"><ul>
+<li>
+<p>
+Espelho;
+</p>
+</li>
+</ul></div>
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="imagens/mirrorDialog1.jpg" alt="imagens/mirrorDialog1.jpg" width="300" height="250">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_como_utilizar_cada_componente">Como Utilizar cada componente</h3>
+<div class="ulist compact"><ul>
+<li>
+<p>
+Adicionar Objetos a cena (Add);
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+Clicar em "Add" e escolher que componente se deseja adicionar.
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+Dimensões;
+</p>
+</li>
+</ul></div>
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="imagens/geometryDialog.jpg" alt="imagens/geometryDialog.jpg" width="300" height="250">
+</div>
+</div>
+<div class="ulist"><ul>
+<li>
+<p>
+Parâmetros de posicionamento e orientação;
+</p>
+</li>
+</ul></div>
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="imagens/orientationAndRotationDlg.jpg" alt="imagens/orientationAndRotationDlg.jpg" width="300" height="250">
+</div>
+</div>
+<div class="ulist"><ul>
+<li>
+<p>
+Parâmetros comuns.
+</p>
+</li>
+</ul></div>
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="imagens/objectCommonDlg2.jpg" alt="imagens/objectCommonDlg2.jpg" width="300" height="250">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_uso_das_funções_de_grouping_merging">Uso das funções de Grouping/Merging</h3>
+<div class="ulist compact"><ul>
+<li>
+<p>
+Grouping;
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+Agrupar um conjunto de objetos. Dessa forma é possível manipulá-los como um só.
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+Merging;
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+De forma análoga ao Grouping, mas nesse modo objetos são deslocados para o referencial do primeiro obejto.
+</p>
+</li>
+</ul></div>
+</li>
+</ul></div>
+</div>
+<div class="sect2">
+<h3 id="_modelando_o_primeiro_objeto">Modelando o primeiro objeto</h3>
+<div class="ulist compact"><ul>
+<li>
+<p>
+O modelo Phantom Omni foi escolhi como referência para a modelagem.
+</p>
+</li>
+</ul></div>
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="imagens/LargePHANTOMOmniImage.jpg" alt="imagens/LargePHANTOMOmniImage.jpg" width="300" height="250">
+</div>
+</div>
+<div class="ulist"><ul>
+<li>
+<p>
+Vídeo: <a href="https://www.youtube.com/watch?v=REA97hRX0WQ">https://www.youtube.com/watch?v=REA97hRX0WQ</a>
+</p>
+</li>
+<li>
+<p>
+Esse modelo possui três juntas rotacionais e três elos como componentes principais.
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>Assim pode-se então começar o desenvolvimento a partir da base que servirá como sustentação para o nosso modelo.</p></div>
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="imagens/Parabase.png" alt="imagens/Parabase.png" width="300" height="250">
+</div>
+</div>
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="imagens/ParabaseOrientacao.png" alt="imagens/ParabaseOrientacao.png" width="300" height="250">
+</div>
+</div>
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="imagens/ParabasePosicao.png" alt="imagens/ParabasePosicao.png" width="300" height="250">
+</div>
+</div>
+<div class="paragraph"><p>Precisamos agora inserir a primeira junta que será responsável pela rotação da base.</p></div>
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="imagens/ParaJunta1.png" alt="imagens/ParaJunta1.png" width="300" height="250">
+</div>
+</div>
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="imagens/Parajunta1Orientacao.png" alt="imagens/Parajunta1Orientacao.png" width="300" height="250">
+</div>
+</div>
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="imagens/Parajunta1Posicao.png" alt="imagens/Parajunta1Posicao.png" width="300" height="250">
+</div>
+</div>
+<div class="paragraph"><p>Após a definição da junta 1 se define o Elo 1.</p></div>
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="imagens/ParaElo1.png" alt="imagens/ParaElo1.png" width="300" height="250">
+</div>
+</div>
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="imagens/ParaElo1Orientacao.png" alt="imagens/ParaElo1Orientacao.png" width="300" height="250">
+</div>
+</div>
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="imagens/ParaElo1Posicao.png" alt="imagens/ParaElo1Posicao.png" width="300" height="250">
+</div>
+</div>
+<div class="paragraph"><p>De forma análoga aos demais elementos foram construídos os outros componentes.</p></div>
+<div class="paragraph"><p>Junta 2:</p></div>
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="imagens/ParaJunta2.png" alt="imagens/ParaJunta2.png" width="300" height="250">
+</div>
+</div>
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="imagens/Parajunta2Orientacao.png" alt="imagens/Parajunta2Orientacao.png" width="300" height="250">
+</div>
+</div>
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="imagens/Parajunta2Posicao.png" alt="imagens/Parajunta2Posicao.png" width="300" height="250">
+</div>
+</div>
+<div class="paragraph"><p>Elo 2:</p></div>
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="imagens/ParaElo2.png" alt="imagens/ParaElo2.png" width="300" height="250">
+</div>
+</div>
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="imagens/ParaElo2Orientacao.png" alt="imagens/ParaElo2Orientacao.png" width="300" height="250">
+</div>
+</div>
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="imagens/ParaElo2Posicao.png" alt="imagens/ParaElo2Posicao.png" width="300" height="250">
+</div>
+</div>
+<div class="paragraph"><p>Junta 3:</p></div>
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="imagens/ParaJunta3.png" alt="imagens/ParaJunta3.png" width="300" height="250">
+</div>
+</div>
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="imagens/Parajunta3Orientacao.png" alt="imagens/Parajunta3Orientacao.png" width="300" height="250">
+</div>
+</div>
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="imagens/Parajunta3Posicao.png" alt="imagens/Parajunta3Posicao.png" width="300" height="250">
+</div>
+</div>
+<div class="paragraph"><p>Elo 3:</p></div>
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="imagens/ParaElo3.png" alt="imagens/ParaElo3.png" width="300" height="250">
+</div>
+</div>
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="imagens/ParaElo3Orientacao.png" alt="imagens/ParaElo3Orientacao.png" width="300" height="250">
+</div>
+</div>
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="imagens/ParaElo3Posicao.png" alt="imagens/ParaElo3Posicao.png" width="300" height="250">
+</div>
+</div>
+<div class="paragraph"><p>Garra :</p></div>
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="imagens/Paragarra.png" alt="imagens/Paragarra.png" width="300" height="250">
+</div>
+</div>
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="imagens/ParagarraOrientacao.png" alt="imagens/ParagarraOrientacao.png" width="300" height="250">
+</div>
+</div>
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="imagens/ParagarraPosicao.png" alt="imagens/ParagarraPosicao.png" width="300" height="250">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_simulação">Simulação</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_parâmetros_da_simulação">Parâmetros da simulação</h3>
+<div class="ulist compact"><ul>
+<li>
+<p>
+Velocidade;
+</p>
+</li>
+<li>
+<p>
+Tempo amostral;
+</p>
+</li>
+<li>
+<p>
+Método de integração;
+</p>
+</li>
+<li>
+<p>
+Tempo real;
+</p>
+</li>
+<li>
+<p>
+etc.
+</p>
+</li>
+</ul></div>
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="imagens/barradesimulacao.png" alt="imagens/barradesimulacao.png" width="700" height="50">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_parâmetros_dos_objetos">Parâmetros dos objetos</h3>
+<div class="paragraph"><p>Parâmetros como velocidade de uma junta, torque, PID e força interferem diretamente na simulação, tais parâmentros influenciam na dinâmica do sistema como um todo.</p></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_controlando_a_posição_de_um_robô_com_o_v_rep">Controlando a posição de um robô com o V-REP</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Após desenvolver o modelo do robô, partimos para o seu controle de posição. O nosso objetivo é fazer como que a garra (ou a ponta) do robô vá para uma posição desejada. Para isto, utilizaremos a ferramenta de cinemática inversa (FCI) do módulo de cálculo. A FCI utiliza dois <em>Dummies</em> (frames de referência) em seu funcionamento, um no robô e outro que será o alvo. Com essas duas informações, a FCI é capaz de calcular os ângulos das juntas que fazem o <em>dummy</em> que está no robô se encontrar com o <em>dummie</em> alvo, caso isto seja possível.</p></div>
+<div class="paragraph"><p>De início, é preciso inserir os dois <em>dummies</em> que serã utilizados pela FCI. No menu superior, vá em add &#8594; dummy. Renomei-o para <strong>garra</strong>. Realize a mesma operação novamente para adicionar outro <em>dummy</em>, e renomei-o para <strong>alvo</strong>.</p></div>
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="imagens/dummies1.png" alt="imagens/dummies1.png" width="500" height="350">
+</div>
+</div>
+<div class="paragraph"><p>Agora é preciso conectar os dois <em>dummies</em>. Para isto, clique no <em>dummy</em> <strong>garra</strong> e em seguida, pressionando o botão ctrl, clique no <em>dummy</em> <strong>alvo</strong>. Após selecionar os dois <em>dummies</em> faça: botão direito do mouse &#8594; edit &#8594; link selected dummies &#8594; IK tip-target.</p></div>
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="imagens/dummies2.png" alt="imagens/dummies2.png" width="400" height="350">
+</div>
+</div>
+<div class="paragraph"><p>Faça o <em>dummy</em> <strong>garra</strong> ser filho (na árvore hierárquica) da garra do seu robô e em seguida posicione-o sobre a garra.</p></div>
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="imagens/dummies3.png" alt="imagens/dummies3.png" width="500" height="350">
+</div>
+</div>
+<div class="paragraph"><p>Abra então a janela do módulo de cálculo. Isto pode ser feito de duas formas: selecionando o botão f(x) na barra de ferramentas 1 ou pelo menu superior em Tools &#8594; Calculation module properties.</p></div>
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="imagens/ik1.png" alt="imagens/ik1.png" width="400" height="350">
+</div>
+</div>
+<div class="paragraph"><p>Na parte superior da janela do módulo de cálculo, selecione o botão <em>Inverse kinematics</em>. Em seguida, clique em <em>Add new IK group</em>. Deverá aparecer na janela inferior um novo grupo, que por padrão tem nome <em>IK_Group</em>. Modifique o método de cálculo (<em>Calc. method</em>) para DLS. Em seguida clique em <em>Edit IK elements</em> para abrir a janela <em>IK Elements</em>.</p></div>
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="imagens/ik2.png" alt="imagens/ik2.png" width="250" height="350">
+</div>
+</div>
+<div class="paragraph"><p>Nesta janela, selecione o objeto que será utilizado como ponta (no nosso caso, o <em>dummy</em> <strong>garra</strong>) e clique em <em>Add new IK element with tip:</em>. Vá em <em>Base</em> e selecione a base do seu robô.</p></div>
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="imagens/ik3.png" alt="imagens/ik3.png" width="250" height="350">
+</div>
+</div>
+<div class="paragraph"><p>Pronto! Se as juntas do seu robô estiverem configuradas corretamente, basta clicar no botão play e movimentar o <em>dummy</em> <strong>alvo</strong> pelo ambiente que o seu robô tentará alcançá-lo.</p></div>
+<div class="paragraph"><p>Mais detalhes sobre a janela do FCI podem ser encontrados em &#8594; <a href="http://www.coppeliarobotics.com/helpFiles/en/ikDialog.htm">janela FCI v-rep</a>.</p></div>
 </div>
 </div>
 <div class="sect1">
@@ -2283,12 +2781,12 @@ Visualizando
 </div>
 <div class="imageblock" style="text-align:center;">
 <div class="content">
-<img src="imagens/adicaografico2.png" alt="imagens/adicaografico2.png" width="150" height="250">
+<img src="imagens/adicaografico2.png" alt="imagens/adicaografico2.png" width="250" height="350">
 </div>
 </div>
 <div class="imageblock" style="text-align:center;">
 <div class="content">
-<img src="imagens/adicaografico3.png" alt="imagens/adicaografico3.png" width="150" height="100">
+<img src="imagens/adicaografico3.png" alt="imagens/adicaografico3.png" width="250" height="200">
 </div>
 </div>
 <div class="imageblock" style="text-align:center;">
@@ -2370,6 +2868,175 @@ sensor e etc.</p></div>
 <div class="paragraph"><p>Exemplo: SimReadProximitySensor e SimSetJointTargetVelocity</p></div>
 </div>
 <div class="sect2">
+<h3 id="_código">Código</h3>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="color: #990000">--</span> pioneer3at<span style="color: #990000">.</span>lua
+<span style="color: #990000">--</span> Programa Básico para carregar o Pioneer <span style="color: #993399">3</span><span style="color: #990000">-</span>AT
+<span style="color: #990000">--</span>
+<span style="color: #990000">--</span> Petrucio Ricardo Tavares de Medeiros
+<span style="color: #990000">--</span> Universidade Federal <span style="font-weight: bold"><span style="color: #0000FF">do</span></span> Rio Grande <span style="font-weight: bold"><span style="color: #0000FF">do</span></span> Norte
+<span style="color: #990000">--</span> Departamento de Computacao e Automacao Industrial
+<span style="color: #990000">--</span> petrucior <span style="color: #008080">at</span> <span style="font-weight: bold"><span style="color: #000000">gmail</span></span> <span style="color: #990000">(</span>dot<span style="color: #990000">)</span> com
+<span style="color: #990000">--</span>
+<span style="color: #990000">--</span> version <span style="color: #993399">1.0</span>
+<span style="color: #990000">--</span> October <span style="color: #993399">2016</span>
+
+<span style="color: #990000">--</span> Configurações básicas <span style="font-weight: bold"><span style="color: #0000FF">do</span></span> modelo
+<span style="font-weight: bold"><span style="color: #0000FF">if</span></span> <span style="color: #990000">(</span>sim_call_type<span style="color: #990000">==</span>sim_childscriptcall_initialization<span style="color: #990000">)</span> then
+    usensors<span style="color: #990000">=</span><span style="color: #FF0000">{</span><span style="color: #990000">-</span><span style="color: #993399">1</span><span style="color: #990000">,-</span><span style="color: #993399">1</span><span style="color: #990000">,-</span><span style="color: #993399">1</span><span style="color: #990000">,-</span><span style="color: #993399">1</span><span style="color: #990000">,-</span><span style="color: #993399">1</span><span style="color: #990000">,-</span><span style="color: #993399">1</span><span style="color: #990000">,-</span><span style="color: #993399">1</span><span style="color: #990000">,-</span><span style="color: #993399">1</span><span style="color: #990000">,-</span><span style="color: #993399">1</span><span style="color: #990000">,-</span><span style="color: #993399">1</span><span style="color: #990000">,-</span><span style="color: #993399">1</span><span style="color: #990000">,-</span><span style="color: #993399">1</span><span style="color: #990000">,-</span><span style="color: #993399">1</span><span style="color: #990000">,-</span><span style="color: #993399">1</span><span style="color: #990000">,-</span><span style="color: #993399">1</span><span style="color: #990000">,-</span><span style="color: #993399">1</span><span style="color: #FF0000">}</span>
+    <span style="font-weight: bold"><span style="color: #0000FF">for</span></span> i<span style="color: #990000">=</span><span style="color: #993399">1</span><span style="color: #990000">,</span><span style="color: #993399">16</span><span style="color: #990000">,</span><span style="color: #993399">1</span> <span style="font-weight: bold"><span style="color: #0000FF">do</span></span>
+        usensors<span style="color: #990000">[</span>i<span style="color: #990000">]=</span><span style="font-weight: bold"><span style="color: #000000">simGetObjectHandle</span></span><span style="color: #990000">(</span><span style="color: #FF0000">"Pioneer_p3dx_ultrasonicSensor"</span><span style="color: #990000">..</span>i<span style="color: #990000">)</span>
+    end
+    motorLeft<span style="color: #990000">=</span><span style="font-weight: bold"><span style="color: #000000">simGetObjectHandle</span></span><span style="color: #990000">(</span><span style="color: #FF0000">"Pioneer_p3dx_leftMotor"</span><span style="color: #990000">)</span>
+    motorRight<span style="color: #990000">=</span><span style="font-weight: bold"><span style="color: #000000">simGetObjectHandle</span></span><span style="color: #990000">(</span><span style="color: #FF0000">"Pioneer_p3dx_rightMotor"</span><span style="color: #990000">)</span>
+    noDetectionDist<span style="color: #990000">=</span><span style="color: #993399">0.5</span>
+    maxDetectionDist<span style="color: #990000">=</span><span style="color: #993399">0.2</span>
+    detect<span style="color: #990000">=</span><span style="color: #FF0000">{</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #FF0000">}</span>
+    braitenbergL<span style="color: #990000">=</span><span style="color: #FF0000">{</span><span style="color: #990000">-</span><span style="color: #993399">0.2</span><span style="color: #990000">,-</span><span style="color: #993399">0.4</span><span style="color: #990000">,-</span><span style="color: #993399">0.6</span><span style="color: #990000">,-</span><span style="color: #993399">0.8</span><span style="color: #990000">,-</span><span style="color: #993399">1</span><span style="color: #990000">,-</span><span style="color: #993399">1.2</span><span style="color: #990000">,-</span><span style="color: #993399">1.4</span><span style="color: #990000">,-</span><span style="color: #993399">1.6</span><span style="color: #990000">,</span> <span style="color: #993399">0.0</span><span style="color: #990000">,</span><span style="color: #993399">0.0</span><span style="color: #990000">,</span><span style="color: #993399">0.0</span><span style="color: #990000">,</span><span style="color: #993399">0.0</span><span style="color: #990000">,</span><span style="color: #993399">0.0</span><span style="color: #990000">,</span><span style="color: #993399">0.0</span><span style="color: #990000">,</span><span style="color: #993399">0.0</span><span style="color: #990000">,</span><span style="color: #993399">0.0</span><span style="color: #FF0000">}</span>
+    braitenbergR<span style="color: #990000">=</span><span style="color: #FF0000">{</span><span style="color: #990000">-</span><span style="color: #993399">1.6</span><span style="color: #990000">,-</span><span style="color: #993399">1.4</span><span style="color: #990000">,-</span><span style="color: #993399">1.2</span><span style="color: #990000">,-</span><span style="color: #993399">1</span><span style="color: #990000">,-</span><span style="color: #993399">0.8</span><span style="color: #990000">,-</span><span style="color: #993399">0.6</span><span style="color: #990000">,-</span><span style="color: #993399">0.4</span><span style="color: #990000">,-</span><span style="color: #993399">0.2</span><span style="color: #990000">,</span> <span style="color: #993399">0.0</span><span style="color: #990000">,</span><span style="color: #993399">0.0</span><span style="color: #990000">,</span><span style="color: #993399">0.0</span><span style="color: #990000">,</span><span style="color: #993399">0.0</span><span style="color: #990000">,</span><span style="color: #993399">0.0</span><span style="color: #990000">,</span><span style="color: #993399">0.0</span><span style="color: #990000">,</span><span style="color: #993399">0.0</span><span style="color: #990000">,</span><span style="color: #993399">0.0</span><span style="color: #FF0000">}</span>
+    v0<span style="color: #990000">=</span><span style="color: #993399">2</span>
+end
+
+<span style="font-weight: bold"><span style="color: #0000FF">if</span></span> <span style="color: #990000">(</span>sim_call_type<span style="color: #990000">==</span>sim_childscriptcall_cleanup<span style="color: #990000">)</span> then
+
+end
+
+<span style="color: #990000">--</span> Armazenar no vetor detect as informações dos sensores ultrassons
+<span style="font-weight: bold"><span style="color: #0000FF">if</span></span> <span style="color: #990000">(</span>sim_call_type<span style="color: #990000">==</span>sim_childscriptcall_actuation<span style="color: #990000">)</span> then
+    <span style="font-weight: bold"><span style="color: #0000FF">for</span></span> i<span style="color: #990000">=</span><span style="color: #993399">1</span><span style="color: #990000">,</span><span style="color: #993399">16</span><span style="color: #990000">,</span><span style="color: #993399">1</span> <span style="font-weight: bold"><span style="color: #0000FF">do</span></span>
+        res<span style="color: #990000">,</span>dist<span style="color: #990000">=</span><span style="font-weight: bold"><span style="color: #000000">simReadProximitySensor</span></span><span style="color: #990000">(</span>usensors<span style="color: #990000">[</span>i<span style="color: #990000">])</span>
+        <span style="font-weight: bold"><span style="color: #0000FF">if</span></span> <span style="color: #990000">(</span>res<span style="color: #990000">&gt;</span><span style="color: #993399">0</span><span style="color: #990000">)</span> <span style="font-weight: bold"><span style="color: #000000">and</span></span> <span style="color: #990000">(</span>dist<span style="color: #990000">&lt;</span>noDetectionDist<span style="color: #990000">)</span> then
+            <span style="font-weight: bold"><span style="color: #0000FF">if</span></span> <span style="color: #990000">(</span>dist<span style="color: #990000">&lt;</span>maxDetectionDist<span style="color: #990000">)</span> then
+                dist<span style="color: #990000">=</span>maxDetectionDist
+            end
+            detect<span style="color: #990000">[</span>i<span style="color: #990000">]=</span><span style="color: #993399">1</span><span style="color: #990000">-((</span>dist<span style="color: #990000">-</span>maxDetectionDist<span style="color: #990000">)/(</span>noDetectionDist<span style="color: #990000">-</span>maxDetectionDist<span style="color: #990000">))</span>
+        <span style="font-weight: bold"><span style="color: #0000FF">else</span></span>
+            detect<span style="color: #990000">[</span>i<span style="color: #990000">]=</span><span style="color: #993399">0</span>
+        end
+    end
+
+    <span style="color: #990000">--</span> Definindo valores das velocidade esquerda e direita
+    vLeft<span style="color: #990000">=</span><span style="color: #993399">1.8</span>
+    vRight<span style="color: #990000">=</span><span style="color: #993399">2.0</span>
+
+    <span style="color: #990000">--</span> Pegando informacoes <span style="font-weight: bold"><span style="color: #0000FF">do</span></span> pioneer
+    pioneer<span style="color: #990000">=</span><span style="font-weight: bold"><span style="color: #000000">simGetObjectHandle</span></span><span style="color: #990000">(</span><span style="color: #FF0000">'Pioneer_p3dx'</span><span style="color: #990000">)</span>
+    <span style="color: #990000">--</span> Pegando posicao <span style="font-weight: bold"><span style="color: #0000FF">do</span></span> pioneer
+    PosPioneer<span style="color: #990000">=</span><span style="font-weight: bold"><span style="color: #000000">simGetObjectPosition</span></span><span style="color: #990000">(</span>pioneer<span style="color: #990000">,-</span><span style="color: #993399">1</span><span style="color: #990000">)</span>
+    <span style="color: #990000">--</span> Pegando o x <span style="font-weight: bold"><span style="color: #0000FF">do</span></span> pioneer
+    t<span style="color: #990000">=</span>PosPioneer<span style="color: #990000">[</span><span style="color: #993399">1</span><span style="color: #990000">]</span>
+
+    <span style="color: #990000">--</span> Verifica se chegou na referencia
+    <span style="font-weight: bold"><span style="color: #0000FF">if</span></span> <span style="color: #990000">(</span>t <span style="color: #990000">&gt;</span> <span style="color: #993399">0.0</span><span style="color: #990000">)</span> then
+        vLeft <span style="color: #990000">=</span> <span style="color: #993399">0.0</span>
+        vRight <span style="color: #990000">=</span> <span style="color: #993399">0.0</span>
+    end
+
+    <span style="color: #990000">--</span> Varrer os sensores da frente <span style="font-weight: bold"><span style="color: #0000FF">do</span></span> pioneer
+    <span style="color: #990000">--</span><span style="font-weight: bold"><span style="color: #0000FF">for</span></span> i<span style="color: #990000">=</span><span style="color: #993399">1</span><span style="color: #990000">,</span><span style="color: #993399">16</span><span style="color: #990000">,</span><span style="color: #993399">1</span> <span style="font-weight: bold"><span style="color: #0000FF">do</span></span>
+    <span style="font-weight: bold"><span style="color: #0000FF">for</span></span> i<span style="color: #990000">=</span><span style="color: #993399">2</span><span style="color: #990000">,</span><span style="color: #993399">7</span><span style="color: #990000">,</span><span style="color: #993399">1</span> <span style="font-weight: bold"><span style="color: #0000FF">do</span></span>
+        <span style="font-weight: bold"><span style="color: #0000FF">if</span></span> <span style="color: #990000">(</span> detect<span style="color: #990000">[</span>i<span style="color: #990000">]</span> <span style="color: #990000">&gt;</span> <span style="color: #993399">0</span> <span style="color: #990000">)</span>then <span style="color: #990000">--</span> Se estiver detectando obstáculo
+            <span style="color: #990000">--</span> Realiza um desvio para o lado oposto
+            vLeft<span style="color: #990000">=</span>vLeft<span style="color: #990000">+</span>braitenbergL<span style="color: #990000">[</span>i<span style="color: #990000">]*</span>detect<span style="color: #990000">[</span>i<span style="color: #990000">]</span>
+            vRight<span style="color: #990000">=</span>vRight<span style="color: #990000">+</span>braitenbergR<span style="color: #990000">[</span>i<span style="color: #990000">]*</span>detect<span style="color: #990000">[</span>i<span style="color: #990000">]</span>
+        end
+    end
+    <span style="color: #990000">--</span> Envia informações para os atuadores
+    <span style="font-weight: bold"><span style="color: #000000">simSetJointTargetVelocity</span></span><span style="color: #990000">(</span>motorLeft<span style="color: #990000">,</span>vLeft<span style="color: #990000">)</span>
+    <span style="font-weight: bold"><span style="color: #000000">simSetJointTargetVelocity</span></span><span style="color: #990000">(</span>motorRight<span style="color: #990000">,</span>vRight<span style="color: #990000">)</span>
+end
+</tt></pre></div></div>
+</div>
+<div class="sect2">
+<h3 id="_descrição_do_programa">Descrição do programa</h3>
+<div class="paragraph"><p>Foram incluídas nas primeiras linhas do arquivo <a href="codes/pioneer3at.lua">pioneer3at.lua</a> todas as configurações necessárias para o funcionamento adequado do modelo do robô Pioneer 3-AT.</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-weight: bold"><span style="color: #0000FF">if</span></span> <span style="color: #990000">(</span>sim_call_type<span style="color: #990000">==</span>sim_childscriptcall_initialization<span style="color: #990000">)</span> then
+    usensors<span style="color: #990000">=</span><span style="color: #FF0000">{</span><span style="color: #990000">-</span><span style="color: #993399">1</span><span style="color: #990000">,-</span><span style="color: #993399">1</span><span style="color: #990000">,-</span><span style="color: #993399">1</span><span style="color: #990000">,-</span><span style="color: #993399">1</span><span style="color: #990000">,-</span><span style="color: #993399">1</span><span style="color: #990000">,-</span><span style="color: #993399">1</span><span style="color: #990000">,-</span><span style="color: #993399">1</span><span style="color: #990000">,-</span><span style="color: #993399">1</span><span style="color: #990000">,-</span><span style="color: #993399">1</span><span style="color: #990000">,-</span><span style="color: #993399">1</span><span style="color: #990000">,-</span><span style="color: #993399">1</span><span style="color: #990000">,-</span><span style="color: #993399">1</span><span style="color: #990000">,-</span><span style="color: #993399">1</span><span style="color: #990000">,-</span><span style="color: #993399">1</span><span style="color: #990000">,-</span><span style="color: #993399">1</span><span style="color: #990000">,-</span><span style="color: #993399">1</span><span style="color: #FF0000">}</span>
+    <span style="font-weight: bold"><span style="color: #0000FF">for</span></span> i<span style="color: #990000">=</span><span style="color: #993399">1</span><span style="color: #990000">,</span><span style="color: #993399">16</span><span style="color: #990000">,</span><span style="color: #993399">1</span> <span style="font-weight: bold"><span style="color: #0000FF">do</span></span>
+        usensors<span style="color: #990000">[</span>i<span style="color: #990000">]=</span><span style="font-weight: bold"><span style="color: #000000">simGetObjectHandle</span></span><span style="color: #990000">(</span><span style="color: #FF0000">"Pioneer_p3dx_ultrasonicSensor"</span><span style="color: #990000">..</span>i<span style="color: #990000">)</span>
+    end
+    motorLeft<span style="color: #990000">=</span><span style="font-weight: bold"><span style="color: #000000">simGetObjectHandle</span></span><span style="color: #990000">(</span><span style="color: #FF0000">"Pioneer_p3dx_leftMotor"</span><span style="color: #990000">)</span>
+    motorRight<span style="color: #990000">=</span><span style="font-weight: bold"><span style="color: #000000">simGetObjectHandle</span></span><span style="color: #990000">(</span><span style="color: #FF0000">"Pioneer_p3dx_rightMotor"</span><span style="color: #990000">)</span>
+    noDetectionDist<span style="color: #990000">=</span><span style="color: #993399">0.5</span>
+    maxDetectionDist<span style="color: #990000">=</span><span style="color: #993399">0.2</span>
+    detect<span style="color: #990000">=</span><span style="color: #FF0000">{</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #FF0000">}</span>
+    braitenbergL<span style="color: #990000">=</span><span style="color: #FF0000">{</span><span style="color: #990000">-</span><span style="color: #993399">0.2</span><span style="color: #990000">,-</span><span style="color: #993399">0.4</span><span style="color: #990000">,-</span><span style="color: #993399">0.6</span><span style="color: #990000">,-</span><span style="color: #993399">0.8</span><span style="color: #990000">,-</span><span style="color: #993399">1</span><span style="color: #990000">,-</span><span style="color: #993399">1.2</span><span style="color: #990000">,-</span><span style="color: #993399">1.4</span><span style="color: #990000">,-</span><span style="color: #993399">1.6</span><span style="color: #990000">,</span> <span style="color: #993399">0.0</span><span style="color: #990000">,</span><span style="color: #993399">0.0</span><span style="color: #990000">,</span><span style="color: #993399">0.0</span><span style="color: #990000">,</span><span style="color: #993399">0.0</span><span style="color: #990000">,</span><span style="color: #993399">0.0</span><span style="color: #990000">,</span><span style="color: #993399">0.0</span><span style="color: #990000">,</span><span style="color: #993399">0.0</span><span style="color: #990000">,</span><span style="color: #993399">0.0</span><span style="color: #FF0000">}</span>
+    braitenbergR<span style="color: #990000">=</span><span style="color: #FF0000">{</span><span style="color: #990000">-</span><span style="color: #993399">1.6</span><span style="color: #990000">,-</span><span style="color: #993399">1.4</span><span style="color: #990000">,-</span><span style="color: #993399">1.2</span><span style="color: #990000">,-</span><span style="color: #993399">1</span><span style="color: #990000">,-</span><span style="color: #993399">0.8</span><span style="color: #990000">,-</span><span style="color: #993399">0.6</span><span style="color: #990000">,-</span><span style="color: #993399">0.4</span><span style="color: #990000">,-</span><span style="color: #993399">0.2</span><span style="color: #990000">,</span> <span style="color: #993399">0.0</span><span style="color: #990000">,</span><span style="color: #993399">0.0</span><span style="color: #990000">,</span><span style="color: #993399">0.0</span><span style="color: #990000">,</span><span style="color: #993399">0.0</span><span style="color: #990000">,</span><span style="color: #993399">0.0</span><span style="color: #990000">,</span><span style="color: #993399">0.0</span><span style="color: #990000">,</span><span style="color: #993399">0.0</span><span style="color: #990000">,</span><span style="color: #993399">0.0</span><span style="color: #FF0000">}</span>
+    v0<span style="color: #990000">=</span><span style="color: #993399">2</span>
+end</tt></pre></div></div>
+<div class="paragraph"><p>Como o Pioneer 3-AT contém 16 sensores utrassons, necessitamos iniciar cada um deles, então o próximo trecho de código realiza a leitura das distâncias e organizam o grau de detecção de cada sensor no vetor <em>detect</em>.</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-weight: bold"><span style="color: #0000FF">for</span></span> i<span style="color: #990000">=</span><span style="color: #993399">1</span><span style="color: #990000">,</span><span style="color: #993399">16</span><span style="color: #990000">,</span><span style="color: #993399">1</span> <span style="font-weight: bold"><span style="color: #0000FF">do</span></span>
+        res<span style="color: #990000">,</span>dist<span style="color: #990000">=</span><span style="font-weight: bold"><span style="color: #000000">simReadProximitySensor</span></span><span style="color: #990000">(</span>usensors<span style="color: #990000">[</span>i<span style="color: #990000">])</span>
+        <span style="font-weight: bold"><span style="color: #0000FF">if</span></span> <span style="color: #990000">(</span>res<span style="color: #990000">&gt;</span><span style="color: #993399">0</span><span style="color: #990000">)</span> <span style="font-weight: bold"><span style="color: #000000">and</span></span> <span style="color: #990000">(</span>dist<span style="color: #990000">&lt;</span>noDetectionDist<span style="color: #990000">)</span> then
+            <span style="font-weight: bold"><span style="color: #0000FF">if</span></span> <span style="color: #990000">(</span>dist<span style="color: #990000">&lt;</span>maxDetectionDist<span style="color: #990000">)</span> then
+                dist<span style="color: #990000">=</span>maxDetectionDist
+            end
+            detect<span style="color: #990000">[</span>i<span style="color: #990000">]=</span><span style="color: #993399">1</span><span style="color: #990000">-((</span>dist<span style="color: #990000">-</span>maxDetectionDist<span style="color: #990000">)/(</span>noDetectionDist<span style="color: #990000">-</span>maxDetectionDist<span style="color: #990000">))</span>
+        <span style="font-weight: bold"><span style="color: #0000FF">else</span></span>
+            detect<span style="color: #990000">[</span>i<span style="color: #990000">]=</span><span style="color: #993399">0</span>
+        end
+end</tt></pre></div></div>
+<div class="paragraph"><p>Nesse momento do código definimos uma velocidade para os dois atuadores do Pioneer e uma condição de parada dependendo da pose do Pioneer no simulador. Para isso, foi necessário definir qual era o objeto da cena que precisávamos colher informações.</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>    <span style="color: #990000">--</span> Definindo valores das velocidade esquerda e direita
+    vLeft<span style="color: #990000">=</span><span style="color: #993399">1.8</span>
+    vRight<span style="color: #990000">=</span><span style="color: #993399">2.0</span>
+
+    <span style="color: #990000">--</span> Pegando informacoes <span style="font-weight: bold"><span style="color: #0000FF">do</span></span> pioneer
+    pioneer<span style="color: #990000">=</span><span style="font-weight: bold"><span style="color: #000000">simGetObjectHandle</span></span><span style="color: #990000">(</span><span style="color: #FF0000">'Pioneer_p3dx'</span><span style="color: #990000">)</span>
+    <span style="color: #990000">--</span> Pegando posicao <span style="font-weight: bold"><span style="color: #0000FF">do</span></span> pioneer
+    PosPioneer<span style="color: #990000">=</span><span style="font-weight: bold"><span style="color: #000000">simGetObjectPosition</span></span><span style="color: #990000">(</span>pioneer<span style="color: #990000">,-</span><span style="color: #993399">1</span><span style="color: #990000">)</span>
+    <span style="color: #990000">--</span> Pegando o x <span style="font-weight: bold"><span style="color: #0000FF">do</span></span> pioneer
+    t<span style="color: #990000">=</span>PosPioneer<span style="color: #990000">[</span><span style="color: #993399">1</span><span style="color: #990000">]</span>
+
+    <span style="color: #990000">--</span> Verifica se chegou na referencia
+    <span style="font-weight: bold"><span style="color: #0000FF">if</span></span> <span style="color: #990000">(</span>t <span style="color: #990000">&gt;</span> <span style="color: #993399">0.0</span><span style="color: #990000">)</span> then
+        vLeft <span style="color: #990000">=</span> <span style="color: #993399">0.0</span>
+        vRight <span style="color: #990000">=</span> <span style="color: #993399">0.0</span>
+    end</tt></pre></div></div>
+<div class="paragraph"><p>No código base do Pioneer 3-At do V-Rep já vem configurado a possibilidade de reações há detecção de obstáculos como observado abaixo. São acionadas as velocidades do Robô Pioneer 3-At, representadas por vLeft e vRight, de acordo com a detecção dos sensores.</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>    <span style="color: #990000">--</span> Varrer os sensores da frente <span style="font-weight: bold"><span style="color: #0000FF">do</span></span> pioneer
+    <span style="font-weight: bold"><span style="color: #0000FF">for</span></span> i<span style="color: #990000">=</span><span style="color: #993399">2</span><span style="color: #990000">,</span><span style="color: #993399">7</span><span style="color: #990000">,</span><span style="color: #993399">1</span> <span style="font-weight: bold"><span style="color: #0000FF">do</span></span>
+        <span style="font-weight: bold"><span style="color: #0000FF">if</span></span> <span style="color: #990000">(</span> detect<span style="color: #990000">[</span>i<span style="color: #990000">]</span> <span style="color: #990000">&gt;</span> <span style="color: #993399">0</span> <span style="color: #990000">)</span>then <span style="color: #990000">--</span> Se estiver detectando obstáculo
+            <span style="color: #990000">--</span> Realiza um desvio para o lado oposto
+            vLeft<span style="color: #990000">=</span>vLeft<span style="color: #990000">+</span>braitenbergL<span style="color: #990000">[</span>i<span style="color: #990000">]*</span>detect<span style="color: #990000">[</span>i<span style="color: #990000">]</span>
+            vRight<span style="color: #990000">=</span>vRight<span style="color: #990000">+</span>braitenbergR<span style="color: #990000">[</span>i<span style="color: #990000">]*</span>detect<span style="color: #990000">[</span>i<span style="color: #990000">]</span>
+        end
+    end</tt></pre></div></div>
+<div class="paragraph"><p>Por fim, é necessário enviar as informações de velocidades para os motores.</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>    <span style="color: #990000">--</span> Envia informações para os atuadores
+    <span style="font-weight: bold"><span style="color: #000000">simSetJointTargetVelocity</span></span><span style="color: #990000">(</span>motorLeft<span style="color: #990000">,</span>vLeft<span style="color: #990000">)</span>
+    <span style="font-weight: bold"><span style="color: #000000">simSetJointTargetVelocity</span></span><span style="color: #990000">(</span>motorRight<span style="color: #990000">,</span>vRight<span style="color: #990000">)</span></tt></pre></div></div>
+</div>
+<div class="sect2">
 <h3 id="_plugins_e_add_ons">Plugins e Add-ons</h3>
 <div class="paragraph"><p>Duas abordagens bastante semelhantes e que possibilitam a interação de dispositivos externos</p></div>
 <div class="ulist compact"><ul>
@@ -2411,7 +3078,208 @@ Microcontrolador e Sensores
 </div>
 <div class="sect2">
 <h3 id="_api_remota">Api remota</h3>
-<div class="paragraph"><p>teste</p></div>
+<div class="paragraph"><p>Construção de programas externos que se comunicam como clientes com o simulador.</p></div>
+<div class="ulist compact"><ul>
+<li>
+<p>
+C++
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+Adicione o código em algum diretório
+</p>
+</li>
+<li>
+<p>
+Copie todos os arquivos do caminho "V-REP/programming/RemoveApi" para um diretório "remoteApi"
+</p>
+</li>
+<li>
+<p>
+Copie os arquivos "v_repConst.h", "v_repLib.h" e "v_repTypes.h" do caminho "V-Rep/programming/include" para um diretório "include"
+</p>
+</li>
+<li>
+<p>
+Crie um arquivo Makefile para configuração
+</p>
+</li>
+</ul></div>
+</li>
+</ul></div>
+</div>
+<div class="sect2">
+<h3 id="_código_2">Código</h3>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">/**</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"> * \file cliente.cpp</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"> *</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"> * \brief Arquivo para comunicação cliente-servidor com o V-REP.</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"> * Este exemplo foi desenvolvido baseado nas aulas obtidas no</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"> * link </span></span><span style="text-decoration: underline"><span style="color: #0000FF">http://osorio.wait4.org/VREP/.</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"> *</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"> * \author</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"> * Petrucio Ricardo Tavares de Medeiros \n</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"> * Universidade Federal do Rio Grande do Norte \n</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"> * Departamento de Computacao e Automacao Industrial \n</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"> * petrucior at gmail (dot) com</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"> *</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"> * \version 1.0</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"> * \date October 2016</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"> */</span></span>
+
+<span style="font-style: italic"><span style="color: #9A1900">// Habilite o server antes na simulação V-REP com o comando lua:</span></span>
+<span style="font-style: italic"><span style="color: #9A1900">// simExtRemoteApiStart(portNumber) -- inicia servidor remoteAPI do V-REP</span></span>
+
+<span style="font-weight: bold"><span style="color: #0000FF">extern</span></span> <span style="color: #FF0000">"C"</span> <span style="color: #FF0000">{</span>
+<span style="font-weight: bold"><span style="color: #000080">  #include</span></span> <span style="color: #FF0000">"remoteApi/extApi.h"</span>
+<span style="color: #FF0000">}</span>
+
+<span style="font-weight: bold"><span style="color: #000080">#include</span></span> <span style="color: #FF0000">&lt;iostream&gt;</span>
+<span style="font-weight: bold"><span style="color: #000080">#include</span></span> <span style="color: #FF0000">&lt;string&gt;</span>
+
+using <span style="color: #008080">namespace</span> std<span style="color: #990000">;</span>
+
+<span style="color: #009900">int</span> <span style="font-weight: bold"><span style="color: #000000">main</span></span><span style="color: #990000">(</span><span style="color: #009900">int</span> argc<span style="color: #990000">,</span> <span style="color: #009900">char</span> <span style="color: #990000">**</span>argv<span style="color: #990000">)</span>
+<span style="color: #FF0000">{</span>
+  <span style="color: #008080">string</span> serverIP <span style="color: #990000">=</span> <span style="color: #FF0000">"127.0.0.1"</span><span style="color: #990000">;</span>
+  <span style="color: #009900">int</span> serverPort <span style="color: #990000">=</span> <span style="color: #993399">19999</span><span style="color: #990000">;</span>
+  <span style="color: #009900">int</span> leftMotorHandle <span style="color: #990000">=</span> <span style="color: #993399">0</span><span style="color: #990000">;</span>
+  <span style="color: #009900">float</span> vLeft <span style="color: #990000">=</span> <span style="color: #993399">0</span><span style="color: #990000">;</span>
+  <span style="color: #009900">int</span> rightMotorHandle <span style="color: #990000">=</span> <span style="color: #993399">0</span><span style="color: #990000">;</span>
+  <span style="color: #009900">float</span> vRight <span style="color: #990000">=</span> <span style="color: #993399">0</span><span style="color: #990000">;</span>
+  <span style="color: #008080">string</span> sensorNome<span style="color: #990000">[</span><span style="color: #993399">16</span><span style="color: #990000">];</span>
+  <span style="color: #009900">int</span> sensorHandle<span style="color: #990000">[</span><span style="color: #993399">16</span><span style="color: #990000">];</span>
+
+  <span style="font-style: italic"><span style="color: #9A1900">// variaveis de cena e movimentação do pioneer</span></span>
+  <span style="color: #009900">float</span> noDetectionDist<span style="color: #990000">=</span><span style="color: #993399">0.5</span><span style="color: #990000">;</span>
+  <span style="color: #009900">float</span> maxDetectionDist<span style="color: #990000">=</span><span style="color: #993399">0.2</span><span style="color: #990000">;</span>
+  <span style="color: #009900">float</span> detect<span style="color: #990000">[</span><span style="color: #993399">16</span><span style="color: #990000">]=</span><span style="color: #FF0000">{</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #FF0000">}</span><span style="color: #990000">;</span>
+  <span style="color: #009900">float</span> braitenbergL<span style="color: #990000">[</span><span style="color: #993399">16</span><span style="color: #990000">]=</span><span style="color: #FF0000">{</span><span style="color: #990000">-</span><span style="color: #993399">0.2</span><span style="color: #990000">,-</span><span style="color: #993399">0.4</span><span style="color: #990000">,-</span><span style="color: #993399">0.6</span><span style="color: #990000">,-</span><span style="color: #993399">0.8</span><span style="color: #990000">,-</span><span style="color: #993399">1</span><span style="color: #990000">,-</span><span style="color: #993399">1.2</span><span style="color: #990000">,-</span><span style="color: #993399">1.4</span><span style="color: #990000">,-</span><span style="color: #993399">1.6</span><span style="color: #990000">,</span>
+ <span style="color: #993399">0.0</span><span style="color: #990000">,</span><span style="color: #993399">0.0</span><span style="color: #990000">,</span><span style="color: #993399">0.0</span><span style="color: #990000">,</span><span style="color: #993399">0.0</span><span style="color: #990000">,</span><span style="color: #993399">0.0</span><span style="color: #990000">,</span><span style="color: #993399">0.0</span><span style="color: #990000">,</span><span style="color: #993399">0.0</span><span style="color: #990000">,</span><span style="color: #993399">0.0</span><span style="color: #FF0000">}</span><span style="color: #990000">;</span>
+  <span style="color: #009900">float</span> braitenbergR<span style="color: #990000">[</span><span style="color: #993399">16</span><span style="color: #990000">]=</span><span style="color: #FF0000">{</span><span style="color: #990000">-</span><span style="color: #993399">1.6</span><span style="color: #990000">,-</span><span style="color: #993399">1.4</span><span style="color: #990000">,-</span><span style="color: #993399">1.2</span><span style="color: #990000">,-</span><span style="color: #993399">1</span><span style="color: #990000">,-</span><span style="color: #993399">0.8</span><span style="color: #990000">,-</span><span style="color: #993399">0.6</span><span style="color: #990000">,-</span><span style="color: #993399">0.4</span><span style="color: #990000">,-</span><span style="color: #993399">0.2</span><span style="color: #990000">,</span>
+<span style="color: #993399">0.0</span><span style="color: #990000">,</span><span style="color: #993399">0.0</span><span style="color: #990000">,</span><span style="color: #993399">0.0</span><span style="color: #990000">,</span><span style="color: #993399">0.0</span><span style="color: #990000">,</span><span style="color: #993399">0.0</span><span style="color: #990000">,</span><span style="color: #993399">0.0</span><span style="color: #990000">,</span><span style="color: #993399">0.0</span><span style="color: #990000">,</span><span style="color: #993399">0.0</span><span style="color: #FF0000">}</span><span style="color: #990000">;</span>
+  <span style="color: #009900">float</span> v0<span style="color: #990000">=</span><span style="color: #993399">2</span><span style="color: #990000">;</span>
+
+  <span style="color: #009900">int</span> clientID<span style="color: #990000">=</span><span style="font-weight: bold"><span style="color: #000000">simxStart</span></span><span style="color: #990000">((</span>simxChar<span style="color: #990000">*)</span>serverIP<span style="color: #990000">.</span><span style="font-weight: bold"><span style="color: #000000">c_str</span></span><span style="color: #990000">(),</span>serverPort<span style="color: #990000">,</span>
+true<span style="color: #990000">,</span>true<span style="color: #990000">,</span><span style="color: #993399">2000</span><span style="color: #990000">,</span><span style="color: #993399">5</span><span style="color: #990000">);</span>
+
+  <span style="font-weight: bold"><span style="color: #0000FF">if</span></span> <span style="color: #990000">(</span>clientID<span style="color: #990000">!=-</span><span style="color: #993399">1</span><span style="color: #990000">)</span>
+  <span style="color: #FF0000">{</span>
+    cout <span style="color: #990000">&lt;&lt;</span> <span style="color: #FF0000">"Servidor conectado!"</span> <span style="color: #990000">&lt;&lt;</span> std<span style="color: #990000">::</span>endl<span style="color: #990000">;</span>
+
+    <span style="font-style: italic"><span style="color: #9A1900">// inicialização dos motores</span></span>
+    <span style="font-weight: bold"><span style="color: #0000FF">if</span></span><span style="color: #990000">(</span><span style="font-weight: bold"><span style="color: #000000">simxGetObjectHandle</span></span><span style="color: #990000">(</span>clientID<span style="color: #990000">,(</span><span style="font-weight: bold"><span style="color: #0000FF">const</span></span> simxChar<span style="color: #990000">*)</span> <span style="color: #FF0000">"Pioneer_p3dx_leftMotor"</span><span style="color: #990000">,</span>
+<span style="color: #990000">(</span>simxInt <span style="color: #990000">*)</span> <span style="color: #990000">&amp;</span>leftMotorHandle<span style="color: #990000">,</span> <span style="color: #990000">(</span>simxInt<span style="color: #990000">)</span> simx_opmode_oneshot_wait<span style="color: #990000">)</span> <span style="color: #990000">!=</span> simx_return_ok<span style="color: #990000">)</span>
+      cout <span style="color: #990000">&lt;&lt;</span> <span style="color: #FF0000">"Handle do motor esquerdo nao encontrado!"</span> <span style="color: #990000">&lt;&lt;</span> std<span style="color: #990000">::</span>endl<span style="color: #990000">;</span>
+    <span style="font-weight: bold"><span style="color: #0000FF">else</span></span>
+      cout <span style="color: #990000">&lt;&lt;</span> <span style="color: #FF0000">"Conectado ao motor esquerdo!"</span> <span style="color: #990000">&lt;&lt;</span> std<span style="color: #990000">::</span>endl<span style="color: #990000">;</span>
+
+    <span style="font-weight: bold"><span style="color: #0000FF">if</span></span><span style="color: #990000">(</span><span style="font-weight: bold"><span style="color: #000000">simxGetObjectHandle</span></span><span style="color: #990000">(</span>clientID<span style="color: #990000">,(</span><span style="font-weight: bold"><span style="color: #0000FF">const</span></span> simxChar<span style="color: #990000">*)</span> <span style="color: #FF0000">"Pioneer_p3dx_rightMotor"</span><span style="color: #990000">,</span>
+<span style="color: #990000">(</span>simxInt <span style="color: #990000">*)</span> <span style="color: #990000">&amp;</span>rightMotorHandle<span style="color: #990000">,</span> <span style="color: #990000">(</span>simxInt<span style="color: #990000">)</span> simx_opmode_oneshot_wait<span style="color: #990000">)</span> <span style="color: #990000">!=</span> simx_return_ok<span style="color: #990000">)</span>
+      cout <span style="color: #990000">&lt;&lt;</span> <span style="color: #FF0000">"Handle do motor direito nao encontrado!"</span> <span style="color: #990000">&lt;&lt;</span> std<span style="color: #990000">::</span>endl<span style="color: #990000">;</span>
+    <span style="font-weight: bold"><span style="color: #0000FF">else</span></span>
+      cout <span style="color: #990000">&lt;&lt;</span> <span style="color: #FF0000">"Conectado ao motor direito!"</span> <span style="color: #990000">&lt;&lt;</span> std<span style="color: #990000">::</span>endl<span style="color: #990000">;</span>
+
+    <span style="font-style: italic"><span style="color: #9A1900">// inicialização dos sensores (remoteApi)</span></span>
+    <span style="font-weight: bold"><span style="color: #0000FF">for</span></span><span style="color: #990000">(</span><span style="color: #009900">int</span> i <span style="color: #990000">=</span> <span style="color: #993399">0</span><span style="color: #990000">;</span> i <span style="color: #990000">&lt;</span> <span style="color: #993399">16</span><span style="color: #990000">;</span> i<span style="color: #990000">++)</span>
+    <span style="color: #FF0000">{</span>
+      sensorNome<span style="color: #990000">[</span>i<span style="color: #990000">]</span> <span style="color: #990000">=</span> <span style="color: #FF0000">"Pioneer_p3dx_ultrasonicSensor"</span> <span style="color: #990000">+</span> <span style="font-weight: bold"><span style="color: #000000">to_string</span></span><span style="color: #990000">(</span>i <span style="color: #990000">+</span> <span style="color: #993399">1</span><span style="color: #990000">);</span>
+
+      <span style="font-weight: bold"><span style="color: #0000FF">if</span></span><span style="color: #990000">(</span><span style="font-weight: bold"><span style="color: #000000">simxGetObjectHandle</span></span><span style="color: #990000">(</span>clientID<span style="color: #990000">,(</span><span style="font-weight: bold"><span style="color: #0000FF">const</span></span> simxChar<span style="color: #990000">*)</span> sensorNome<span style="color: #990000">[</span>i<span style="color: #990000">].</span><span style="font-weight: bold"><span style="color: #000000">c_str</span></span><span style="color: #990000">(),</span>
+<span style="color: #990000">(</span>simxInt <span style="color: #990000">*)</span> <span style="color: #990000">&amp;</span>sensorHandle<span style="color: #990000">[</span>i<span style="color: #990000">],</span> <span style="color: #990000">(</span>simxInt<span style="color: #990000">)</span> simx_opmode_oneshot_wait<span style="color: #990000">)</span> <span style="color: #990000">!=</span> simx_return_ok<span style="color: #990000">)</span>
+        cout <span style="color: #990000">&lt;&lt;</span> <span style="color: #FF0000">"Handle do sensor "</span> <span style="color: #990000">&lt;&lt;</span> sensorNome<span style="color: #990000">[</span>i<span style="color: #990000">]</span> <span style="color: #990000">&lt;&lt;</span> <span style="color: #FF0000">" nao encontrado!"</span> <span style="color: #990000">&lt;&lt;</span> std<span style="color: #990000">::</span>endl<span style="color: #990000">;</span>
+      <span style="font-weight: bold"><span style="color: #0000FF">else</span></span>
+      <span style="color: #FF0000">{</span>
+        cout <span style="color: #990000">&lt;&lt;</span> <span style="color: #FF0000">"Conectado ao sensor "</span> <span style="color: #990000">&lt;&lt;</span> sensorNome<span style="color: #990000">[</span>i<span style="color: #990000">]</span> <span style="color: #990000">&lt;&lt;</span> std<span style="color: #990000">::</span>endl<span style="color: #990000">;</span>
+        <span style="font-weight: bold"><span style="color: #000000">simxReadProximitySensor</span></span><span style="color: #990000">(</span>clientID<span style="color: #990000">,</span>sensorHandle<span style="color: #990000">[</span>i<span style="color: #990000">],</span>NULL<span style="color: #990000">,</span>NULL<span style="color: #990000">,</span>NULL<span style="color: #990000">,</span>NULL<span style="color: #990000">,</span>
+simx_opmode_streaming<span style="color: #990000">);</span>
+      <span style="color: #FF0000">}</span>
+    <span style="color: #FF0000">}</span>
+
+    <span style="font-style: italic"><span style="color: #9A1900">// desvio e velocidade do robô</span></span>
+    <span style="font-weight: bold"><span style="color: #0000FF">while</span></span><span style="color: #990000">(</span><span style="font-weight: bold"><span style="color: #000000">simxGetConnectionId</span></span><span style="color: #990000">(</span>clientID<span style="color: #990000">)!=-</span><span style="color: #993399">1</span><span style="color: #990000">)</span> <span style="font-style: italic"><span style="color: #9A1900">// enquanto a simulação estiver ativa</span></span>
+    <span style="color: #FF0000">{</span>
+      <span style="font-weight: bold"><span style="color: #0000FF">for</span></span><span style="color: #990000">(</span><span style="color: #009900">int</span> i <span style="color: #990000">=</span> <span style="color: #993399">0</span><span style="color: #990000">;</span> i <span style="color: #990000">&lt;</span> <span style="color: #993399">16</span><span style="color: #990000">;</span> i<span style="color: #990000">++)</span>
+      <span style="color: #FF0000">{</span>
+        <span style="color: #008080">simxUChar</span> state<span style="color: #990000">;</span>
+        <span style="color: #008080">simxFloat</span> coord<span style="color: #990000">[</span><span style="color: #993399">3</span><span style="color: #990000">];</span>
+
+        <span style="font-weight: bold"><span style="color: #0000FF">if</span></span> <span style="color: #990000">(</span><span style="font-weight: bold"><span style="color: #000000">simxReadProximitySensor</span></span><span style="color: #990000">(</span>clientID<span style="color: #990000">,</span>sensorHandle<span style="color: #990000">[</span>i<span style="color: #990000">],&amp;</span>state<span style="color: #990000">,</span>coord<span style="color: #990000">,</span>NULL<span style="color: #990000">,</span>
+NULL<span style="color: #990000">,</span>simx_opmode_buffer<span style="color: #990000">)==</span>simx_return_ok<span style="color: #990000">)</span>
+        <span style="color: #FF0000">{</span>
+          <span style="color: #009900">float</span> dist <span style="color: #990000">=</span> coord<span style="color: #990000">[</span><span style="color: #993399">2</span><span style="color: #990000">];</span>
+          <span style="font-weight: bold"><span style="color: #0000FF">if</span></span><span style="color: #990000">(</span>state <span style="color: #990000">&gt;</span> <span style="color: #993399">0</span> <span style="color: #990000">&amp;&amp;</span> <span style="color: #990000">(</span>dist<span style="color: #990000">&lt;</span>noDetectionDist<span style="color: #990000">))</span>
+          <span style="color: #FF0000">{</span>
+            <span style="font-weight: bold"><span style="color: #0000FF">if</span></span><span style="color: #990000">(</span>dist<span style="color: #990000">&lt;</span>maxDetectionDist<span style="color: #990000">)</span>
+            <span style="color: #FF0000">{</span>
+              dist<span style="color: #990000">=</span>maxDetectionDist<span style="color: #990000">;</span>
+            <span style="color: #FF0000">}</span>
+
+            detect<span style="color: #990000">[</span>i<span style="color: #990000">]=</span><span style="color: #993399">1</span><span style="color: #990000">-((</span>dist<span style="color: #990000">-</span>maxDetectionDist<span style="color: #990000">)/(</span>noDetectionDist<span style="color: #990000">-</span>maxDetectionDist<span style="color: #990000">));</span>
+          <span style="color: #FF0000">}</span>
+          <span style="font-weight: bold"><span style="color: #0000FF">else</span></span>
+            detect<span style="color: #990000">[</span>i<span style="color: #990000">]</span> <span style="color: #990000">=</span> <span style="color: #993399">0</span><span style="color: #990000">;</span>
+        <span style="color: #FF0000">}</span>
+        <span style="font-weight: bold"><span style="color: #0000FF">else</span></span>
+          detect<span style="color: #990000">[</span>i<span style="color: #990000">]</span> <span style="color: #990000">=</span> <span style="color: #993399">0</span><span style="color: #990000">;</span>
+      <span style="color: #FF0000">}</span>
+
+      vLeft <span style="color: #990000">=</span> <span style="color: #993399">1.8</span><span style="color: #990000">;</span>
+      vRight <span style="color: #990000">=</span> <span style="color: #993399">2.0</span><span style="color: #990000">;</span>
+
+      <span style="font-weight: bold"><span style="color: #0000FF">for</span></span><span style="color: #990000">(</span><span style="color: #009900">int</span> i <span style="color: #990000">=</span> <span style="color: #993399">0</span><span style="color: #990000">;</span> i <span style="color: #990000">&lt;</span> <span style="color: #993399">16</span><span style="color: #990000">;</span> i<span style="color: #990000">++)</span>
+      <span style="color: #FF0000">{</span>
+        vLeft<span style="color: #990000">=</span>vLeft<span style="color: #990000">+</span>braitenbergL<span style="color: #990000">[</span>i<span style="color: #990000">]*</span>detect<span style="color: #990000">[</span>i<span style="color: #990000">];</span>
+        vRight<span style="color: #990000">=</span>vRight<span style="color: #990000">+</span>braitenbergR<span style="color: #990000">[</span>i<span style="color: #990000">]*</span>detect<span style="color: #990000">[</span>i<span style="color: #990000">];</span>
+      <span style="color: #FF0000">}</span>
+
+      <span style="font-style: italic"><span style="color: #9A1900">// atualiza velocidades dos motores</span></span>
+      <span style="font-weight: bold"><span style="color: #000000">simxSetJointTargetVelocity</span></span><span style="color: #990000">(</span>clientID<span style="color: #990000">,</span> leftMotorHandle<span style="color: #990000">,</span> <span style="color: #990000">(</span>simxFloat<span style="color: #990000">)</span> vLeft<span style="color: #990000">,</span>
+ simx_opmode_streaming<span style="color: #990000">);</span>
+      <span style="font-weight: bold"><span style="color: #000000">simxSetJointTargetVelocity</span></span><span style="color: #990000">(</span>clientID<span style="color: #990000">,</span> rightMotorHandle<span style="color: #990000">,</span> <span style="color: #990000">(</span>simxFloat<span style="color: #990000">)</span> vRight<span style="color: #990000">,</span>
+ simx_opmode_streaming<span style="color: #990000">);</span>
+
+      <span style="font-style: italic"><span style="color: #9A1900">// espera um pouco antes de reiniciar a leitura dos sensores</span></span>
+      <span style="font-weight: bold"><span style="color: #000000">extApi_sleepMs</span></span><span style="color: #990000">(</span><span style="color: #993399">5</span><span style="color: #990000">);</span>
+    <span style="color: #FF0000">}</span>
+
+    <span style="font-weight: bold"><span style="color: #000000">simxFinish</span></span><span style="color: #990000">(</span>clientID<span style="color: #990000">);</span> <span style="font-style: italic"><span style="color: #9A1900">// fechando conexao com o servidor</span></span>
+    cout <span style="color: #990000">&lt;&lt;</span> <span style="color: #FF0000">"Conexao fechada!"</span> <span style="color: #990000">&lt;&lt;</span> std<span style="color: #990000">::</span>endl<span style="color: #990000">;</span>
+  <span style="color: #FF0000">}</span>
+  <span style="font-weight: bold"><span style="color: #0000FF">else</span></span>
+    cout <span style="color: #990000">&lt;&lt;</span> <span style="color: #FF0000">"Problemas para conectar o servidor!"</span> <span style="color: #990000">&lt;&lt;</span> std<span style="color: #990000">::</span>endl<span style="color: #990000">;</span>
+  <span style="font-weight: bold"><span style="color: #0000FF">return</span></span> <span style="color: #993399">0</span><span style="color: #990000">;</span>
+<span style="color: #FF0000">}</span>
+</tt></pre></div></div>
+</div>
+<div class="sect2">
+<h3 id="_descrição_do_programa_2">Descrição do programa</h3>
+<div class="paragraph"><p>Foram incluídas nas primeiras linhas do arquivo <a href="codes/pioneer3at.lua">pioneer3at.lua</a> todas as configurações necessárias para o funcionamento adequado do modelo do robô Pioneer 3-AT.</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-weight: bold"><span style="color: #0000FF">if</span></span> <span style="color: #990000">(</span>sim_call_type<span style="color: #990000">==</span>sim_childscriptcall_initialization<span style="color: #990000">)</span> then
+    usensors<span style="color: #990000">=</span><span style="color: #FF0000">{</span><span style="color: #990000">-</span><span style="color: #993399">1</span><span style="color: #990000">,-</span><span style="color: #993399">1</span><span style="color: #990000">,-</span><span style="color: #993399">1</span><span style="color: #990000">,-</span><span style="color: #993399">1</span><span style="color: #990000">,-</span><span style="color: #993399">1</span><span style="color: #990000">,-</span><span style="color: #993399">1</span><span style="color: #990000">,-</span><span style="color: #993399">1</span><span style="color: #990000">,-</span><span style="color: #993399">1</span><span style="color: #990000">,-</span><span style="color: #993399">1</span><span style="color: #990000">,-</span><span style="color: #993399">1</span><span style="color: #990000">,-</span><span style="color: #993399">1</span><span style="color: #990000">,-</span><span style="color: #993399">1</span><span style="color: #990000">,-</span><span style="color: #993399">1</span><span style="color: #990000">,-</span><span style="color: #993399">1</span><span style="color: #990000">,-</span><span style="color: #993399">1</span><span style="color: #990000">,-</span><span style="color: #993399">1</span><span style="color: #FF0000">}</span>
+    <span style="font-weight: bold"><span style="color: #0000FF">for</span></span> i<span style="color: #990000">=</span><span style="color: #993399">1</span><span style="color: #990000">,</span><span style="color: #993399">16</span><span style="color: #990000">,</span><span style="color: #993399">1</span> <span style="font-weight: bold"><span style="color: #0000FF">do</span></span>
+        usensors<span style="color: #990000">[</span>i<span style="color: #990000">]=</span><span style="font-weight: bold"><span style="color: #000000">simGetObjectHandle</span></span><span style="color: #990000">(</span><span style="color: #FF0000">"Pioneer_p3dx_ultrasonicSensor"</span><span style="color: #990000">..</span>i<span style="color: #990000">)</span>
+    end
+    motorLeft<span style="color: #990000">=</span><span style="font-weight: bold"><span style="color: #000000">simGetObjectHandle</span></span><span style="color: #990000">(</span><span style="color: #FF0000">"Pioneer_p3dx_leftMotor"</span><span style="color: #990000">)</span>
+    motorRight<span style="color: #990000">=</span><span style="font-weight: bold"><span style="color: #000000">simGetObjectHandle</span></span><span style="color: #990000">(</span><span style="color: #FF0000">"Pioneer_p3dx_rightMotor"</span><span style="color: #990000">)</span>
+    noDetectionDist<span style="color: #990000">=</span><span style="color: #993399">0.5</span>
+    maxDetectionDist<span style="color: #990000">=</span><span style="color: #993399">0.2</span>
+    detect<span style="color: #990000">=</span><span style="color: #FF0000">{</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #FF0000">}</span>
+    braitenbergL<span style="color: #990000">=</span><span style="color: #FF0000">{</span><span style="color: #990000">-</span><span style="color: #993399">0.2</span><span style="color: #990000">,-</span><span style="color: #993399">0.4</span><span style="color: #990000">,-</span><span style="color: #993399">0.6</span><span style="color: #990000">,-</span><span style="color: #993399">0.8</span><span style="color: #990000">,-</span><span style="color: #993399">1</span><span style="color: #990000">,-</span><span style="color: #993399">1.2</span><span style="color: #990000">,-</span><span style="color: #993399">1.4</span><span style="color: #990000">,-</span><span style="color: #993399">1.6</span><span style="color: #990000">,</span> <span style="color: #993399">0.0</span><span style="color: #990000">,</span><span style="color: #993399">0.0</span><span style="color: #990000">,</span><span style="color: #993399">0.0</span><span style="color: #990000">,</span><span style="color: #993399">0.0</span><span style="color: #990000">,</span><span style="color: #993399">0.0</span><span style="color: #990000">,</span><span style="color: #993399">0.0</span><span style="color: #990000">,</span><span style="color: #993399">0.0</span><span style="color: #990000">,</span><span style="color: #993399">0.0</span><span style="color: #FF0000">}</span>
+    braitenbergR<span style="color: #990000">=</span><span style="color: #FF0000">{</span><span style="color: #990000">-</span><span style="color: #993399">1.6</span><span style="color: #990000">,-</span><span style="color: #993399">1.4</span><span style="color: #990000">,-</span><span style="color: #993399">1.2</span><span style="color: #990000">,-</span><span style="color: #993399">1</span><span style="color: #990000">,-</span><span style="color: #993399">0.8</span><span style="color: #990000">,-</span><span style="color: #993399">0.6</span><span style="color: #990000">,-</span><span style="color: #993399">0.4</span><span style="color: #990000">,-</span><span style="color: #993399">0.2</span><span style="color: #990000">,</span> <span style="color: #993399">0.0</span><span style="color: #990000">,</span><span style="color: #993399">0.0</span><span style="color: #990000">,</span><span style="color: #993399">0.0</span><span style="color: #990000">,</span><span style="color: #993399">0.0</span><span style="color: #990000">,</span><span style="color: #993399">0.0</span><span style="color: #990000">,</span><span style="color: #993399">0.0</span><span style="color: #990000">,</span><span style="color: #993399">0.0</span><span style="color: #990000">,</span><span style="color: #993399">0.0</span><span style="color: #FF0000">}</span>
+    v0<span style="color: #990000">=</span><span style="color: #993399">2</span>
+end</tt></pre></div></div>
 </div>
 </div>
 </div>
@@ -2419,7 +3287,7 @@ Microcontrolador e Sensores
 <div id="footnotes"><hr></div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-10-20 14:11:26 BRT
+Last updated 2016-10-21 01:29:08 BRT
 </div>
 </div>
 </body>

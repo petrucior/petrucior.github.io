@@ -30,7 +30,7 @@ O V-rep possui 3 elementos centrais:
 
 São os blocos básicos disponibilizados pelo V-rep para a construção de um projeto.
 
-image::imagens/objetosdecena.png[height=350, width=350, align="center"]
+image::imagens/objetosdecena.png[height=350, width=450, align="center"]
 
 === Módulo de cálculo
 
@@ -55,7 +55,7 @@ Possui 6 interfaces de controle:
  - Soluções customizadas
  - API remota
 
-image::imagens/meccontrole.png[height=250, width=300, align="center"]
+image::imagens/meccontrole.png[height=350, width=400, align="center"]
 
 Download e instalação
 ---------------------
@@ -67,7 +67,214 @@ image::imagens/download.png[height=150, width=450, align="center"]
 Interface principal do V-rep
 ----------------------------
 
-image::imagens/maininterface.png[height=250, width=300, align="center"]
+image::imagens/maininterface.png[height=550, width=700, align="center"]
+
+﻿Formas de modelar um robô no v-rep
+----------------------------------
+
+Basicamente existem duas formas de modelar os robôs:
+[options="compact"]
+ - Modelagem utilizando elemento básicos;
+ - Modelagem utilizando CAD.
+
+A imagem destaca os elementos básicos como plano, circulo, esféra, cubo e cilinndro.
+
+image::imagens/ModelagemBasica.png[height=250, width=300, align="center"]
+
+Já em CAD, o usuário é responsáveis por projetar cada peça.
+
+image::imagens/modelagem.png[height=250, width=300, align="center"]
+
+
+Além dos elementos estruturais, já citados, pode-se ainda destacar elementos alguns outros utilizados, como Juntas, Sensores, Dummy, câmera, gráficos, luz e espelho, .
+
+image::imagens/ModelagemBasicaJuntas.png[height=250, width=300, align="center"]
+
+image::imagens/ModelagemBasicaSensores.png[height=250, width=300, align="center"]
+
+Como pode-se observar, existem três tipo de juntas, a rotacional, prismática e esférica. Cada uma com suas particularidades.
+[options="compact"] 
+ - Rotacional: Rotaciona apenas em eixo;
+ - Primática: Realiza uma translação em um eixo;
+ - Esférica: Rotacional nos três eixos.
+
+Outro ponto é a possibilidade de utilizar vários tipos de sensores:
+[options="compact"] 
+ - Força;
+ - Proximidade;
+ - Visão;
+ - Laser;
+ - etc.
+
+=== Parâmetros dos possíveis objetos de cena
+[options="compact"]
+ - Câmera;
+
+image::imagens/cameraProperties1.jpg[height=250, width=300, align="center"]
+
+ - Dummy;
+
+image::imagens/dummyDialog1.jpg[height=250, width=300, align="center"]
+
+ - Sensor de força;
+
+image::imagens/forceSensorDialog1.jpg[height=250, width=300, align="center"]
+
+ - Gráficos;
+
+image::imagens/graphDialog1.jpg[height=250, width=300, align="center"]
+
+ - Juntas;
+
+image::imagens/jointDialog1.jpg[height=250, width=300, align="center"]
+
+ - Luz;
+
+image::imagens/lightProperties1.jpg[height=250, width=300, align="center"]
+
+ - Espelho;
+
+image::imagens/mirrorDialog1.jpg[height=250, width=300, align="center"]
+
+
+=== Como Utilizar cada componente
+[options="compact"]
+ - Adicionar Objetos a cena (Add);
+   * Clicar em "Add" e escolher que componente se deseja adicionar.
+ - Dimensões;
+
+image::imagens/geometryDialog.jpg[height=250, width=300, align="center"]
+
+ - Parâmetros de posicionamento e orientação;
+
+image::imagens/orientationAndRotationDlg.jpg[height=250, width=300, align="center"]
+
+ - Parâmetros comuns.
+
+image::imagens/objectCommonDlg2.jpg[height=250, width=300, align="center"]
+
+
+=== Uso das funções de Grouping/Merging
+[options="compact"]
+ - Grouping;
+  * Agrupar um conjunto de objetos. Dessa forma é possível manipulá-los como um só. 
+ - Merging;
+  * De forma análoga ao Grouping, mas nesse modo objetos são deslocados para o referencial do primeiro obejto.
+
+
+=== Modelando o primeiro objeto
+[options="compact"]
+ - O modelo Phantom Omni foi escolhi como referência para a modelagem.
+
+image::imagens/LargePHANTOMOmniImage.jpg[height=250, width=300, align="center"]
+
+ - Vídeo: https://www.youtube.com/watch?v=REA97hRX0WQ
+ 
+ - Esse modelo possui três juntas rotacionais e três elos como componentes principais.
+
+ 
+Assim pode-se então começar o desenvolvimento a partir da base que servirá como sustentação para o nosso modelo.
+
+image::imagens/Parabase.png[height=250, width=300, align="center"]
+image::imagens/ParabaseOrientacao.png[height=250, width=300, align="center"]
+image::imagens/ParabasePosicao.png[height=250, width=300, align="center"]
+
+Precisamos agora inserir a primeira junta que será responsável pela rotação da base.
+
+image::imagens/ParaJunta1.png[height=250, width=300, align="center"]
+image::imagens/Parajunta1Orientacao.png[height=250, width=300, align="center"]
+image::imagens/Parajunta1Posicao.png[height=250, width=300, align="center"]
+
+Após a definição da junta 1 se define o Elo 1. 
+
+image::imagens/ParaElo1.png[height=250, width=300, align="center"]
+image::imagens/ParaElo1Orientacao.png[height=250, width=300, align="center"]
+image::imagens/ParaElo1Posicao.png[height=250, width=300, align="center"]
+
+De forma análoga aos demais elementos foram construídos os outros componentes.
+
+Junta 2:
+
+image::imagens/ParaJunta2.png[height=250, width=300, align="center"]
+image::imagens/Parajunta2Orientacao.png[height=250, width=300, align="center"]
+image::imagens/Parajunta2Posicao.png[height=250, width=300, align="center"]
+
+
+Elo 2:
+
+image::imagens/ParaElo2.png[height=250, width=300, align="center"]
+image::imagens/ParaElo2Orientacao.png[height=250, width=300, align="center"]
+image::imagens/ParaElo2Posicao.png[height=250, width=300, align="center"]
+
+Junta 3:
+
+image::imagens/ParaJunta3.png[height=250, width=300, align="center"]
+image::imagens/Parajunta3Orientacao.png[height=250, width=300, align="center"]
+image::imagens/Parajunta3Posicao.png[height=250, width=300, align="center"]
+
+Elo 3:
+
+image::imagens/ParaElo3.png[height=250, width=300, align="center"]
+image::imagens/ParaElo3Orientacao.png[height=250, width=300, align="center"]
+image::imagens/ParaElo3Posicao.png[height=250, width=300, align="center"]
+
+Garra :
+
+image::imagens/Paragarra.png[height=250, width=300, align="center"]
+image::imagens/ParagarraOrientacao.png[height=250, width=300, align="center"]
+image::imagens/ParagarraPosicao.png[height=250, width=300, align="center"]
+
+
+Simulação
+---------
+
+=== Parâmetros da simulação
+[options="compact"]
+ - Velocidade;
+ - Tempo amostral;
+ - Método de integração;
+ - Tempo real;
+ - etc.
+
+image::imagens/barradesimulacao.png[height=50, width=700, align="center"]
+
+=== Parâmetros dos objetos
+
+Parâmetros como velocidade de uma junta, torque, PID e força interferem diretamente na simulação, tais parâmentros influenciam na dinâmica do sistema como um todo.
+
+
+Controlando a posição de um robô com o V-REP
+--------------------------------------------
+
+Após desenvolver o modelo do robô, partimos para o seu controle de posição. O nosso objetivo é fazer como que a garra (ou a ponta) do robô vá para uma posição desejada. Para isto, utilizaremos a ferramenta de cinemática inversa (FCI) do módulo de cálculo. A FCI utiliza dois 'Dummies' (frames de referência) em seu funcionamento, um no robô e outro que será o alvo. Com essas duas informações, a FCI é capaz de calcular os ângulos das juntas que fazem o 'dummy' que está no robô se encontrar com o 'dummie' alvo, caso isto seja possível.
+
+De início, é preciso inserir os dois 'dummies' que serã utilizados pela FCI. No menu superior, vá em add -> dummy. Renomei-o para *garra*. Realize a mesma operação novamente para adicionar outro 'dummy', e renomei-o para *alvo*. 
+
+image::imagens/dummies1.png[height=350, width=500, align="center"]
+
+Agora é preciso conectar os dois 'dummies'. Para isto, clique no 'dummy' *garra* e em seguida, pressionando o botão ctrl, clique no 'dummy' *alvo*. Após selecionar os dois 'dummies' faça: botão direito do mouse -> edit -> link selected dummies -> IK tip-target. 
+
+image::imagens/dummies2.png[height=350, width=400, align="center"]
+
+Faça o 'dummy' *garra* ser filho (na árvore hierárquica) da garra do seu robô e em seguida posicione-o sobre a garra.
+
+image::imagens/dummies3.png[height=350, width=500, align="center"]
+
+Abra então a janela do módulo de cálculo. Isto pode ser feito de duas formas: selecionando o botão f(x) na barra de ferramentas 1 ou pelo menu superior em Tools -> Calculation module properties.
+
+image::imagens/ik1.png[height=350, width=400, align="center"]
+
+Na parte superior da janela do módulo de cálculo, selecione o botão 'Inverse kinematics'. Em seguida, clique em 'Add new IK group'. Deverá aparecer na janela inferior um novo grupo, que por padrão tem nome 'IK_Group'. Modifique o método de cálculo ('Calc. method') para DLS. Em seguida clique em 'Edit IK elements' para abrir a janela 'IK Elements'. 
+
+image::imagens/ik2.png[height=350, width=250, align="center"]
+
+Nesta janela, selecione o objeto que será utilizado como ponta (no nosso caso, o 'dummy' *garra*) e clique em 'Add new IK element with tip:'. Vá em 'Base' e selecione a base do seu robô.
+
+image::imagens/ik3.png[height=350, width=250, align="center"]
+
+Pronto! Se as juntas do seu robô estiverem configuradas corretamente, basta clicar no botão play e movimentar o 'dummy' *alvo* pelo ambiente que o seu robô tentará alcançá-lo.
+
+Mais detalhes sobre a janela do FCI podem ser encontrados em -> http://www.coppeliarobotics.com/helpFiles/en/ikDialog.htm[janela FCI v-rep].
 
 Gráficos
 --------
@@ -80,8 +287,8 @@ Gráficos
 
 image::imagens/adicaografico1.png[height=350, width=500, align="center"]
 
-image::imagens/adicaografico2.png[height=250, width=150, align="center"]
-image::imagens/adicaografico3.png[height=100, width=150, align="center"]
+image::imagens/adicaografico2.png[height=350, width=250, align="center"]
+image::imagens/adicaografico3.png[height=200, width=250, align="center"]
 
 image::imagens/adicaografico4.png[height=250, width=500, align="center"]
 
@@ -114,6 +321,91 @@ sensor e etc.
 
 Exemplo: SimReadProximitySensor e SimSetJointTargetVelocity
 
+=== Código
+[source,c]
+----
+include::codes/pioneer3at.lua[]
+----
+
+=== Descrição do programa
+Foram incluídas nas primeiras linhas do arquivo link:codes/pioneer3at.lua[pioneer3at.lua] todas as configurações necessárias para o funcionamento adequado do modelo do robô Pioneer 3-AT.
+[source, c]
+----
+if (sim_call_type==sim_childscriptcall_initialization) then 
+    usensors={-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1}
+    for i=1,16,1 do
+        usensors[i]=simGetObjectHandle("Pioneer_p3dx_ultrasonicSensor"..i)
+    end
+    motorLeft=simGetObjectHandle("Pioneer_p3dx_leftMotor")
+    motorRight=simGetObjectHandle("Pioneer_p3dx_rightMotor")
+    noDetectionDist=0.5
+    maxDetectionDist=0.2
+    detect={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
+    braitenbergL={-0.2,-0.4,-0.6,-0.8,-1,-1.2,-1.4,-1.6, 0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0}
+    braitenbergR={-1.6,-1.4,-1.2,-1,-0.8,-0.6,-0.4,-0.2, 0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0}
+    v0=2
+end 
+----
+
+Como o Pioneer 3-AT contém 16 sensores utrassons, necessitamos iniciar cada um deles, então o próximo trecho de código realiza a leitura das distâncias e organizam o grau de detecção de cada sensor no vetor 'detect'.
+[source, c]
+----
+for i=1,16,1 do
+        res,dist=simReadProximitySensor(usensors[i])
+        if (res>0) and (dist<noDetectionDist) then
+            if (dist<maxDetectionDist) then
+                dist=maxDetectionDist
+            end
+            detect[i]=1-((dist-maxDetectionDist)/(noDetectionDist-maxDetectionDist))
+        else
+            detect[i]=0
+        end
+end
+----
+
+Nesse momento do código definimos uma velocidade para os dois atuadores do Pioneer e uma condição de parada dependendo da pose do Pioneer no simulador. Para isso, foi necessário definir qual era o objeto da cena que precisávamos colher informações.
+[source, c]
+----
+    -- Definindo valores das velocidade esquerda e direita
+    vLeft=1.8
+    vRight=2.0
+    
+    -- Pegando informacoes do pioneer
+    pioneer=simGetObjectHandle('Pioneer_p3dx')
+    -- Pegando posicao do pioneer
+    PosPioneer=simGetObjectPosition(pioneer,-1)
+    -- Pegando o x do pioneer
+    t=PosPioneer[1]
+    
+    -- Verifica se chegou na referencia
+    if (t > 0.0) then
+        vLeft = 0.0
+        vRight = 0.0
+    end 
+----
+
+No código base do Pioneer 3-At do V-Rep já vem configurado a possibilidade de reações há detecção de obstáculos como observado abaixo. São acionadas as velocidades do Robô Pioneer 3-At, representadas por vLeft e vRight, de acordo com a detecção dos sensores. 
+[source, c]
+----
+    -- Varrer os sensores da frente do pioneer
+    for i=2,7,1 do
+        if ( detect[i] > 0 )then -- Se estiver detectando obstáculo
+	    -- Realiza um desvio para o lado oposto
+            vLeft=vLeft+braitenbergL[i]*detect[i]
+            vRight=vRight+braitenbergR[i]*detect[i]
+        end
+    end
+----
+
+Por fim, é necessário enviar as informações de velocidades para os motores. 
+[source, c]
+----
+    -- Envia informações para os atuadores    
+    simSetJointTargetVelocity(motorLeft,vLeft)
+    simSetJointTargetVelocity(motorRight,vRight)
+----
+
+
 === Plugins e Add-ons
 
 Duas abordagens bastante semelhantes e que possibilitam a interação de dispositivos externos
@@ -141,6 +433,37 @@ Existem dois plugins disponíveis para possibilitar a comunicação com o Ros
 
 === Api remota
 
-teste
+Construção de programas externos que se comunicam como clientes com o simulador.
+[options="compact"]
+ - C++
+   * Adicione o código em algum diretório
+   * Copie todos os arquivos do caminho "V-REP/programming/RemoveApi" para um diretório "remoteApi"
+   * Copie os arquivos "v_repConst.h", "v_repLib.h" e "v_repTypes.h" do caminho "V-Rep/programming/include" para um diretório "include"
+   * Crie um arquivo Makefile para configuração
 
+=== Código
+[source,c]
+----
+include::codes/cpp/cliente.cpp[]
+----
+
+=== Descrição do programa
+Foram incluídas nas primeiras linhas do arquivo link:codes/pioneer3at.lua[pioneer3at.lua] todas as configurações necessárias para o funcionamento adequado do modelo do robô Pioneer 3-AT.
+[source, c]
+----
+if (sim_call_type==sim_childscriptcall_initialization) then 
+    usensors={-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1}
+    for i=1,16,1 do
+        usensors[i]=simGetObjectHandle("Pioneer_p3dx_ultrasonicSensor"..i)
+    end
+    motorLeft=simGetObjectHandle("Pioneer_p3dx_leftMotor")
+    motorRight=simGetObjectHandle("Pioneer_p3dx_rightMotor")
+    noDetectionDist=0.5
+    maxDetectionDist=0.2
+    detect={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
+    braitenbergL={-0.2,-0.4,-0.6,-0.8,-1,-1.2,-1.4,-1.6, 0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0}
+    braitenbergR={-1.6,-1.4,-1.2,-1,-0.8,-0.6,-0.4,-0.2, 0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0}
+    v0=2
+end 
+----
 
