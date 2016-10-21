@@ -433,37 +433,121 @@ Existem dois plugins disponíveis para possibilitar a comunicação com o Ros
 
 === Api remota
 
-Construção de programas externos que se comunicam como clientes com o simulador.
+Construção de http://www.coppeliarobotics.com/helpFiles/en/remoteApiClientSide.htm[programas externos] que se comunicam como clientes com o simulador.
 [options="compact"]
  - C++
-   * Adicione o código em algum diretório
-   * Copie todos os arquivos do caminho "V-REP/programming/RemoveApi" para um diretório "remoteApi"
-   * Copie os arquivos "v_repConst.h", "v_repLib.h" e "v_repTypes.h" do caminho "V-Rep/programming/include" para um diretório "include"
-   * Crie um arquivo Makefile para configuração
+ - Java
+ - Lua
+ - Urbi
+ - Matlab
+ - Octave
+ - Python
+   * Habilitar o script principal do v-rep para possibilitar a inicialização como servidor simExtRemoteApiStart(portNumber)
+   * Copiar o arquivo vrep.py para o mesmo diretório do cliente.py
+   * Copiar o arquivo vrepConst.py para o mesmo diretório do cliente.py
+   * Copiar a biblioteca da api remota "remoteApi.dll" (Windows), "remoteApi.dylib" (Mac) or "remoteApi.so" (Linux)
 
 === Código
-[source,c]
+[source,python]
 ----
-include::codes/cpp/cliente.cpp[]
+include::codes/python/cliente.py[]
 ----
 
 === Descrição do programa
-Foram incluídas nas primeiras linhas do arquivo link:codes/pioneer3at.lua[pioneer3at.lua] todas as configurações necessárias para o funcionamento adequado do modelo do robô Pioneer 3-AT.
-[source, c]
+Foram incluídas nas primeiras linhas do arquivo link:codes/python/cliente.py[cliente.py] todas as configurações necessárias para o funcionamento adequado do modelo do robô Pioneer 3-AT.
+[source, python]
 ----
-if (sim_call_type==sim_childscriptcall_initialization) then 
-    usensors={-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1}
-    for i=1,16,1 do
-        usensors[i]=simGetObjectHandle("Pioneer_p3dx_ultrasonicSensor"..i)
-    end
-    motorLeft=simGetObjectHandle("Pioneer_p3dx_leftMotor")
-    motorRight=simGetObjectHandle("Pioneer_p3dx_rightMotor")
-    noDetectionDist=0.5
-    maxDetectionDist=0.2
-    detect={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
-    braitenbergL={-0.2,-0.4,-0.6,-0.8,-1,-1.2,-1.4,-1.6, 0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0}
-    braitenbergR={-1.6,-1.4,-1.2,-1,-0.8,-0.6,-0.4,-0.2, 0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0}
-    v0=2
-end 
+#definicoes iniciais
+serverIP = '127.0.0.1'
+serverPort = 19999
+leftMotorHandle = 0
+vLeft = 0.
+rightMotorHandle = 0
+vRight = 0.
+sensorHandle = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0] 
 ----
 
+Inserimos as variáveis do modelo e da cena de forma semelhante ao arquivo de configuração inicial do lua.
+[source, python]
+----
+# variaveis de cena e movimentação do pioneer
+noDetectionDist=0.5
+maxDetectionDist=0.2
+detect=[0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.]
+braitenbergL=[-0.2,-0.4,-0.6,-0.8,-1,-1.2,-1.4,-1.6, 0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]
+braitenbergR=[-1.6,-1.4,-1.2,-1,-0.8,-0.6,-0.4,-0.2, 0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]
+v0=2
+----
+
+Tentamos estabelecer a conexão com o servidor, por este motivo é necessário que o servidor esteja em execução.
+[source, python]
+----
+clientID = vrep.simxStart(serverIP,serverPort,True,True,2000,5)
+----
+
+É necessário especificar quais são os manipuladores dos atuadores e dos sensores do Pioneer serão habilitados.
+[source, python]
+----
+    # inicialização dos motores
+    erro, leftMotorHandle = vrep.simxGetObjectHandle(clientID,'Pioneer_p3dx_leftMotor',
+vrep.simx_opmode_oneshot_wait)
+    if erro <> 0:
+        print 'Handle do motor esquerdo nao encontrado!'
+    else:
+        print 'Conectado ao motor esquerdo!'
+
+    erro, rightMotorHandle = vrep.simxGetObjectHandle(clientID,'Pioneer_p3dx_rightMotor',
+vrep.simx_opmode_oneshot_wait)
+    if erro <> 0:
+        print 'Handle do motor direito nao encontrado!'
+    else:
+        print 'Conectado ao motor direito!'
+
+    #inicialização dos sensores (remoteApi)
+    for i in range(16):
+        erro, sensorHandle[i] = vrep.simxGetObjectHandle(clientID, 
+"Pioneer_p3dx_ultrasonicSensor%d" % (i+1),vrep.simx_opmode_oneshot_wait)
+        if erro <> 0:
+            print "Handle do sensor Pioneer_p3dx_ultrasonicSensor%d nao encontrado!" % (i+1)
+        else:
+            print "Conectado ao sensor Pioneer_p3dx_ultrasonicSensor%d!" % (i+1)
+            erro, state, coord, detectedObjectHandle, detectedSurfaceNormalVector = 
+vrep.simxReadProximitySensor(clientID, sensorHandle[i],vrep.simx_opmode_streaming)
+
+----
+
+Realizar a rotina de desvio de obstáculo, padrão do modelo do Pioneer 3-AT, acionar os atuadores e se desconectar do servidor
+[source, python]
+----
+    #desvio e velocidade do robo
+    while vrep.simxGetConnectionId(clientID) != -1:
+        for i in range(16):
+            erro, state, coord, detectedObjectHandle, detectedSurfaceNormalVector =
+ vrep.simxReadProximitySensor(clientID, sensorHandle[i],vrep.simx_opmode_buffer)
+            if erro == 0:
+                dist = coord[2]
+                if state > 0 and dist < noDetectionDist:
+                    if dist < maxDetectionDist:
+                        dist = maxDetectionDist
+
+                    detect[i] = 1-((dist-maxDetectionDist) / (noDetectionDist-maxDetectionDist))
+                else:
+                    detect[i] = 0
+            else:
+                detect[i] = 0
+
+        vLeft = v0
+        vRight = v0
+
+        for i in range(16):
+            vLeft  = vLeft  + braitenbergL[i] * detect[i]
+            vRight = vRight + braitenbergR[i] * detect[i]
+
+        # atualiza velocidades dos motores
+        erro = vrep.simxSetJointTargetVelocity(clientID, leftMotorHandle, vLeft,
+ vrep.simx_opmode_streaming)
+        erro = vrep.simxSetJointTargetVelocity(clientID, rightMotorHandle, vRight,
+ vrep.simx_opmode_streaming)
+
+    vrep.simxFinish(clientID) # fechando conexao com o servidor
+----
