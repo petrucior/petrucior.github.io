@@ -3,33 +3,19 @@
   <head>
     <title>Queen Elizabeth 2</title>
   </head>
-  <meta name='viewport' content='width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0'>
-  <!--script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
-  <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.6.0/aframe/build/aframe-ar.js"></script-->
+  <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+  <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.6.0/aframe/build/aframe-ar.js"></script>
+  <!--script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script-->
   <body style='margin : 0px; overflow: hidden;'>
-    <!--a-scene embedded arjs='sourceType: webcam;'>
-      <a-marker present='hiro'>
-      <a-box position='0 0.5 0' material='opacity: 0.5;'></a-box-->
-      <!--a-marker-camera preset='hiro'></a-marker-camera-->
-      <!--/a-marker>
-      <a-entity camera></a-entity-->
-      <video id="video"></video>
-      <script type="text/javascript">
-	var video = document.getElementById('video');
-	navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.oGetUserMedia || navigator.msGetUserMedia;
-	if(navigator.getUserMedia){
-	navigator.getUserMedia({video:true}, streamWebCam, throwError);
-	}
-
-	function streamWebCam (stream) {
-	video.src = window.URL.createObjectURL(stream);
-	video.play();
-	}
-
-	function throwError (e) {
-	alert(e.name);
-	}
-	</script>
-    <!--/a-scene-->
+    <a-scene embedded arjs='sourceType: webcam;'>
+      <!--a-assets>
+	<a-asset-item id="crown-obj" src="crown.obj"></a-asset-item>
+	<a-asset-item id="crown-mtl" src="crown.mtl"></a-asset-item>
+      </a-assets>
+      <a-entity obj-model="obj: #crown-obj; mtl: #crown-mtl;"></a-entity-->
+      <a-entity obj-model="obj: url(crown.obj); mtl: url(crown.mtl);"></a-entity>
+      <!--a-box position='0 0.5 0' material='opacity: 0.5;'></a-box-->
+      <a-marker-camera preset='hiro'></a-marker-camera>
+    </a-scene>
   </body>
 </html>
