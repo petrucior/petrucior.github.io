@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
+    <title>Web Fovea</title>
+  </head>
+  <body>
+    <!-- Title and a short description of this project -->
+    <div class="container">
+      <div class="jumbotron">
+      	<h1 class="display-4">Project WebFovea</h1>
+	<p class="lead">This project uses fovea MMF built by NatalNet to processing media in real time.</p>
+      </div>
+
+      <!-- Insert form and media -->
+      <div class="row">
+	<div class="col-sm">
+	  <div class="card">
+	    <div class="card-header">Input</div>
+
+	    <div class="card-block text-center" id="parent">
+	      <img id="media" src="lena.jpg" alt="Upload Media" class="card-img-top"/>
+            </div>
+
+	    <div class="card-footer text-muted">
+	      <input type="file" id="inputMedia" capture />
+	    </div>
+
+	    <div id="output">
+	      Position
+	    </div>
+	    
+	  </div>
+	</div>
+
+	<div class="col-sm">
+	  <div class="card">
+	    <div class="card-header">Output</div>
+
+	    <div class="card-block">
+              <canvas id="canvasMedia"></canvas>
+            </div>
+	    
+	    <button onclick="fovea.foveatedImage(media, canvasMedia, 50, 50, 4, 0, 0)">Grayscale Foveated</button>
+	    
+	  </div>
+	</div>
+	
+      </div>
+
+    </div>
+      
+    <!-- Scripts zingtouch fovea and OpenCV library -->
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/374756/zingtouch-1.0.0.min.js"></script>
+    <script src="fovea.js"></script>
+    <script async src="opencv.js" onload="fovea.initOpencv();" type="text/javascript"></script>
+  </body>
+</html>
