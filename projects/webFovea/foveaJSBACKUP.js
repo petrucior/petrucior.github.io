@@ -16,7 +16,7 @@ fovea.initOpencv = function onOpenCvReady() {
 
 
 // Position fovea
-/*var region = new ZingTouch.Region(document.getElementById('parent'));
+var region = new ZingTouch.Region(document.getElementById('parent'));
 var target = document.getElementById('media');
 
 region.bind(target, 'pan', function(e){
@@ -24,7 +24,7 @@ region.bind(target, 'pan', function(e){
     var x = e.detail.events[0].x - Math.floor(canvasRect.left);
     var y = e.detail.events[0].y - Math.floor(canvasRect.top);
     document.getElementById('output').innerHTML ="( "+ x +" , "+ y +" )";
-})*/
+})
 
 // Fovea Structure
 // Size
@@ -67,6 +67,7 @@ fovea.mmf = function( img, ux, uy, wx, wy, niveis, k, fx, fy ){
     return img1;
 }
 
+
 // Foveated image
 fovea.foveatedImage = function( idInput, idOutput, wx, wy, niveis, fx, fy){
     let img = cv.imread(idInput);
@@ -85,25 +86,20 @@ fovea.foveatedImage = function( idInput, idOutput, wx, wy, niveis, fx, fy){
 	
     	if (k < niveis){
 	    cv.resize(imgLevel, imgLevel, new cv.Size(xf - xi, yf - yi));
-	    /*for (let i = 0; i < xf - xi; i++) {
-		for (let j = 0; j < yf - yi; j++) {
+	    for (let i = 0; i < yf - yi; i++) {
+		for (let j = 0; j < xf - xi; j++) {
 		    imgFoveated.ucharPtr(i + xi, j + yi)[0] = imgLevel.ucharPtr(i, j)[0];
 		}
-	    }*/
+	    }
 	}
-	//else{
+	else{
 	    for (let i = 0; i < xf - xi; i++) {
-		for (let j = 0; j < yf - yi; j++) {
+		for (let j = 0; j < yf - xi; j++) {
 		    imgFoveated.ucharPtr(i + yi, j + xi)[0] = imgLevel.ucharPtr(i, j)[0];
 		}
 	    }
-	//}
-
-	
-	//((document.getElementById('canvasMedia')).getContext('2d')).drawImage(imgLevel, xi, yi);
-	
-	cv.rectangle(imgFoveated, new cv.Point(xi, yi), new cv.Point(xf, yf), [255, 255, 255, 255]);
+	}
+	//cv.rectangle(imgFoveated, new cv.Point(xi, yi), new cv.Point(xf, yf), [255, 255, 255, 255]);
     }
-    
     cv.imshow(idOutput, imgFoveated);
 }
