@@ -101,9 +101,10 @@ fovea.printBorder = function( imgInput,  imgOutput, limiteInicial, limiteFinal){
 	}
 	
 	// West and East
-	for (let i = limiteFinal[1]; i < limiteFinal[3]; i++) { // Rows
-	    if ( j == limiteFinal[0] ) j+= (limiteFinal[2] - limiteFinal[0]);
-	    imgOutput.ucharPtr(i, j)[0] = imgInput.ucharPtr(i - limiteInicial[1], j - limiteInicial[0])[0];
+	if ( ( j < limiteFinal[0] ) || ( j >= limiteFinal[2] ) ){
+	    for (let i = limiteFinal[1]; i < limiteFinal[3]; i++) { // Rows
+		imgOutput.ucharPtr(i, j)[0] = imgInput.ucharPtr(i - limiteInicial[1], j - limiteInicial[0])[0];
+	    }
 	}
     }
 }
@@ -135,19 +136,20 @@ fovea.foveatedImage = function( idInput, idOutput, wx, wy, niveis, fx, fy){
 	    var yf2 = Math.floor(this.mapLevels2Imagey( uy, wy, niveis, k+1, fy, wy ));
 	    vectorFinish = [xi2, yi2, xf2, yf2];
 	    this.printBorder( imgLevel,  imgFoveated, vectorInit, vectorFinish);
+	    
 	    /*for (let i = 0; i < xf - xi; i++) {
 		for (let j = 0; j < yf - yi; j++) {
 		    imgFoveated.ucharPtr(i + xi, j + yi)[0] = imgLevel.ucharPtr(i, j)[0];
 		}
 	    }*/
 	}
-	else{
+	/*else{
 	    for (let i = 0; i < xf - xi; i++) {
 		for (let j = 0; j < yf - yi; j++) {
 		    imgFoveated.ucharPtr(i + yi, j + xi)[0] = imgLevel.ucharPtr(i, j)[0];
 		}
 	    }
-	}
+	}*/
 
 	// Deleting vectors
 	delete vectorInit;
