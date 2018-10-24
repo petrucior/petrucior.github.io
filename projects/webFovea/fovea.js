@@ -101,7 +101,7 @@ fovea.printBorder = function( imgInput,  imgOutput, limiteInicial, limiteFinal){
 	}
 	
 	// West and East
-	if ( ( j < limiteFinal[0] ) || ( j >= limiteFinal[2] ) ){
+	if ( ( j < limiteFinal[0] ) || ( j > limiteFinal[2] ) ){
 	    for (let i = limiteFinal[1]; i < limiteFinal[3]; i++) { // Rows
 		imgOutput.ucharPtr(i, j)[0] = imgInput.ucharPtr(i - limiteInicial[1], j - limiteInicial[0])[0];
 	    }
@@ -135,6 +135,8 @@ fovea.foveatedImage = function( idInput, idOutput, wx, wy, niveis, fx, fy){
 	    var xf2 = Math.floor(this.mapLevels2Imagex( ux, wx, niveis, k+1, fx, wx ));
 	    var yf2 = Math.floor(this.mapLevels2Imagey( uy, wy, niveis, k+1, fy, wy ));
 	    vectorFinish = [xi2, yi2, xf2, yf2];
+	    if ( k == 4 )
+		console.log("entrei aqui");
 	    this.printBorder( imgLevel,  imgFoveated, vectorInit, vectorFinish);
 	    
 	    /*for (let i = 0; i < xf - xi; i++) {
