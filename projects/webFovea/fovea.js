@@ -9,20 +9,21 @@ let idMedia = document.getElementById('media');
 let idInputMedia = document.getElementById('inputMedia');
 idInputMedia.addEventListener('change', (e) => { idMedia.src = URL.createObjectURL(e.target.files[0]); }, false);
 
+// Fovear a imagem
+idMedia.addEventListener('load', function(){
+    fovea.foveatedImage("media", "canvasMedia", 50, 50, 4, 0, 0);
+});
+
 // Init OpenCV
 fovea.initOpencv = function onOpenCvReady() {
-  document.body.classList.remove("loading");
+    document.body.classList.remove("loading");
 }
 
 // Position fovea
-var region = new ZingTouch.Region(document.getElementById('parent'));
-var target = document.getElementById('media');
-
-var x = 0; var y = 0;
-region.bind(target, 'pan', function(e){
-    var canvasRect = target.getBoundingClientRect();
-    x = e.detail.events[0].x - Math.floor(canvasRect.left) - (Math.floor(canvasRect.width/2));
-    y = e.detail.events[0].y - Math.floor(canvasRect.top) - (Math.floor(canvasRect.width/2));
+idMedia.addEventListener('mousemove', function(event){
+    var canvasRect = idMedia.getBoundingClientRect();
+    var x = Math.floor(event.offsetX - canvasRect.width/2);
+    var y = Math.floor(event.offsetY - canvasRect.height/2);
     //document.getElementById('output').innerHTML ="( "+ x +" , "+ y +" )";
     fovea.foveatedImage("media", "canvasMedia", 50, 50, 4, x, y);
 });
@@ -53,10 +54,10 @@ fovea.mapLevels2Imagey = function( uy, wy, niveis, k, fy, py ){
 
 // MMF
 fovea.mmf = function( img, ux, uy, wx, wy, niveis, k, fx, fy ){
-    var dx = Math.floor(this.deltax( ux, wx, niveis, k, fx ));
-    var dy = Math.floor(this.deltay( uy, wy, niveis, k, fy ));
-    var sx = Math.floor(this.sizex( ux, wx, niveis, k ));
-    var sy = Math.floor(this.sizey( uy, wy, niveis, k ));
+    let dx = Math.floor(this.deltax( ux, wx, niveis, k, fx ));
+    let dy = Math.floor(this.deltay( uy, wy, niveis, k, fy ));
+    let sx = Math.floor(this.sizex( ux, wx, niveis, k ));
+    let sy = Math.floor(this.sizey( uy, wy, niveis, k ));
     //console.log("dx: "+dx+", dy: "+dy+", sx: "+sx+", sy: "+sy);
     // img1 = img[dy:dy+sy, dx:dx+sx]
     let img1 = new cv.Mat();
@@ -131,10 +132,10 @@ fovea.foveatedImage = function( idInput, idOutput, wx, wy, niveis, fx, fy){
 	
     	if (k < niveis){
 	    cv.resize(imgLevel, imgLevel, new cv.Size(xf - xi, yf - yi));
-	    var xi2 = Math.floor(this.mapLevels2Imagex( ux, wx, niveis, k+1, fx, 0 ));
-	    var yi2 = Math.floor(this.mapLevels2Imagey( uy, wy, niveis, k+1, fy, 0 ));
-	    var xf2 = Math.floor(this.mapLevels2Imagex( ux, wx, niveis, k+1, fx, wx ));
-	    var yf2 = Math.floor(this.mapLevels2Imagey( uy, wy, niveis, k+1, fy, wy ));
+	    let xi2 = Math.floor(this.mapLevels2Imagex( ux, wx, niveis, k+1, fx, 0 ));
+	    let yi2 = Math.floor(this.mapLevels2Imagey( uy, wy, niveis, k+1, fy, 0 ));
+	    let xf2 = Math.floor(this.mapLevels2Imagex( ux, wx, niveis, k+1, fx, wx ));
+	    let yf2 = Math.floor(this.mapLevels2Imagey( uy, wy, niveis, k+1, fy, wy ));
 	    vectorFinish = [xi2, yi2, xf2, yf2];
 	    if ( k == 4 )
 		console.log("entrei aqui");
