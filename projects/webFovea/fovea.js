@@ -14,17 +14,18 @@ fovea.initOpencv = function onOpenCvReady() {
   document.body.classList.remove("loading");
 }
 
-
 // Position fovea
-/*var region = new ZingTouch.Region(document.getElementById('parent'));
+var region = new ZingTouch.Region(document.getElementById('parent'));
 var target = document.getElementById('media');
 
+var x = 0; var y = 0;
 region.bind(target, 'pan', function(e){
     var canvasRect = target.getBoundingClientRect();
-    var x = e.detail.events[0].x - Math.floor(canvasRect.left);
-    var y = e.detail.events[0].y - Math.floor(canvasRect.top);
-    document.getElementById('output').innerHTML ="( "+ x +" , "+ y +" )";
-})*/
+    x = e.detail.events[0].x - Math.floor(canvasRect.left) - (Math.floor(canvasRect.width/2));
+    y = e.detail.events[0].y - Math.floor(canvasRect.top) - (Math.floor(canvasRect.width/2));
+    //document.getElementById('output').innerHTML ="( "+ x +" , "+ y +" )";
+    fovea.foveatedImage("media", "canvasMedia", 50, 50, 4, x, y);
+});
 
 // Fovea Structure
 // Size
