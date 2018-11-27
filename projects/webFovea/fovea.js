@@ -154,6 +154,10 @@ fovea.foveatedImage = function( idInput, idOutput, wx, wy, niveis, fx, fy, modeO
 	    var duration = (new Date() - start);
 	    console.log("duracao: "+duration+" ms");
 	}
+	else{
+	    vectorFinish = [xf, yf, xf, yf];
+	    this.printBorder( imgLevel,  imgFoveated, vectorInit, vectorFinish);
+	}
 	
 	// Deleting vectors
 	delete vectorInit;
