@@ -17,18 +17,49 @@
       	<h1 class="display-4">Project WebFovea</h1>
 	<p class="lead">This project uses fovea MMF built by NatalNet to processing media in real time.</p>
       </div>
-
-      <!-- Insert form and media -->
+      
+      <!-- Insert media -->
       <div class="row">
+
+	<!-- Configuration -->
+	<!--div class="col-sm">
+	  <div class="card">
+	    <div class="card-header">Configuration</div>
+
+	    <div class="card-block">
+	      <div class="form-group">
+		<label for="controlLevels">Number of levels</label>
+		<input type="range" class="form-control-range" id="controlLevels">
+	      </div>
+
+	      <label for="checkboxFilters">Filters</label>
+	      <div class="form-check" id="checkboxFilters">
+		<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+		<label class="form-check-label" for="exampleRadios1">Gaussian</label>
+	      </div>
+	      <div class="form-check">
+		<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2" disabled>
+		<label class="form-check-label" for="exampleRadios2">Laplacian</label>
+	      </div>
+	      <div class="form-check">
+		<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" disabled>
+		<label class="form-check-label" for="exampleRadios3">Canny</label>
+	      </div>
+            </div>
+	    
+	  </div>
+	</div-->
+
+	<!-- Input media -->
 	<div class="col-sm">
 	  <div class="card">
 	    <div class="card-header">Input</div>
-
+	    
 	    <div class="card-block text-center" id="parent">
 	      <img id="media" src="lena.jpg" alt="Upload Media" class="card-img-top"/>
             </div>
-
-	    <div class="card-footer text-muted">
+	    
+	    <div class="card-footer text-muted">	      
 	      <input type="file" id="inputMedia" capture />
 	    </div>
 
@@ -39,6 +70,7 @@
 	  </div>
 	</div>
 
+	<!-- Output Media -->
 	<div class="col-sm">
 	  <div class="card">
 	    <div class="card-header">Output</div>
@@ -46,6 +78,21 @@
 	    <div class="card-block">
               <canvas id="canvasMedia"></canvas>
             </div>
+
+	    <div class="card-footer text-muted">
+	      <div class="custom-control custom-radio custom-control-inline">
+		<input type="radio" id="radio0" name="radio" class="custom-control-input" checked>
+		<label class="custom-control-label" for="radio0">Grayscale</label>
+	      </div>
+	      <div class="custom-control custom-radio custom-control-inline">
+		<input type="radio" id="radio1" name="radio" class="custom-control-input">
+		<label class="custom-control-label" for="radio1">Laplacian</label>
+	      </div>
+	      <div class="custom-control custom-radio custom-control-inline">
+		<input type="radio" id="radio2" name="radio" class="custom-control-input">
+		<label class="custom-control-label" for="radio2">Canny</label>
+	      </div>
+	    </div>
 
 	  </div>
 	</div>
