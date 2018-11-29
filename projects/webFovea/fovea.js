@@ -13,10 +13,14 @@ idInputMedia.addEventListener('change', (e) => { idMedia.src = URL.createObjectU
 fovea.verifyRadio = function (){
     var radioGrayscale = document.getElementById('radio0').checked;
     var radioLaplacian = document.getElementById('radio1').checked;
-    var radioCanny = document.getElementById('radio2').checked;
+    var radioSobelX = document.getElementById('radio2').checked;
+    var radioSobelY = document.getElementById('radio3').checked;
+    var radioCanny = document.getElementById('radio4').checked;
     if ( radioGrayscale ) return 0;
     if ( radioLaplacian ) return 1;
-    if ( radioCanny ) return 2;
+    if ( radioSobelX ) return 2;
+    if ( radioSobelY ) return 3;
+    if ( radioCanny ) return 4;
 }
 
 // Foveation of the image loaded
@@ -94,6 +98,14 @@ fovea.mmf = function( img, ux, uy, wx, wy, niveis, k, fx, fy, modeOperation ){
 	cv.Laplacian(img1, img1, cv.CV_8U, 1, 1, 0, cv.BORDER_DEFAULT);
 	break;
     case 2:
+	// SobelX
+	cv.Sobel(img1, img1, cv.CV_8U, 1, 0, 3, 1, 0, cv.BORDER_DEFAULT);
+	break;
+    case 3:
+	// SobelY
+	cv.Sobel(img1, img1, cv.CV_8U, 0, 1, 3, 1, 0, cv.BORDER_DEFAULT);
+	break;
+    case 4:
 	// Canny
 	cv.Canny(img1, img1, 50, 100, 3, false);
 	break;
