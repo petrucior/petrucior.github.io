@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+  <head>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,192 +26,179 @@
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+	<![endif]-->
 
-</head>
+  </head>
 
-<body>
+  <body>
 
     <!-- Navigation -->
     <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>
     <nav id="sidebar-wrapper">
-        <ul class="sidebar-nav">
-            <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
-            <li class="sidebar-brand">
-                <a href="#top"  onclick = $("#menu-close").click(); >Sem Coordenadas</a>
-            </li>
-            <li>
-                <a href="#top" onclick = $("#menu-close").click(); >Home</a>
-            </li>
-            <li>
-                <a href="#about" onclick = $("#menu-close").click(); >About</a>
-            </li>
-            <li>
-                <a href="#services" onclick = $("#menu-close").click(); >Laboratório</a>
-            </li>
-            <li>
-                <a href="#portfolio" onclick = $("#menu-close").click(); >Portfolio</a>
-            </li>
-            <li>
-                <a href="#contact" onclick = $("#menu-close").click(); >Contact</a>
-            </li>
-        </ul>
+      <ul class="sidebar-nav">
+        <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
+        <li class="sidebar-brand">
+          <a href="#top"  onclick = $("#menu-close").click(); >Sem Coordenadas</a>
+        </li>
+        <li>
+          <a href="#top" onclick = $("#menu-close").click(); >Home</a>
+        </li>
+        <li>
+          <a href="#about" onclick = $("#menu-close").click(); >Goal</a>
+        </li>
+        <li>
+          <a href="#services" onclick = $("#menu-close").click(); >Information</a>
+        </li>
+        <!--li>
+            <a href="#portfolio" onclick = $("#menu-close").click(); >Portfolio</a>
+</li-->
+        <li>
+          <a href="#contact" onclick = $("#menu-close").click(); >Contact</a>
+        </li>
+      </ul>
     </nav>
 
     <!-- Header -->
     <header id="top" class="header">
-        <div class="text-vertical-center">
-            <h1>Sem Coordenadas</h1>
-            <h3>Projetos em desenvolvimento</h3>
-            <br>
-            <a href="#about" class="btn btn-dark btn-lg">Find Out More</a>
-        </div>
+      <div class="text-vertical-center">
+        <h1>Sem Coordenadas</h1>
+        <h3>Projetos em desenvolvimento</h3>
+        <br>
+        <a href="#about" class="btn btn-dark btn-lg">Find Out More</a>
+      </div>
     </header>
 
     <!-- About -->
     <section id="about" class="about">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-		  <h2>Tudo em um só lugar!</h2>
-		</div>
-		  <p>Nesta página buscamos reunir informações sobre o desenvolvimento de projetos relacionados à visão computacional do laboratório <a target="_blank" href="http://www.natalnet.br/visao/">NatalNet</a>, conduzido pelo professor Doutor <a target="_ablank" href="http://lattes.cnpq.br/1562357566810393">Luiz Marcos Garcia Gonçalves</a>.</p>
-                  
-                <!-- </div> -->
-            </div>
-            <!-- /.row -->
+      <div class="container">
+        <div class="row">
+	  <div class="text-vertical-center">
+            <h1>Always pass on what you have learned.</h1>
+          </div>
         </div>
-        <!-- /.container -->
+      </div>
     </section>
 
     <!-- Services -->
     <!-- Encontrei https://fortawesome.github.io/Font-Awesome/icons/ -->
     <!-- The circle icons use Font Awesome's stacked icon classes. For more information, visit http://fontawesome.io/examples/ -->
     <section id="services" class="services bg-primary">
-        <div class="container">
-            <div class="row text-center">
-                <div class="col-lg-10 col-lg-offset-1">
-                    <h2>Laboratório</h2>
-                    <hr class="small">
-                    <div class="row">
-                        <div class="col-md-3 col-sm-6">
-                            <div class="service-item">
-                                <span class="fa-stack fa-4x">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-cloud fa-stack-1x text-primary"></i>
-                            </span>
-                                <h4>
-                                    <strong>NatalNet</strong>
-                                </h4>
-                                <p>Link para o site do laboratório.</p>
-                                <a href="http://www.natalnet.br/" class="btn btn-light">Learn More</a>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6">
-                            <div class="service-item">
-                                <span class="fa-stack fa-4x">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-newspaper-o fa-stack-1x text-primary"></i>
-                            </span>
-                                <h4>
-                                    <strong>Artigos</strong>
-                                </h4>
-                                <p>Venha conhecer nossos artigos.</p>
-                                <a href="http://www.natalnet.br/home/?q=node/11" class="btn btn-light">Learn More</a>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6">
-                            <div class="service-item">
-                                <span class="fa-stack fa-4x">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-flask fa-stack-1x text-primary"></i>
-                            </span>
-                                <h4>
-                                    <strong>Pesquisas</strong>
-                                </h4>
-                                <p>Conheça nossas pesquisas.</p>
-                                <a href="#" class="btn btn-light">Em Construção</a>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6">
-                            <div class="service-item">
-                                <span class="fa-stack fa-4x">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-github-alt fa-stack-1x text-primary"></i>
-                            </span>
-                                <h4>
-                                    <strong>Projetos</strong>
-                                </h4>
-                                <p>Download de pesquisas.</p>
-                                <a href="#" class="btn btn-light">Em Construção</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.row (nested) -->
+      <div class="container">
+        <div class="row text-center">
+          <div class="col-lg-10 col-lg-offset-1">
+            <h2>Information</h2>
+            <hr class="small">
+            <div class="row">
+              <div class="col-md-3 col-sm-6">
+                <div class="service-item">
+                  <span class="fa-stack fa-4x">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-university fa-stack-1x text-primary"></i>
+                  </span>
+                  <h4>
+                    <strong>College</strong>
+                  </h4>
+                  <p>Access our classes.</p>
+                  <a href="#" class="btn btn-light">Learn More</a>
                 </div>
-                <!-- /.col-lg-10 -->
+              </div>
+              <div class="col-md-3 col-sm-6">
+                <div class="service-item">
+                  <span class="fa-stack fa-4x">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-newspaper-o fa-stack-1x text-primary"></i>
+                  </span>
+                  <h4>
+                    <strong>Tutorials</strong>
+                  </h4>
+                  <p>Work tools tutorials.</p>
+                  <a href="#" class="btn btn-light">Learn More</a>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6">
+                <div class="service-item">
+                  <span class="fa-stack fa-4x">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-flask fa-stack-1x text-primary"></i>
+                  </span>
+                  <h4>
+                    <strong>Research</strong>
+                  </h4>
+                  <p>Get to know our researches.</p>
+                  <a href="http://petrucior.github.io/projects/index.html" class="btn btn-light">Learn More</a>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6">
+                <div class="service-item">
+                  <span class="fa-stack fa-4x">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-github-alt fa-stack-1x text-primary"></i>
+                  </span>
+                  <h4>
+                    <strong>Codes</strong>
+                  </h4>
+                  <p>Download our codes.</p>
+                  <a href="https://github.com/petrucior/" class="btn btn-light">Learn More</a>
+                </div>
+              </div>
             </div>
-            <!-- /.row -->
+          </div>
         </div>
-        <!-- /.container -->
+      </div>
     </section>
 
     <!-- Callout -->
-    <aside class="callout">
+    <!--aside class="callout">
         <div class="text-vertical-center">
-            <h1>Always pass on what you have learned.</h1>
+          <h1>Always pass on what you have learned.</h1>
         </div>
-    </aside>
+</aside-->
 
     <!-- Portfolio -->
-    <section id="portfolio" class="portfolio">
+    <!--section id="portfolio" class="portfolio">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-10 col-lg-offset-1 text-center">
-                    <h2>Our Work</h2>
-                    <hr class="small">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="portfolio-item">
-                                <a href="#">
-                                    <img class="img-portfolio img-responsive" src="img/portfolio-1.jpg">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="portfolio-item">
-                                <a href="#">
-                                    <img class="img-portfolio img-responsive" src="img/portfolio-2.jpg">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="portfolio-item">
-                                <a href="#">
-                                    <img class="img-portfolio img-responsive" src="img/portfolio-3.jpg">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="portfolio-item">
-                                <a href="#">
-                                    <img class="img-portfolio img-responsive" src="img/portfolio-4.jpg">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.row (nested) -->
-                    <a href="#" class="btn btn-dark">View More Items</a>
+          <div class="row">
+            <div class="col-lg-10 col-lg-offset-1 text-center">
+              <h2>Our Work</h2>
+              <hr class="small">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="portfolio-item">
+                    <a href="#">
+                      <img class="img-portfolio img-responsive" src="img/portfolio-1.jpg">
+                    </a>
+                  </div>
                 </div>
-                <!-- /.col-lg-10 -->
+                <div class="col-md-6">
+                  <div class="portfolio-item">
+                    <a href="#">
+                      <img class="img-portfolio img-responsive" src="img/portfolio-2.jpg">
+                    </a>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="portfolio-item">
+                    <a href="#">
+                      <img class="img-portfolio img-responsive" src="img/portfolio-3.jpg">
+                    </a>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="portfolio-item">
+                    <a href="#">
+                      <img class="img-portfolio img-responsive" src="img/portfolio-4.jpg">
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <a href="#" class="btn btn-dark">View More Items</a>
             </div>
-            <!-- /.row -->
+          </div>
         </div>
-        <!-- /.container -->
-    </section>
+    </section-->
 
     <!-- Call to Action -->
-    <aside class="call-to-action bg-primary">
+    <!--aside class="call-to-action bg-primary">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -222,7 +209,7 @@
                 </div>
             </div>
         </div>
-    </aside>
+    </aside-->
 
     <!-- Map -->
     <!-- <section id="contact" class="map">
