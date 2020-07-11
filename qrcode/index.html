@@ -24,16 +24,16 @@
 	  height:160px;
 	  margin-top:15px;
       }
-      </style>
+    </style>
+    <script type="text/javascript">
+      new QRCode(document.getElementById("qrcode"), "http://www.africau.edu/images/default/sample.pdf");
+    </script>
   </head>
   <body>
     <div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
       <div class="w3-display-topleft w3-padding-large w3-xlarge">Pizzaria bla bla bla</div>
       <div class="w3-display-middle">
 	<div id="qrcode"></div>
-	<script type="text/javascript">
-	  new QRCode(document.getElementById("qrcode"), "http://www.africau.edu/images/default/sample.pdf");
-	</script>
       </div>
     </div>
   </body>
