@@ -26,7 +26,9 @@
       }
     </style>
     <script type="text/javascript">
-      new QRCode(document.getElementById("qrcode"), "http://www.africau.edu/images/default/sample.pdf");
+      var qrcode = new QRCode("qrcode");
+      qrcode.clear(); // clear the code.
+      qrcode.makeCode("http://http://www.africau.edu/images/default/sample.pdf"); // make another code.      
     </script>
   </head>
   <body>
