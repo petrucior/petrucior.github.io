@@ -12,6 +12,35 @@
     <meta name="author" content="Petrúcio Ricardo Tavares de Medeiros" />
     <script type="text/javascript" src="jquery.min.js"></script>
     <script type="text/javascript" src="qrcode.js"></script>
+
+    <style>
+      /*head, body {
+	  background-image: url('https://petrucior.github.io/qrcode/midia/screen.png');
+	  background-repeat: no-repeat;
+	  background-attachment: fixed;  
+	  background-size: cover;
+	  background-size: 100% 100%;
+	  z-index: 0;
+      }*/
+      
+      html, body {
+	  width: 100%;
+	  height: 100%;
+	  margin: 0;
+	  padding: 0;
+      }
+      .container.imagem{
+	  height: 100%;
+	  width: 100%;
+	  background-image: url(https://petrucior.github.io/qrcode/midia/screen.png);
+	  background-size: cover;
+	  background-repeat: no-repeat;
+	  background-attachment: fixed;  
+	  background-position: center;
+	  background-size: 100% 100%;
+      }
+      
+    </style>
     
     <script type="text/javascript">
       function downloading() {
@@ -21,19 +50,13 @@
     </script>
   </head>
   <body> <!--onclick="downloading()"-->
-    
-    <style>
-      body {
-	  background-image: url('https://petrucior.github.io/qrcode/midia/screen.png');
-	  background-repeat: no-repeat;
-	  background-attachment: fixed;  
-	  background-size: cover;
-	  background-size: 100% 100%;
-	  z-index: 0;
-      }
 
-    </style>
-  
+    <div class="container imagem" onclick="downloading()">
+      <map name = "shape">
+        <area shape = "rect" coords = "0, 0, 500, 500" href="/31.01.2018/production/ajax/historicoperini1.php"/>
+      </map>
+    </div>
+    
   </body>
   
 </html>
