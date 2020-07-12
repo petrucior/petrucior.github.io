@@ -1,46 +1,37 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
   <head>
-    <title>Pizzaria Napole VII</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Qrcode generate to clients">
-    <meta name="author" content="Petrúcio Ricardo Tavares de Medeiros">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
-    <style>
-      #qrcode{
-	  width:160px;
-	  height:160px;
-	  margin-top:15px;
-      }
-      /*
-      body,h1 {font-family: "Raleway", sans-serif}
-      body, html {height: 100%}
-      .bgimg {
-	  background-image: url('https://petrucior.github.io/img/bg.jpg');
-	  min-height: 100%;
-	  background-position: center;
-	  background-size: cover;
-      }
-     */
-    </style>
+    <title>Cross-Browser QRCode generator for Javascript</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <meta name="description" content="Qrcode generate to clients" />
+    <meta name="author" content="Petrúcio Ricardo Tavares de Medeiros" />
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="qrcode.js"></script>
+    
     <script type="text/javascript">
-      var qrcode = new QRCode("qrcode");
-      qrcode.clear();
-      qrcode.makeCode("http://www.africau.edu/images/default/sample.pdf");
+      function downloading() {
+	  window.location = '/midia/cardapio_touros.pdf';
+      }
     </script>
   </head>
-  <body>
-    <div id="qrcode"></div>
-    <!--div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
-      <div class="w3-display-topleft w3-padding-large w3-xlarge">Pizzaria bla bla bla</div>
-      <div class="w3-display-middle">
-	<div id="qrcode"></div>
-      </div>
-    </div-->
+  <body onload="downloading()">
+    
+    <style>
+      body {
+	  background-image: url('/midia/screen.png');
+	  background-repeat: no-repeat;
+	  background-attachment: fixed;  
+	  background-size: cover;
+	  background-size: 100% 100%;
+	  z-index: 0;
+      }
+    </style>
+  
   </body>
+  
 </html>

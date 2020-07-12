@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>QRCode generator for Javascript</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="Qrcode generate to clients" />
+    <meta name="author" content="Petrúcio Ricardo Tavares de Medeiros" />
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="qrcode.js"></script>
+  </head>
+  <body>
+    
+    <div class="content" id="qrcode" />
+        
+    <script type="text/javascript">
+      /* generating qrcode */
+      /*var qrcode = new QRCode(document.getElementById("qrcode"), {
+	  text: "http://www.africau.edu/images/default/sample.pdf",
+	  logo: "scene.png",
+	  width: 160,
+	  height: 140,
+	  colorDark : "#000000",
+	  colorLight : "#ffffff",
+	  correctLevel : QRCode.CorrectLevel.H
+      });*/
+      var qrcode = new QRCode("qrcode");
+      qrcode.clear();
+      qrcode.makeCode("http://www.africau.edu/images/default/sample.pdf");
+    </script>
+
+    <style>
+
+    </style>
+    
+  </body>
+</html>
