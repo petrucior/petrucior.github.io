@@ -16,13 +16,14 @@
     <script type="text/javascript">
       function downloading() {
 	  window.location = 'https://petrucior.github.io/qrcode/midia/cardapio_touros.pdf';
+	  document.body.classList.add("ready");
       }
     </script>
   </head>
-  <body class="backGround" onload="downloading()">
+  <body onclick="downloading()">
     
     <style>
-      .backGround {
+      body {
 	  background-image: url('https://petrucior.github.io/qrcode/midia/screen.png');
 	  background-repeat: no-repeat;
 	  background-attachment: fixed;  
