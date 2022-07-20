@@ -48,11 +48,27 @@
 
 <script>
   function on(){
+      /*
       // Realiza um disparo via Ajax para o endereço do nodemcu
       var xmlhttp = new XMLHttpRequest();
       var set_status = "https://10.190.26.213/?function=on";
       xmlhttp.open("GET", set_status);
       xmlhttp.send();
+      */
+      // Create a new XMLHttpRequest object
+      var request = new XMLHttpRequest();
+      // Use the open method passing in the type of request and the URL
+      request.open('GET', 'https://codepen.io/garethredfern/pen/672ee4670223825726040307e1515ca9.html');
+      // set the onreadystatechange event to run a function each time it changes
+      request.onreadystatechange = function() {
+	  if((request.readyState) === 4 && (request.status === 200)) {
+	      var app = document.getElementById('app');
+	      console.log(request);
+	      // write the repsonse text to the id of app in the DOM
+	      app.innerHTML = request.responseText;
+	  } 
+      }
+      request.send();
   }
 
   function off(){
@@ -61,6 +77,7 @@
       xmlhttp.open("GET", set_status);
       xmlhttp.send();
   }
+
 </script> 
 
 </body>
