@@ -47,7 +47,7 @@
 <button class="button button1" onclick="on()" >Ligar</button>
 <button class="button button2" onclick="off()" >Desligar</button>
 
-<input type="text" id="url" style="width:300px;" value="Access-Control-Allow-Origin: https://dicasdejavascript.com.br/exemplo.txt">
+<input type="text" id="url" style="width:300px;" value="https://dicasdejavascript.com.br/exemplo.txt">
 <button onclick="fazerRequisicao();">Fazer requisição</button>
 <hr />
 <div id="resposta"></div>
@@ -55,7 +55,15 @@
 <script>
 
   function fazerRequisicao(){
-      
+
+      var url = document.getElementById('url').value;
+
+      fetch(url, {
+	  mode: 'no-cors',
+      }).then(function (response) {
+	  console.log(response.type); // "opaque"
+      });
+      /*
       var url = document.getElementById('url').value;
       
       var xhttp = new XMLHttpRequest();
@@ -64,6 +72,7 @@
       xhttp.send();//A execução do script pára aqui até a requisição retornar do servidor
       
       document.getElementById("resposta").innerHTML = xhttp.responseText;
+      */
   }
   
   function on(){
