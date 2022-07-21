@@ -47,37 +47,15 @@
 <button class="button button1" onclick="on()" >Ligar</button>
 <button class="button button2" onclick="off()" >Desligar</button>
 
-<button onclick="fetch();">Fetch</button>
+<button onclick="fetch()">Fetch</button>
 
 <script>
 
-  const let url = 'https://jsonplaceholder.typicode.com/posts/1';
-  const method = 'GET';
-  const data = "";
-
-  async request(url, method, data) {
-    const options = {
-        headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-        },
-        method: method,
-        credentials: "include"
-    };
-
-    if (['POST', 'PUT', 'DELETE'].includes(method)) {
-        options.body = JSON.stringify(data);
-    }
-
-    return await fetch(url, options);
-  }
-
-  /*
-  
+    
   fetch('https://jsonplaceholder.typicode.com/posts/1')
     .then((response) => response.json())
     .then((json) => console.log(json));
-  */
+  
   
   /*
   // Solicitação GET.
