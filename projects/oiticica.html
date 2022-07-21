@@ -47,9 +47,21 @@
 <button class="button button1" onclick="on()" >Ligar</button>
 <button class="button button2" onclick="off()" >Desligar</button>
 
-<button onclick="fetch( )">Fetch</button>
+<button onclick="fetch('https://api.github.com/users/manishmshiva')">Fetch</button>
 
 <script>
+
+  
+  fetch(url)
+    .then((resp) => resp.json())
+    .then(function(data) {
+	console.log( data.results );
+    })
+    .catch(function(error){
+	console.log( error );
+    });
+  
+  /*
   // Solicitação GET.
   fetch('https://api.github.com/users/manishmshiva',){
       method: "GET",
@@ -59,6 +71,7 @@
     .then(response => response.json())  // converter para json
     .then(json => console.log(json))    //imprimir dados no console
     .catch(err => console.log('Erro de solicitação', err)); // lidar com os erros por catch
+  */
   
   function fazerRequisicao(){
 
