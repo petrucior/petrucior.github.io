@@ -50,8 +50,8 @@
 <button onclick="fetch()">Fetch</button>
 
 <script>
-  const url = 'https://randomuser.me/api/?results=10';
-  fetch(url, {
+  
+  fetch('https://api.github.com/users/manishmshiva', {
       method: "GET",
       headers: {"Content-type": "application/json;charset=UTF-8"}
   })
