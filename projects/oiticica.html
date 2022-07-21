@@ -50,14 +50,16 @@
 <button onclick="fetch( )">Fetch</button>
 
 <script>
-
   // Solicitação GET.
-  fetch('https://api.github.com/users/manishmshiva')
+  fetch('https://api.github.com/users/manishmshiva',){
+      method: "GET",
+      headers: {"Content-type": "application/json;charset=UTF-8"}
+  })
   // Tratamento do sucesso
     .then(response => response.json())  // converter para json
     .then(json => console.log(json))    //imprimir dados no console
     .catch(err => console.log('Erro de solicitação', err)); // lidar com os erros por catch
-
+  
   function fazerRequisicao(){
 
       var url = document.getElementById('url').value;
