@@ -52,7 +52,7 @@
 <script>
 
   // Solicitação GET.
-  function fetch('https://api.github.com/users/manishmshiva')
+  fetch('https://api.github.com/users/manishmshiva')
   // Tratamento do sucesso
     .then(response => response.json())  // converter para json
     .then(json => console.log(json))    //imprimir dados no console
