@@ -47,11 +47,10 @@
 <button class="button button1" onclick="on()" >Ligar</button>
 <button class="button button2" onclick="off()" >Desligar</button>
 
-<button onclick="fetch('https://api.github.com/users/manishmshiva')">Fetch</button>
+<button onclick="fetch()">Fetch</button>
 
 <script>
-
-  
+  const url = 'https://randomuser.me/api/?results=10';
   fetch(url){
     .then((resp) => resp.json())
     .then(function(data) {
