@@ -47,12 +47,12 @@
 <button class="button button1" onclick="on()" >Ligar</button>
 <button class="button button2" onclick="off()" >Desligar</button>
 
-<button onclick="fetch();">Fetch</button>
+<button onclick="fetch()">Fetch</button>
 
 <script>
 
   // Solicitação GET.
-  fetch('https://api.github.com/users/manishmshiva')
+  function fetch('https://api.github.com/users/manishmshiva')
   // Tratamento do sucesso
     .then(response => response.json())  // converter para json
     .then(json => console.log(json))    //imprimir dados no console
