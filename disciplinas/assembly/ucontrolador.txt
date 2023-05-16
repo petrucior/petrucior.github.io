@@ -1,4 +1,4 @@
-Assembly Programming on Atmega328p
+Assembly Programming on Atmega$328$p
 ----------------------------------
 
 === Why assembly?
