@@ -19,6 +19,5 @@ latexmath:[$z_{1} = z_{0} + \Delta z$]
 
 Representamos em formato matricial da seguinte forma:
 
-[[[a,b\],[c,d\]\]((n),(k))]
-latexmath:[ \begin{bmatrix} x_{1} \\ y_{1} \\ 1 \end{bmatrix} = \begin{bmatrix} 1 & 0 & \Delta x \\ 0 & 1 & \Delta y \\ 0 & 1 & 1 \end{bmatrix} \begin{bmatrix} x_{0} \\ y_{0} \\ 1 \end{bmatrix} ]
+latexmath:[ \begin{matrix} x_{1} \\ y_{1} \\ 1 \end{matrix} = \begin{matrix} 1 & 0 & \Delta x \\ 0 & 1 & \Delta y \\ 0 & 1 & 1 \end{matrix} \begin{matrix} x_{0} \\ y_{0} \\ 1 \end{matrix} ]
 
