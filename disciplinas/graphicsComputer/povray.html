@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="generator" content="AsciiDoc 8.6.9">
+<meta name="generator" content="AsciiDoc 10.2.0">
 <title></title>
 <style type="text/css">
 /* Shared CSS for AsciiDoc xhtml11 and html5 backends */
@@ -432,7 +432,7 @@ thead, p.table.header {
 p.table {
   margin-top: 0;
 }
-/* Because the table frame attribute is overriden by CSS in most browsers. */
+/* Because the table frame attribute is overridden by CSS in most browsers. */
 div.tableblock > table[frame="void"] {
   border-style: none;
 }
@@ -2092,7 +2092,7 @@ else
 <div class="sectionbody">
 <div class="paragraph"><p>O processo de síntese de imagens fotorealísticas pode ser obtido através da compilação de um arquivo com extensão ".pov" com o seguinte comando:</p></div>
 <div class="listingblock">
-<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+<div class="content"><!-- Generator: GNU source-highlight
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
@@ -2113,7 +2113,7 @@ http://www.gnu.org/software/src-highlite -->
 <div class="sect2">
 <h3 id="_código">Código</h3>
 <div class="listingblock">
-<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+<div class="content"><!-- Generator: GNU source-highlight
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
@@ -2266,7 +2266,7 @@ calice
 <h3 id="_descrição_do_programa">Descrição do programa</h3>
 <div class="paragraph"><p>Foram incluídas nas primeiras linhas do arquivo todas as bibliotecas de cores, formas e texturas necessárias para a construção da cena.</p></div>
 <div class="listingblock">
-<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+<div class="content"><!-- Generator: GNU source-highlight
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
@@ -2279,7 +2279,7 @@ http://www.gnu.org/software/src-highlite -->
 <span style="font-weight: bold"><span style="color: #000080">#include</span></span> <span style="color: #FF0000">"woods.inc"</span></tt></pre></div></div>
 <div class="paragraph"><p>Logo após foram definidas as posições da câmera e local visualizado através de uma estrutura primitiva do POV-Ray para configuração de câmera.</p></div>
 <div class="listingblock">
-<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+<div class="content"><!-- Generator: GNU source-highlight
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
@@ -2289,7 +2289,7 @@ http://www.gnu.org/software/src-highlite -->
 <span style="color: #FF0000">}</span></tt></pre></div></div>
 <div class="paragraph"><p>A cena só poderá ser visualizada se houver uma fonte de luz e por isso o próximo passo é a definição da fonte de luz. No POV-Ray há uma estrutura para configuração da fonte de luz que exige como parâmetros a posição e a cor da luz.</p></div>
 <div class="listingblock">
-<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+<div class="content"><!-- Generator: GNU source-highlight
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
@@ -2299,7 +2299,7 @@ http://www.gnu.org/software/src-highlite -->
 <span style="color: #FF0000">}</span></tt></pre></div></div>
 <div class="paragraph"><p>Necessitamos estabelecer uma cor de blackground que será utilizada quando o raio não interceptar o objeto. De acordo com o ray tracing retornamos o valor de background da cena.</p></div>
 <div class="listingblock">
-<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+<div class="content"><!-- Generator: GNU source-highlight
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
@@ -2308,7 +2308,7 @@ http://www.gnu.org/software/src-highlite -->
 <span style="color: #FF0000">}</span></tt></pre></div></div>
 <div class="paragraph"><p>Adicionamos uma superfície plana no eixo xz, ou seja, que tem como normal o vetor &lt;0, 1, 0&gt; e a distância a qual neste exemplo foi setada com -1 que apresenta o plano até o infinito. Este plano foi pintado com um xadrez vermelho e azul e definido efeitos com a função finish.</p></div>
 <div class="listingblock">
-<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+<div class="content"><!-- Generator: GNU source-highlight
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
@@ -2328,7 +2328,7 @@ http://www.gnu.org/software/src-highlite -->
 <span style="color: #FF0000">}</span></tt></pre></div></div>
 <div class="paragraph"><p>Para adicionarmos uma esfera foi necessário apenas definir sua posição e raio além da sua textura.</p></div>
 <div class="listingblock">
-<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+<div class="content"><!-- Generator: GNU source-highlight
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
@@ -2349,7 +2349,7 @@ http://www.gnu.org/software/src-highlite -->
 <div class="title">Figure 3. Estabelecendo cantos inferior esquerdo e superior direito</div>
 </div>
 <div class="listingblock">
-<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+<div class="content"><!-- Generator: GNU source-highlight
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
@@ -2364,7 +2364,7 @@ http://www.gnu.org/software/src-highlite -->
 <span style="color: #FF0000">}</span></tt></pre></div></div>
 <div class="paragraph"><p>Adicionamos um cone definindo a posição e o raio do pico e da base, um cilindro pela definição das posições onde serão posicionadas os lados e o raio destes lados. Note que há um open no meio do código do cilindro que informa se desejamos retirar as tampas do cilindro e outra coisa que devemos notar foi a definição da cor que utilizamos o formato RGBA. O penúltimo objeto que adicionamos neste exemplo foi o torus e para isso necessitamos apenas definir o valor de raio maior e menor.</p></div>
 <div class="listingblock">
-<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+<div class="content"><!-- Generator: GNU source-highlight
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
@@ -2409,7 +2409,7 @@ torus<span style="color: #FF0000">{</span>
 </div>
 <div class="paragraph"><p>Após a definição dos pontos podemos inserir estes na função SOR (Surface of Revolution) onde o primeiro argumento é a quantidade de pontos e em seguida os pontos. Se utilizarmos a declaração da superficie de revolução necessitamos chamar a superfície abaixo.</p></div>
 <div class="listingblock">
-<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+<div class="content"><!-- Generator: GNU source-highlight
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
@@ -2460,14 +2460,14 @@ Construir uma cena fazendo uso do POV-Ray com o objetivo de renderizar a cena re
 <div class="paragraph"><p>Para a construção da animação é necessário a criação de um arquivo com extensão ".ini" (<a href="codes/canoa.ini">canoa.ini</a>)que contém as informações da quantidade de frames que haverá no vídeo, qual o arquivo ".pov" que estamos utilizando para criar as cenas além do tempo de duração. Com o objetivo de demonstrar a criação de uma animação com o POV-Ray construimos uma nova cena.
 O comando para a renderização das cenas foram obtidas através do seguinte comando:</p></div>
 <div class="listingblock">
-<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+<div class="content"><!-- Generator: GNU source-highlight
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
 <pre><tt>povray <span style="color: #990000">&lt;</span>nome_arquivo<span style="color: #990000">&gt;.</span>pov <span style="color: #990000">&lt;</span>nome_arquivo<span style="color: #990000">&gt;.</span>ini</tt></pre></div></div>
 <div class="paragraph"><p>Após a criação das imagens é preciso somente aplicar os seguintes comandos no diretório onde se encontra os arquivos das imagens geradadas:</p></div>
 <div class="listingblock">
-<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+<div class="content"><!-- Generator: GNU source-highlight
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
@@ -2487,7 +2487,7 @@ http://www.gnu.org/software/src-highlite -->
 <div class="sect2">
 <h3 id="_código_da_cena">Código da cena</h3>
 <div class="listingblock">
-<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+<div class="content"><!-- Generator: GNU source-highlight
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
@@ -2651,7 +2651,7 @@ difference<span style="color: #FF0000">{</span>
 <h3 id="_descrição_do_programa_2">Descrição do programa</h3>
 <div class="paragraph"><p>Antes de serem incluídos os pacotes com definições para a renderização da cena é setado o gamma, valor que tem intuito de deixar mais claro ou mais escuro a imagem, e os parâmetros de constante de ambiente e difusão utilizados na equação de Phong.</p></div>
 <div class="listingblock">
-<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+<div class="content"><!-- Generator: GNU source-highlight
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
@@ -2659,7 +2659,7 @@ http://www.gnu.org/software/src-highlite -->
 <span style="font-weight: bold"><span style="color: #000080">#default</span></span><span style="color: #FF0000">{</span> finish<span style="color: #FF0000">{</span> ambient <span style="color: #993399">0.1</span> diffuse <span style="color: #993399">0.7</span> <span style="color: #FF0000">}}</span></tt></pre></div></div>
 <div class="paragraph"><p>São incluídos os pacotes com definições de cores, formas e texturas.</p></div>
 <div class="listingblock">
-<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+<div class="content"><!-- Generator: GNU source-highlight
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
@@ -2668,7 +2668,7 @@ http://www.gnu.org/software/src-highlite -->
 <span style="font-weight: bold"><span style="color: #000080">#include</span></span> <span style="color: #FF0000">"textures.inc"</span></tt></pre></div></div>
 <div class="paragraph"><p>Logo após foram definidas as posições da câmera e local visualizado através de uma estrutura primitiva do POV-Ray para configuração de câmera.</p></div>
 <div class="listingblock">
-<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+<div class="content"><!-- Generator: GNU source-highlight
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
@@ -2678,14 +2678,14 @@ http://www.gnu.org/software/src-highlite -->
 <span style="color: #FF0000">}</span></tt></pre></div></div>
 <div class="paragraph"><p>Definição da fonte de luz com a posição e sua cor.</p></div>
 <div class="listingblock">
-<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+<div class="content"><!-- Generator: GNU source-highlight
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
 <pre><tt>light_source<span style="color: #FF0000">{</span><span style="color: #990000">&lt;</span><span style="color: #993399">1500</span><span style="color: #990000">,</span><span style="color: #993399">2500</span><span style="color: #990000">,-</span><span style="color: #993399">2500</span><span style="color: #990000">&gt;</span> <span style="color: #008080">color</span> rgb<span style="color: #990000">&lt;</span><span style="color: #993399">1</span><span style="color: #990000">,</span><span style="color: #993399">0.9</span><span style="color: #990000">,</span><span style="color: #993399">0.8</span><span style="color: #990000">&gt;</span><span style="color: #FF0000">}</span></tt></pre></div></div>
 <div class="paragraph"><p>A construção de um céu azul com núvens é realizada através de uma esfera com gradiente. O gradiente proporcionará uma cor mais escura quanto mais distante da reta do horizonte.</p></div>
 <div class="listingblock">
-<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+<div class="content"><!-- Generator: GNU source-highlight
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
@@ -2722,7 +2722,7 @@ http://www.gnu.org/software/src-highlite -->
 <span style="color: #FF0000">}</span></tt></pre></div></div>
 <div class="paragraph"><p>A inclusão de um plano onde será adicionada a água e a canoa. No terceiro argumento do plano indica que o plano é construído dentro da esfera que contém o céu.</p></div>
 <div class="listingblock">
-<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+<div class="content"><!-- Generator: GNU source-highlight
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
@@ -2747,7 +2747,7 @@ http://www.gnu.org/software/src-highlite -->
 <span style="color: #FF0000">}</span></tt></pre></div></div>
 <div class="paragraph"><p>Definição da posição da canoa e a estrutura do lado de fora da canoa. Perceba que não foi colocada nenhuma textura na estrutura da canoa e isto é devido aos passos de construção de toda a canoa.</p></div>
 <div class="listingblock">
-<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+<div class="content"><!-- Generator: GNU source-highlight
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
@@ -2764,7 +2764,7 @@ http://www.gnu.org/software/src-highlite -->
 <div class="title">Figure 7. Construção da estrutura da canoa</div>
 </div>
 <div class="listingblock">
-<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+<div class="content"><!-- Generator: GNU source-highlight
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
@@ -2785,7 +2785,7 @@ intersection<span style="color: #FF0000">{</span>
 <span style="color: #FF0000">}</span></tt></pre></div></div>
 <div class="paragraph"><p>A interseção entre a estrutura da canoa e os pedaços de madeiras.</p></div>
 <div class="listingblock">
-<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+<div class="content"><!-- Generator: GNU source-highlight
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
@@ -2825,14 +2825,14 @@ intersection<span style="color: #FF0000">{</span>
 </div>
 <div class="paragraph"><p>Depois é realizada a transformação para colocar a canoa na posição correta.</p></div>
 <div class="listingblock">
-<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+<div class="content"><!-- Generator: GNU source-highlight
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
 <pre><tt>object<span style="color: #FF0000">{</span> canoa <span style="color: #008080">transform</span> posicao_canoa<span style="color: #FF0000">}</span></tt></pre></div></div>
 <div class="paragraph"><p>A fim de terminar com a construção da cena basta inserir a água acima do plano e para isso utilizamos a função de diferença entre o plano, a canoa e a textura da água.</p></div>
 <div class="listingblock">
-<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+<div class="content"><!-- Generator: GNU source-highlight
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
@@ -2849,7 +2849,7 @@ http://www.gnu.org/software/src-highlite -->
 <div class="sect2">
 <h3 id="_código_do_controle">Código do controle</h3>
 <div class="listingblock">
-<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+<div class="content"><!-- Generator: GNU source-highlight
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
@@ -2884,14 +2884,14 @@ Pause_when_Done<span style="color: #990000">=</span>Off             <span style=
 <h3 id="_descrição_do_programa_3">Descrição do programa</h3>
 <div class="paragraph"><p>Necessitamos modificar o arquivo com extensão ".pov" para depender do clock e assim passar o arquivo ".pov", que renderiza a cena, para a variável "Input_File_Name".</p></div>
 <div class="listingblock">
-<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+<div class="content"><!-- Generator: GNU source-highlight
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
 <pre><tt>Input_File_Name<span style="color: #990000">=</span><span style="color: #FF0000">"canoa.pov"</span>     <span style="color: #990000">;</span> Nome <span style="font-weight: bold"><span style="color: #0000FF">do</span></span> arquivo que contem a cena</tt></pre></div></div>
 <div class="paragraph"><p>Definimos qual é o frame inicial e final além do clock inicial e final.</p></div>
 <div class="listingblock">
-<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+<div class="content"><!-- Generator: GNU source-highlight
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
@@ -2901,7 +2901,7 @@ Initial_Clock<span style="color: #990000">=</span><span style="color: #993399">0
 Final_Clock<span style="color: #990000">=</span><span style="color: #993399">1</span>           <span style="color: #990000">;</span> Finaliza com o clock <span style="color: #993399">1</span></tt></pre></div></div>
 <div class="paragraph"><p>Ativação da animação ciclíca para permitar a subdivisão do clock e não permitir o pausar após a finalização da renderização.</p></div>
 <div class="listingblock">
-<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+<div class="content"><!-- Generator: GNU source-highlight
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
@@ -2929,7 +2929,8 @@ Inserir uma outra canoa em outra posição da cena e realizar a trajetória circ
 <div id="footnotes"><hr></div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-10-14 02:39:22 BRT
+Last updated
+ 2023-05-16 09:14:45 -03
 </div>
 </div>
 </body>

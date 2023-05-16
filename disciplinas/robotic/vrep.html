@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="generator" content="AsciiDoc 8.6.9">
+<meta name="generator" content="AsciiDoc 10.2.0">
 <title></title>
 <style type="text/css">
 /* Shared CSS for AsciiDoc xhtml11 and html5 backends */
@@ -432,7 +432,7 @@ thead, p.table.header {
 p.table {
   margin-top: 0;
 }
-/* Because the table frame attribute is overriden by CSS in most browsers. */
+/* Because the table frame attribute is overridden by CSS in most browsers. */
 div.tableblock > table[frame="void"] {
   border-style: none;
 }
@@ -2870,7 +2870,7 @@ sensor e etc.</p></div>
 <div class="sect2">
 <h3 id="_código">Código</h3>
 <div class="listingblock">
-<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+<div class="content"><!-- Generator: GNU source-highlight
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
@@ -2955,7 +2955,7 @@ end
 <h3 id="_descrição_do_programa">Descrição do programa</h3>
 <div class="paragraph"><p>Foram incluídas nas primeiras linhas do arquivo <a href="codes/pioneer3at.lua">pioneer3at.lua</a> todas as configurações necessárias para o funcionamento adequado do modelo do robô Pioneer 3-AT.</p></div>
 <div class="listingblock">
-<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+<div class="content"><!-- Generator: GNU source-highlight
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
@@ -2975,7 +2975,7 @@ http://www.gnu.org/software/src-highlite -->
 end</tt></pre></div></div>
 <div class="paragraph"><p>Como o Pioneer 3-AT contém 16 sensores utrassons, necessitamos iniciar cada um deles, então o próximo trecho de código realiza a leitura das distâncias e organizam o grau de detecção de cada sensor no vetor <em>detect</em>.</p></div>
 <div class="listingblock">
-<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+<div class="content"><!-- Generator: GNU source-highlight
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
@@ -2992,7 +2992,7 @@ http://www.gnu.org/software/src-highlite -->
 end</tt></pre></div></div>
 <div class="paragraph"><p>Nesse momento do código definimos uma velocidade para os dois atuadores do Pioneer e uma condição de parada dependendo da pose do Pioneer no simulador. Para isso, foi necessário definir qual era o objeto da cena que precisávamos colher informações.</p></div>
 <div class="listingblock">
-<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+<div class="content"><!-- Generator: GNU source-highlight
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
@@ -3014,7 +3014,7 @@ http://www.gnu.org/software/src-highlite -->
     end</tt></pre></div></div>
 <div class="paragraph"><p>No código base do Pioneer 3-At do V-Rep já vem configurado a possibilidade de reações há detecção de obstáculos como observado abaixo. São acionadas as velocidades do Robô Pioneer 3-At, representadas por vLeft e vRight, de acordo com a detecção dos sensores.</p></div>
 <div class="listingblock">
-<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+<div class="content"><!-- Generator: GNU source-highlight
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
@@ -3028,7 +3028,7 @@ http://www.gnu.org/software/src-highlite -->
     end</tt></pre></div></div>
 <div class="paragraph"><p>Por fim, é necessário enviar as informações de velocidades para os motores.</p></div>
 <div class="listingblock">
-<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+<div class="content"><!-- Generator: GNU source-highlight
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
@@ -3142,7 +3142,7 @@ Copiar a biblioteca da api remota "remoteApi.dll" (Windows), "remoteApi.dylib" (
 <div class="sect2">
 <h3 id="_código_2">Código</h3>
 <div class="listingblock">
-<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+<div class="content"><!-- Generator: GNU source-highlight
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
@@ -3261,7 +3261,7 @@ rightMotorHandle<span style="color: #990000">,</span> vRight<span style="color: 
 <h3 id="_descrição_do_programa_2">Descrição do programa</h3>
 <div class="paragraph"><p>Foram incluídas nas primeiras linhas do arquivo <a href="codes/python/cliente.py">cliente.py</a> todas as configurações necessárias para o funcionamento adequado do modelo do robô Pioneer 3-AT.</p></div>
 <div class="listingblock">
-<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+<div class="content"><!-- Generator: GNU source-highlight
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
@@ -3275,7 +3275,7 @@ vRight <span style="color: #990000">=</span> <span style="color: #993399">0</spa
 sensorHandle <span style="color: #990000">=</span> <span style="color: #990000">[</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">,</span><span style="color: #993399">0</span><span style="color: #990000">]</span></tt></pre></div></div>
 <div class="paragraph"><p>Inserimos as variáveis do modelo e da cena de forma semelhante ao arquivo de configuração inicial do lua.</p></div>
 <div class="listingblock">
-<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+<div class="content"><!-- Generator: GNU source-highlight
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
@@ -3288,14 +3288,14 @@ braitenbergR<span style="color: #990000">=[-</span><span style="color: #993399">
 v0<span style="color: #990000">=</span><span style="color: #993399">2</span></tt></pre></div></div>
 <div class="paragraph"><p>Tentamos estabelecer a conexão com o servidor, por este motivo é necessário que o servidor esteja em execução.</p></div>
 <div class="listingblock">
-<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+<div class="content"><!-- Generator: GNU source-highlight
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
 <pre><tt>clientID <span style="color: #990000">=</span> vrep<span style="color: #990000">.</span><span style="font-weight: bold"><span style="color: #000000">simxStart</span></span><span style="color: #990000">(</span>serverIP<span style="color: #990000">,</span>serverPort<span style="color: #990000">,</span>True<span style="color: #990000">,</span>True<span style="color: #990000">,</span><span style="color: #993399">2000</span><span style="color: #990000">,</span><span style="color: #993399">5</span><span style="color: #990000">)</span></tt></pre></div></div>
 <div class="paragraph"><p>É necessário especificar quais são os manipuladores dos atuadores e dos sensores do Pioneer serão habilitados.</p></div>
 <div class="listingblock">
-<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+<div class="content"><!-- Generator: GNU source-highlight
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
@@ -3327,7 +3327,7 @@ vrep<span style="color: #990000">.</span><span style="font-weight: bold"><span s
 </tt></pre></div></div>
 <div class="paragraph"><p>Realizar a rotina de desvio de obstáculo, padrão do modelo do Pioneer 3-AT, acionar os atuadores e se desconectar do servidor</p></div>
 <div class="listingblock">
-<div class="content"><!-- Generator: GNU source-highlight 3.1.8
+<div class="content"><!-- Generator: GNU source-highlight
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
@@ -3369,7 +3369,8 @@ http://www.gnu.org/software/src-highlite -->
 <div id="footnotes"><hr></div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-10-21 02:55:22 BRT
+Last updated
+ 2023-05-16 09:14:45 -03
 </div>
 </div>
 </body>

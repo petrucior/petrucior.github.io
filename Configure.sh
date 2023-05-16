@@ -17,3 +17,5 @@ asciidoc -a latexmath rayTracing.txt
 cd ../robotic
 asciidoc -b html5 -a latexmath -a icons -a toc2 -a theme=flask vrep.txt
 
+cd ../mobilerobotics
+asciidoc -b html5 -a latexmath -a icons -a toc2 -a theme=flask mobilerobotics.txt
