@@ -1,0 +1,8 @@
+Assembly Programming on Atmega328p
+----------------------------------
+
+=== Why assembly?
+- Code is optimized for speed & space;
+- Assembly coding enables you to learn H/W organization of microcontroller;
+- Assembly code can take full advantages of controller H/W features;
+
