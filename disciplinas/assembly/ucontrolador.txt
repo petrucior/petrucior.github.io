@@ -1,5 +1,7 @@
-Assembly Programming on Atmega$328$p
+Assembly Programming on Atmega328p
 ----------------------------------
+
+image::imagens/img0.png[height=250, width=300, align="center"]
 
 === Why assembly?
 - Code is optimized for speed & space;
