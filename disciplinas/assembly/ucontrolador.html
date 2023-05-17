@@ -2072,6 +2072,12 @@ else
 <div class="sect1">
 <h2 id="_assembly_programming_on_atmega328p">Assembly Programming on Atmega328p</h2>
 <div class="sectionbody">
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lecture_1">Lecture 1</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>The Atmega328p microcontroller is a small computer on a single integrated circuit which contains a processor core, memory and programmable input and output peripherals.</p></div>
 <div class="imageblock" style="text-align:center;">
 <div class="content">
 <img src="imagens/img0.png" alt="imagens/img0.png" width="300" height="250">
@@ -2097,6 +2103,344 @@ Assembly code can take full advantages of controller H/W features;
 </li>
 </ul></div>
 </div>
+<div class="sect2">
+<h3 id="_hardware_organization">Hardware Organization</h3>
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="imagens/img1.jpg" alt="imagens/img1.jpg" width="300" height="250">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_instruction_set">Instruction Set</h3>
+<table class="tableblock frame-all grid-all"
+style="
+width:100%;
+">
+<caption class="title">Table 1. Instruction set table</caption>
+<col style="width:28%;">
+<col style="width:14%;">
+<col style="width:14%;">
+<col style="width:14%;">
+<col style="width:14%;">
+<col style="width:14%;">
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock"><strong>Arithmetic and Logic</strong></p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">ADD</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">SUB</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">AND</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">OR</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">MUL</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock"><strong>Branch</strong></p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">JMP</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">RCALL</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">RET</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">CPI</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">BREQ</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock"><strong>Data transfer</strong></p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">MOV</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">In</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">OUT</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">LDI</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">STS</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock"><strong>Bit-by-bit test</strong></p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">ROL</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">CBI</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">CLC</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">SWAP</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">ROR</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_memory_map">Memory Map</h3>
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="imagens/img3.png" alt="imagens/img3.png" width="650" height="350">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_blink_led">Blink led</h3>
+<div class="paragraph"><p>The purpose of this section is to provide the fundamentals for building an example to turn an LED on and off. This objective will be achieved through the analysis of the programs <a href="codes/led.ino/led.ino.ino">led.ino</a> and <a href="codes/led.ino/led.S">led.S</a> built using functions from the <a href="https://ww1.microchip.com/downloads/en/devicedoc/atmel-0856-avr-instruction-set-manual.pdf">AVR Instruction Set Manual</a>.</p></div>
+<table class="tableblock frame-all grid-all"
+style="
+width:100%;
+">
+<caption class="title">Table 2. Material list</caption>
+<col style="width:50%;">
+<col style="width:50%;">
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock"><strong>Item</strong></p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock"><strong>Quantidade</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">Plataforma Arduino</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">Cabo USB</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">Protoboard</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">Led</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">Resistor de 200 ohms</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">1</p></td>
+</tr>
+</tbody>
+</table>
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="imagens/img7.png" alt="imagens/img7.png" width="650" height="350">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_code">Code</h3>
+<div class="paragraph"><p>We need to create two files. The first file in c++ (extension .ino) and the second file in assembly (extension .S). Both with the same name and in the same directory.</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">//-------------------------</span></span>
+<span style="font-style: italic"><span style="color: #9A1900">// C Code for Blinking LED</span></span>
+<span style="font-style: italic"><span style="color: #9A1900">//-------------------------</span></span>
+<span style="font-weight: bold"><span style="color: #0000FF">extern</span></span> <span style="color: #FF0000">"C"</span><span style="color: #FF0000">{</span>
+  <span style="color: #009900">void</span> <span style="font-weight: bold"><span style="color: #000000">start</span></span><span style="color: #990000">();</span>
+  <span style="color: #009900">void</span> <span style="font-weight: bold"><span style="color: #000000">led</span></span><span style="color: #990000">(</span>byte<span style="color: #990000">);</span>
+<span style="color: #FF0000">}</span>
+
+<span style="color: #009900">void</span> <span style="font-weight: bold"><span style="color: #000000">setup</span></span><span style="color: #990000">()</span><span style="color: #FF0000">{</span>
+  <span style="font-weight: bold"><span style="color: #000000">start</span></span><span style="color: #990000">();</span>
+<span style="color: #FF0000">}</span>
+
+<span style="color: #009900">void</span> <span style="font-weight: bold"><span style="color: #000000">loop</span></span><span style="color: #990000">()</span><span style="color: #FF0000">{</span>
+  <span style="font-weight: bold"><span style="color: #000000">led</span></span><span style="color: #990000">(</span><span style="color: #993399">1</span><span style="color: #990000">);</span> <span style="font-weight: bold"><span style="color: #000000">delay</span></span><span style="color: #990000">(</span><span style="color: #993399">200</span><span style="color: #990000">);</span>
+  <span style="font-weight: bold"><span style="color: #000000">led</span></span><span style="color: #990000">(</span><span style="color: #993399">0</span><span style="color: #990000">);</span> <span style="font-weight: bold"><span style="color: #000000">delay</span></span><span style="color: #990000">(</span><span style="color: #993399">200</span><span style="color: #990000">);</span>
+<span style="color: #FF0000">}</span></tt></pre></div></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="color: #990000">;---------------</span>
+<span style="color: #990000">;</span> Assembly Code
+<span style="color: #990000">;---------------</span>
+<span style="font-weight: bold"><span style="color: #000080">#define</span></span> __SFR_OFFSET <span style="color: #993399">0x00</span>
+<span style="font-weight: bold"><span style="color: #000080">#include</span></span> <span style="color: #FF0000">"avr/io.h"</span>
+<span style="color: #990000">;------------------------</span>
+<span style="color: #990000">.</span>global start
+<span style="color: #990000">.</span>global led
+<span style="color: #990000">;------------------------</span>
+<span style="font-weight: bold"><span style="color: #008080">start:</span></span>
+    <span style="color: #008080">SBI</span>   DDRB<span style="color: #990000">,</span> <span style="color: #993399">5</span>             <span style="color: #990000">;</span><span style="color: #008080">set</span> <span style="font-weight: bold"><span style="color: #000000">PB5</span></span> <span style="color: #990000">(</span>D19<span style="color: #990000">)</span> <span style="color: #008080">as</span> i<span style="color: #990000">/</span>o
+    RET                       <span style="color: #990000">;</span><span style="font-weight: bold"><span style="color: #0000FF">return</span></span> <span style="color: #008080">to</span> <span style="font-weight: bold"><span style="color: #000000">setup</span></span><span style="color: #990000">()</span> function
+<span style="color: #990000">;---------------------------------------------------------------------------</span>
+<span style="font-weight: bold"><span style="color: #008080">led:</span></span>
+    <span style="color: #008080">CPI</span>   R24<span style="color: #990000">,</span> <span style="color: #993399">0x00</span>           <span style="color: #990000">;</span>value in R24 passed by caller compared with <span style="color: #993399">0</span>
+    <span style="color: #008080">BREQ</span>  ledOFF              <span style="color: #990000">;</span><span style="font-weight: bold"><span style="color: #000000">jump</span></span> <span style="color: #990000">(</span>branch<span style="color: #990000">)</span> <span style="font-weight: bold"><span style="color: #0000FF">if</span></span> equal to subroutine ledOFF
+    <span style="color: #008080">SBI</span>   PORTB<span style="color: #990000">,</span> <span style="color: #993399">5</span>            <span style="color: #990000">;</span>set D19 to high
+    RET                       <span style="color: #990000">;</span><span style="font-weight: bold"><span style="color: #0000FF">return</span></span> <span style="color: #008080">to</span> <span style="font-weight: bold"><span style="color: #000000">loop</span></span><span style="color: #990000">()</span> function
+<span style="color: #990000">;---------------------------------------------------------------------------</span>
+<span style="font-weight: bold"><span style="color: #008080">ledOFF:</span></span>
+    <span style="color: #008080">CBI</span>   PORTB<span style="color: #990000">,</span> <span style="color: #993399">5</span>            <span style="color: #990000">;</span>set D19 to low
+    RET                       <span style="color: #990000">;</span><span style="font-weight: bold"><span style="color: #0000FF">return</span></span> <span style="color: #008080">to</span> <span style="font-weight: bold"><span style="color: #000000">loop</span></span><span style="color: #990000">()</span> function
+<span style="color: #990000">;---------------------------------------------------------------------------</span></tt></pre></div></div>
+</div>
+<div class="sect2">
+<h3 id="_blink_advanced_level">Blink (advanced level)</h3>
+<div class="sect3">
+<h4 id="_registers">Registers</h4>
+<div class="paragraph"><p>ATMega328P has 32 general purpose registers [Registers R0 to R31]</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+8 bit registers
+</p>
+</li>
+<li>
+<p>
+Mapped to SRAM memory [Addresses between 0x00 and 0x1F]
+</p>
+</li>
+</ul></div>
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="imagens/img8.jpg" alt="imagens/img8.jpg" width="300" height="350">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_sram">SRAM</h4>
+<div class="paragraph"><p>ATMega328P has 2 Kbytes of main memory implemented with SRAM</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Some segments are reserved
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+0x00 to 0x1F are the 32 registers
+</p>
+</li>
+<li>
+<p>
+0x20 to 0x5F are I/O registers (Memory mapped I/O)
+</p>
+</li>
+</ul></div>
+</li>
+</ul></div>
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="imagens/img9.png" alt="imagens/img9.png" width="300" height="150">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_instruction_format">Instruction format</h4>
+<div class="ulist"><ul>
+<li>
+<p>
+Most instructions occupy <strong>16 bits</strong>
+</p>
+</li>
+<li>
+<p>
+There are several formats of instruction
+</p>
+</li>
+<li>
+<p>
+Variable length <strong>opcodes</strong>
+</p>
+</li>
+</ul></div>
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="imagens/img10.png" alt="imagens/img10.png" width="300" height="250">
+</div>
+</div>
+<div class="paragraph"><p>Ex. Register Direct</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Op: Opcode
+</p>
+</li>
+<li>
+<p>
+Rr: Source register 1
+</p>
+</li>
+<li>
+<p>
+Rd: Source 2 and destination register
+</p>
+</li>
+</ul></div>
+</div>
+<div class="sect3">
+<h4 id="_assembly_instructions">Assembly instructions</h4>
+<div class="ulist"><ul>
+<li>
+<p>
+Assembly instructions follow the same order used in MIPS
+</p>
+</li>
+<li>
+<p>
+OPCODE destination, source
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+ldi r16,0xF (Load immediate 0xF into register r16)
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+The number of operands varies according to the operation
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_code_advanced_level">Code (advanced level)</h3>
+<div class="paragraph"><p>The codes below can be downloaded from the links: <a href="codes/leds/led.s">led.s</a> and <a href="codes/leds/Makefile">Makefile</a>.</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="color: #990000">.</span><span style="color: #008080">global</span> main                    <span style="color: #990000">;</span>defining a global function
+        <span style="color: #990000">.</span><span style="color: #008080">type</span> main<span style="color: #990000">,</span> @function   <span style="color: #990000">;</span>defining the type
+
+<span style="font-weight: bold"><span style="color: #008080">main:</span></span>
+        <span style="color: #008080">ldi</span> r16<span style="color: #990000">,</span>0b00100000      <span style="color: #990000">;</span>ldi loads an immediate into registers <span style="color: #993399">16</span> through <span style="color: #993399">31</span><span style="color: #990000">.</span>
+        <span style="color: #008080">ldi</span> r17<span style="color: #990000">,</span>0b00000000
+        <span style="color: #990000">;</span> The “<span style="color: #008080">register”</span> <span style="font-weight: bold"><span style="color: #000000">DDRB</span></span> <span style="color: #990000">(</span>Section <span style="color: #993399">14.4</span> of <span style="color: #008080">the</span> manual<span style="color: #990000">),</span> which is at address <span style="color: #993399">0x4</span><span style="color: #990000">,</span>
+        <span style="color: #990000">;</span> configures the pins of port B are <span style="color: #008080">for</span> <span style="font-weight: bold"><span style="color: #000000">input</span></span> <span style="color: #990000">(</span><span style="color: #993399">0</span><span style="color: #990000">)</span> <span style="color: #008080">or</span> <span style="font-weight: bold"><span style="color: #000000">output</span></span> <span style="color: #990000">(</span><span style="color: #993399">1</span><span style="color: #990000">).</span>
+
+        <span style="color: #990000">;</span> out loads to <span style="color: #008080">the</span> I<span style="color: #990000">/</span>O address the value that is stored in the <span style="font-weight: bold"><span style="color: #0000FF">register</span></span>
+
+        <span style="color: #990000">;</span> Loading 0b00000001 to address <span style="color: #993399">0x4</span><span style="color: #990000">,</span> making pin <span style="color: #993399">5</span> of Port B used <span style="color: #008080">as</span> output<span style="color: #990000">,</span>
+        <span style="color: #990000">;</span> and the others as input
+        out <span style="color: #993399">0x4</span><span style="color: #990000">,</span>r16
+
+<span style="font-weight: bold"><span style="color: #008080">LOOP:</span></span>
+        <span style="color: #990000">;</span> <span style="color: #008080">Register</span> <span style="font-weight: bold"><span style="color: #000000">PORTB</span></span> <span style="color: #990000">(</span>address <span style="color: #993399">0x5</span><span style="color: #990000">)</span> defines whether a high or low signal is sent
+        <span style="color: #990000">;</span> to the output pins of <span style="color: #008080">port</span> B<span style="color: #990000">.</span> Let<span style="color: #FF0000">'s send logic 1 (5 volts) into PB5.</span>
+<span style="color: #FF0000">        out 0x5,r16</span>
+<span style="color: #FF0000">        jmp LOOP                ; Jump to loop label (infinite loop)</span></tt></pre></div></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-weight: bold"><span style="color: #000080">#</span></span>
+<span style="font-weight: bold"><span style="color: #000080"># Makefile</span></span>
+<span style="font-weight: bold"><span style="color: #000080">#</span></span>
+FILENAME   <span style="color: #990000">=</span> led
+PORT       <span style="color: #990000">=</span> <span style="color: #990000">/</span>dev<span style="color: #990000">/</span>cu<span style="color: #990000">.</span>usbserial<span style="color: #990000">-</span>A600BOBB
+DEVICE     <span style="color: #990000">=</span> atmega328p
+PROGRAMMER <span style="color: #990000">=</span> arduino
+<span style="font-weight: bold"><span style="color: #000080"># BAUD</span></span> can be <span style="color: #993399">115200</span><span style="color: #990000">,</span> <span style="color: #993399">74888</span><span style="color: #990000">,</span> <span style="color: #993399">57600</span>
+BAUD       <span style="color: #990000">=</span> <span style="color: #993399">57600</span>
+COMPILE    <span style="color: #990000">=</span> avr<span style="color: #990000">-</span>gcc <span style="color: #990000">-</span>Wall <span style="color: #990000">-</span>Os <span style="color: #990000">-</span>mmcu<span style="color: #990000">=</span>$<span style="color: #990000">(</span>DEVICE<span style="color: #990000">)</span>
+
+<span style="font-weight: bold"><span style="color: #0000FF">default</span></span><span style="color: #990000">:</span> compile upload clean
+
+<span style="font-weight: bold"><span style="color: #008080">compile:</span></span>
+        $<span style="color: #990000">(</span>COMPILE<span style="color: #990000">)</span> <span style="color: #990000">-</span>o $<span style="color: #990000">(</span>FILENAME<span style="color: #990000">)</span> $<span style="color: #990000">(</span>FILENAME<span style="color: #990000">).</span>s
+
+<span style="font-weight: bold"><span style="color: #008080">upload:</span></span>
+        avrdude <span style="color: #990000">-</span>v <span style="color: #990000">-</span>p $<span style="color: #990000">(</span>DEVICE<span style="color: #990000">)</span> <span style="color: #990000">-</span>c $<span style="color: #990000">(</span>PROGRAMMER<span style="color: #990000">)</span> <span style="color: #990000">-</span>P $<span style="color: #990000">(</span>PORT<span style="color: #990000">)</span> <span style="color: #990000">-</span>b $<span style="color: #990000">(</span>BAUD<span style="color: #990000">)</span> <span style="color: #990000">-</span><span style="color: #008080">U</span> flash<span style="color: #990000">:</span>w<span style="color: #990000">:</span>$<span style="color: #990000">(</span>FILENAME<span style="color: #990000">)</span>
+
+<span style="font-weight: bold"><span style="color: #008080">clean:</span></span>
+        rm $<span style="color: #990000">(</span>FILENAME<span style="color: #990000">)</span></tt></pre></div></div>
+</div>
 </div>
 </div>
 </div>
@@ -2104,7 +2448,7 @@ Assembly code can take full advantages of controller H/W features;
 <div id="footer">
 <div id="footer-text">
 Last updated
- 2023-05-16 23:30:37 -03
+ 2023-05-17 07:32:52 -03
 </div>
 </div>
 </body>
