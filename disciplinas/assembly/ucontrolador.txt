@@ -124,3 +124,74 @@ include::codes/leds/led.s[]
 include::codes/leds/Makefile[]
 ----
 
+Lecture 2
+---------
+
+=== ATmega328p MCU registers
+
+image::imagens/img14.jpg[height=400, width=450, align="center"]
+
+image::imagens/img15.png[height=500, width=550, align="center"]
+
+- Registers divided into two groups based on how they are used and their functionalities
+- R16 to R31 are more versatile and useful than R0 to R15
+- Example:
+
+* The registers that work with immediate data (R16 to R31) store a byte of information or words (pairs of registers x, y and z).
+
+[source,c]
+----
+include::codes/registers/register1/register1.ino[]
+----
+
+[source,c]
+----
+include::codes/registers/register1/register1.S[]
+----
+
+** On the other hand, registers R0 to R15 work with indirect addressing, which means that we can store a byte located in a memory location. This code will also work with R16 and R17, but its contents cannot be changed by functions.
+
+[source,c]
+----
+include::codes/registers/register2/register2.ino[]
+----
+
+[source,c]
+----
+include::codes/registers/register2/register2.S[]
+----
+
+- The 3 word registers x, y and z can handle indirect addressing and immediate storage. The y-register can be for storing the frame point
+- R0 and R1 store the 16-bit result of a multiplication performed by opcode MUL. Mul will multiply 2 bytes and its 16-bit result is stored in R1 (MSB) and R0 (LSB)
+
+=== Button controlling an Led
+The purpose of this section is to provide the fundamentals to control an LED using a button. This objective will be achieved through the analysis of the programs link:codes/button/button.ino[button.ino]
+and link:codes/button/button.S[button.S] built using functions from the https://ww1.microchip.com/downloads/en/devicedoc/atmel-0856-avr-instruction-set-manual.pdf[AVR Instruction Set Manual].
+
+.Material list
+[cols="1,1"]
+|===
+| *Item* | *Quantidade*
+| Plataforma Arduino | 1
+| Cabo USB | 1
+| Protoboard | 1
+| Led | 1
+| Resistor de 200 ohms | 1
+| Resistor de 10K ohms | 1
+| Botão | 1
+|===
+
+image::imagens/img16.png[height=350, width=650, align="center"]
+
+image::imagens/img17.png[height=350, width=650, align="center"]
+
+[source,c]
+----
+include::codes/button/button/button.ino[]
+----
+
+[source,c]
+----
+include::codes/button/button/button.S[]
+----
+

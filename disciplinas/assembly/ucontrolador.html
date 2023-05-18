@@ -2407,12 +2407,12 @@ http://www.gnu.org/software/src-highlite -->
 
         <span style="color: #990000">;</span> Loading 0b00000001 to address <span style="color: #993399">0x4</span><span style="color: #990000">,</span> making pin <span style="color: #993399">5</span> of Port B used <span style="color: #008080">as</span> output<span style="color: #990000">,</span>
         <span style="color: #990000">;</span> and the others as input
-        out <span style="color: #993399">0x4</span><span style="color: #990000">,</span>r16
+        out <span style="color: #993399">0x04</span><span style="color: #990000">,</span>r16
 
 <span style="font-weight: bold"><span style="color: #008080">LOOP:</span></span>
         <span style="color: #990000">;</span> <span style="color: #008080">Register</span> <span style="font-weight: bold"><span style="color: #000000">PORTB</span></span> <span style="color: #990000">(</span>address <span style="color: #993399">0x5</span><span style="color: #990000">)</span> defines whether a high or low signal is sent
         <span style="color: #990000">;</span> to the output pins of <span style="color: #008080">port</span> B<span style="color: #990000">.</span> Let<span style="color: #FF0000">'s send logic 1 (5 volts) into PB5.</span>
-<span style="color: #FF0000">        out 0x5,r16</span>
+<span style="color: #FF0000">        out 0x05,r17</span>
 <span style="color: #FF0000">        jmp LOOP                ; Jump to loop label (infinite loop)</span></tt></pre></div></div>
 <div class="listingblock">
 <div class="content"><!-- Generator: GNU source-highlight
@@ -2443,12 +2443,252 @@ COMPILE    <span style="color: #990000">=</span> avr<span style="color: #990000"
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_lecture_2">Lecture 2</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_atmega328p_mcu_registers">ATmega328p MCU registers</h3>
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="imagens/img14.jpg" alt="imagens/img14.jpg" width="450" height="400">
+</div>
+</div>
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="imagens/img15.png" alt="imagens/img15.png" width="550" height="500">
+</div>
+</div>
+<div class="ulist"><ul>
+<li>
+<p>
+Registers divided into two groups based on how they are used and their functionalities
+</p>
+</li>
+<li>
+<p>
+R16 to R31 are more versatile and useful than R0 to R15
+</p>
+</li>
+<li>
+<p>
+Example:
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+The registers that work with immediate data (R16 to R31) store a byte of information or words (pairs of registers x, y and z).
+</p>
+</li>
+</ul></div>
+</li>
+</ul></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">//-------------------------</span></span>
+<span style="font-style: italic"><span style="color: #9A1900">// C Code</span></span>
+<span style="font-style: italic"><span style="color: #9A1900">//-------------------------</span></span>
+<span style="font-weight: bold"><span style="color: #0000FF">extern</span></span> <span style="color: #FF0000">"C"</span><span style="color: #FF0000">{</span>
+  <span style="color: #009900">void</span> <span style="font-weight: bold"><span style="color: #000000">start</span></span><span style="color: #990000">();</span>
+<span style="color: #FF0000">}</span>
+
+<span style="color: #009900">void</span> <span style="font-weight: bold"><span style="color: #000000">setup</span></span><span style="color: #990000">()</span><span style="color: #FF0000">{</span>
+  <span style="font-weight: bold"><span style="color: #000000">start</span></span><span style="color: #990000">();</span>
+<span style="color: #FF0000">}</span>
+
+<span style="color: #009900">void</span> <span style="font-weight: bold"><span style="color: #000000">loop</span></span><span style="color: #990000">()</span><span style="color: #FF0000">{</span>
+<span style="color: #FF0000">}</span></tt></pre></div></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="color: #990000">;---------------</span>
+<span style="color: #990000">;</span> Assembly Code
+<span style="color: #990000">;---------------</span>
+<span style="font-weight: bold"><span style="color: #000080">#define</span></span> __SFR_OFFSET <span style="color: #993399">0x00</span>
+<span style="font-weight: bold"><span style="color: #000080">#include</span></span> <span style="color: #FF0000">"avr/io.h"</span>
+<span style="color: #990000">;------------------------</span>
+<span style="color: #990000">.</span>global start
+<span style="color: #990000">;------------------------</span>
+<span style="font-weight: bold"><span style="color: #008080">start:</span></span>
+    <span style="color: #008080">LDI</span>   R16<span style="color: #990000">,</span> <span style="color: #993399">0xFF</span>           <span style="color: #990000">;</span>load immediate byte <span style="color: #993399">0xFF</span> into <span style="font-weight: bold"><span style="color: #0000FF">register</span></span>
+<span style="color: #990000">;</span>    <span style="color: #008080">LDI</span>   R15<span style="color: #990000">,</span> <span style="color: #993399">0xFF</span>           <span style="color: #990000">;</span>trying to use a different <span style="font-weight: bold"><span style="color: #0000FF">register</span></span>
+    RET                       <span style="color: #990000">;</span><span style="font-weight: bold"><span style="color: #0000FF">return</span></span> <span style="color: #008080">to</span> <span style="font-weight: bold"><span style="color: #000000">setup</span></span><span style="color: #990000">()</span> function
+<span style="color: #990000">;---------------------------------------------------------------------------</span></tt></pre></div></div>
+<div class="ulist"><ul>
+<li>
+<p>
+On the other hand, registers R0 to R15 work with indirect addressing, which means that we can store a byte located in a memory location. This code will also work with R16 and R17, but its contents cannot be changed by functions.
+</p>
+</li>
+</ul></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">//-------------------------</span></span>
+<span style="font-style: italic"><span style="color: #9A1900">// C Code</span></span>
+<span style="font-style: italic"><span style="color: #9A1900">//-------------------------</span></span>
+<span style="font-weight: bold"><span style="color: #0000FF">extern</span></span> <span style="color: #FF0000">"C"</span><span style="color: #FF0000">{</span>
+  <span style="color: #009900">void</span> <span style="font-weight: bold"><span style="color: #000000">start</span></span><span style="color: #990000">();</span>
+<span style="color: #FF0000">}</span>
+
+<span style="color: #009900">void</span> <span style="font-weight: bold"><span style="color: #000000">setup</span></span><span style="color: #990000">()</span><span style="color: #FF0000">{</span>
+  <span style="font-weight: bold"><span style="color: #000000">start</span></span><span style="color: #990000">();</span>
+<span style="color: #FF0000">}</span>
+
+<span style="color: #009900">void</span> <span style="font-weight: bold"><span style="color: #000000">loop</span></span><span style="color: #990000">()</span><span style="color: #FF0000">{</span>
+<span style="color: #FF0000">}</span></tt></pre></div></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="color: #990000">;---------------</span>
+<span style="color: #990000">;</span> Assembly Code
+<span style="color: #990000">;---------------</span>
+<span style="font-weight: bold"><span style="color: #000080">#define</span></span> __SFR_OFFSET <span style="color: #993399">0x00</span>
+<span style="font-weight: bold"><span style="color: #000080">#include</span></span> <span style="color: #FF0000">"avr/io.h"</span>
+<span style="color: #990000">;------------------------</span>
+<span style="color: #990000">.</span>global start
+<span style="color: #990000">;------------------------</span>
+<span style="font-weight: bold"><span style="color: #008080">start:</span></span>
+    <span style="color: #008080">LDS</span>   R12<span style="color: #990000">,</span> <span style="color: #993399">0x200</span>          <span style="color: #990000">;</span>load direct from data space byte at memory
+                              <span style="color: #990000">;</span>location <span style="color: #993399">0x200</span> into <span style="font-weight: bold"><span style="color: #0000FF">register</span></span>
+    RET                       <span style="color: #990000">;</span><span style="font-weight: bold"><span style="color: #0000FF">return</span></span> <span style="color: #008080">to</span> <span style="font-weight: bold"><span style="color: #000000">setup</span></span><span style="color: #990000">()</span> function
+<span style="color: #990000">;---------------------------------------------------------------------------</span></tt></pre></div></div>
+<div class="ulist"><ul>
+<li>
+<p>
+The 3 word registers x, y and z can handle indirect addressing and immediate storage. The y-register can be for storing the frame point
+</p>
+</li>
+<li>
+<p>
+R0 and R1 store the 16-bit result of a multiplication performed by opcode MUL. Mul will multiply 2 bytes and its 16-bit result is stored in R1 (MSB) and R0 (LSB)
+</p>
+</li>
+</ul></div>
+</div>
+<div class="sect2">
+<h3 id="_button_controlling_an_led">Button controlling an Led</h3>
+<div class="paragraph"><p>The purpose of this section is to provide the fundamentals to control an LED using a button. This objective will be achieved through the analysis of the programs <a href="codes/button/button.ino">button.ino</a>
+and <a href="codes/button/button.S">button.S</a> built using functions from the <a href="https://ww1.microchip.com/downloads/en/devicedoc/atmel-0856-avr-instruction-set-manual.pdf">AVR Instruction Set Manual</a>.</p></div>
+<table class="tableblock frame-all grid-all"
+style="
+width:100%;
+">
+<caption class="title">Table 3. Material list</caption>
+<col style="width:50%;">
+<col style="width:50%;">
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock"><strong>Item</strong></p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock"><strong>Quantidade</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">Plataforma Arduino</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">Cabo USB</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">Protoboard</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">Led</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">Resistor de 200 ohms</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">Resistor de 10K ohms</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">Botão</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">1</p></td>
+</tr>
+</tbody>
+</table>
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="imagens/img16.png" alt="imagens/img16.png" width="650" height="350">
+</div>
+</div>
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="imagens/img17.png" alt="imagens/img17.png" width="650" height="350">
+</div>
+</div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">//------------------------------------</span></span>
+<span style="font-style: italic"><span style="color: #9A1900">// C Code to control led using button</span></span>
+<span style="font-style: italic"><span style="color: #9A1900">//------------------------------------</span></span>
+<span style="font-weight: bold"><span style="color: #0000FF">extern</span></span> <span style="color: #FF0000">"C"</span><span style="color: #FF0000">{</span>
+  <span style="color: #009900">void</span> <span style="font-weight: bold"><span style="color: #000000">start</span></span><span style="color: #990000">();</span>
+  <span style="color: #009900">void</span> <span style="font-weight: bold"><span style="color: #000000">btnLED</span></span><span style="color: #990000">(</span>byte<span style="color: #990000">);</span>
+<span style="color: #FF0000">}</span>
+
+<span style="color: #009900">void</span> <span style="font-weight: bold"><span style="color: #000000">setup</span></span><span style="color: #990000">()</span><span style="color: #FF0000">{</span>
+  <span style="font-weight: bold"><span style="color: #000000">start</span></span><span style="color: #990000">();</span>
+<span style="color: #FF0000">}</span>
+
+<span style="color: #009900">void</span> <span style="font-weight: bold"><span style="color: #000000">loop</span></span><span style="color: #990000">()</span><span style="color: #FF0000">{</span>
+  btnLED<span style="color: #990000">;</span> <span style="font-weight: bold"><span style="color: #000000">delay</span></span><span style="color: #990000">(</span><span style="color: #993399">200</span><span style="color: #990000">);</span>
+<span style="color: #FF0000">}</span></tt></pre></div></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="color: #990000">;---------------</span>
+<span style="color: #990000">;</span> Assembly Code
+<span style="color: #990000">;---------------</span>
+<span style="font-weight: bold"><span style="color: #000080">#define</span></span> __SFR_OFFSET <span style="color: #993399">0x00</span>
+<span style="font-weight: bold"><span style="color: #000080">#include</span></span> <span style="color: #FF0000">"avr/io.h"</span>
+<span style="color: #990000">;------------------------</span>
+<span style="color: #990000">.</span>global start
+<span style="color: #990000">.</span>global btnLED
+<span style="color: #990000">;------------------------</span>
+<span style="font-weight: bold"><span style="color: #008080">start:</span></span>
+    <span style="color: #008080">SBI</span>   DDRB<span style="color: #990000">,</span> <span style="color: #993399">5</span>             <span style="color: #990000">;</span><span style="color: #008080">set</span> <span style="font-weight: bold"><span style="color: #000000">PB5</span></span> <span style="color: #990000">(</span><span style="color: #993399">13</span><span style="color: #990000">)</span> as output
+    <span style="color: #008080">CBI</span>   DDRD<span style="color: #990000">,</span> <span style="color: #993399">2</span>             <span style="color: #990000">;</span><span style="color: #008080">set</span> <span style="font-weight: bold"><span style="color: #000000">PD2</span></span> <span style="color: #990000">(</span><span style="color: #993399">2</span><span style="color: #990000">)</span> as input
+    RET                       <span style="color: #990000">;</span><span style="font-weight: bold"><span style="color: #0000FF">return</span></span> <span style="color: #008080">to</span> <span style="font-weight: bold"><span style="color: #000000">setup</span></span><span style="color: #990000">()</span> function
+<span style="color: #990000">;---------------------------------------------------------------------------</span>
+<span style="font-weight: bold"><span style="color: #008080">btnLED:</span></span>
+<span style="font-weight: bold"><span style="color: #008080">ledON:</span></span>
+    <span style="color: #990000">;</span>SBIC <span style="color: #990000">=</span> Skip <span style="font-weight: bold"><span style="color: #0000FF">if</span></span> Bit in Register is Cleared
+    <span style="color: #990000">;</span>SBIS <span style="color: #990000">=</span> Skip <span style="font-weight: bold"><span style="color: #0000FF">if</span></span> Bit in Register is Set
+    <span style="color: #008080">SBIC</span>  PIND<span style="color: #990000">,</span> <span style="color: #993399">2</span>             <span style="color: #990000">;</span>skip next statement <span style="font-weight: bold"><span style="color: #0000FF">if</span></span> button not pressed
+    <span style="color: #008080">RJMP</span>  ledOFF              <span style="color: #990000">;</span>jump to ledOFF
+    <span style="color: #008080">SBI</span>   PORTB<span style="color: #990000">,</span> <span style="color: #993399">5</span>            <span style="color: #990000">;</span>set D19 to high
+    <span style="color: #008080">RJMP</span>  ledON               <span style="color: #990000">;</span><span style="font-weight: bold"><span style="color: #0000FF">return</span></span> to label ledON
+<span style="font-weight: bold"><span style="color: #008080">ledOFF:</span></span>
+    <span style="color: #008080">CBI</span>   PORTB<span style="color: #990000">,</span> <span style="color: #993399">5</span>            <span style="color: #990000">;</span>turn OFF LED <span style="font-weight: bold"><span style="color: #0000FF">if</span></span> button is not pressed
+    RET</tt></pre></div></div>
+</div>
+</div>
+</div>
 </div>
 <div id="footnotes"><hr></div>
 <div id="footer">
 <div id="footer-text">
 Last updated
- 2023-05-17 07:32:52 -03
+ 2023-05-18 09:10:31 -03
 </div>
 </div>
 </body>

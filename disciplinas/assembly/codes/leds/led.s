@@ -11,10 +11,10 @@ main:
 	
 	; Loading 0b00000001 to address 0x4, making pin 5 of Port B used as output,
 	; and the others as input
-	out 0x4,r16		
+	out 0x04,r16		
 
 LOOP:
 	; Register PORTB (address 0x5) defines whether a high or low signal is sent
 	; to the output pins of port B. Let's send logic 1 (5 volts) into PB5.
-	out 0x5,r16
+	out 0x05,r17
 	jmp LOOP		; Jump to loop label (infinite loop)
