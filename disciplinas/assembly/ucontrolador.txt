@@ -187,11 +187,69 @@ image::imagens/img17.png[height=350, width=650, align="center"]
 
 [source,c]
 ----
-include::codes/button/button/button.ino[]
+include::codes/button/button.ino[]
 ----
 
 [source,c]
 ----
-include::codes/button/button/button.S[]
+include::codes/button/button.S[]
 ----
 
+Lecture 3
+---------
+
+image::imagens/img19.png[height=350, width=550, align="center"]
+
+=== Serial Communication
+
+Program *serial port* to transmit/receive data using synchronous or assynchronous modes (USART).
+
+=== USART Registers
+
+image::imagens/img20.png[height=300, width=500, align="center"]
+
+* UBRR
+
+image::imagens/img21.png[height=450, width=650, align="center"]
+
+* UDR
+
+image::imagens/img22.png[height=450, width=800, align="center"]
+
+* UCSRA
+
+image::imagens/img23.png[height=450, width=800, align="center"]
+
+* UCSRB
+
+image::imagens/img24.png[height=450, width=800, align="center"]
+
+* UCSRC
+
+image::imagens/img25.png[height=450, width=800, align="center"]
+
+=== Review about registers
+
+image::imagens/img26.png[height=450, width=800, align="center"]
+
+=== Write on Serial Port
+
+The purpose of this section is to provide the fundamentals to send mensage from Atmega328p to PC. This objective will be achieved through the analysis of the programs link:codes/serial/serial.ino[serial.ino] and link:codes/serial/serial.S[serial.S] built using functions from the https://ww1.microchip.com/downloads/en/devicedoc/atmel-0856-avr-instruction-set-manual.pdf[AVR Instruction Set Manual].
+
+.Material list
+[cols="1,1"]
+|===
+| *Item* | *Quantidade*
+| Plataforma Arduino | 1
+| Cabo USB | 1
+|===
+
+[source,c]
+----
+include::codes/serial/serial.ino[]
+----
+
+[source,c]
+----
+include::codes/serial/serial.S[]
+----

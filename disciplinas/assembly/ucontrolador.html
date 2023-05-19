@@ -2648,7 +2648,7 @@ http://www.gnu.org/software/src-highlite -->
 <span style="color: #FF0000">}</span>
 
 <span style="color: #009900">void</span> <span style="font-weight: bold"><span style="color: #000000">loop</span></span><span style="color: #990000">()</span><span style="color: #FF0000">{</span>
-  btnLED<span style="color: #990000">;</span> <span style="font-weight: bold"><span style="color: #000000">delay</span></span><span style="color: #990000">(</span><span style="color: #993399">200</span><span style="color: #990000">);</span>
+  <span style="font-weight: bold"><span style="color: #000000">btnLED</span></span><span style="color: #990000">(</span><span style="color: #993399">2</span><span style="color: #990000">);</span> <span style="font-weight: bold"><span style="color: #000000">delay</span></span><span style="color: #990000">(</span><span style="color: #993399">200</span><span style="color: #990000">);</span>
 <span style="color: #FF0000">}</span></tt></pre></div></div>
 <div class="listingblock">
 <div class="content"><!-- Generator: GNU source-highlight
@@ -2683,12 +2683,209 @@ http://www.gnu.org/software/src-highlite -->
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_lecture_3">Lecture 3</h2>
+<div class="sectionbody">
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="imagens/img19.png" alt="imagens/img19.png" width="550" height="350">
+</div>
+</div>
+<div class="sect2">
+<h3 id="_serial_communication">Serial Communication</h3>
+<div class="paragraph"><p>Program <strong>serial port</strong> to transmit/receive data using synchronous or assynchronous modes (USART).</p></div>
+</div>
+<div class="sect2">
+<h3 id="_usart_registers">USART Registers</h3>
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="imagens/img20.png" alt="imagens/img20.png" width="500" height="300">
+</div>
+</div>
+<div class="ulist"><ul>
+<li>
+<p>
+UBRR
+</p>
+</li>
+</ul></div>
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="imagens/img21.png" alt="imagens/img21.png" width="650" height="450">
+</div>
+</div>
+<div class="ulist"><ul>
+<li>
+<p>
+UDR
+</p>
+</li>
+</ul></div>
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="imagens/img22.png" alt="imagens/img22.png" width="800" height="450">
+</div>
+</div>
+<div class="ulist"><ul>
+<li>
+<p>
+UCSRA
+</p>
+</li>
+</ul></div>
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="imagens/img23.png" alt="imagens/img23.png" width="800" height="450">
+</div>
+</div>
+<div class="ulist"><ul>
+<li>
+<p>
+UCSRB
+</p>
+</li>
+</ul></div>
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="imagens/img24.png" alt="imagens/img24.png" width="800" height="450">
+</div>
+</div>
+<div class="ulist"><ul>
+<li>
+<p>
+UCSRC
+</p>
+</li>
+</ul></div>
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="imagens/img25.png" alt="imagens/img25.png" width="800" height="450">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_review_about_registers">Review about registers</h3>
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="imagens/img26.png" alt="imagens/img26.png" width="800" height="450">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_write_on_serial_port">Write on Serial Port</h3>
+<div class="paragraph"><p>The purpose of this section is to provide the fundamentals to send mensage from Atmega328p to PC. This objective will be achieved through the analysis of the programs <a href="codes/serial/serial.ino">serial.ino</a> and <a href="codes/serial/serial.S">serial.S</a> built using functions from the <a href="https://ww1.microchip.com/downloads/en/devicedoc/atmel-0856-avr-instruction-set-manual.pdf">AVR Instruction Set Manual</a>.</p></div>
+<table class="tableblock frame-all grid-all"
+style="
+width:100%;
+">
+<caption class="title">Table 4. Material list</caption>
+<col style="width:50%;">
+<col style="width:50%;">
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock"><strong>Item</strong></p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock"><strong>Quantidade</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">Plataforma Arduino</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">Cabo USB</p></td>
+<td class="tableblock halign-left valign-top" ><p class="tableblock">1</p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">//------------------------------------------------</span></span>
+<span style="font-style: italic"><span style="color: #9A1900">// Programming Serial Port - Printing Text Message</span></span>
+<span style="font-style: italic"><span style="color: #9A1900">//------------------------------------------------</span></span>
+<span style="font-weight: bold"><span style="color: #0000FF">extern</span></span> <span style="color: #FF0000">"C"</span>
+<span style="color: #FF0000">{</span>
+  <span style="color: #009900">void</span> <span style="font-weight: bold"><span style="color: #000000">init_serial</span></span><span style="color: #990000">();</span>
+  <span style="color: #009900">void</span> <span style="font-weight: bold"><span style="color: #000000">print_msg</span></span><span style="color: #990000">();</span>
+<span style="color: #FF0000">}</span>
+<span style="font-style: italic"><span style="color: #9A1900">//----------------------------------------------------</span></span>
+<span style="color: #009900">void</span> <span style="font-weight: bold"><span style="color: #000000">setup</span></span><span style="color: #990000">()</span>
+<span style="color: #FF0000">{</span>
+  <span style="font-weight: bold"><span style="color: #000000">init_serial</span></span><span style="color: #990000">();</span>
+<span style="color: #FF0000">}</span>
+<span style="font-style: italic"><span style="color: #9A1900">//----------------------------------------------------</span></span>
+<span style="color: #009900">void</span> <span style="font-weight: bold"><span style="color: #000000">loop</span></span><span style="color: #990000">()</span>
+<span style="color: #FF0000">{</span>
+  <span style="font-weight: bold"><span style="color: #000000">print_msg</span></span><span style="color: #990000">();</span>
+<span style="color: #FF0000">}</span></tt></pre></div></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="color: #990000">;------------------------</span>
+<span style="color: #990000">;</span> Assembly Code
+<span style="color: #990000">;------------------------</span>
+<span style="font-weight: bold"><span style="color: #000080">#define</span></span> __SFR_OFFSET <span style="color: #993399">0x00</span>
+<span style="font-weight: bold"><span style="color: #000080">#include</span></span> <span style="color: #FF0000">"avr/io.h"</span>
+<span style="color: #990000">;------------------------</span>
+<span style="color: #990000">.</span><span style="color: #008080">global</span> init_serial
+<span style="color: #990000">.</span><span style="color: #008080">global</span> print_msg
+<span style="color: #990000">;------------------------</span>
+init_serial<span style="color: #990000">:</span>
+    CLR   R24
+    <span style="color: #008080">STS</span>   UCSR0A<span style="color: #990000">,</span> R24               <span style="color: #990000">;</span>clear UCSR0A <span style="font-weight: bold"><span style="color: #0000FF">register</span></span>
+    <span style="color: #008080">STS</span>   UBRR0H<span style="color: #990000">,</span> R24               <span style="color: #990000">;</span>clear UBRR0H <span style="font-weight: bold"><span style="color: #0000FF">register</span></span>
+    <span style="color: #008080">LDI</span>   R24<span style="color: #990000">,</span> <span style="color: #993399">103</span>                  <span style="color: #990000">;&amp;</span> store in UBRR0L <span style="color: #993399">103</span> value
+    <span style="color: #008080">STS</span>   UBRR0L<span style="color: #990000">,</span> R24               <span style="color: #990000">;</span>to set baud rate <span style="color: #993399">9600</span>
+    <span style="color: #008080">LDI</span>   R24<span style="color: #990000">,</span> <span style="color: #993399">1</span><span style="color: #990000">&lt;&lt;</span>RXEN0 <span style="color: #990000">|</span> <span style="color: #993399">1</span><span style="color: #990000">&lt;&lt;</span>TXEN0  <span style="color: #990000">;</span><span style="color: #008080">enable</span> RXB <span style="color: #990000">&amp;</span> TXB
+    <span style="color: #008080">STS</span>   UCSR0B<span style="color: #990000">,</span> R24
+    <span style="color: #008080">LDI</span>   R24<span style="color: #990000">,</span> <span style="color: #993399">1</span><span style="color: #990000">&lt;&lt;</span>UCSZ00 <span style="color: #990000">|</span> <span style="color: #993399">1</span><span style="color: #990000">&lt;&lt;</span>UCSZ01<span style="color: #990000">;</span>asynch<span style="color: #990000">,</span> <span style="color: #008080">no</span> parity<span style="color: #990000">,</span> <span style="color: #993399">1</span> stop<span style="color: #990000">,</span> <span style="color: #993399">8</span> bits
+    <span style="color: #008080">STS</span>   UCSR0C<span style="color: #990000">,</span> R24
+    RET
+<span style="color: #990000">;-------------------------------------------------------------------------</span>
+print_msg<span style="color: #990000">:</span>
+    <span style="color: #008080">LDI</span>   R30<span style="color: #990000">,</span> <span style="font-weight: bold"><span style="color: #000000">lo8</span></span><span style="color: #990000">(</span>message<span style="color: #990000">)</span>
+    <span style="color: #008080">LDI</span>   R31<span style="color: #990000">,</span> <span style="font-weight: bold"><span style="color: #000000">hi8</span></span><span style="color: #990000">(</span>message<span style="color: #990000">)</span>         <span style="color: #990000">;</span>Z points to string message
+agn<span style="color: #990000">:</span><span style="color: #008080">LPM</span>   R18<span style="color: #990000">,</span> Z<span style="color: #990000">+</span>                   <span style="color: #990000">;</span>load <span style="color: #009900">char</span> of string onto R18
+    <span style="color: #008080">CPI</span>   R18<span style="color: #990000">,</span> <span style="color: #993399">0</span>                    <span style="color: #990000">;</span>check <span style="color: #008080">if</span> R18<span style="color: #990000">=</span><span style="color: #993399">0</span> <span style="color: #990000">(</span>end <span style="color: #008080">of</span> string<span style="color: #990000">)</span>
+    <span style="color: #008080">BREQ</span>  ext                       <span style="color: #990000">;</span><span style="font-weight: bold"><span style="color: #0000FF">if</span></span> yes<span style="color: #990000">,</span> exit
+    <span style="color: #990000">;--------------------------------------------------------------------</span>
+l1<span style="color: #990000">:</span> <span style="color: #008080">LDS</span>   R17<span style="color: #990000">,</span> UCSR0A
+    <span style="color: #008080">SBRS</span>  R17<span style="color: #990000">,</span> UDRE0                <span style="color: #990000">;</span>test data buffer <span style="font-weight: bold"><span style="color: #0000FF">if</span></span> data can be sent
+    RJMP  l1
+    <span style="color: #008080">STS</span>   UDR0<span style="color: #990000">,</span> R18                 <span style="color: #990000">;</span>send <span style="color: #009900">char</span> in R18 to serial monitor
+    <span style="color: #990000">;--------------------------------------------------------------------</span>
+    <span style="color: #008080">RJMP</span>  agn                       <span style="color: #990000">;</span><span style="color: #008080">loop</span> back <span style="color: #990000">&amp;</span> get next character
+    <span style="color: #990000">;--------------------------------------------------------------------</span>
+ext<span style="color: #990000">:</span><span style="color: #008080">RCALL</span> delay_sec
+    RET
+<span style="color: #990000">;------------------------------------------------------------------------</span>
+<span style="font-weight: bold"><span style="color: #008080">message:</span></span>
+    <span style="color: #990000">.</span>ascii <span style="color: #FF0000">"Programming Serial Interface!"</span> <span style="color: #990000">;</span>even number <span style="color: #008080">of</span> characters<span style="color: #990000">!!!</span>
+    <span style="color: #990000">.</span>byte <span style="color: #993399">10</span><span style="color: #990000">,</span><span style="color: #993399">13</span><span style="color: #990000">,</span><span style="color: #993399">0</span>   <span style="color: #990000">;</span><span style="color: #008080">newline</span> character<span style="color: #990000">,</span> enter and null character
+<span style="color: #990000">;------------------------------------------------------------------------</span>
+delay_sec<span style="color: #990000">:</span>                          <span style="color: #990000">;</span>3s delay
+    <span style="color: #008080">LDI</span>   R20<span style="color: #990000">,</span> <span style="color: #993399">255</span>
+l4<span style="color: #990000">:</span> <span style="color: #008080">LDI</span>   R21<span style="color: #990000">,</span> <span style="color: #993399">255</span>
+l5<span style="color: #990000">:</span> <span style="color: #008080">LDI</span>   R22<span style="color: #990000">,</span> <span style="color: #993399">255</span>
+l6<span style="color: #990000">:</span> DEC   R22
+    BRNE  l6
+    DEC   R21
+    BRNE  l5
+    DEC   R20
+    BRNE  l4
+    RET</tt></pre></div></div>
+</div>
+</div>
+</div>
 </div>
 <div id="footnotes"><hr></div>
 <div id="footer">
 <div id="footer-text">
 Last updated
- 2023-05-18 09:10:31 -03
+ 2023-05-19 05:51:54 -03
 </div>
 </div>
 </body>
