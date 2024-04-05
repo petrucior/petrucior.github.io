@@ -1,18 +1,21 @@
-<!DOCTYPE html>
+<!-- AR.js by @jerome_etienne - github: https://github.com/jeromeetienne/ar.js - info: https://medium.com/arjs/augmented-reality-in-10-lines-of-html-4e193ea9fdbf -->
 <html>
-  <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
-  <!-- we import arjs version without NFT but with marker + location based support -->
-  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
-  <body style="margin : 0px; overflow: hidden;">
-    <a-scene embedded arjs>
-      <a-marker preset="hiro">
-        <a-entity
-          position="0 0 0"
-          scale="0.05 0.05 0.05"
-          gltf-model="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/scene.gltf"
-        ></a-entity>
-      </a-marker>
-      <a-entity camera></a-entity>
+  <head>
+    <title>robotics</title>
+  </head>
+  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+  <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/2.2.2/aframe/build/aframe-ar.js"></script>
+  <!--script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script-->
+  <body style='margin : 0px; overflow: hidden;'>
+    <a-scene  embedded arjs='sourceType: webcam;'>
+      <!--a-assets>
+	    <a-asset-item id="crown-obj" src="crown.obj"></a-asset-item>
+	    <a-asset-item id="crown-mtl" src="crown.mtl"></a-asset-item>
+      </a-assets>
+      <a-entity obj-model="obj: #trapezio-obj; mtl: #trapezio-mtl;"></a-entity-->
+      <a-entity obj-model="obj: url(trapezio.obj); mtl: url(trapezio.mtl);" rotation="-60 0 0" scale="4 4 4"></a-entity>
+      <!--a-box position='0 0.5 0' material='opacity: 0.5;'></a-box-->
+      <a-marker-camera preset='hiro'></a-marker-camera>
     </a-scene>
   </body>
 </html>
