@@ -8,20 +8,16 @@
   <script src="https://rawgit.com/mayognaise/aframe-gif-shader/master/dist/aframe-gif-shader.min.js"></script>
   <!--script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script-->
   <body style='margin : 0px; overflow: hidden;'>
-    <a-scene  embedded arjs='sourceType: webcam;'>
-      <!--a-assets>
-	    <a-asset-item id="crown-obj" src="crown.obj"></a-asset-item>
-	    <a-asset-item id="crown-mtl" src="crown.mtl"></a-asset-item>
-      </a-assets>
-      <a-entity obj-model="obj: #trapezio-obj; mtl: #trapezio-mtl;"></a-entity-->
-      <!--a-entity obj-model="obj: url(trapezio.obj); mtl: url(trapezio.mtl);" rotation="-60 0 0" scale="4 4 4"></a-entity-->
-      <!--a-entity gltf-model="https://corsproxy.io/?https:petrucior.github.io/augmentedReality/trapezio.gltf"></a-entity-->
-      <!--a-box position='0 0.5 0' material='opacity: 0.5;'></a-box-->
-      <!--a-marker-camera preset='hiro'></a-marker-camera>
-    </a-scene-->
-
-      <a-entity position="0 2 -4" rotation="0 25 0" geometry="primitive:box;" material="shader:gif;src:url(https://corsproxy.io/?https://media0.giphy.com/media/xT9IgsOaEG15pWz17y/giphy.gif)"></a-entity>
-      <a-marker-camera preset='hiro'></a-marker-camera>
-    </a-scene>
+	<a-scene embedded arjs>
+	        <a-marker preset="hiro">
+	            <a-entity
+	            position="0 -1 0"
+	            scale="0.05 0.05 0.05"
+	            gltf-model="https://corsproxy.io/?https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/scene.gltf"
+	            ></a-entity>
+	        </a-marker>
+	        <a-entity camera></a-entity>
+        </a-scene>
   </body>
 </html>
+
