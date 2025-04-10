@@ -1,0 +1,255 @@
+Assembly Programming on Atmega328p
+----------------------------------
+
+Lecture 1
+---------
+
+The Atmega328p microcontroller is a small computer on a single integrated circuit which contains a processor core, memory and programmable input and output peripherals.
+
+image::imagens/img0.png[height=250, width=300, align="center"]
+
+=== Why assembly?
+
+- Code is optimized for speed & space;
+- Assembly coding enables you to learn H/W organization of microcontroller;
+- Assembly code can take full advantages of controller H/W features;
+
+=== Hardware Organization
+
+image::imagens/img1.jpg[height=250, width=300, align="center"]
+
+//image::imagens/img5.png[float="right",align="center",height=100%, width=100%]
+
+//image::imagens/img6.jpg[height=350, width=650, align="center"]
+
+=== Instruction Set
+
+.Instruction set table
+[cols="2,1,1,1,1,1"]
+|===
+| *Arithmetic and Logic* | ADD | SUB | AND | OR | MUL
+| *Branch* | JMP | RCALL | RET | CPI | BREQ
+| *Data transfer* | MOV | In | OUT | LDI | STS
+| *Bit-by-bit test* | ROL | CBI | CLC | SWAP | ROR
+| *Control* | BREAK | NOP | SLEEP | WDR
+|===
+
+=== Memory Map
+
+image::imagens/img3.png[height=350, width=650, align="center"]
+
+=== Blink led
+The purpose of this section is to provide the fundamentals for building an example to turn an LED on and off. This objective will be achieved through the analysis of the programs link:codes/led.ino/led.ino.ino[led.ino] and link:codes/led.ino/led.S[led.S] built using functions from the https://ww1.microchip.com/downloads/en/devicedoc/atmel-0856-avr-instruction-set-manual.pdf[AVR Instruction Set Manual].
+
+.Material list
+[cols="1,1"]
+|===
+| *Item* | *Quantidade*
+| Plataforma Arduino | 1
+| Cabo USB | 1
+| Protoboard | 1
+| Led | 1
+| Resistor de 200 ohms | 1
+|===
+
+image::imagens/img7.png[height=350, width=650, align="center"]
+
+=== Code
+We need to create two files. The first file in c++ (extension .ino) and the second file in assembly (extension .S). Both with the same name and in the same directory.
+
+[source,c]
+----
+include::codes/led.ino/led.ino.ino[]
+----
+
+[source,c]
+----
+include::codes/led.ino/led.S[]
+----
+
+=== Blink (advanced level)
+
+==== Registers
+
+ATMega328P has 32 general purpose registers [Registers R0 to R31]
+
+- 8 bit registers
+- Mapped to SRAM memory [Addresses between 0x00 and 0x1F]
+
+image::imagens/img8.jpg[height=350, width=300, align="center"]
+
+==== SRAM
+
+ATMega328P has 2 Kbytes of main memory implemented with SRAM
+
+- Some segments are reserved
+
+* 0x00 to 0x1F are the 32 registers
+* 0x20 to 0x5F are I/O registers (Memory mapped I/O)
+
+image::imagens/img9.png[height=150, width=300, align="center"]
+
+==== Instruction format
+
+- Most instructions occupy *16 bits*
+- There are several formats of instruction
+- Variable length *opcodes*
+
+image::imagens/img10.png[height=250, width=300, align="center"]
+
+Ex. Register Direct
+
+- Op: Opcode
+- Rr: Source register 1
+- Rd: Source 2 and destination register
+
+==== Assembly instructions
+
+- Assembly instructions follow the same order used in MIPS
+- OPCODE destination, source
+* ldi r16,0xF (Load immediate 0xF into register r16)
+- The number of operands varies according to the operation
+
+=== Code (advanced level)
+
+The codes below can be downloaded from the links: link:codes/leds/led.s[led.s] and link:codes/leds/Makefile[Makefile].
+
+[source,c]
+----
+include::codes/leds/led.s[]
+----
+
+[source,c]
+----
+include::codes/leds/Makefile[]
+----
+
+Lecture 2
+---------
+
+=== ATmega328p MCU registers
+
+image::imagens/img14.jpg[height=400, width=450, align="center"]
+
+image::imagens/img15.png[height=500, width=550, align="center"]
+
+- Registers divided into two groups based on how they are used and their functionalities
+- R16 to R31 are more versatile and useful than R0 to R15
+- Example:
+
+* The registers that work with immediate data (R16 to R31) store a byte of information or words (pairs of registers x, y and z).
+
+[source,c]
+----
+include::codes/registers/register1/register1.ino[]
+----
+
+[source,c]
+----
+include::codes/registers/register1/register1.S[]
+----
+
+** On the other hand, registers R0 to R15 work with indirect addressing, which means that we can store a byte located in a memory location. This code will also work with R16 and R17, but its contents cannot be changed by functions.
+
+[source,c]
+----
+include::codes/registers/register2/register2.ino[]
+----
+
+[source,c]
+----
+include::codes/registers/register2/register2.S[]
+----
+
+- The 3 word registers x, y and z can handle indirect addressing and immediate storage. The y-register can be for storing the frame point
+- R0 and R1 store the 16-bit result of a multiplication performed by opcode MUL. Mul will multiply 2 bytes and its 16-bit result is stored in R1 (MSB) and R0 (LSB)
+
+=== Button controlling an Led
+The purpose of this section is to provide the fundamentals to control an LED using a button. This objective will be achieved through the analysis of the programs link:codes/button/button.ino[button.ino]
+and link:codes/button/button.S[button.S] built using functions from the https://ww1.microchip.com/downloads/en/devicedoc/atmel-0856-avr-instruction-set-manual.pdf[AVR Instruction Set Manual].
+
+.Material list
+[cols="1,1"]
+|===
+| *Item* | *Quantidade*
+| Plataforma Arduino | 1
+| Cabo USB | 1
+| Protoboard | 1
+| Led | 1
+| Resistor de 200 ohms | 1
+| Resistor de 10K ohms | 1
+| Botão | 1
+|===
+
+image::imagens/img16.png[height=350, width=650, align="center"]
+
+image::imagens/img17.png[height=350, width=650, align="center"]
+
+[source,c]
+----
+include::codes/button/button.ino[]
+----
+
+[source,c]
+----
+include::codes/button/button.S[]
+----
+
+Lecture 3
+---------
+
+image::imagens/img19.png[height=350, width=550, align="center"]
+
+=== Serial Communication
+
+Program *serial port* to transmit/receive data using synchronous or assynchronous modes (USART).
+
+=== USART Registers
+
+image::imagens/img20.png[height=300, width=500, align="center"]
+
+* UBRR
+
+image::imagens/img21.png[height=450, width=650, align="center"]
+
+* UDR
+
+image::imagens/img22.png[height=450, width=800, align="center"]
+
+* UCSRA
+
+image::imagens/img23.png[height=450, width=800, align="center"]
+
+* UCSRB
+
+image::imagens/img24.png[height=450, width=800, align="center"]
+
+* UCSRC
+
+image::imagens/img25.png[height=450, width=800, align="center"]
+
+=== Review about registers
+
+image::imagens/img26.png[height=450, width=800, align="center"]
+
+=== Write on Serial Port
+
+The purpose of this section is to provide the fundamentals to send mensage from Atmega328p to PC. This objective will be achieved through the analysis of the programs link:codes/serial/serial.ino[serial.ino] and link:codes/serial/serial.S[serial.S] built using functions from the https://ww1.microchip.com/downloads/en/devicedoc/atmel-0856-avr-instruction-set-manual.pdf[AVR Instruction Set Manual].
+
+.Material list
+[cols="1,1"]
+|===
+| *Item* | *Quantidade*
+| Plataforma Arduino | 1
+| Cabo USB | 1
+|===
+
+[source,c]
+----
+include::codes/serial/serial.ino[]
+----
+
+[source,c]
+----
+include::codes/serial/serial.S[]
+----
