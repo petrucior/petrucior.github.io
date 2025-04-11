@@ -1,255 +1,241 @@
-Assembly Programming on Atmega328p
-----------------------------------
+Computação Gráfica
+------------------
+
+CG é uma área da computação dedicada a *criação*, *armazenamento* e *manipulação de imagens* baseada em modelos matemáticos.
+
+image::images/img0.png[height=280, width=280, align="center"]
 
 Lecture 1
 ---------
 
-The Atmega328p microcontroller is a small computer on a single integrated circuit which contains a processor core, memory and programmable input and output peripherals.
+Iniciaremos nosso curso aprendendo como construir uma imagem.
 
-image::imagens/img0.png[height=250, width=300, align="center"]
+=== Portable Pixel Map (PPM)
 
-=== Why assembly?
+O formato PPM nasceu no final da década de latexmath:[80] para compartilhar imagens facilmente entre diferentes plataformas.
 
-- Code is optimized for speed & space;
-- Assembly coding enables you to learn H/W organization of microcontroller;
-- Assembly code can take full advantages of controller H/W features;
+.Definição da Wikipedia
+image::images/img1.png[height=150, width=500, align="center"]
 
-=== Hardware Organization
 
-image::imagens/img1.jpg[height=250, width=300, align="center"]
+=== Código
 
-//image::imagens/img5.png[float="right",align="center",height=100%, width=100%]
+Podemos escrever um código em C para construir uma imagem usando o formato PPM. Este objetivo será alcançado através da análise
+do programa link:codes/ppm_create.c[ppm_create.c].
 
-//image::imagens/img6.jpg[height=350, width=650, align="center"]
+.Imagem PPM construída a partir do código "ppm_create.c"
+image::images/img2.png[height=256,width=256, align="center"]
 
-=== Instruction Set
+[source, c]
+----
+include::codes/ppm_create.c[]
+----
 
-.Instruction set table
-[cols="2,1,1,1,1,1"]
-|===
-| *Arithmetic and Logic* | ADD | SUB | AND | OR | MUL
-| *Branch* | JMP | RCALL | RET | CPI | BREQ
-| *Data transfer* | MOV | In | OUT | LDI | STS
-| *Bit-by-bit test* | ROL | CBI | CLC | SWAP | ROR
-| *Control* | BREAK | NOP | SLEEP | WDR
-|===
+=== Descrição do programa
+Inserimos na primeira linha do arquivo a biblioteca para lidar com entrada/saída de dados na linguagem C.
 
-=== Memory Map
+[source, c]
+----
+#include <stdio.h>
+----
 
-image::imagens/img3.png[height=350, width=650, align="center"]
+Definimos as dimensões (largura e altura) da imagem que estamos construindo.
 
-=== Blink led
-The purpose of this section is to provide the fundamentals for building an example to turn an LED on and off. This objective will be achieved through the analysis of the programs link:codes/led.ino/led.ino.ino[led.ino] and link:codes/led.ino/led.S[led.S] built using functions from the https://ww1.microchip.com/downloads/en/devicedoc/atmel-0856-avr-instruction-set-manual.pdf[AVR Instruction Set Manual].
+[source, c]
+----
+int width = 256;
+int height = 256;
+----
 
-.Material list
-[cols="1,1"]
-|===
-| *Item* | *Quantidade*
-| Plataforma Arduino | 1
-| Cabo USB | 1
-| Protoboard | 1
-| Led | 1
-| Resistor de 200 ohms | 1
-|===
+Em seguida, configuramos o cabeçalho do formato PPM.
 
-image::imagens/img7.png[height=350, width=650, align="center"]
+[source, c]
+----
+printf("P3\n %d \t %d\n 255\n", width, height);
+----
 
-=== Code
-We need to create two files. The first file in c++ (extension .ino) and the second file in assembly (extension .S). Both with the same name and in the same directory.
+No laço de repetição, percorremos a largura e altura da imagem preenchendo as cores dos pixels. 
+
+[source, c]
+----
+for (int i = 0; i < height; i++){ // Altura
+    for (int j = 0; j < width; j++){ // Largura
+      printf("%d \t %d \t %d \n", i, j, 63);
+    }
+}
+----
+
+=== Compilação
+
+O processo de compilação é realizado através do compilador GCC através do seguinte comando:
 
 [source,c]
 ----
-include::codes/led.ino/led.ino.ino[]
+gcc <nome_arquivo>.c -o <nome_executavel> 
 ----
+
+Este comando criará um arquivo executável e a saída deve ser direcionada para um arquivo com extensão ".ppm".
 
 [source,c]
 ----
-include::codes/led.ino/led.S[]
+./<nome_executavel> > output.ppm
 ----
 
-=== Blink (advanced level)
 
-==== Registers
+=== Exercício
 
-ATMega328P has 32 general purpose registers [Registers R0 to R31]
+- Construa uma imagem latexmath:[100 \times 100] usando o formato PPM com fundo preto que tem apenas 1 pixel vermelho no centro da imagem.
 
-- 8 bit registers
-- Mapped to SRAM memory [Addresses between 0x00 and 0x1F]
+- Implemente uma função que altera o valor de um pixel da imagem.
 
-image::imagens/img8.jpg[height=350, width=300, align="center"]
+- Codifique uma função que salva a imagem no formato PPM.
 
-==== SRAM
+- Crie uma função que inicializa uma imagem com branco.
 
-ATMega328P has 2 Kbytes of main memory implemented with SRAM
+- Construa uma imagem latexmath:[100 \times 100] usando o formato PPM com fundo preto e escreva o caractere ' T ' no centro da imagem com
+alto contraste em relação ao fundo da imagem.
 
-- Some segments are reserved
 
-* 0x00 to 0x1F are the 32 registers
-* 0x20 to 0x5F are I/O registers (Memory mapped I/O)
-
-image::imagens/img9.png[height=150, width=300, align="center"]
-
-==== Instruction format
-
-- Most instructions occupy *16 bits*
-- There are several formats of instruction
-- Variable length *opcodes*
-
-image::imagens/img10.png[height=250, width=300, align="center"]
-
-Ex. Register Direct
-
-- Op: Opcode
-- Rr: Source register 1
-- Rd: Source 2 and destination register
-
-==== Assembly instructions
-
-- Assembly instructions follow the same order used in MIPS
-- OPCODE destination, source
-* ldi r16,0xF (Load immediate 0xF into register r16)
-- The number of operands varies according to the operation
-
-=== Code (advanced level)
-
-The codes below can be downloaded from the links: link:codes/leds/led.s[led.s] and link:codes/leds/Makefile[Makefile].
-
-[source,c]
-----
-include::codes/leds/led.s[]
-----
-
-[source,c]
-----
-include::codes/leds/Makefile[]
-----
 
 Lecture 2
 ---------
 
-=== ATmega328p MCU registers
+=== Digital Differential Analyze (DDA)
 
-image::imagens/img14.jpg[height=400, width=450, align="center"]
+Algoritmo clássico de rasterização de linhas. Este algoritmo utiliza a *equação da reta* para gerar pontos de uma linha entre dois pontos
+latexmath:[(x_{0}, y_{0})] e latexmath:[(x_{1}, y_{1})], incrementando em intervalos fixos.
 
-image::imagens/img15.png[height=500, width=550, align="center"]
+.Linha gerada pelo algoritmo DDA
+image::images/img3.png[height=200,width=200, align="center"]
 
-- Registers divided into two groups based on how they are used and their functionalities
-- R16 to R31 are more versatile and useful than R0 to R15
-- Example:
+=== Código
 
-* The registers that work with immediate data (R16 to R31) store a byte of information or words (pairs of registers x, y and z).
-
-[source,c]
-----
-include::codes/registers/register1/register1.ino[]
-----
+A implementação do algoritmo DDA (disponível no arquivo link:codes/dda.c[dda.c]) exige conhecimento prévio de alguns detalhes matemáticos da equação da reta.
 
 [source,c]
 ----
-include::codes/registers/register1/register1.S[]
+include::codes/dda.c[]
 ----
 
-** On the other hand, registers R0 to R15 work with indirect addressing, which means that we can store a byte located in a memory location. This code will also work with R16 and R17, but its contents cannot be changed by functions.
+=== Descrição do programa
+
+Iniciamos o código inserindo a biblioteca padrão de entrada/saída de dados da linguagem C e a biblioteca *stdlib.h* para obter o módulo de um número.
 
 [source,c]
 ----
-include::codes/registers/register2/register2.ino[]
+#include <stdio.h>
+#include <stdlib.h> // abs
 ----
+
+Após inserir as bibliotecas, optei por definir globalmente as dimensões da imagem e a própria imagem como um array multidimensional do tipo caractere sem sinal para
+representar cada canal de cor com 8 bits.
 
 [source,c]
 ----
-include::codes/registers/register2/register2.S[]
+#define width 200
+#define height 200
+
+unsigned char image[height][width][3];
 ----
 
-- The 3 word registers x, y and z can handle indirect addressing and immediate storage. The y-register can be for storing the frame point
-- R0 and R1 store the 16-bit result of a multiplication performed by opcode MUL. Mul will multiply 2 bytes and its 16-bit result is stored in R1 (MSB) and R0 (LSB)
+Posteriormente, codifiquei algumas funções que serão úteis para manipular as imagens PPM. A primeira função foi para setar um valor de cor para um pixel.
 
-=== Button controlling an Led
-The purpose of this section is to provide the fundamentals to control an LED using a button. This objective will be achieved through the analysis of the programs link:codes/button/button.ino[button.ino]
-and link:codes/button/button.S[button.S] built using functions from the https://ww1.microchip.com/downloads/en/devicedoc/atmel-0856-avr-instruction-set-manual.pdf[AVR Instruction Set Manual].
+[source,c]
+----
+void putPixel( int x, int y, unsigned char r, unsigned char g, unsigned char b){
+  if (( x >= 0 ) && ( x <= width )  && ( y >= 0 ) && ( y <= height )){
+    image[x][y][0] = r;
+    image[x][y][1] = g;
+    image[x][y][2] = b;
+  }
+}
+----
 
-.Material list
+A segunda função que implementei que nos ajudará é a função para preencher com branco toda a imagem.
+
+[source,c]
+----
+void clearImage(){
+  for (int y = 0; y < height; y++)
+    for (int x = 0; x < width; x++)
+      putPixel(x, y, 255, 255, 255);
+}
+----
+
+Por fim, codifiquei uma função específica para salvar o array multidimensional no formato PPM.
+
+[source,c]
+----
+void saveImage(){
+  // Configurando o header do formato PPM
+  printf("P3\n %d \t %d\n 255\n", width, height);
+
+  for (int y = 0; y < height; y++){ // Altura
+    for (int x = 0; x < width; x++){ // Largura
+      for (int c = 0; c < 3; c++){ // Canal: r, g, b
+        printf("%d \t", image[x][y][c]);
+      }
+      printf("\n");
+    }
+  }
+}
+----
+
+O algoritmo DDA é implementado seguindo os seguintes passos:
+
+- Calcular o valor de variação nos eixos x e y;
+- Encontra a maior variação e adota ela como número de passos do algoritmo;
+- Define o incremento em cada eixo;
+- Pinta do ponto inicial até o ponto final incrementando os incrementos em cada eixo.
+
+[source,c]
+----
+void drawDDA( int x0, int y0, int x1, int y1 ){
+  // calcula a variacao
+  int dx = x1 - x0;
+  int dy = y1 - y0;
+
+  // calcula o número de passos de incremento
+  int steps = abs(dx) > abs(dy) ? abs(dx) : abs(dy);
+
+  // define o incremento em cada eixo
+  float x_inc = (float) dx / steps;
+  float y_inc = (float) dy / steps;
+
+  float x = x0;
+  float y = y0;
+
+  for (int i = 0; i <= steps; i++){
+    putPixel((int)x, (int)y, 255, 0, 0);
+    x += x_inc;
+    y += y_inc;
+  }
+}
+----
+
+
+=== Análise do algoritmo DDA
+
+.Avaliando vantagens e desvantagens do algoritmo DDA
 [cols="1,1"]
 |===
-| *Item* | *Quantidade*
-| Plataforma Arduino | 1
-| Cabo USB | 1
-| Protoboard | 1
-| Led | 1
-| Resistor de 200 ohms | 1
-| Resistor de 10K ohms | 1
-| Botão | 1
+| *Vantagens* | *Desvantagens*
+| Simples de implementar | Usa ponto flutuante
+| Funciona em qualquer inclinação | Pode causar acúmulo de erros de arredondamento
 |===
 
-image::imagens/img16.png[height=350, width=650, align="center"]
+=== Exercícios
 
-image::imagens/img17.png[height=350, width=650, align="center"]
+- Implemente uma função que os argumentos são os pontos de um polígono convexo e o retorno é uma imagem PPM.
 
-[source,c]
-----
-include::codes/button/button.ino[]
-----
+- Codifique um algoritmo para desenhar um triangulo isosceles.
 
-[source,c]
-----
-include::codes/button/button.S[]
-----
+- Construa um código que desenha uma casa simples com o algoritmo DDA.
+
 
 Lecture 3
 ---------
 
-image::imagens/img19.png[height=350, width=550, align="center"]
+=== Bresenham
 
-=== Serial Communication
 
-Program *serial port* to transmit/receive data using synchronous or assynchronous modes (USART).
-
-=== USART Registers
-
-image::imagens/img20.png[height=300, width=500, align="center"]
-
-* UBRR
-
-image::imagens/img21.png[height=450, width=650, align="center"]
-
-* UDR
-
-image::imagens/img22.png[height=450, width=800, align="center"]
-
-* UCSRA
-
-image::imagens/img23.png[height=450, width=800, align="center"]
-
-* UCSRB
-
-image::imagens/img24.png[height=450, width=800, align="center"]
-
-* UCSRC
-
-image::imagens/img25.png[height=450, width=800, align="center"]
-
-=== Review about registers
-
-image::imagens/img26.png[height=450, width=800, align="center"]
-
-=== Write on Serial Port
-
-The purpose of this section is to provide the fundamentals to send mensage from Atmega328p to PC. This objective will be achieved through the analysis of the programs link:codes/serial/serial.ino[serial.ino] and link:codes/serial/serial.S[serial.S] built using functions from the https://ww1.microchip.com/downloads/en/devicedoc/atmel-0856-avr-instruction-set-manual.pdf[AVR Instruction Set Manual].
-
-.Material list
-[cols="1,1"]
-|===
-| *Item* | *Quantidade*
-| Plataforma Arduino | 1
-| Cabo USB | 1
-|===
-
-[source,c]
-----
-include::codes/serial/serial.ino[]
-----
-
-[source,c]
-----
-include::codes/serial/serial.S[]
-----
