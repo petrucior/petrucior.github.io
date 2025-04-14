@@ -2509,6 +2509,178 @@ Construa um código que desenha uma casa simples com o algoritmo DDA.
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_bresenham">Bresenham</h3>
+<div class="paragraph"><p>Jack Bresenham propôs em 1965 no artigo <a href="https://ieeexplore.ieee.org/document/5388473"><em>Algorithm for Computer Control of a Digital Plotter</em></a> um algoritmo de
+rasterização de linhas com tipo inteiro. No texto <a href="paper/Bresenham.pdf">Bresenham&#8217;s Algorithm</a> contém uma breve explicação sobre o algoritmo.</p></div>
+<div class="imageblock" style="text-align:center;">
+<div class="content">
+<img src="images/img4.png" alt="images/img4.png" width="200" height="200">
+</div>
+<div class="title">Figure 4. Linhas gerada pelo algoritmo de Bresenham</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_código_3">Código</h3>
+<div class="paragraph"><p>A implementação do algoritmo de Bresenham está disponível no arquivo <a href="codes/bresenhamLines.c">bresenhamLines.c</a>.</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">/**</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"> * \file bresenhamLines.c</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"> *</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"> * \brief Implementação do algoritmo bresenham para linhas.</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"> *</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"> * \author</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"> * Petrucio Ricardo Tavares de Medeiros \n</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"> * Universidade Federal Rural do Semi-Árido \n</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"> * Departamento de Engenharias e Tecnologia \n</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"> * petrucio at ufersa (dot) edu (dot) br</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"> *</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"> * \version 1.0</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"> * \date April 2025</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"> */</span></span>
+
+<span style="font-weight: bold"><span style="color: #000080">#include</span></span> <span style="color: #FF0000">&lt;stdio.h&gt;</span>
+<span style="font-weight: bold"><span style="color: #000080">#include</span></span> <span style="color: #FF0000">&lt;stdlib.h&gt;</span> <span style="font-style: italic"><span style="color: #9A1900">// abs</span></span>
+
+<span style="font-weight: bold"><span style="color: #000080">#define</span></span> width <span style="color: #993399">200</span>
+<span style="font-weight: bold"><span style="color: #000080">#define</span></span> height <span style="color: #993399">200</span>
+
+<span style="color: #009900">unsigned</span> <span style="color: #009900">char</span> image<span style="color: #990000">[</span>height<span style="color: #990000">][</span>width<span style="color: #990000">][</span><span style="color: #993399">3</span><span style="color: #990000">];</span>
+
+<span style="font-style: italic"><span style="color: #9A1900">// Funcao para preencher um pixel na imagem</span></span>
+<span style="color: #009900">void</span> <span style="font-weight: bold"><span style="color: #000000">putPixel</span></span><span style="color: #990000">(</span> <span style="color: #009900">int</span> x<span style="color: #990000">,</span> <span style="color: #009900">int</span> y<span style="color: #990000">,</span> <span style="color: #009900">unsigned</span> <span style="color: #009900">char</span> r<span style="color: #990000">,</span> <span style="color: #009900">unsigned</span> <span style="color: #009900">char</span> g<span style="color: #990000">,</span> <span style="color: #009900">unsigned</span> <span style="color: #009900">char</span> b<span style="color: #990000">)</span><span style="color: #FF0000">{</span>
+  <span style="font-weight: bold"><span style="color: #0000FF">if</span></span> <span style="color: #990000">((</span> x <span style="color: #990000">&gt;=</span> <span style="color: #993399">0</span> <span style="color: #990000">)</span> <span style="color: #990000">&amp;&amp;</span> <span style="color: #990000">(</span> x <span style="color: #990000">&lt;=</span> width <span style="color: #990000">)</span>  <span style="color: #990000">&amp;&amp;</span> <span style="color: #990000">(</span> y <span style="color: #990000">&gt;=</span> <span style="color: #993399">0</span> <span style="color: #990000">)</span> <span style="color: #990000">&amp;&amp;</span> <span style="color: #990000">(</span> y <span style="color: #990000">&lt;=</span> height <span style="color: #990000">))</span><span style="color: #FF0000">{</span>
+    image<span style="color: #990000">[</span>x<span style="color: #990000">][</span>y<span style="color: #990000">][</span><span style="color: #993399">0</span><span style="color: #990000">]</span> <span style="color: #990000">=</span> r<span style="color: #990000">;</span>
+    image<span style="color: #990000">[</span>x<span style="color: #990000">][</span>y<span style="color: #990000">][</span><span style="color: #993399">1</span><span style="color: #990000">]</span> <span style="color: #990000">=</span> g<span style="color: #990000">;</span>
+    image<span style="color: #990000">[</span>x<span style="color: #990000">][</span>y<span style="color: #990000">][</span><span style="color: #993399">2</span><span style="color: #990000">]</span> <span style="color: #990000">=</span> b<span style="color: #990000">;</span>
+  <span style="color: #FF0000">}</span>
+<span style="color: #FF0000">}</span>
+
+<span style="font-style: italic"><span style="color: #9A1900">// Funcao para limpar a imagem</span></span>
+<span style="color: #009900">void</span> <span style="font-weight: bold"><span style="color: #000000">clearImage</span></span><span style="color: #990000">()</span><span style="color: #FF0000">{</span>
+  <span style="font-weight: bold"><span style="color: #0000FF">for</span></span> <span style="color: #990000">(</span><span style="color: #009900">int</span> y <span style="color: #990000">=</span> <span style="color: #993399">0</span><span style="color: #990000">;</span> y <span style="color: #990000">&lt;</span> height<span style="color: #990000">;</span> y<span style="color: #990000">++)</span>
+    <span style="font-weight: bold"><span style="color: #0000FF">for</span></span> <span style="color: #990000">(</span><span style="color: #009900">int</span> x <span style="color: #990000">=</span> <span style="color: #993399">0</span><span style="color: #990000">;</span> x <span style="color: #990000">&lt;</span> width<span style="color: #990000">;</span> x<span style="color: #990000">++)</span>
+      <span style="font-weight: bold"><span style="color: #000000">putPixel</span></span><span style="color: #990000">(</span>x<span style="color: #990000">,</span> y<span style="color: #990000">,</span> <span style="color: #993399">255</span><span style="color: #990000">,</span> <span style="color: #993399">255</span><span style="color: #990000">,</span> <span style="color: #993399">255</span><span style="color: #990000">);</span>
+<span style="color: #FF0000">}</span>
+
+<span style="font-style: italic"><span style="color: #9A1900">// Funcao para salvar imagem no formato PPM</span></span>
+<span style="color: #009900">void</span> <span style="font-weight: bold"><span style="color: #000000">saveImage</span></span><span style="color: #990000">()</span><span style="color: #FF0000">{</span>
+  <span style="font-style: italic"><span style="color: #9A1900">// Configurando o header do formato PPM</span></span>
+  <span style="font-weight: bold"><span style="color: #000000">printf</span></span><span style="color: #990000">(</span><span style="color: #FF0000">"P3</span><span style="color: #CC33CC">\n</span><span style="color: #FF0000"> %d </span><span style="color: #CC33CC">\t</span><span style="color: #FF0000"> %d</span><span style="color: #CC33CC">\n</span><span style="color: #FF0000"> 255</span><span style="color: #CC33CC">\n</span><span style="color: #FF0000">"</span><span style="color: #990000">,</span> width<span style="color: #990000">,</span> height<span style="color: #990000">);</span>
+
+  <span style="font-weight: bold"><span style="color: #0000FF">for</span></span> <span style="color: #990000">(</span><span style="color: #009900">int</span> y <span style="color: #990000">=</span> <span style="color: #993399">0</span><span style="color: #990000">;</span> y <span style="color: #990000">&lt;</span> height<span style="color: #990000">;</span> y<span style="color: #990000">++)</span><span style="color: #FF0000">{</span> <span style="font-style: italic"><span style="color: #9A1900">// Altura</span></span>
+    <span style="font-weight: bold"><span style="color: #0000FF">for</span></span> <span style="color: #990000">(</span><span style="color: #009900">int</span> x <span style="color: #990000">=</span> <span style="color: #993399">0</span><span style="color: #990000">;</span> x <span style="color: #990000">&lt;</span> width<span style="color: #990000">;</span> x<span style="color: #990000">++)</span><span style="color: #FF0000">{</span> <span style="font-style: italic"><span style="color: #9A1900">// Largura</span></span>
+      <span style="font-weight: bold"><span style="color: #0000FF">for</span></span> <span style="color: #990000">(</span><span style="color: #009900">int</span> c <span style="color: #990000">=</span> <span style="color: #993399">0</span><span style="color: #990000">;</span> c <span style="color: #990000">&lt;</span> <span style="color: #993399">3</span><span style="color: #990000">;</span> c<span style="color: #990000">++)</span><span style="color: #FF0000">{</span> <span style="font-style: italic"><span style="color: #9A1900">// Canal: r, g, b</span></span>
+        <span style="font-weight: bold"><span style="color: #000000">printf</span></span><span style="color: #990000">(</span><span style="color: #FF0000">"%d </span><span style="color: #CC33CC">\t</span><span style="color: #FF0000">"</span><span style="color: #990000">,</span> image<span style="color: #990000">[</span>x<span style="color: #990000">][</span>y<span style="color: #990000">][</span>c<span style="color: #990000">]);</span>
+      <span style="color: #FF0000">}</span>
+      <span style="font-weight: bold"><span style="color: #000000">printf</span></span><span style="color: #990000">(</span><span style="color: #FF0000">"</span><span style="color: #CC33CC">\n</span><span style="color: #FF0000">"</span><span style="color: #990000">);</span>
+    <span style="color: #FF0000">}</span>
+  <span style="color: #FF0000">}</span>
+<span style="color: #FF0000">}</span>
+
+<span style="color: #009900">void</span> <span style="font-weight: bold"><span style="color: #000000">swap</span></span><span style="color: #990000">(</span><span style="color: #009900">int</span> a<span style="color: #990000">,</span> <span style="color: #009900">int</span> b<span style="color: #990000">)</span><span style="color: #FF0000">{</span>
+  <span style="color: #009900">int</span> aux <span style="color: #990000">=</span> a<span style="color: #990000">;</span>
+  a <span style="color: #990000">=</span> b<span style="color: #990000">;</span>
+  b <span style="color: #990000">=</span> aux<span style="color: #990000">;</span>
+<span style="color: #FF0000">}</span>
+
+<span style="font-style: italic"><span style="color: #9A1900">// Algoritmo Bresenham (1º quadrante)</span></span>
+<span style="color: #009900">void</span> <span style="font-weight: bold"><span style="color: #000000">drawBresenhamLinesIncomplete</span></span><span style="color: #990000">(</span> <span style="color: #009900">int</span> x0<span style="color: #990000">,</span> <span style="color: #009900">int</span> y0<span style="color: #990000">,</span> <span style="color: #009900">int</span> x1<span style="color: #990000">,</span> <span style="color: #009900">int</span> y1 <span style="color: #990000">)</span><span style="color: #FF0000">{</span>
+
+  <span style="font-style: italic"><span style="color: #9A1900">// calcula a variacao</span></span>
+  <span style="color: #009900">int</span> dx <span style="color: #990000">=</span> x1 <span style="color: #990000">-</span> x0<span style="color: #990000">;</span>
+  <span style="color: #009900">int</span> dy <span style="color: #990000">=</span> y1 <span style="color: #990000">-</span> y0<span style="color: #990000">;</span>
+
+  <span style="font-style: italic"><span style="color: #9A1900">// calcula o erro</span></span>
+  <span style="color: #009900">int</span> D <span style="color: #990000">=</span> <span style="color: #990000">(</span><span style="color: #993399">2</span> <span style="color: #990000">*</span> dy<span style="color: #990000">)</span> <span style="color: #990000">-</span> dx<span style="color: #990000">;</span>
+
+  <span style="color: #009900">int</span> x <span style="color: #990000">=</span> x0<span style="color: #990000">;</span>
+  <span style="color: #009900">int</span> y <span style="color: #990000">=</span> y0<span style="color: #990000">;</span>
+
+  <span style="font-weight: bold"><span style="color: #000000">putPixel</span></span><span style="color: #990000">(</span>x<span style="color: #990000">,</span> y<span style="color: #990000">,</span> <span style="color: #993399">255</span><span style="color: #990000">,</span> <span style="color: #993399">0</span><span style="color: #990000">,</span> <span style="color: #993399">0</span><span style="color: #990000">);</span>
+
+  <span style="font-weight: bold"><span style="color: #0000FF">while</span></span> <span style="color: #990000">(</span>x <span style="color: #990000">&lt;</span> x1<span style="color: #990000">)</span><span style="color: #FF0000">{</span>
+    x <span style="color: #990000">=</span> x <span style="color: #990000">+</span> <span style="color: #993399">1</span><span style="color: #990000">;</span>
+    <span style="font-weight: bold"><span style="color: #0000FF">if</span></span> <span style="color: #990000">(</span> D <span style="color: #990000">&lt;</span> <span style="color: #993399">0</span> <span style="color: #990000">)</span><span style="color: #FF0000">{</span>
+      D <span style="color: #990000">=</span> D <span style="color: #990000">+</span> <span style="color: #990000">(</span><span style="color: #993399">2</span> <span style="color: #990000">*</span> dy<span style="color: #990000">);</span>
+    <span style="color: #FF0000">}</span>
+    <span style="font-weight: bold"><span style="color: #0000FF">else</span></span><span style="color: #FF0000">{</span>
+      y <span style="color: #990000">=</span> y <span style="color: #990000">+</span> <span style="color: #993399">1</span><span style="color: #990000">;</span>
+      D <span style="color: #990000">=</span> D <span style="color: #990000">+</span> <span style="color: #990000">(</span><span style="color: #993399">2</span> <span style="color: #990000">*</span> <span style="color: #990000">(</span> dy <span style="color: #990000">-</span> dx <span style="color: #990000">));</span>
+    <span style="color: #FF0000">}</span>
+    <span style="font-weight: bold"><span style="color: #000000">putPixel</span></span><span style="color: #990000">(</span>x<span style="color: #990000">,</span> y<span style="color: #990000">,</span> <span style="color: #993399">255</span><span style="color: #990000">,</span> <span style="color: #993399">0</span><span style="color: #990000">,</span> <span style="color: #993399">0</span><span style="color: #990000">);</span>
+  <span style="color: #FF0000">}</span>
+
+<span style="color: #FF0000">}</span>
+
+<span style="font-style: italic"><span style="color: #9A1900">// Algoritmo Bresenham ( todos os quadrantes )</span></span>
+<span style="color: #009900">void</span> <span style="font-weight: bold"><span style="color: #000000">drawBresenhamLines</span></span><span style="color: #990000">(</span> <span style="color: #009900">int</span> x0<span style="color: #990000">,</span> <span style="color: #009900">int</span> y0<span style="color: #990000">,</span> <span style="color: #009900">int</span> x1<span style="color: #990000">,</span> <span style="color: #009900">int</span> y1 <span style="color: #990000">)</span><span style="color: #FF0000">{</span>
+  <span style="font-style: italic"><span style="color: #9A1900">// calcula a variacao absoluta</span></span>
+  <span style="color: #009900">int</span> dx <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #000000">abs</span></span><span style="color: #990000">(</span>x1 <span style="color: #990000">-</span> x0<span style="color: #990000">);</span>
+  <span style="color: #009900">int</span> dy <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #000000">abs</span></span><span style="color: #990000">(</span>y1 <span style="color: #990000">-</span> y0<span style="color: #990000">);</span>
+
+  <span style="font-style: italic"><span style="color: #9A1900">// indica a direcao da reta</span></span>
+  <span style="color: #009900">int</span> sx <span style="color: #990000">=</span> <span style="color: #990000">(</span>x0 <span style="color: #990000">&lt;</span> x1<span style="color: #990000">)</span> <span style="color: #990000">?</span> <span style="color: #993399">1</span> <span style="color: #990000">:</span> <span style="color: #990000">-</span><span style="color: #993399">1</span><span style="color: #990000">;</span> <span style="font-style: italic"><span style="color: #9A1900">// direção de x</span></span>
+  <span style="color: #009900">int</span> sy <span style="color: #990000">=</span> <span style="color: #990000">(</span>y0 <span style="color: #990000">&lt;</span> y1<span style="color: #990000">)</span> <span style="color: #990000">?</span> <span style="color: #993399">1</span> <span style="color: #990000">:</span> <span style="color: #990000">-</span><span style="color: #993399">1</span><span style="color: #990000">;</span> <span style="font-style: italic"><span style="color: #9A1900">// direção de y</span></span>
+
+  <span style="font-style: italic"><span style="color: #9A1900">// calcula o erro</span></span>
+  <span style="color: #009900">int</span> erro <span style="color: #990000">=</span> dx <span style="color: #990000">-</span> dy<span style="color: #990000">;</span>
+
+  <span style="font-weight: bold"><span style="color: #0000FF">while</span></span> <span style="color: #990000">(</span><span style="color: #993399">1</span><span style="color: #990000">)</span> <span style="color: #FF0000">{</span>
+    <span style="font-weight: bold"><span style="color: #000000">putPixel</span></span><span style="color: #990000">(</span>x0<span style="color: #990000">,</span> y0<span style="color: #990000">,</span> <span style="color: #993399">250</span><span style="color: #990000">,</span> <span style="color: #993399">0</span><span style="color: #990000">,</span> <span style="color: #993399">0</span><span style="color: #990000">);</span>
+
+    <span style="font-style: italic"><span style="color: #9A1900">// Quando a condicao for alcancada finaliza o loop</span></span>
+    <span style="font-weight: bold"><span style="color: #0000FF">if</span></span> <span style="color: #990000">(</span>x0 <span style="color: #990000">==</span> x1 <span style="color: #990000">&amp;&amp;</span> y0 <span style="color: #990000">==</span> y1<span style="color: #990000">)</span> <span style="font-weight: bold"><span style="color: #0000FF">break</span></span><span style="color: #990000">;</span>
+
+    <span style="font-style: italic"><span style="color: #9A1900">// atualiza o erro</span></span>
+    <span style="color: #009900">int</span> erro2 <span style="color: #990000">=</span> <span style="color: #993399">2</span> <span style="color: #990000">*</span> erro<span style="color: #990000">;</span>
+
+    <span style="font-weight: bold"><span style="color: #0000FF">if</span></span> <span style="color: #990000">(</span>erro2 <span style="color: #990000">&gt;</span> <span style="color: #990000">-</span>dy<span style="color: #990000">)</span> <span style="color: #FF0000">{</span> <span style="font-style: italic"><span style="color: #9A1900">// verifica se o erro esta acima</span></span>
+      erro <span style="color: #990000">-=</span> dy<span style="color: #990000">;</span>
+      x0 <span style="color: #990000">+=</span> sx<span style="color: #990000">;</span>
+    <span style="color: #FF0000">}</span>
+
+    <span style="font-weight: bold"><span style="color: #0000FF">if</span></span> <span style="color: #990000">(</span>erro2 <span style="color: #990000">&lt;</span> dx<span style="color: #990000">)</span> <span style="color: #FF0000">{</span> <span style="font-style: italic"><span style="color: #9A1900">// verifica se o erro esta abaixo</span></span>
+      erro <span style="color: #990000">+=</span> dx<span style="color: #990000">;</span>
+      y0 <span style="color: #990000">+=</span> sy<span style="color: #990000">;</span>
+    <span style="color: #FF0000">}</span>
+  <span style="color: #FF0000">}</span>
+<span style="color: #FF0000">}</span>
+
+
+
+<span style="color: #009900">int</span> <span style="font-weight: bold"><span style="color: #000000">main</span></span><span style="color: #990000">()</span><span style="color: #FF0000">{</span>
+
+  <span style="font-style: italic"><span style="color: #9A1900">// Limpar a imagem</span></span>
+  <span style="font-weight: bold"><span style="color: #000000">clearImage</span></span><span style="color: #990000">();</span>
+
+  <span style="font-style: italic"><span style="color: #9A1900">// Executar o algoritmo DDA</span></span>
+  <span style="font-style: italic"><span style="color: #9A1900">//drawBresenhamLinesIncomplete(0, 0, 200, 200);</span></span>
+
+  <span style="font-weight: bold"><span style="color: #000000">drawBresenhamLines</span></span><span style="color: #990000">(</span><span style="color: #993399">20</span><span style="color: #990000">,</span> <span style="color: #993399">20</span><span style="color: #990000">,</span> <span style="color: #993399">80</span><span style="color: #990000">,</span> <span style="color: #993399">20</span><span style="color: #990000">);</span>
+  <span style="font-weight: bold"><span style="color: #000000">drawBresenhamLines</span></span><span style="color: #990000">(</span><span style="color: #993399">20</span><span style="color: #990000">,</span> <span style="color: #993399">20</span><span style="color: #990000">,</span> <span style="color: #993399">20</span><span style="color: #990000">,</span> <span style="color: #993399">80</span><span style="color: #990000">);</span>
+  <span style="font-weight: bold"><span style="color: #000000">drawBresenhamLines</span></span><span style="color: #990000">(</span><span style="color: #993399">20</span><span style="color: #990000">,</span> <span style="color: #993399">80</span><span style="color: #990000">,</span> <span style="color: #993399">80</span><span style="color: #990000">,</span> <span style="color: #993399">80</span><span style="color: #990000">);</span>
+  <span style="font-weight: bold"><span style="color: #000000">drawBresenhamLines</span></span><span style="color: #990000">(</span><span style="color: #993399">80</span><span style="color: #990000">,</span> <span style="color: #993399">20</span><span style="color: #990000">,</span> <span style="color: #993399">80</span><span style="color: #990000">,</span> <span style="color: #993399">80</span><span style="color: #990000">);</span>
+
+  <span style="font-style: italic"><span style="color: #9A1900">// Salvar a imagem em PPM</span></span>
+  <span style="font-weight: bold"><span style="color: #000000">saveImage</span></span><span style="color: #990000">();</span>
+
+  <span style="font-weight: bold"><span style="color: #0000FF">return</span></span> <span style="color: #993399">0</span><span style="color: #990000">;</span>
+<span style="color: #FF0000">}</span></tt></pre></div></div>
+</div>
+<div class="sect2">
+<h3 id="_descrição_do_programa_3">Descrição do programa</h3>
+<div class="paragraph"><p>Iniciamos o código inserindo a biblioteca padrão de entrada/saída de dados da linguagem C e a biblioteca <strong>stdlib.h</strong>
+para obter o módulo de um número.</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-weight: bold"><span style="color: #000080">#include</span></span> <span style="color: #FF0000">&lt;stdio.h&gt;</span>
+<span style="font-weight: bold"><span style="color: #000080">#include</span></span> <span style="color: #FF0000">&lt;stdlib.h&gt;</span> <span style="font-style: italic"><span style="color: #9A1900">// abs</span></span></tt></pre></div></div>
 </div>
 </div>
 </div>
@@ -2517,7 +2689,7 @@ Construa um código que desenha uma casa simples com o algoritmo DDA.
 <div id="footer">
 <div id="footer-text">
 Last updated
- 2025-04-11 12:32:13 -03
+ 2025-04-14 15:00:46 -03
 </div>
 </div>
 </body>
