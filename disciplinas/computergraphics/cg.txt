@@ -96,11 +96,105 @@ Este comando criará um arquivo executável e a saída deve ser direcionada para
 alto contraste em relação ao fundo da imagem.
 
 
+Lecture 2
+---------
+
+Nesta parte da disciplina aprenderemos como renderizar um segmento de reta usando as equações vetoriais.
+
+=== Segmento de reta
+
+Sejam latexmath:[A = (x_0, y_0, z_0)] e latexmath:[B = (x_1, y_1, z_1)] dois pontos do espaço. Podemos traçar uma equação da reta entre esses dois pontos usando a equação: latexmath:[r(t) = A + t( B - A)], onde latexmath:[t \in [0, 1]].
+
+.Segmento de reta
+image::images/img3_1.png[height=200, width=200, align="center"]
+
+=== Código
+
+O algoritmo de renderização do segmento de reta está disponível no arquivo link:codes/linesegment.c[linesegment.c].
+
+[source,c]
+----
+include::codes/linesegment.c[]
+----
+
+=== Descrição do programa
+
+Iniciamos nosso programa incluindo a biblioteca padrão da linguagem C para gerar entrada/saída de dados. 
+
+[source,c]
+----
+#include <stdio.h>
+----
+
+Após a declaração da biblioteca, definimos globalmente as dimensões da imagem e a variável da imagem como um array multidimensional que armazena valores de 8 bits sem sinal.
+
+[source,c]
+----
+#define width 200
+#define height 200
+
+unsigned char image[height][width][3];
+----
+
+Posteriormente, declarei algumas funções úteis para manipulação da imagem. A primeira delas é a função para setar um pixel na imagem.
+
+[source,c]
+----
+void putPixel( int x, int y, unsigned char r, unsigned char g, unsigned char b){
+  if (( x >= 0 ) && ( x <= width )  && ( y >= 0 ) && ( y <= height )){
+    image[x][y][0] = r;
+    image[x][y][1] = g;
+    image[x][y][2] = b;
+  }
+}
+----
+
+A segunda função é necessária para preencher a imagem com uma cor de fundo.
+
+[source,c]
+----
+void clearImage(){
+  for (int y = 0; y < height; y++)
+    for (int x = 0; x < width; x++)
+      putPixel(x, y, 255, 255, 255);
+}
+----
+
+Por fim, a última função é responsável por salvar o array multidimensional em formato PPM.
+
+[source,c]
+----
+void saveImage(){
+  // Configurando o header do formato PPM
+  printf("P3\n %d \t %d\n 255\n", width, height);
+
+  for (int y = 0; y < height; y++){ // Altura
+    for (int x = 0; x < width; x++){ // Largura
+      for (int c = 0; c < 3; c++){ // Canal: r, g, b
+        printf("%d \t", image[x][y][c]);
+      }
+      printf("\n");
+    }
+  }
+}
+----
+
+O algoritmo de renderização do segmento de reta é implementado em seguida.
+
+[source,c]
+----
+void drawLine( int x0, int y0, int x1, int y1 ){
+  for (float t = 0.0; t < 1.0; t = t + 0.001){
+    putPixel((int)(x0 + (x1 - x0)*t), (int)(y0 + (y1 - y0)*t), 255, 0, 0 );
+  }
+}
+----
+
 
 ////
 
 
-Lecture 2
+Lecture 3
 ---------
 
 === Digital Differential Analyze (DDA)
@@ -109,7 +203,7 @@ Algoritmo clássico de rasterização de linhas. Este algoritmo utiliza a *equa�
 latexmath:[(x_{0}, y_{0})] e latexmath:[(x_{1}, y_{1})], incrementando em intervalos fixos.
 
 .Linha gerada pelo algoritmo DDA
-image::images/img3.png[height=200,width=200, align="center"]
+image::images/img3_2.png[height=200,width=200, align="center"]
 
 === Código
 
@@ -236,7 +330,7 @@ void drawDDA( int x0, int y0, int x1, int y1 ){
 - Construa um código que desenha uma casa simples com o algoritmo DDA.
 
 
-Lecture 3
+Lecture 4
 ---------
 
 === Bresenham
@@ -332,15 +426,65 @@ void drawBresenhamLines( int x0, int y0, int x1, int y1 ){
 }
 ----
 
+////
+
 === Renderização de modelos 3D
 
 O formato `.obj` (link:https://en.wikipedia.org/wiki/Wavefront_.obj_file[Wavefront OBJ]) é um padrão amplamente utilizado para representar modelos 3D de forma simples e legível. Ele armazena informações sobre vértices (`v`), normais (`vn`), texturas (`vt`) e faces (`f`), onde cada face é formada por índices
 que referenciam os vértices previamente definidos. As faces podem ser triangulares ou poligonais e podem incluir referências
 opcionais a coordenadas de textura e normais no formato `f v/vt/vn`.
 
-
 .Modelo tridimensional gerado a partir da renderização em wireframe
 image::images/img5.png[height=200,width=400, align="center"]
 
+O processo de renderização do modelo 3D exige arquivos `.obj` adquiridos livremente no domínio https://free3d.com[free3d.com]. Os modelos utilizados na imagem acima foram link:codes/models/wolf.obj[wolf.obj], link:codes/models/drone.obj[drone.obj] e link:codes/models/cranio.obj[cranio.obj].
 
-////
+=== Código
+
+A implementação do código de renderização 3D é realizada através dos arquivos: link:codes/model.h[model.h] que contém todos os protótipos de funções que serão úteis para manipulação dos modelos 3D, link:codes/model.h[model.c] é o arquivo que contém as implementações das funções de manipulação dos modelos 3D e link:codes/wireframe.c[wireframe.c] que realiza a execução das funções implementadas.
+
+[source,c]
+----
+include::codes/model.h[]
+----
+
+[source,c]
+----
+include::codes/model.c[]
+----
+
+[source,c]
+----
+include::codes/wireframe.c[]
+----
+
+
+=== Compilação
+
+O processo de compilação é realizado através do compilador GCC através do seguinte comando:
+
+[source,c]
+----
+gcc <nome_arquivo>.c <nome_biblioteca>.c -o <nome_executavel>
+----
+
+Este comando criará um arquivo executável e a saída deve ser direcionada para um arquivo com extensão ".ppm".
+
+[source,c]
+----
+./<nome_executavel> > output.ppm
+----
+
+
+=== Exercício
+
+- Estudar o código acima substituindo o modelo.
+
+- Substitua o modelo usado no código por link:codes/models/robot.obj[robot.obj].
+
+- Implemente uma função para exibir apenas os pontos (nuvem de pontos) ao invés do arramado (veja imagem abaixo).
+
+.Nuvem de pontos gerados a partir de um modelo 3D.
+image::images/img6.png[height=200,width=200, align="center"]
+
+- Aplique as transformações estudadas no modelo latexmath:[3D].

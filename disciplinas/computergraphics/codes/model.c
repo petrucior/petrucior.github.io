@@ -1,3 +1,18 @@
+/**
+ * \file model.c
+ *
+ * \brief Implementação das funções de manipulação do modelo 3D.
+ *
+ * \author
+ * Petrucio Ricardo Tavares de Medeiros \n
+ * Universidade Federal Rural do Semi-Árido \n
+ * Departamento de Engenharias e Tecnologia \n
+ * petrucio at ufersa (dot) edu (dot) br
+ *
+ * \version 1.0
+ * \date May 2025
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -14,8 +29,10 @@ void set_pixel(int x, int y, unsigned char r, unsigned char g, unsigned char b) 
 }
 
 void draw_line(int x0, int y0, int x1, int y1) {
-  for (float t = 0.0; t < 1.0; t = t + 0.0001)
-    set_pixel((int)x0+(x1-x0)*t, (int)y0+(y1-y0)*t, 0, 0, 0);
+  set_pixel(x0, y0, 0, 0, 0);
+  
+  //for (float t = 0.0; t < 1.0; t = t + 0.0001)
+  //  set_pixel((int)x0+(x1-x0)*t, (int)y0+(y1-y0)*t, 0, 0, 0);
 }
 
 void clr(){
@@ -37,7 +54,8 @@ void save(){
   }
 }
 
-int load_obj(const char *filename, Vertex *vertices, int *vcount, Face *faces, int *fcount) {
+int load_obj(const char *filename, Vertex *vertices, int *vcount, Face *faces,
+	     int *fcount) {
     FILE *file = fopen(filename, "r");
     if (!file) {
         perror("Erro ao abrir o arquivo");
@@ -50,7 +68,8 @@ int load_obj(const char *filename, Vertex *vertices, int *vcount, Face *faces, i
 
     while (fgets(line, sizeof(line), file)) {
         if (strncmp(line, "v ", 2) == 0) {
-            if (sscanf(line + 2, "%f %f %f", &vertices[*vcount].x, &vertices[*vcount].y, &vertices[*vcount].z) == 3) {
+            if (sscanf(line + 2, "%f %f %f", &vertices[*vcount].x,
+		       &vertices[*vcount].y, &vertices[*vcount].z) == 3) {
                 (*vcount)++;
             }
         } else if (strncmp(line, "f ", 2) == 0) {
@@ -71,7 +90,7 @@ int load_obj(const char *filename, Vertex *vertices, int *vcount, Face *faces, i
     return 1;
 }
 
-void projection( Vertex v0, Vertex v1 ){
+void resizing( Vertex v0, Vertex v1 ){
   int x0 = (int)((v0.x + 1.0f) * WIDTH / 2.0f);
   int y0 = (int)((1.0f - v0.y) * HEIGHT / 2.0f);
   int x1 = (int)((v1.x + 1.0f) * WIDTH / 2.0f);
@@ -87,7 +106,7 @@ void render_faces(Vertex *vertices, Face *faces, int vcount, int fcount) {
         for (int j = 0; j < face.n; j++) {
             Vertex v0 = vertices[face.verts[j] - 1];
             Vertex v1 = vertices[face.verts[(j + 1) % face.n] - 1];
-	    projection(v0, v1);
+	    resizing(v0, v1);
         }
     }
 }

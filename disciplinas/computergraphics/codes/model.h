@@ -1,3 +1,18 @@
+/**
+ * \file model.h
+ *
+ * \brief Header com protótipos de funções para manipulação de modelo 3D.
+ *
+ * \author
+ * Petrucio Ricardo Tavares de Medeiros \n
+ * Universidade Federal Rural do Semi-Árido \n
+ * Departamento de Engenharias e Tecnologia \n
+ * petrucio at ufersa (dot) edu (dot) br
+ *
+ * \version 1.0
+ * \date May 2025
+ */
+
 #ifndef MODEL_H
 #define MODEL_H
 
@@ -28,7 +43,7 @@ void draw_line(int x0, int y0, int x1, int y1);
 
 int load_obj(const char *filename, Vertex *vertices, int *vcount, Face *faces, int *fcount);
 
-void projection( Vertex v0, Vertex v1 );
+void resizing( Vertex v0, Vertex v1 );
 
 void render_faces(Vertex *vertices, Face *faces, int vcount, int fcount);
 
