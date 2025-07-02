@@ -190,8 +190,66 @@ void drawLine( int x0, int y0, int x1, int y1 ){
 }
 ----
 
+=== Renderização de modelos 3D
 
-////
+O formato `.obj` (link:https://en.wikipedia.org/wiki/Wavefront_.obj_file[Wavefront OBJ]) é um padrão amplamente utilizado para representar modelos 3D de forma simples e legível. Ele armazena informações sobre vértices (`v`), normais (`vn`), texturas (`vt`) e faces (`f`), onde cada face é formada por índices
+que referenciam os vértices previamente definidos. As faces podem ser triangulares ou poligonais e podem incluir referências
+opcionais a coordenadas de textura e normais no formato `f v/vt/vn`.
+
+.Modelo tridimensional gerado a partir da renderização em wireframe
+image::images/img5.png[height=200,width=400, align="center"]
+
+O processo de renderização do modelo 3D exige arquivos `.obj` adquiridos livremente no domínio https://free3d.com[free3d.com]. Os modelos utilizados na imagem acima foram link:codes/models/wolf.obj[wolf.obj], link:codes/models/drone.obj[drone.obj] e link:codes/models/cranio.obj[cranio.obj].
+
+=== Código
+
+A implementação do código de renderização 3D é realizada através dos arquivos: link:codes/model.h[model.h] que contém todos os protótipos de funções que serão úteis para manipulação dos modelos 3D, link:codes/model.h[model.c] é o arquivo que contém as implementações das funções de manipulação dos modelos 3D e link:codes/wireframe.c[wireframe.c] que realiza a execução das funções implementadas.
+
+[source,c]
+----
+include::codes/model.h[]
+----
+
+[source,c]
+----
+include::codes/model.c[]
+----
+
+[source,c]
+----
+include::codes/wireframe.c[]
+----
+
+
+=== Compilação
+
+O processo de compilação é realizado através do compilador GCC através do seguinte comando:
+
+[source,c]
+----
+gcc <nome_arquivo>.c <nome_biblioteca>.c -o <nome_executavel>
+----
+
+Este comando criará um arquivo executável e a saída deve ser direcionada para um arquivo com extensão ".ppm".
+
+[source,c]
+----
+./<nome_executavel> > output.ppm
+----
+
+
+=== Exercício
+
+- Estudar o código acima substituindo o modelo.
+
+- Substitua o modelo usado no código por link:codes/models/robot.obj[robot.obj].
+
+- Implemente uma função para exibir apenas os pontos (nuvem de pontos) ao invés do arramado (veja imagem abaixo).
+
+.Nuvem de pontos gerados a partir de um modelo 3D.
+image::images/img6.png[height=200,width=200, align="center"]
+
+- Aplique as transformações estudadas no modelo latexmath:[3D].
 
 
 Lecture 3
@@ -329,6 +387,7 @@ void drawDDA( int x0, int y0, int x1, int y1 ){
 
 - Construa um código que desenha uma casa simples com o algoritmo DDA.
 
+////
 
 Lecture 4
 ---------
@@ -427,64 +486,3 @@ void drawBresenhamLines( int x0, int y0, int x1, int y1 ){
 ----
 
 ////
-
-=== Renderização de modelos 3D
-
-O formato `.obj` (link:https://en.wikipedia.org/wiki/Wavefront_.obj_file[Wavefront OBJ]) é um padrão amplamente utilizado para representar modelos 3D de forma simples e legível. Ele armazena informações sobre vértices (`v`), normais (`vn`), texturas (`vt`) e faces (`f`), onde cada face é formada por índices
-que referenciam os vértices previamente definidos. As faces podem ser triangulares ou poligonais e podem incluir referências
-opcionais a coordenadas de textura e normais no formato `f v/vt/vn`.
-
-.Modelo tridimensional gerado a partir da renderização em wireframe
-image::images/img5.png[height=200,width=400, align="center"]
-
-O processo de renderização do modelo 3D exige arquivos `.obj` adquiridos livremente no domínio https://free3d.com[free3d.com]. Os modelos utilizados na imagem acima foram link:codes/models/wolf.obj[wolf.obj], link:codes/models/drone.obj[drone.obj] e link:codes/models/cranio.obj[cranio.obj].
-
-=== Código
-
-A implementação do código de renderização 3D é realizada através dos arquivos: link:codes/model.h[model.h] que contém todos os protótipos de funções que serão úteis para manipulação dos modelos 3D, link:codes/model.h[model.c] é o arquivo que contém as implementações das funções de manipulação dos modelos 3D e link:codes/wireframe.c[wireframe.c] que realiza a execução das funções implementadas.
-
-[source,c]
-----
-include::codes/model.h[]
-----
-
-[source,c]
-----
-include::codes/model.c[]
-----
-
-[source,c]
-----
-include::codes/wireframe.c[]
-----
-
-
-=== Compilação
-
-O processo de compilação é realizado através do compilador GCC através do seguinte comando:
-
-[source,c]
-----
-gcc <nome_arquivo>.c <nome_biblioteca>.c -o <nome_executavel>
-----
-
-Este comando criará um arquivo executável e a saída deve ser direcionada para um arquivo com extensão ".ppm".
-
-[source,c]
-----
-./<nome_executavel> > output.ppm
-----
-
-
-=== Exercício
-
-- Estudar o código acima substituindo o modelo.
-
-- Substitua o modelo usado no código por link:codes/models/robot.obj[robot.obj].
-
-- Implemente uma função para exibir apenas os pontos (nuvem de pontos) ao invés do arramado (veja imagem abaixo).
-
-.Nuvem de pontos gerados a partir de um modelo 3D.
-image::images/img6.png[height=200,width=200, align="center"]
-
-- Aplique as transformações estudadas no modelo latexmath:[3D].
