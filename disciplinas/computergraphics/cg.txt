@@ -383,9 +383,9 @@ void drawDDA( int x0, int y0, int x1, int y1 ){
 
 - Implemente uma função que os argumentos são os pontos de um polígono convexo e o retorno é uma imagem PPM.
 
-- Codifique um algoritmo para desenhar um triangulo isosceles.
+- Edite o código de renderização de modelos 3D para usar o algoritmo DDA.
 
-- Construa um código que desenha uma casa simples com o algoritmo DDA.
+- Utilize a biblioteca time.h da linguagem C e verifique o tempo de execução do algoritmo que utiliza equações vetoriais e DDA.
 
 ////
 
