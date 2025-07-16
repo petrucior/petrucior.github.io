@@ -387,8 +387,6 @@ void drawDDA( int x0, int y0, int x1, int y1 ){
 
 - Utilize a biblioteca time.h da linguagem C e verifique o tempo de execução do algoritmo que utiliza equações vetoriais e DDA.
 
-////
-
 Lecture 4
 ---------
 
@@ -485,4 +483,5 @@ void drawBresenhamLines( int x0, int y0, int x1, int y1 ){
 }
 ----
 
+////
 ////
