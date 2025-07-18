@@ -1,7 +1,7 @@
 /**
- * \file baricentric.c
+ * \file lambert.c
  *
- * \brief Implementação da renderizacao de modelo 3D
+ * \brief Implementação da iluminação de Lambert
  *
  * \author
  * Petrucio Ricardo Tavares de Medeiros \n
@@ -103,27 +103,6 @@ int load_obj(const char *filename, Vertex *vertices, int *vcount, Face *faces,
     return 1;
 }
 
-void resizing( Vertex v0, Vertex v1 ){
-  int x0 = (int)((v0.x + 1.0f) * WIDTH / 2.0f);
-  int y0 = (int)((1.0f - v0.y) * HEIGHT / 2.0f);
-  int x1 = (int)((v1.x + 1.0f) * WIDTH / 2.0f);
-  int y1 = (int)((1.0f - v1.y) * HEIGHT / 2.0f);
-  
-  draw_line(x0, y0, x1, y1);
-}
-
-
-void render_faces(Vertex *vertices, Face *faces, int vcount, int fcount) {
-  for (int i = 0; i < fcount; i++) {
-    Face face = faces[i];
-    for (int j = 0; j < face.n; j++) {
-      Vertex v0 = vertices[face.verts[j] - 1];
-      Vertex v1 = vertices[face.verts[(j + 1) % face.n] - 1];
-      resizing(v0, v1);
-    }
-  }
-}
-
 void rotate_z(Vertex *v, float angle_rad) {
     float x = v->x;
     float y = v->y;
@@ -146,8 +125,8 @@ void barycentric_coordinate( Vertex a, Vertex b, Vertex c, float red, float gree
   // Encontrando a área do triangulo abc
   float area_abc = 0.5 * fabsf(a.x*(b.y - c.y) + b.x*(c.y - a.y) + c.x*(a.y - b.y));
   
-  for (int y = y_min; y < y_max; y++){
-    for (int x = x_min; x < x_max; x++){
+  for (int y = y_min; y <= y_max; y++){
+    for (int x = x_min; x <= x_max; x++){
       Vertex p = {x, y, 0};
       // Encontrando a área dos triangulos
       float area_pbc = 0.5 * (p.x*(b.y - c.y) + b.x*(c.y - p.y) + c.x*(p.y - b.y));
@@ -163,7 +142,25 @@ void barycentric_coordinate( Vertex a, Vertex b, Vertex c, float red, float gree
   }
 }
 
-void render_faces_filled( Vertex *vertices, Face *faces, int vcount, int fcount){
+Vertex sub( Vertex a, Vertex b ){
+  return (Vertex) {a.x - b.x, a.y - b.y, a.z - b.z};
+}
+
+float dot( Vertex a, Vertex b ){
+  return a.x * b.x + a.y * b.y + a.z * b.z;
+}
+
+Vertex cross( Vertex a, Vertex b ){
+  return (Vertex) {a.y*b.z - a.z*b.y, a.z*b.x - a.x*b.z, a.x*b.y - a.y*b.x};
+}
+
+Vertex normalize( Vertex v ){
+  float len = sqrtf(v.x*v.x + v.y*v.y + v.z*v.z);
+  if ( len == 0 ) return (Vertex){0, 0, 0};
+  return (Vertex){v.x/len, v.y/len, v.z/len};
+}
+
+void render_faces_filled( Vertex *vertices, Face *faces, int vcount, int fcount, Vertex light, Vertex view_dir ){
   for (int i = 0; i < fcount; i++){
     Face face = faces[i];
     
@@ -171,17 +168,43 @@ void render_faces_filled( Vertex *vertices, Face *faces, int vcount, int fcount)
     Vertex v1 = vertices[face.verts[1] - 1];
     Vertex v2 = vertices[face.verts[2] - 1];
 
+    // Vetor normal
+    Vertex v1_v0 = sub( v1, v0 );
+    Vertex v2_v0 = sub( v2, v0 );
+    Vertex normal = normalize( cross( v2_v0, v1_v0 ) );
+
+    // Coeficientes de phong
+    float ka = 0.2; // ambiente
+    float kd = 0.6; // difusa
+    float ks = 0.4; // especular
+    int brilho = 32;
+
+    // Normalizar luz e direcao da camera
+    Vertex L = normalize(light);
+    Vertex V = normalize(view_dir);
+    
+    // Iluminacao difusa
+    float diff = fmaxf(0, dot( normal, L ));
+    
+    // Iluminacao especular
+    Vertex R = sub((Vertex) { 2.0f * dot(normal, L) * normal.x, 2.0f * dot(normal, L) * normal.y, 2.0f * dot(normal, L) * normal.z }, L);  // R = 2(N·L)N - L
+    float spec = powf(fmaxf(0, dot(R, V)), brilho);
+    
+    // Intensidade final
+    float intensity = ka + kd * diff + ks * spec;
+    if ( intensity > 1.0 ) intensity = 1.0;
+    
     // Rotacione os vertices (180 graus)
     rotate_z(&v0, M_PI);
     rotate_z(&v1, M_PI);
     rotate_z(&v2, M_PI);
-
+    
     // Projecao 3D -> 2D
     project_3dto2d(&v0);
     project_3dto2d(&v1);
     project_3dto2d(&v2);
 
-    barycentric_coordinate( v0, v1, v2, rand()%255, rand()%255, rand()%255 );
+    barycentric_coordinate( v0, v1, v2, intensity*255, intensity*255, intensity*255 );
   }
 }
 
@@ -198,9 +221,11 @@ int main(){
         return 1;
     }
 
+    Vertex light = {0, 0, -1}; //{0.25, 0.0, -0.75};
+    Vertex view_dir = {0, 0, 1}; // Camera olhando para -z
+
     // Renderiza as faces no framebuffer
-    //render_faces(vertices, faces, vcount, fcount);
-    render_faces_filled( vertices, faces, vcount, fcount );
+    render_faces_filled( vertices, faces, vcount, fcount, light, view_dir );
 
     save();
 
