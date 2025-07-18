@@ -3219,7 +3219,7 @@ by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
 <pre><tt><span style="font-style: italic"><span style="color: #9A1900">/**</span></span>
-<span style="font-style: italic"><span style="color: #9A1900"> * \file baricentric.c</span></span>
+<span style="font-style: italic"><span style="color: #9A1900"> * \file barycentric.c</span></span>
 <span style="font-style: italic"><span style="color: #9A1900"> *</span></span>
 <span style="font-style: italic"><span style="color: #9A1900"> * \brief Implementação da renderizacao de modelo 3D</span></span>
 <span style="font-style: italic"><span style="color: #9A1900"> *</span></span>
@@ -3408,23 +3408,20 @@ http://www.gnu.org/software/src-highlite -->
 <span style="color: #009900">int</span> <span style="font-weight: bold"><span style="color: #000000">main</span></span><span style="color: #990000">()</span><span style="color: #FF0000">{</span>
 
   <span style="color: #008080">Vertex</span> vertices<span style="color: #990000">[</span>MAX_VERTICES<span style="color: #990000">];</span>
-    <span style="color: #008080">Face</span> faces<span style="color: #990000">[</span>MAX_FACES<span style="color: #990000">];</span>
-    <span style="color: #009900">int</span> vcount<span style="color: #990000">,</span> fcount<span style="color: #990000">;</span>
+  <span style="color: #008080">Face</span> faces<span style="color: #990000">[</span>MAX_FACES<span style="color: #990000">];</span>
+  <span style="color: #009900">int</span> vcount<span style="color: #990000">,</span> fcount<span style="color: #990000">;</span>
 
-    <span style="font-weight: bold"><span style="color: #000000">clr</span></span><span style="color: #990000">();</span>
+  <span style="font-weight: bold"><span style="color: #000000">clr</span></span><span style="color: #990000">();</span>
 
-    <span style="font-style: italic"><span style="color: #9A1900">// Lê o arquivo OBJ enviado</span></span>
-    <span style="font-weight: bold"><span style="color: #0000FF">if</span></span> <span style="color: #990000">(!</span><span style="font-weight: bold"><span style="color: #000000">load_obj</span></span><span style="color: #990000">(</span><span style="color: #FF0000">"models/wolf.obj"</span><span style="color: #990000">,</span> vertices<span style="color: #990000">,</span> <span style="color: #990000">&amp;</span>vcount<span style="color: #990000">,</span> faces<span style="color: #990000">,</span> <span style="color: #990000">&amp;</span>fcount<span style="color: #990000">))</span> <span style="color: #FF0000">{</span>
-        <span style="font-weight: bold"><span style="color: #0000FF">return</span></span> <span style="color: #993399">1</span><span style="color: #990000">;</span>
-    <span style="color: #FF0000">}</span>
+  <span style="font-style: italic"><span style="color: #9A1900">// Lê o arquivo OBJ enviado</span></span>
+  <span style="font-weight: bold"><span style="color: #0000FF">if</span></span> <span style="color: #990000">(!</span><span style="font-weight: bold"><span style="color: #000000">load_obj</span></span><span style="color: #990000">(</span><span style="color: #FF0000">"models/wolf.obj"</span><span style="color: #990000">,</span> vertices<span style="color: #990000">,</span> <span style="color: #990000">&amp;</span>vcount<span style="color: #990000">,</span> faces<span style="color: #990000">,</span> <span style="color: #990000">&amp;</span>fcount<span style="color: #990000">))</span> <span style="color: #FF0000">{</span>
+    <span style="font-weight: bold"><span style="color: #0000FF">return</span></span> <span style="color: #993399">1</span><span style="color: #990000">;</span>
+  <span style="color: #FF0000">}</span>
 
-    <span style="font-style: italic"><span style="color: #9A1900">// Renderiza as faces no framebuffer</span></span>
-    <span style="font-style: italic"><span style="color: #9A1900">//render_faces(vertices, faces, vcount, fcount);</span></span>
-    <span style="font-weight: bold"><span style="color: #000000">render_faces_filled</span></span><span style="color: #990000">(</span> vertices<span style="color: #990000">,</span> faces<span style="color: #990000">,</span> vcount<span style="color: #990000">,</span> fcount <span style="color: #990000">);</span>
+  <span style="font-style: italic"><span style="color: #9A1900">// Renderiza as faces no framebuffer</span></span>
+  <span style="font-weight: bold"><span style="color: #000000">render_faces_filled</span></span><span style="color: #990000">(</span> vertices<span style="color: #990000">,</span> faces<span style="color: #990000">,</span> vcount<span style="color: #990000">,</span> fcount <span style="color: #990000">);</span>
 
-    <span style="font-weight: bold"><span style="color: #000000">save</span></span><span style="color: #990000">();</span>
-
-    <span style="font-weight: bold"><span style="color: #0000FF">return</span></span> <span style="color: #993399">0</span><span style="color: #990000">;</span>
+  <span style="font-weight: bold"><span style="color: #000000">save</span></span><span style="color: #990000">();</span>
 
   <span style="font-weight: bold"><span style="color: #0000FF">return</span></span> <span style="color: #993399">0</span><span style="color: #990000">;</span>
 <span style="color: #FF0000">}</span></tt></pre></div></div>

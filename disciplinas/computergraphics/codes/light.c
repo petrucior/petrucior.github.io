@@ -215,25 +215,23 @@ void render_faces_filled( Vertex *vertices, Face *faces, int vcount, int fcount,
 int main(){
 
   Vertex vertices[MAX_VERTICES];
-    Face faces[MAX_FACES];
-    int vcount, fcount;
-
-    clr();
-
-    // Lê o arquivo OBJ enviado
-    if (!load_obj("models/wolf.obj", vertices, &vcount, faces, &fcount)) {
-        return 1;
-    }
-
-    Vertex light = {0, 0, -1}; //{0.25, 0.0, -0.75};
-    Vertex view_dir = {0, 0, 1}; // Camera olhando para -z
-
-    // Renderiza as faces no framebuffer
-    render_faces_filled( vertices, faces, vcount, fcount, light, view_dir );
-
-    save();
-
-    return 0;
+  Face faces[MAX_FACES];
+  int vcount, fcount;
+  
+  clr();
+  
+  // Lê o arquivo OBJ enviado
+  if (!load_obj("models/wolf.obj", vertices, &vcount, faces, &fcount)) {
+    return 1;
+  }
+  
+  Vertex light = {0, 0, -1}; //{0.25, 0.0, -0.75};
+  Vertex view_dir = {0, 0, 1}; // Camera olhando para -z
+  
+  // Renderiza as faces no framebuffer
+  render_faces_filled( vertices, faces, vcount, fcount, light, view_dir );
+  
+  save();
   
   return 0;
 }

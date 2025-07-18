@@ -1,5 +1,5 @@
 /**
- * \file baricentric.c
+ * \file barycentric.c
  *
  * \brief Implementação da renderizacao de modelo 3D
  *
@@ -188,23 +188,20 @@ void render_faces_filled( Vertex *vertices, Face *faces, int vcount, int fcount)
 int main(){
 
   Vertex vertices[MAX_VERTICES];
-    Face faces[MAX_FACES];
-    int vcount, fcount;
-
-    clr();
-
-    // Lê o arquivo OBJ enviado
-    if (!load_obj("models/wolf.obj", vertices, &vcount, faces, &fcount)) {
-        return 1;
-    }
-
-    // Renderiza as faces no framebuffer
-    //render_faces(vertices, faces, vcount, fcount);
-    render_faces_filled( vertices, faces, vcount, fcount );
-
-    save();
-
-    return 0;
+  Face faces[MAX_FACES];
+  int vcount, fcount;
+  
+  clr();
+  
+  // Lê o arquivo OBJ enviado
+  if (!load_obj("models/wolf.obj", vertices, &vcount, faces, &fcount)) {
+    return 1;
+  }
+  
+  // Renderiza as faces no framebuffer
+  render_faces_filled( vertices, faces, vcount, fcount );
+  
+  save();
   
   return 0;
 }
