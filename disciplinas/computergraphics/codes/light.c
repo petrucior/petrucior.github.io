@@ -160,6 +160,10 @@ Vertex normalize( Vertex v ){
   return (Vertex){v.x/len, v.y/len, v.z/len};
 }
 
+Vertex scalar( float x, Vertex v ){
+  return (Vertex){ x*v.x, x*v.y, x*v.z };
+}
+
 void render_faces_filled( Vertex *vertices, Face *faces, int vcount, int fcount, Vertex light, Vertex view_dir ){
   for (int i = 0; i < fcount; i++){
     Face face = faces[i];
@@ -187,7 +191,7 @@ void render_faces_filled( Vertex *vertices, Face *faces, int vcount, int fcount,
     float diff = fmaxf(0, dot( normal, L ));
     
     // Iluminacao especular
-    Vertex R = sub((Vertex) { 2.0f * dot(normal, L) * normal.x, 2.0f * dot(normal, L) * normal.y, 2.0f * dot(normal, L) * normal.z }, L);  // R = 2(N·L)N - L
+    Vertex R = sub( scalar(2.0 * dot(normal,L), normal), L); // R = 2(N.L)N - L
     float spec = powf(fmaxf(0, dot(R, V)), brilho);
     
     // Intensidade final
