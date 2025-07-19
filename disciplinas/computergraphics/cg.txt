@@ -587,7 +587,7 @@ compõem o modelo clássico de Phong, amplamente usado por seu equilíbrio entre
 da cor é calculada somando essas contribuições, considerando também os materiais e a direção da câmera.
 
 .Resultado da iluminação de Phong
-image::images/img7.png[height=200,width=200, align="center"]
+image::images/img8.png[height=200,width=200, align="center"]
 
 ==== Reflexão ambiente
 

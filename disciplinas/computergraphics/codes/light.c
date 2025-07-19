@@ -1,7 +1,8 @@
 /**
  * \file light.c
  *
- * \brief Implementação da iluminação com reflexão ambiente, difusa (lambert) e especular (phong)
+ * \brief Implementação da iluminação com reflexão ambiente, difusa (lambert)
+ * e especular (phong)
  *
  * \author
  * Petrucio Ricardo Tavares de Medeiros \n
