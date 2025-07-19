@@ -578,6 +578,8 @@ void render_faces_filled( Vertex *vertices, Face *faces, int vcount, int fcount)
 Lecture 6
 ---------
 
+Vamos aprender como a iluminação é calculada em computação gráfica para simular a interação da luz com superfícies 3D.
+
 === Iluminação
 
 A iluminação em computação gráfica simula como a luz interage com as superfícies dos objetos para gerar realismo visual.
