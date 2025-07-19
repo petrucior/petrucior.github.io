@@ -575,6 +575,122 @@ void render_faces_filled( Vertex *vertices, Face *faces, int vcount, int fcount)
 }
 ----
 
+Lecture 6
+---------
+
+=== Iluminação
+
+A iluminação em computação gráfica simula como a luz interage com as superfícies dos objetos para gerar realismo visual.
+Os três principais componentes são: *ambiente*, que representa a luz difusa constante do ambiente; *difusa*, que depende do
+ângulo entre a luz e a superfície; e *especular*, que simula o brilho refletido em direção ao observador. Esses elementos
+compõem o modelo clássico de Phong, amplamente usado por seu equilíbrio entre realismo e eficiência. A intensidade final
+da cor é calculada somando essas contribuições, considerando também os materiais e a direção da câmera.
+
+.Resultado da iluminação de Phong
+image::images/img7.png[height=200,width=200, align="center"]
+
+==== Reflexão ambiente
+
+latexmath:[I_{amb} = k_a  I_{ambiente}]
+
+- latexmath:[$k_a$]: coeficiente de reflexão ambiente do material (0 a 1);
+- latexmath:[$I_{ambiente}$]: intensidade da luz ambiente
+
+==== Reflexão difusa (Lambert)
+
+latexmath:[I_{diff} = k_d  I_L  max(0, \vec{N} . \vec{L})]
+
+- latexmath:[$k_d$]: coeficiente de reflexão difuso;
+- latexmath:[$I_{L}$]: intensidade da luz;
+- latexmath:[$\vec{N}$]: vetor normal da superfície;
+- latexmath:[$\vec{L}$]: vetor da direção da luz
+- produto escalar: mede o "alinhamento" da luz com a superfície
+
+==== Reflexão especular (Phong)
+
+latexmath:[I_{spec} = k_s  I_L  max(0, \vec{R} . \vec{V})^n], onde latexmath:[\vec{R} = 2(\vec{N}.\vec{L})\vec{N} - \vec{L}]
+
+- latexmath:[$k_s$]: coeficiente especular;
+- latexmath:[$I_{L}$]: intensidade da luz;
+- latexmath:[$\vec{R}$]: vetor de reflexão da luz;
+- latexmath:[$\vec{V}$]: vetor em direção à câmera
+- latexmath:[$n$]: brilho (quanto maior, mais estreito o brilho)
+
+=== Código
+
+A implementação da iluminação está disponível no arquivo link:codes/light.c[light.c].
+
+[source,c]
+----
+include::codes/light.c[]
+----
+
+=== Descrição do programa
+
+Neste código, implementamos funções auxiliares para o cálculo da iluminação, como subtração de vetores (*sub*), produto escalar (*dot*),
+produto vetorial (*cross*), normalização (*normalize*) e multiplicação por escalar (*scalar*). Essas funções são utilizadas na função
+*render_faces_filled*, responsável por aplicar o modelo de iluminação sobre os triângulos da malha. A partir dos vertices latexmath:[$v0$],
+latexmath:[$v1$] e latexmath:[$v2$] de cada triângulo, calculamos a normal da face e definimos os coeficientes de iluminação. Em seguida,
+normalizamos os vetores da luz e do observador, computamos as componentes difusa e especular, e combinamos os resultados para determinar
+a intensidade final da cor em cada triângulo renderizado.
+
+[source,c]
+----
+void render_faces_filled( Vertex *vertices, Face *faces, int vcount, int fcount ){
+
+  Vertex light = {0, 0, -1}; //{0.25, 0.0, -0.75};
+  Vertex view_dir = {0, 0, 1}; // Camera olhando para -z
+  
+  for (int i = 0; i < fcount; i++){
+    Face face = faces[i];
+
+    Vertex v0 = vertices[face.verts[0] - 1];
+    Vertex v1 = vertices[face.verts[1] - 1];
+    Vertex v2 = vertices[face.verts[2] - 1];
+
+    // Vetor normal
+    Vertex v1_v0 = sub( v1, v0 );
+    Vertex v2_v0 = sub( v2, v0 );
+    Vertex normal = normalize( cross( v2_v0, v1_v0 ) );
+
+    // Coeficientes de phong
+    float ka = 0.2; // ambiente
+    float kd = 0.6; // difusa
+    float ks = 0.4; // especular
+    int brilho = 32;
+
+    // Normalizar luz e direcao da camera
+    Vertex L = normalize(light);
+    Vertex V = normalize(view_dir);
+
+    // Iluminacao difusa
+    float diff = fmaxf(0, dot( normal, L ));
+
+    // Iluminacao especular
+    Vertex R = sub( scalar(2.0 * dot(normal,L), normal), L); // R = 2(N.L)N - L
+    float spec = powf(fmaxf(0, dot(R, V)), brilho);
+
+    // Intensidade final
+    float intensity = ka + kd * diff + ks * spec;
+    if ( intensity > 1.0 ) intensity = 1.0;
+
+    // Rotacione os vertices (180 graus)
+    rotate_z(&v0, M_PI);
+    rotate_z(&v1, M_PI);
+    rotate_z(&v2, M_PI);
+
+    // Projecao 3D -> 2D
+    project_3dto2d(&v0);
+    project_3dto2d(&v1);
+    project_3dto2d(&v2);
+
+    barycentric_coordinate( v0, v1, v2, intensity*255, intensity*255, intensity*255 );
+  }
+}
+----
+
+
+
 
 ////
 ////

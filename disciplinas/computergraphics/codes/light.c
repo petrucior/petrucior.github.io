@@ -164,7 +164,11 @@ Vertex scalar( float x, Vertex v ){
   return (Vertex){ x*v.x, x*v.y, x*v.z };
 }
 
-void render_faces_filled( Vertex *vertices, Face *faces, int vcount, int fcount, Vertex light, Vertex view_dir ){
+void render_faces_filled( Vertex *vertices, Face *faces, int vcount, int fcount ){
+
+  Vertex light = {0, 0, -1}; //{0.25, 0.0, -0.75};
+  Vertex view_dir = {0, 0, 1}; // Camera olhando para -z
+  
   for (int i = 0; i < fcount; i++){
     Face face = faces[i];
     
@@ -225,11 +229,8 @@ int main(){
     return 1;
   }
   
-  Vertex light = {0, 0, -1}; //{0.25, 0.0, -0.75};
-  Vertex view_dir = {0, 0, 1}; // Camera olhando para -z
-  
   // Renderiza as faces no framebuffer
-  render_faces_filled( vertices, faces, vcount, fcount, light, view_dir );
+  render_faces_filled( vertices, faces, vcount, fcount );
   
   save();
   
