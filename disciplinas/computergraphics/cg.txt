@@ -691,7 +691,45 @@ void render_faces_filled( Vertex *vertices, Face *faces, int vcount, int fcount 
 }
 ----
 
+Lecture 7
+---------
 
+Vamos compreender como a técnica ray tracing funciona.
+
+=== Ray Tracing
+
+Técnica de síntese de imagens fotorealísticas que traça raios da câmera até a cena. Se um raio
+intercepta algum objeto da cena, cálculos relacionados a iluminação são realizados. Caso contrário,
+a cor do background é retornado.
+
+.Imagens sintetizadas a partir do algoritmo raytracing.
+image::images/img12.png[height=200,width=600, align="center"]
+
+=== Códigos
+
+A implementação das imagens estão disponiveis nos arquivos link:codes/raytracing.c[raytracing.c],
+link:codes/raytracing2.c[raytracing2.c] e link:codes/raytracing3.c[raytracing3.c], respectivamente.
+
+==== Renderização de uma esfera com background azul
+
+[source,c]
+----
+include::codes/raytracing.c[]
+----
+
+==== Renderização de uma esfera com plano xadrez
+
+[source,c]
+----
+include::codes/raytracing2.c[]
+----
+
+==== Renderização de uma esfera com plano e reflexão especular
+
+[source,c]
+----
+include::codes/raytracing3.c[]
+----
 
 
 ////
