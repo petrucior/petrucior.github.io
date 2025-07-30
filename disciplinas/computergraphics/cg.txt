@@ -483,6 +483,8 @@ void drawBresenhamLines( int x0, int y0, int x1, int y1 ){
 }
 ----
 
+////
+
 Lecture 5
 ---------
 
@@ -732,5 +734,4 @@ include::codes/raytracing3.c[]
 ----
 
 
-////
 ////

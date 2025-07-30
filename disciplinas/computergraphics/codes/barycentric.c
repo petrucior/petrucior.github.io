@@ -143,13 +143,13 @@ void barycentric_coordinate( Vertex a, Vertex b, Vertex c, float red, float gree
   int y_min = floorf(fminf(fminf(a.y, b.y), c.y));
   int y_max = ceilf(fmaxf(fmaxf(a.y, b.y), c.y));
 
-  // Encontrando a área do triangulo abc
+  // Encontrando a Area do triangulo abc
   float area_abc = 0.5 * fabsf(a.x*(b.y - c.y) + b.x*(c.y - a.y) + c.x*(a.y - b.y));
   
   for (int y = y_min; y < y_max; y++){
     for (int x = x_min; x < x_max; x++){
       Vertex p = {x, y, 0};
-      // Encontrando a área dos triangulos
+      // Encontrando a Area dos triangulos
       float area_pbc = 0.5 * (p.x*(b.y - c.y) + b.x*(c.y - p.y) + c.x*(p.y - b.y));
       float area_apc = 0.5 * (a.x*(p.y - c.y) + p.x*(c.y - a.y) + c.x*(a.y - p.y));
       float area_abp = 0.5 * (a.x*(b.y - p.y) + b.x*(p.y - a.y) + p.x*(a.y - b.y));
@@ -193,7 +193,7 @@ int main(){
   
   clr();
   
-  // Lê o arquivo OBJ enviado
+  // Le o arquivo OBJ enviado
   if (!load_obj("models/wolf.obj", vertices, &vcount, faces, &fcount)) {
     return 1;
   }
