@@ -1,9 +1,16 @@
 Computação Gráfica
 ------------------
 
+:stylesheet: style.css
+:source-highlighter: rouge
+:rouge-style: github
+:toc: left
+:stem: latexmath
+
 CG é uma área da computação dedicada a *criação*, *armazenamento* e *manipulação de imagens* baseada em modelos matemáticos.
 
 image::images/img0.png[height=280, width=280, align="center"]
+
 
 Lecture 1
 ---------
@@ -15,7 +22,7 @@ Iniciaremos nosso curso aprendendo como construir uma imagem.
 O formato PPM nasceu no final da década de latexmath:[80] para compartilhar imagens facilmente entre diferentes plataformas.
 
 .Definição da Wikipedia
-image::images/img1.png[height=150, width=500, align="center"]
+image::images/img1.png[height=250, width=600, align="center"]
 
 
 === Código
@@ -95,6 +102,7 @@ Este comando criará um arquivo executável e a saída deve ser direcionada para
 - Construa uma imagem latexmath:[100 \times 100] usando o formato PPM com fundo preto e escreva o caractere ' T ' no centro da imagem com
 alto contraste em relação ao fundo da imagem.
 
+////
 
 Lecture 2
 ---------
@@ -197,7 +205,7 @@ que referenciam os vértices previamente definidos. As faces podem ser triangula
 opcionais a coordenadas de textura e normais no formato `f v/vt/vn`.
 
 .Modelo tridimensional gerado a partir da renderização em wireframe
-image::images/img5.png[height=200,width=400, align="center"]
+image::images/img5.png[height=300,width=500, align="center"]
 
 O processo de renderização do modelo 3D exige arquivos `.obj` adquiridos livremente no domínio https://free3d.com[free3d.com]. Os modelos utilizados na imagem acima foram link:codes/models/wolf.obj[wolf.obj], link:codes/models/drone.obj[drone.obj] e link:codes/models/cranio.obj[cranio.obj].
 
@@ -731,5 +739,5 @@ include::codes/raytracing2.c[]
 include::codes/raytracing3.c[]
 ----
 
-////
+
 ////

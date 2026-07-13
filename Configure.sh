@@ -24,6 +24,6 @@ cd ../assembly
 asciidoc -b html5 -a latexmath -a icons -a toc2 -a theme=flask ucontrolador.txt
 
 cd ../computergraphics
-asciidoc -b html5 -a latexmath -a icons -a toc2 -a theme=flask cg.txt
-
+#asciidoc -b html5 -a latexmath -a icons -a toc2 -a theme=flask cg.txt
+asciidoctor -r asciidoctor-diagram -a source-highlighter=rouge -b html5 -a latexmath -a icons -a toc=left cg.txt
 
