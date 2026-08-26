@@ -209,7 +209,7 @@ O processo de renderização do modelo 3D exige arquivos `.obj` adquiridos livre
 
 === Código
 
-A implementação do código de renderização 3D é realizada através dos arquivos: link:codes/model.h[model.h] que contém todos os protótipos de funções que serão úteis para manipulação dos modelos 3D, link:codes/model.h[model.c] é o arquivo que contém as implementações das funções de manipulação dos modelos 3D e link:codes/wireframe.c[wireframe.c] que realiza a execução das funções implementadas.
+A implementação do código de renderização 3D é realizada através dos arquivos: link:codes/model.h[model.h] que contém todos os protótipos de funções que serão úteis para manipulação dos modelos 3D, link:codes/model.c[model.c] é o arquivo que contém as implementações das funções de manipulação dos modelos 3D e link:codes/wireframe.c[wireframe.c] que realiza a execução das funções implementadas.
 
 [source,c]
 ----
@@ -233,7 +233,7 @@ O processo de compilação é realizado através do compilador GCC através do s
 
 [source,c]
 ----
-gcc <nome_arquivo>.c <nome_biblioteca>.c -o <nome_executavel>
+gcc <nome_arquivo>.c <nome_biblioteca>.c -o <nome_executavel> -lm
 ----
 
 Este comando criará um arquivo executável e a saída deve ser direcionada para um arquivo com extensão ".ppm".

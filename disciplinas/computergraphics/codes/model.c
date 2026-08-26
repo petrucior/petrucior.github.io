@@ -20,6 +20,8 @@
 
 #include "model.h"
 
+unsigned char image[HEIGHT][WIDTH][3];
+
 void set_pixel(int x, int y, unsigned char r, unsigned char g, unsigned char b) {
   if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT) {
     image[y][x][0] = r;

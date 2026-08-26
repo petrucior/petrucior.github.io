@@ -31,8 +31,6 @@ typedef struct {
   int n;
 } Face;
 
-unsigned char image[HEIGHT][WIDTH][3];
-
 void set_pixel(int x, int y, unsigned char r, unsigned char g, unsigned char b);
 
 void clr();
