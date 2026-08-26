@@ -102,8 +102,6 @@ Este comando criará um arquivo executável e a saída deve ser direcionada para
 - Construa uma imagem latexmath:[100 \times 100] usando o formato PPM com fundo preto e escreva o caractere ' T ' no centro da imagem com
 alto contraste em relação ao fundo da imagem.
 
-////
-
 Lecture 2
 ---------
 
@@ -259,6 +257,7 @@ image::images/img6.png[height=200,width=200, align="center"]
 
 - Aplique as transformações estudadas no modelo latexmath:[3D].
 
+////
 
 Lecture 3
 ---------
