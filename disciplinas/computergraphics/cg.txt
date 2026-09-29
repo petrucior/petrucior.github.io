@@ -102,7 +102,7 @@ Este comando criará um arquivo executável e a saída deve ser direcionada para
 - Construa uma imagem latexmath:[100 \times 100] usando o formato PPM com fundo preto e escreva o caractere ' T ' no centro da imagem com
 alto contraste em relação ao fundo da imagem.
 
-////
+
 
 Lecture 2
 ---------
@@ -491,6 +491,16 @@ void drawBresenhamLines( int x0, int y0, int x1, int y1 ){
   }
 }
 ----
+
+
+=== Exercícios
+
+- Edite o código de renderização de modelos 3D para usar o algoritmo Bresenham.
+
+- Utilize a biblioteca time.h da linguagem C e verifique o tempo de execução do algoritmo que utiliza equações vetoriais, DDA e Bresenham.
+
+
+////
 
 Lecture 5
 ---------
