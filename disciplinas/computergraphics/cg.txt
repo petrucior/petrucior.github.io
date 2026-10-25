@@ -198,6 +198,7 @@ void drawLine( int x0, int y0, int x1, int y1 ){
 }
 ----
 
+[[renderização]]
 === Renderização de modelos 3D
 
 O formato `.obj` (link:https://en.wikipedia.org/wiki/Wavefront_.obj_file[Wavefront OBJ]) é um padrão amplamente utilizado para representar modelos 3D de forma simples e legível. Ele armazena informações sobre vértices (`v`), normais (`vn`), texturas (`vt`) e faces (`f`), onde cada face é formada por índices
@@ -205,7 +206,8 @@ que referenciam os vértices previamente definidos. As faces podem ser triangula
 opcionais a coordenadas de textura e normais no formato `f v/vt/vn`.
 
 .Modelo tridimensional gerado a partir da renderização em wireframe
-image::images/img5.png[height=300,width=500, align="center"]
+//image::images/img5.png[height=300,width=500, align="center"]
+image::images/img5.png[height=200,width=400, align="center"]
 
 O processo de renderização do modelo 3D exige arquivos `.obj` adquiridos livremente no domínio https://free3d.com[free3d.com]. Os modelos utilizados na imagem acima foram link:codes/models/wolf.obj[wolf.obj], link:codes/models/drone.obj[drone.obj] e link:codes/models/cranio.obj[cranio.obj].
 
@@ -498,6 +500,224 @@ void drawBresenhamLines( int x0, int y0, int x1, int y1 ){
 - Edite o código de renderização de modelos 3D para usar o algoritmo Bresenham.
 
 - Utilize a biblioteca time.h da linguagem C e verifique o tempo de execução do algoritmo que utiliza equações vetoriais, DDA e Bresenham.
+
+
+Lecture 5
+---------
+Vamos inserir uma câmera virtual e realizar uma projeção em perspectiva.
+
+=== Câmera Virtual e Projeção
+
+A câmera virtual posiciona o observador no espaço tridimensional para que a projeção em perspectiva converta esses pontos 3D em uma imagem
+plana 2D, simulando o efeito realista onde objetos mais distantes parecem menores. Para fazer isso, vamos reutilizar o código de <<renderização>>
+de modelos 3D.
+
+.Modelo tridimensional gerado a partir da renderização da cena usando câmera virtual e projeção em perspectiva
+image::images/img7_1.png[height=200,width=200, align="center"]
+
+Necessitamos encontrar os vetores ortonormais latexmath:[\vec{n}], latexmath:[\vec{u}] e latexmath:[\vec{v}] que fazem parte do sistema
+de coordenadas da câmera virtual.
+
+.Cálculo dos vetores n, u e v
+image::images/vetor_n_u_v.png[height=200,width=700, align="center"]
+
+latexmath:[\vec{n} = \frac{P_{eye} - P_{at}}{\mid P_{eye} - P_{at} \mid}]
+
+- latexmath:[$P_{eye}$]: Posição da câmera no mundo
+- latexmath:[$P_{at}$]: Posição para onde a câmera é apontada
+
+latexmath:[\vec{u} = \frac{\vec{v}_{up} \times \vec{n}}{\mid \vec{v}_{up} \times \vec{n} \mid}]
+
+- latexmath:[$v_{up}$]: Indica a posição "para cima" da câmera
+
+latexmath:[\vec{v} = \vec{n} \times \vec{u}]
+
+Posteriormente, todos os pontos do modelo 3D é transformado para o sistema de coordenadas da câmera e aplicamos a projeção em perspectiva:
+
+latexmath:[x' = \frac{x d}{z + d}]
+
+latexmath:[y' = \frac{y d}{z + d}]
+
+=== Código
+
+A implementação do código é realizada através dos arquivos: link:codes/camera.h[camera.h] que contém todos os protótipos de funções que serão úteis
+para manipulação dos modelos 3D, câmera virtual e projeção em perspectiva, link:codes/camera.c[camera.c] é o arquivo que contém as implementações das
+funções dos protótipos e link:codes/render.c[render.c] que realiza a execução das funções implementadas.
+
+[source,c]
+----
+include::codes/camera.h[]
+----
+
+[source,c]
+----
+include::codes/camera.c[]
+----
+
+[source,c]
+----
+include::codes/render.c[]
+----
+
+
+=== Descrição do Programa
+
+O primeiro passo consiste em incluir duas definições de estruturas no arquivo link:codes/camera.h[camera.h]: A primeira (1) representa um ponto 2D
+(par ordenado) e a segunda (2), o sistema de coordenadas da câmera virtual. Este último requer a posição do observador no espaço tridimensional
+(latexmath:[$P_{eye}$]), o ponto de mira (latexmath:[$P_{at}$]), o vetor de orientação "para cima" (latexmath:[$V_{up}$]) e a distância até a cena (latexmath:[$d$]).
+
+[source,c]
+----
+typedef struct {
+  int x, y;
+} Point2D;
+
+typedef struct {
+  Vertex Peye;
+  Vertex Pat;
+  Vertex Vup;
+  float d;
+} Camera;
+----
+
+
+Neste código, declaramos (link:codes/camera.h[camera.h]) e implementamos (link:codes/camera.c[camera.c]) funções auxiliares para o cálculo dos vetores de câmera, como subtração de vetores (*sub*), produto escalar (*dot*),
+produto vetorial (*cross*) e normalização (*normalize*).
+
+[source,c]
+----
+static Vertex sub( Vertex a, Vertex b );
+static float dot( Vertex a, Vertex b );
+static Vertex cross( Vertex a, Vertex b );
+static Vertex normalize( Vertex v );
+----
+
+[source,c]
+----
+static Vertex sub( Vertex a, Vertex b ){
+  return (Vertex) {a.x - b.x, a.y - b.y, a.z - b.z};
+}
+static float dot( Vertex a, Vertex b ){
+  return (a.x * b.x) + (a.y * b.y) + (a.z * b.z);
+}
+static Vertex cross( Vertex a, Vertex b ){
+  return (Vertex){
+    a.y * b.z - a.z * b.y,
+    a.z * b.x - a.x * b.z,
+    a.x * b.y - a.y * b.x
+  };
+}
+static Vertex normalize( Vertex v ){
+  float tam = sqrt( dot(v, v) );
+  if ( tam > 0.0 ) {
+    v.x = v.x / tam;
+    v.y = v.y / tam;
+    v.z = v.z / tam;
+  }
+  return v;
+}
+----
+
+A função de *resizing* é modificada para receber um ponto 3D, a estrutura da câmera virtual definida anteriormente e atualizar um ponteiro
+com o resultado da projeção em perspectiva. 
+
+[source,c]
+----
+void resizing( Vertex p, Camera cam, Point2D *out );
+----
+
+A implementação da função *resizing* pode ser encontrada no arquivo (link:codes/camera.c[camera.c]). O processo inicia-se com o cálculo
+dos vetores ortonormais u, v e n da câmera virtual. Em seguida, cada ponto p da nuvem é transformado para o sistema de coordenadas da câmera e
+submetido à projeção em perspectiva. Por fim, realiza-se o mapeamento das coordenadas projetadas originalmente no intervalo latexmath:[[-1,1]]
+para a resolução final da imagem latexmath:[width \times height].
+
+[source,c]
+----
+void resizing( Vertex p, Camera cam, Point2D *out ){
+
+  // Calcular os vetores ortonormais u, v e n
+  Vertex n = normalize( sub( cam.Peye, cam.Pat ) );
+  Vertex u = normalize( cross( cam.Vup, n ) );
+  Vertex v = cross( n, u );
+
+  // Aplicar na matriz view
+  Vertex p_eye = sub( p, cam.Peye );
+  float x_cam = dot( u, p_eye );
+  float y_cam = dot( v, p_eye );
+  float z_cam = dot( n, p_eye );
+
+  float w = z_cam + cam.d;
+  if ( w < 0.1f ) return;
+
+  float x_proj = x_cam * cam.d / w;
+  float y_proj = y_cam * cam.d / w;
+
+  out->x = (int)((x_proj + 1.0f) * WIDTH / 2.0f);
+  out->y = (int)((1.0f - y_proj) * HEIGHT / 2.0f);
+}
+----
+
+Na função *render_faces*, adicionamos o argumento 'Camera cam' como pode ser observado abaixo:
+
+[source,c]
+----
+void render_faces(Vertex *vertices, Face *faces, int vcount, int fcount, Camera cam);
+----
+
+Na implementação da função *render_faces*, para cada par de vértices (v0 e v1) que forma uma aresta, a função chama
+*resizing*, a qual aplica a transformação de câmera, projeção em perspectiva e o mapeamento de viewport. O resultado
+são coordenadas 2D na tela (p0 e p1). Por fim, a função *draw_line* é chamada para traçar a linha 2D na tela, conectando
+os pontos projetados p0 e p1, renderizando assim o aramado do modelo 3D.
+
+[source,c]
+----
+void render_faces(Vertex *vertices, Face *faces, int vcount, int fcount, Camera cam) {
+    for (int i = 0; i < fcount; i++) {
+        Face face = faces[i];
+        for (int j = 0; j < face.n; j++) {
+            Vertex v0 = vertices[face.verts[j] - 1];
+            Vertex v1 = vertices[face.verts[(j + 1) % face.n] - 1];
+	    Point2D p0, p1;
+	    resizing( v0, cam, &p0);
+	    resizing( v1, cam, &p1);
+	    draw_line(p0.x, p0.y, p1.x, p1.y);
+        }
+    }
+}
+
+----
+
+No arquivo link:codes/render.c[render.c], adicionamos uma câmera e passamos como argumento da função *render_faces*.
+
+[source,c]
+----
+// Constroi uma câmera
+Camera cam = {
+  .Peye = {0, 0, -0.5},
+  .Pat = {0, 0, 0},
+  .Vup = {0, 1, 0},
+  .d = 5.0
+};
+
+// Renderiza as faces no framebuffer
+render_faces(vertices, faces, vcount, fcount, cam);
+----
+
+=== Exercícios
+
+- Edite o código de câmera virtual e projeção com novas posições de câmera e distância d e verifique seu resultado.
+
+
+//Lecture 6
+//---------
+
+
+
+
+
+
+
+
 
 
 ////
