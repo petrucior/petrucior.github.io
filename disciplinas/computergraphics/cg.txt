@@ -560,7 +560,7 @@ include::codes/render.c[]
 ----
 
 
-=== Descrição do Programa
+=== Descrição do programa
 
 O primeiro passo consiste em incluir duas definições de estruturas no arquivo link:codes/camera.h[camera.h]: A primeira (1) representa um ponto 2D
 (par ordenado) e a segunda (2), o sistema de coordenadas da câmera virtual. Este último requer a posição do observador no espaço tridimensional
@@ -708,8 +708,112 @@ render_faces(vertices, faces, vcount, fcount, cam);
 - Edite o código de câmera virtual e projeção com novas posições de câmera e distância d e verifique seu resultado.
 
 
-//Lecture 6
-//---------
+Lecture 6
+---------
+
+Aprendendo a construir curvas e superfícies do zero.
+
+=== Curvas e superfícies
+
+Na computação gráfica, curvas e superfícies são a base essencial para dar forma, suavidade e realismo a qualquer modelo 3D.
+
+.Curva de hermite
+image::images/img7_2.png[height=200,width=200, align="center"]
+
+==== Bézier
+Dados 3 pontos (latexmath:[$P_0$], latexmath:[$P_1$] e latexmath:[$P_2$]), geramos duas retas latexmath:[$R_1$] e latexmath:[$R_2$], respectivamente, entre latexmath:[$P_0$] e latexmath:[$P_1$] e entre latexmath:[$P_1$] e latexmath:[$P_2$]. Ao realizar a interpolação entre latexmath:[$R_1$] e latexmath:[$R_2$] usando para isto os pesos $t$ e $1 - t$, temos uma curva:
+
+latexmath:[$R_1 : (1 - t)P_0 + t P_1$] e  latexmath:[$R_2 : (1 - t)P_1 + t P_2$] resulta em: latexmath:[$C_1: (1-t) R_1 + t R_2$]
+
+latexmath:[$C_1(t): (1-t)^2 P_0 + 2t(1 - t)P_1 + t^2 P_2, \quad t \in [0, 1\]$]
+
+==== Hermite
+Uma curva de Hermite é definida por seus pontos extremos, denominados latexmath:[$P_1$] e latexmath:[$P_2$], e por dois vetores tangentes, latexmath:[$T_1$] e latexmath:[$T_2$], que determinam a direção e a intensidade da curva nesses pontos. O vetor latexmath:[$T_1$] indica como a curva parte de latexmath:[$P_1$], enquanto latexmath:[$T_2$] define como ela chega até latexmath:[$P_2$].
+
+latexmath:[$H(t) = h_1(t)P_1 + h_2(t)P_2 + h_3(t)T_1 + h4(t)T_2,  \quad t \in [0, 1\]$]
+
+onde:
+
+latexmath:[$h_1(t) = 2t^3 - 3t^2 + 1$]
+
+latexmath:[$h_2(t) = -2t^3 + 3t^2$]
+
+latexmath:[$h_3(t) = t^3 - 2t^2 + t$]
+
+latexmath:[$h_4(t) = t^3 - t^2$]
+
+=== Código 
+
+A implementação da curva de Hermite para demonstrar como desenhar uma curva está disponível no arquivo link:codes/hermite.c[hermite.c].
+
+[source,c]
+----
+include::codes/hermite.c[]
+----
+
+=== Descrição do programa
+
+Iniciamos nossa implementação adicionando uma estrutura para ponto 2D:
+
+[source,c]
+----
+typedef struct{
+  float x, y;
+}Point;
+----
+
+
+Para evitar redundância, descreveremos apenas o conteúdo que adicionamos ao arquivo. Sendo assim, discutiremos sobre a função
+*hermite* e algumas funções de base *h1*, *h2*, *h3* e *h4*. As funções de base são dadas pela própria definição de hermite com um parâmetro
+latexmath:[$t \in [0, 1\] $].
+
+[source,c]
+----
+float h1( float t ){ return 2*(t*t*t) - 3*(t*t) + 1; }
+float h2( float t ){ return -2*(t*t*t) + 3*(t*t); }
+float h3( float t ){ return (t*t*t) - 2*(t*t) + t; }
+float h4( float t ){ return (t*t*t) - (t*t); }
+----
+
+A função *hermite* recebe como argumento os dois pontos que delimitam a curva, as tangentes nos pontos inicial e final e, por fim, um parâmetro flutuante t que varia de zero até 1. O retorno é um ponto dentro da curva definida por hermite.
+
+[source,c]
+----
+Point hermite( float t, Point p0, Point p1, Point t0, Point t1 ){
+  Point result;
+  result.x = h1(t) * p0.x + h2(t) * p1.x + h3(t) * t0.x + h4(t) * t1.x;
+  result.y = h1(t) * p0.y + h2(t) * p1.y + h3(t) * t0.y + h4(t) * t1.y;
+
+  return result;
+}
+----
+
+Na função *main*, precisamos definir os pontos, suas tangentes e adicionar um laço para fazer o parâmetro $t$ percorrer o intervalo $[0, 1]$ com pequenos incrementos. Para cada valor de $t$ a função *hermite* é chamada e o ponto é plotado.
+
+[source,c]
+----
+Point p1 = {100, 100};
+Point p2 = {300, 300};
+Point t1 = {200, 0};
+Point t2 = {0, 200};
+
+for (float t = 0.0; t <= 1.0; t = t + 0.001){
+  Point h = hermite( t, p1, p2, t1, t2 );
+  px( (int)h.x, (int)h.y, 255, 0, 0 ); 
+}
+----
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
