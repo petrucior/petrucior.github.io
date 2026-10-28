@@ -501,7 +501,6 @@ void drawBresenhamLines( int x0, int y0, int x1, int y1 ){
 
 - Utilize a biblioteca time.h da linguagem C e verifique o tempo de execução do algoritmo que utiliza equações vetoriais, DDA e Bresenham.
 
-////
 
 Lecture 5
 ---------
@@ -803,7 +802,7 @@ for (float t = 0.0; t <= 1.0; t = t + 0.001){
   px( (int)h.x, (int)h.y, 255, 0, 0 ); 
 }
 ----
-////
+
 
 
 
