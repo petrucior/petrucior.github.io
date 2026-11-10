@@ -803,30 +803,7 @@ for (float t = 0.0; t <= 1.0; t = t + 0.001){
 }
 ----
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-////
-
-Lecture 5
+Lecture 7
 ---------
 
 Nesta parte da disciplina apresentamos um algoritmo de preenchimento de triângulo usando interpolação de cores.
@@ -917,6 +894,8 @@ void render_faces_filled( Vertex *vertices, Face *faces, int vcount, int fcount)
   }
 }
 ----
+
+////
 
 Lecture 6
 ---------
