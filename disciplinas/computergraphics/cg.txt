@@ -895,9 +895,8 @@ void render_faces_filled( Vertex *vertices, Face *faces, int vcount, int fcount)
 }
 ----
 
-////
 
-Lecture 6
+Lecture 8
 ---------
 
 Vamos aprender como a iluminação é calculada em computação gráfica para simular a interação da luz com superfícies 3D.
@@ -1013,7 +1012,9 @@ void render_faces_filled( Vertex *vertices, Face *faces, int vcount, int fcount 
 }
 ----
 
-Lecture 7
+////
+
+Lecture 9
 ---------
 
 Vamos compreender como a técnica ray tracing funciona.
