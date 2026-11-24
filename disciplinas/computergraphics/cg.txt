@@ -1012,7 +1012,6 @@ void render_faces_filled( Vertex *vertices, Face *faces, int vcount, int fcount 
 }
 ----
 
-////
 
 Lecture 9
 ---------
@@ -1054,5 +1053,5 @@ include::codes/raytracing2.c[]
 include::codes/raytracing3.c[]
 ----
 
-
+////
 ////
