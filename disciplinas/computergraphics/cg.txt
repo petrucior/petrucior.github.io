@@ -1053,5 +1053,34 @@ include::codes/raytracing2.c[]
 include::codes/raytracing3.c[]
 ----
 
+Lecture 10
+----------
+
+Vamos resolver o problema de objetos distantes aparecerem na frente de objetos mais próximos da câmera.
+
+=== Z-Buffer
+
+Desenhar os polígonos na ordem em que aparecem no arquivo .obj pode fazer com que um objeto distante cubra um
+mais próximo, e polígonos que se cruzam ou se entrelaçam viram um quebra-cabeça difícil de ordenar.
+
+.Imagem de profundidade (esquerda) e algoritmo z-buffer (direita)
+image::images/img13_14.png[height=200,width=400, align="center"]
+
+O algoritmo z-buffer resolve esse problema pixel a pixel pela comparação de profundidade em relação à câmera.
+
+=== Código
+
+A implementação está disponível no arquivo link:codes/zbuffer.c[zbuffer.c].
+
+[source,c]
+----
+include::codes/zbuffer.c[]
+----
+
+=== Descrição do programa
+
+
+
+
 ////
 ////
