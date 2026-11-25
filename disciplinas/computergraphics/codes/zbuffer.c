@@ -74,7 +74,7 @@ void draw_line(int x0, int y0, int x1, int y1) {
 void clr(){
   for(int i = 0; i < WIDTH; i++){
     for(int j = 0; j < HEIGHT; j++){
-      zbuffer[i][j] = 0.0; // iniciando com um valor grande
+      zbuffer[i][j] = 0.0; // iniciando com menor valor
       for(int c = 0; c < 3; c++){
 	image[i][j][c] = 255;
       }
